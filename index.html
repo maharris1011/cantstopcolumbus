@@ -2,23 +2,37 @@
 layout: default
 title: Home
 ---
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8">
-        <h1 class="display-2">Nice try COVID-19,</h1>
-        <h1 class="display-3">but you <span style="color: #4300FF;">can't stop columbus</span></h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8">
-        <h3>help and resources available to the community</h3>
-        <a class="btn btn-primary btn-lg" href="/find-help.html">I need help</a>&nbsp;
-        <a class="btn btn-secondary btn-lg" href="https://airtable.com/shrDrTCZQmDlCN8sg">Want to help</a>
-      </div>
-      <div class="col-md-4 ml-auto">
-        <img src="/assets/img/UX/muscle2.svg" alt="illustration muscle flexing" height="267" width="248">
-      </div>
-    </div>
+<div class="jumbotron jumbotron-fluid pt-0">
+  <div class="d-flex justify-content-between ">
+    {% include navbar.html %}
+    <img class="rounded mr-2 d-block pt-2" height="50px" width="50px" alt="can't stop columbus logo" src="/assets/img/cscbus_logo_square.svg" />
   </div>
+  <div class="container">
+    <h1>Nice try COVID-19,</h1>
+    <h2>but you <span class="primary-blue">can't stop columbus</span></h2>
+    <div class="row align-items-center">
+      <div class="col-md-8">
+        <h4>help and resources available to the community</h4>
+        <div class="d-flex help-button-group">
+            <a
+              class="btn btn-primary btn-lg"
+              role="button"
+              href="/find-help.html">
+              I need help
+            </a>
+
+            <a
+              class="btn btn-secondary btn-lg"
+              role="button"
+              href="https://airtable.com/shrDrTCZQmDlCN8sg">
+              Want to help
+            </a>
+          </button>        
+        </div>
+      </div>
+      <div class="col-md-4 ">
+        <img class="d-none d-md-block" src="/assets/img/UX/muscle2.svg" alt="illustration muscle flexing">
+      </div>
+    </div>
+  </div>      
 </div>
