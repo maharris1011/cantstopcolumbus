@@ -30,103 +30,34 @@ title: Find Help
 </div>
 
 <div class="shadow-sm p-1 mb-2 bg-white rounded">
-<div class="row">
-  <div class="col-12">
-    <ul class="nav nav-tabs justify-content">
-      <li class="nav-item">
-        <a class="nav-link" href="find-help.html">ALL</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="find-help.html?q=health">HEALTH</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="find-help.html?q=food">FOOD</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="find-help.html?q=mobility">MOBILITY</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="find-help.html?q=news">NEWS</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="find-help.html?q=employment">EMPLOYMENT</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="find-help.html?q=housing">HOUSING</a>
-      </li>
-    </ul>
+  <div class="row">
+    <div class="col-12">
+      <ul class="nav nav-tabs justify-content">
+        {% for tab in site.data.help-tabs %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ tab.link }}"><span class="text-uppercase">{{ tab.name }}</span></a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
   </div>
-</div>
 </div>
 
 <div class="card-deck">
-  <div class="col-md-3">
-    <div class="card">
-      <img
-        class="card-img-top p-3 mb-5 img-fluid"
-        src="/assets/img/UX/projects/columbus-gov.svg"
-        alt="city of columbus logo"
-      />
-      <div class="card-footer">
-        <h5><a href="www.columbus.gov">columbus.gov</a></h5>
-        <p>COVID-19 Resources from the City of Columbus</p>
+  {% for project in site.data.projects %}
+    <div class="col-sm-3">
+      <div class="card">
+        <img
+          class="card-img-top p-3 mb-5 img-fluid"
+          src="/assets/img/UX/projects/{{ project.logo }} "
+          alt="{{ project.title }}"
+        />
+        <div class="card-footer">
+          <h5><a href="{{ project.link }}">{{ project.title }}</a></h5>
+          <p>{{ project.description }}</p>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="card">
-      <img
-        class="card-img-top p-3 mb-5 img-fluid"
-        src="/assets/img/UX/projects/Screen Shot 2020-03-21 at 1.10.32 PM.png"
-        alt="support columbus eats"
-      />
-      <div class="card-footer">
-        <h5 class="card-title"><a href="#">Support Columbus Eats</a></h5>
-        <p class="card-text">
-          A list of restaurants open with info on how to order
-        </p>
       </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="card">
-      <img
-        class="card-img-top img-fluid p-3 mb-5"
-        src="/assets/img/UX/projects/Next Door Munch.png"
-        alt="next door munch"
-      />
-      <div class="card-footer">
-        <h5 class="card-title"><a href="#">Next Door Munch</a></h5>
-        <p class="card-text">
-          Get groceries delivered by neighbors, for neighbors
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="card">
-      <img 
-        class="card-img-top img-fluid p-3 mb-5"
-        src="/assets/img/UX/projects/Columbus Helper.jpg"
-        alt="Columbus Helper"
-      />
-      <div class="card-footer">
-        <h5><a href="#">Columbus Helper</a></h5>
-        <p>Information about Food, Housing, and Transportation services</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="card">
-      <img 
-        class="card-img-top p-3 mb-5"
-        src="/assets/img/UX/projects/Columbus Helper.jpg"
-        alt="Columbus Helper"
-      />
-      <div class="card-footer">
-        <h5><a href="#">Columbus Helper</a></h5>
-        <p>Information about Food, Housing, and Transportation services</p>
-      </div>
-    </div>
-  </div>
+  {% endfor %}
 </div>
+
