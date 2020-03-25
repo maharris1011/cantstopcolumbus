@@ -28,3 +28,142 @@ body {
   line-height: 60px; /* Vertically center the text there */
   background-color: #f5f5f5;
 }
+
+.background-white {
+  background-color: white;
+}
+
+.background-grey {
+  background-color: #ECF0F6
+}
+
+.top-spacer {
+  margin: 50px;
+}
+
+.icon-bar {
+  width: 22px;
+  height: 2px;
+  background-color: #B6B6B6;
+  display: block;
+  transition: all 0.2s;
+  margin-top: 4px
+}
+
+.navbar-toggler .top-bar {
+  transform: rotate(45deg);
+  transform-origin: 10% 10%;
+}
+
+.navbar-toggler .middle-bar {
+  opacity: 0;
+}
+
+.navbar-toggler .bottom-bar {
+  transform: rotate(-45deg);
+  transform-origin: 10% 90%;
+}
+
+.navbar-toggler.collapsed .top-bar {
+  transform: rotate(0);
+}
+
+.navbar-toggler.collapsed .middle-bar {
+  opacity: 1;
+}
+
+.navbar-toggler.collapsed .bottom-bar {
+  transform: rotate(0);
+}
+
+.hamburger-background {
+  box-sizing: border-box;
+  height: 48px;
+  width: 48px;
+  border: 1px solid #3366FF;
+  border-radius: 4px;
+}
+
+.light-purple-background {
+  background-color: rgb(209, 220, 255);
+}
+
+.color-black {
+  background-color: black;
+}
+
+.nice-try-covid-19 {
+  height: 71px;
+  width: 506px;
+  color: #000000;
+  font-family: Roboto;
+  font-size: 60px;
+  font-weight: 500;
+  letter-spacing: 0.43px;
+  line-height: 71px;
+}
+
+.subtitle {
+  height: 42px;
+  text-align: left !important;
+  font-family: Roboto;
+  font-size: 36px;
+  font-weight: 500;
+  letter-spacing: 0.26px;
+  line-height: 42px;
+}
+
+.purple-font {
+  color: #4B00FF;
+}
+
+.help-and-resources-a {
+  height: 21px;
+  width: 381px;
+  color: #000000;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.13px;
+  line-height: 21px;
+}
+
+.dark-purple {
+  background-color: #4300FF;
+  border-color: #4300FF
+}
+
+.inverted-dark-purple {
+  border: 1px solid #3366FF;
+  color: #3366FF;
+  background-color: rgba(67, 0, 255, 0.1);
+}
+
+.jumbotron {
+  padding-top: 10px;
+}
+
+.on-sunday-march-15 {
+  height: 168px;
+  width: 613px;
+  color: #000000;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.13px;
+  line-height: 21px;
+}
+
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}

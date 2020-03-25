@@ -2,23 +2,140 @@
 layout: default
 title: Home
 ---
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
+<div id="overlay" onclick="off()">
+  <div>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/find-help">Find Help</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://airtable.com/shrDrTCZQmDlCN8sg">
+          Get Involved
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="top-spacer">
+</div>
+<div class="container">
+  <div class="jumbotron text-center background-white">
     <div class="row">
-      <div class="col-md-8">
-        <h1 class="display-2">Nice try COVID-19,</h1>
-        <h1 class="display-3">but you <span style="color: #4300FF;">can't stop columbus</span></h1>
+      <div>
+        <button class="navbar-toggler collapsed hamburger-background light-purple-background align-left" type="button"
+          data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+          aria-expanded="false" aria-label="Toggle navigation" onclick="on()">
+          <span class="icon-bar top-bar color-black"></span>
+          <span class="icon-bar middle-bar color-black"></span>
+          <span class="icon-bar bottom-bar color-black"></span>
+        </button>
+      </div>
+      <div style="margin-left: auto">
+        <img src="./assets/img/UX/cscbus_logo_square.svg" align="right" style="height: 75px;" />
       </div>
     </div>
     <div class="row">
-      <div class="col-md-8">
-        <h3>help and resources available to the community</h3>
-        <a class="btn btn-primary btn-lg" href="/find-help.html">I need help</a>&nbsp;
-        <a class="btn btn-secondary btn-lg" href="https://airtable.com/shrDrTCZQmDlCN8sg">Want to help</a>
+      <div class="col-md-8" style="text-align:left">
+        <p class="nice-try-covid-19">Nice try COVID-19,</p>
+        <p class="subtitle" style="display:inline">but you </p>
+        <p class="subtitle purple-font" style="display:inline">can't stop columbus</p>
       </div>
-      <div class="col-md-4 ml-auto">
-        <img src="/assets/img/UX/muscle2.svg" alt="illustration muscle flexing" height="267" width="248">
+      <div class="col-md-4">
+        <img src="./assets/img/UX/muscle2.svg" style="height: 267px" />
+      </div>
+    </div>
+    <div class="row" style="margin-top: -75px;">
+      <div class="col-md-8">
+        <p class="help-and-resources-a">help and resources available to the community</p>
+        <div style="text-align:left">
+          <button class="btn btn-primary dark-purple">I NEED HELP</button>
+          <button class="btn btn-primary inverted-dark-purple">I WANT TO HELP</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+  <div class="jumbotron text-center background-white">
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <p class="subtitle" style="display:inline">we're just getting started</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <button class="btn btn-primary inverted-dark-purple" style="color:black;">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+        <!-- JUMBOTRON GOES HERE -->
+        <button class="btn btn-primary inverted-dark-purple" style="color:black;">
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <button class="btn btn-primary inverted-dark-purple"">
+                VIEW ALL RESOURCES
+            </button>
+            </div>
+        </div>
+    </div>
+    <div class=" jumbotron background-white">
+          <br>
+          <div class="row">
+            <div class="col-md-12">
+              <p class="subtitle" style="display:inline">With support from</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8">
+              <!--icons go here-->
+            </div>
+            <div class="col-md-4">
+              <!--sponsor numbers go here-->
+            </div>
+          </div>
+      </div>
+      <div class="jumbotron background-white" style="max-height: 350px;">
+        <br>
+        <div class="row">
+          <div class="col-md-12">
+            <p class="subtitle" style="display:inline">About </p>
+            <p class="subtitle purple-font"" style=" display:inline">US</p>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-8 on-sunday-march-15">
+            <p>
+              On Sunday, March 15, 2020, the Columbus, Ohio tech and business community started
+              talking about the idea of a virtual hackathon in response to the Covid-19 situation.
+              With social distancing, no school, remote work, and a sense of urgency, there’s a lot of
+              energy focused on helping. We proposed an online hacking event where anyone can
+              contribute by defining challenges, building projects, and sharing resources.
+            </p>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-8 on-sunday-march-15">
+            <p>
+              ...It's kinda grown from there.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function on() {
+        document.getElementById("overlay").style.display = "block";
+      }
+
+      function off() {
+        document.getElementById("overlay").style.display = "none";
+      }
+    </script>
