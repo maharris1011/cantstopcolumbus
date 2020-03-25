@@ -2,77 +2,130 @@
 layout: default
 title: Find Help
 ---
+
+<div class="shadow-sm p-3 mb-2 bg-white rounded">
+  <div class="row">
+    <div class="col-md-8">
+      <h1 class="display-4">
+        Find Help
+      </h1>
+    </div>
+    <div class="col-md-4">
+      <a class="mt-4 btn btn-outline-primary btn-lg dark-bg" href="#"
+        ><i class="fa fa-envelope-square"></i>&nbsp;Submit a Resource</a
+      >
+      <img class="img-fluid ml-3" style="height: 80px" src="/assets/img/cscbus_logo_square.svg">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <p class="lead m-0">
+        Find the help you need in <span class="highlight">columbus</span>
+      </p>
+      <p class="lead m-0">
+        We're all in this together
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="shadow-sm p-1 mb-2 bg-white rounded">
 <div class="row">
   <div class="col-12">
-    <div class="title">
-      <h2 class="title" style="text-align: center">
-        Find the Help You Need in Columbus
-      </h2>
+    <ul class="nav nav-tabs justify-content">
+      <li class="nav-item">
+        <a class="nav-link" href="find-help.html">ALL</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="find-help.html?q=health">HEALTH</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="find-help.html?q=food">FOOD</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="find-help.html?q=mobility">MOBILITY</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="find-help.html?q=news">NEWS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="find-help.html?q=employment">EMPLOYMENT</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="find-help.html?q=housing">HOUSING</a>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<div class="card-deck">
+  <div class="col-md-3">
+    <div class="card">
+      <img
+        class="card-img-top p-3 mb-5 img-fluid"
+        src="/assets/img/UX/projects/columbus-gov.svg"
+        alt="city of columbus logo"
+      />
+      <div class="card-footer">
+        <h5><a href="www.columbus.gov">columbus.gov</a></h5>
+        <p>COVID-19 Resources from the City of Columbus</p>
+      </div>
     </div>
-    <div class="row justify-content-center">
-      <div class="col-12">
-        
-
-
-        <!-- Nav tabs -->
-        <div class="card">
-          <div class="nav-tabs-navigation">
-            <div class="nav-tabs-wrapper">
-              <ngb-tabset [justify]="'center'" class="text-center">
-                <ngb-tab>
-                  <ng-template ngbTabTitle>
-                    ALL
-                  </ng-template>
-                  <ng-template ngbTabContent>
-                    <p>this is content!</p>
-                  </ng-template>
-                </ngb-tab>
-                <ngb-tab>
-                  <ng-template ngbTabTitle>
-                    HEALTH
-                  </ng-template>
-                  <ng-template ngbTabContent> </ng-template>
-                </ngb-tab>
-                <ngb-tab>
-                  <ng-template ngbTabTitle>
-                    FOOD
-                  </ng-template>
-                  <ng-template ngbTabContent> </ng-template>
-                </ngb-tab>
-                <ngb-tab>
-                  <ng-template ngbTabTitle>
-                    MOBILITY
-                  </ng-template>
-                  <ng-template ngbTabContent> </ng-template>
-                </ngb-tab>
-                <ngb-tab>
-                  <ng-template ngbTabTitle>
-                    NEWS
-                  </ng-template>
-                  <ng-template ngbTabContent> </ng-template>
-                </ngb-tab>
-                <ngb-tab>
-                  <ng-template ngbTabTitle>
-                    EMPLOYMENT
-                  </ng-template>
-                  <ng-template ngbTabContent> </ng-template>
-                </ngb-tab>
-                <ngb-tab>
-                  <ng-template ngbTabTitle>
-                    HOUSING
-                  </ng-template>
-                  <ng-template ngbTabContent> </ng-template>
-                </ngb-tab>
-                <ngb-tab>
-                  <ng-template ngbTabTitle>
-                    SEARCH
-                  </ng-template>
-                  <ng-template ngbTabContent> </ng-template>
-                </ngb-tab>
-              </ngb-tabset>
-            </div>
-          </div>
-        </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card">
+      <img
+        class="card-img-top p-3 mb-5 img-fluid"
+        src="/assets/img/UX/projects/Screen Shot 2020-03-21 at 1.10.32 PM.png"
+        alt="support columbus eats"
+      />
+      <div class="card-footer">
+        <h5 class="card-title"><a href="#">Support Columbus Eats</a></h5>
+        <p class="card-text">
+          A list of restaurants open with info on how to order
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card">
+      <img
+        class="card-img-top img-fluid p-3 mb-5"
+        src="/assets/img/UX/projects/Next Door Munch.png"
+        alt="next door munch"
+      />
+      <div class="card-footer">
+        <h5 class="card-title"><a href="#">Next Door Munch</a></h5>
+        <p class="card-text">
+          Get groceries delivered by neighbors, for neighbors
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card">
+      <img 
+        class="card-img-top img-fluid p-3 mb-5"
+        src="/assets/img/UX/projects/Columbus Helper.jpg"
+        alt="Columbus Helper"
+      />
+      <div class="card-footer">
+        <h5><a href="#">Columbus Helper</a></h5>
+        <p>Information about Food, Housing, and Transportation services</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card">
+      <img 
+        class="card-img-top p-3 mb-5"
+        src="/assets/img/UX/projects/Columbus Helper.jpg"
+        alt="Columbus Helper"
+      />
+      <div class="card-footer">
+        <h5><a href="#">Columbus Helper</a></h5>
+        <p>Information about Food, Housing, and Transportation services</p>
       </div>
     </div>
   </div>
