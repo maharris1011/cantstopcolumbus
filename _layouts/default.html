@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+    {% seo %}
+  </head>
+  <body>
+    <header>
+      {% include navbar.html %}
+    </header>
+
+    <div class="container">
+      {{ content }}
+    </div>
+
+    {% include footer.html %}
+  </body>
+</html>
