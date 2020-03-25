@@ -2,23 +2,50 @@
 layout: default
 title: Find Help
 ---
-
+<div id="overlay" onclick="off()">
+  <div>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/find-help">Find Help</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://airtable.com/shrDrTCZQmDlCN8sg">
+          Get Involved
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="top-spacer">
+</div>
 <div class="shadow-sm p-3 mb-2 bg-white rounded">
   <div class="row">
-    <div class="col-md-8">
-      <h1 class="display-4">
-        Find Help
-      </h1>
+    <div class="col-sm-12">
+    <div class="float-left">
+      <button class="navbar-toggler collapsed hamburger-background light-purple-background align-left" type="button"
+        data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+        aria-expanded="false" aria-label="Toggle navigation" onclick="on()">
+        <span class="icon-bar top-bar color-black"></span>
+        <span class="icon-bar middle-bar color-black"></span>
+        <span class="icon-bar bottom-bar color-black"></span>
+      </button>
     </div>
-    <div class="col-md-4">
+    <div class="float-right">
       <a class="mt-4 btn btn-outline-primary btn-lg dark-bg" href="#"
         ><i class="fa fa-envelope-square"></i>&nbsp;Submit a Resource</a
       >
       <img class="img-fluid ml-3" style="height: 71px" src="/assets/img/cscbus_logo_square.svg">
     </div>
+    </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 offset-1">
+      <h1 class="display-4">
+        Find Help
+      </h1>
       <p class="lead m-0">
         Find the help you need in <span class="highlight">columbus</span>
       </p>
@@ -60,4 +87,14 @@ title: Find Help
       </div>
   {% endfor %}
 </div>
+
+<script>
+  function on() {
+    document.getElementById("overlay").style.display = "block";
+  }
+
+  function off() {
+    document.getElementById("overlay").style.display = "none";
+  }
+</script>
 
