@@ -30,6 +30,13 @@ body {
         margin-right: 1rem;
       }
     }
+    &:nth-child(2) {
+      margin-bottom: 1rem;
+      @media #{$break-tablet-up} {
+        margin-bottom: 0;
+        margin-right: 1rem;
+      }
+    }
   }
 
   @media #{$break-tablet-up} {
