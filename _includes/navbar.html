@@ -1,31 +1,30 @@
-<nav class="navbar navbar-expand-lg navbar-light">
+<div class="padding-top" id="overlay" onclick="off()">
   <div class="container">
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarCollapse"
-      aria-controls="navbarCollapse"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/find-help">Find Help</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://airtable.com/shrDrTCZQmDlCN8sg">
-            Get Involved
-          </a>
-        </li>
-      </ul>
+    <div class="jumbotron nav-background">
+      <div class="row">
+        <div>
+          <button class="close navbar-toggler collapsed hamburger-background light-purple-background align-left"
+            type="button" id="close-nav" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation" onclick="on()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="navigation-menu">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="navigation-link home-find-help-get-i" href="/">home</a>
+            </li>
+            <li class="nav-item">
+              <a class="navigation-link home-find-help-get-i" href="/find-help">find help</a>
+            </li>
+            <li class="nav-item">
+              <a class="navigation-link home-find-help-get-i" href="https://airtable.com/shrDrTCZQmDlCN8sg">
+                get involved
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
-</nav>
-
+</div>
