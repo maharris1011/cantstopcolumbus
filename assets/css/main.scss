@@ -39,6 +39,14 @@ body {
   background-color: #ffffff;
 }
 
+h1 {
+  font-family: Roboto;
+  font-size: 60px;
+  font-weight: 500;
+  letter-spacing: 0.43px;
+  line-height: 71px;
+}
+
 .background-white {
   background-color: white;
 }
@@ -209,4 +217,20 @@ body {
 
 .margin-top {
   margin-top: 50px;
+}
+
+.sponsorlogo {
+  max-width: 100px;
+  max-height: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sponsor-more {
+  font-family: Roboto;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 35px;
+  text-align: center;
 }
