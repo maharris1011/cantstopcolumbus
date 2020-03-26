@@ -244,3 +244,23 @@ h1 {
   line-height: 35px;
   text-align: center;
 }
+
+@media only screen and (max-width: 768px) {
+  .small-phone {
+    font-size: 14px;
+    vertical-align: middle;
+  }
+  .small-phone-div {
+    margin-top: .1em;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .small-phone {
+    font-size: 8px;
+    vertical-align: middle;
+  }
+  .small-phone-div {
+    margin-top: .1em;
+  }
+}
