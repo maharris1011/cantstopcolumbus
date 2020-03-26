@@ -82,7 +82,7 @@ body {
 }
 
 .light-purple-background {
-  background-color: rgb(209, 220, 255);
+  background-color: rgba(67, 0, 255, 0.1);
 }
 
 .color-black {
@@ -156,7 +156,44 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(75,0,255,0.96);  
   z-index: 2;
   cursor: pointer;
+}
+
+.navigation-link {
+  color: #FFFFFF;
+}
+
+.nav-background {
+    background-color: rgba(75,0,255,0); 
+}
+
+#close-nav {
+  border: 3px solid #FFFFFF;
+  border-radius: 4px;
+  color: white;
+}
+
+.home-find-help-get-i {
+  width: 330px;
+  color: #FFFFFF;
+  font-family: Roboto;
+  font-size: 60px;
+  font-weight: 500;
+  letter-spacing: 0.43px;
+  line-height: 100px;
+}
+
+.navigation-menu {
+  margin-top: -22px;
+  padding-left: 50px;
+}
+
+.padding-top {
+  padding-top: 50px;
+}
+
+.margin-top {
+  margin-top: 50px;
 }
