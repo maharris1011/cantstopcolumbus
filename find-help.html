@@ -2,78 +2,99 @@
 layout: default
 title: Find Help
 ---
-<div class="row">
-  <div class="col-12">
-    <div class="title">
-      <h2 class="title" style="text-align: center">
-        Find the Help You Need in Columbus
-      </h2>
+<div id="overlay" onclick="off()">
+  <div>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/find-help">Find Help</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://airtable.com/shrDrTCZQmDlCN8sg">
+          Get Involved
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="top-spacer">
+</div>
+<div class="shadow-sm p-3 mb-2 bg-white rounded">
+  <div class="row">
+    <div class="col-sm-12">
+    <div class="float-left">
+      <button class="navbar-toggler collapsed hamburger-background light-purple-background align-left" type="button"
+        data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+        aria-expanded="false" aria-label="Toggle navigation" onclick="on()">
+        <span class="icon-bar top-bar color-black"></span>
+        <span class="icon-bar middle-bar color-black"></span>
+        <span class="icon-bar bottom-bar color-black"></span>
+      </button>
     </div>
-    <div class="row justify-content-center">
-      <div class="col-12">
-        
-
-
-        <!-- Nav tabs -->
-        <div class="card">
-          <div class="nav-tabs-navigation">
-            <div class="nav-tabs-wrapper">
-              <ngb-tabset [justify]="'center'" class="text-center">
-                <ngb-tab>
-                  <ng-template ngbTabTitle>
-                    ALL
-                  </ng-template>
-                  <ng-template ngbTabContent>
-                    <p>this is content!</p>
-                  </ng-template>
-                </ngb-tab>
-                <ngb-tab>
-                  <ng-template ngbTabTitle>
-                    HEALTH
-                  </ng-template>
-                  <ng-template ngbTabContent> </ng-template>
-                </ngb-tab>
-                <ngb-tab>
-                  <ng-template ngbTabTitle>
-                    FOOD
-                  </ng-template>
-                  <ng-template ngbTabContent> </ng-template>
-                </ngb-tab>
-                <ngb-tab>
-                  <ng-template ngbTabTitle>
-                    MOBILITY
-                  </ng-template>
-                  <ng-template ngbTabContent> </ng-template>
-                </ngb-tab>
-                <ngb-tab>
-                  <ng-template ngbTabTitle>
-                    NEWS
-                  </ng-template>
-                  <ng-template ngbTabContent> </ng-template>
-                </ngb-tab>
-                <ngb-tab>
-                  <ng-template ngbTabTitle>
-                    EMPLOYMENT
-                  </ng-template>
-                  <ng-template ngbTabContent> </ng-template>
-                </ngb-tab>
-                <ngb-tab>
-                  <ng-template ngbTabTitle>
-                    HOUSING
-                  </ng-template>
-                  <ng-template ngbTabContent> </ng-template>
-                </ngb-tab>
-                <ngb-tab>
-                  <ng-template ngbTabTitle>
-                    SEARCH
-                  </ng-template>
-                  <ng-template ngbTabContent> </ng-template>
-                </ngb-tab>
-              </ngb-tabset>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="float-right">
+      <a class="mt-4 btn btn-outline-primary btn-lg dark-bg" href="#"
+        ><i class="fa fa-envelope-square"></i>&nbsp;Submit a Resource</a
+      >
+      <img class="img-fluid ml-3" style="height: 71px" src="/assets/img/cscbus_logo_square.svg">
+    </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 offset-1">
+      <h1 class="display-4">
+        Find Help
+      </h1>
+      <p class="lead m-0">
+        Find the help you need in <span class="highlight">columbus</span>
+      </p>
+      <p class="lead m-0">
+        We're all in this together
+      </p>
     </div>
   </div>
 </div>
+
+<div class="shadow-sm p-1 mb-2 bg-white rounded">
+  <div class="row">
+    <div class="col-12">
+      <ul class="nav nav-tabs justify-content">
+        {% for tab in site.data.help-tabs %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ tab.link }}"><span class="text-uppercase">{{ tab.name }}</span></a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="card-deck">
+  {% for project in site.data.projects %}
+    <div class="col-sm-3">
+      <div class="card">
+        <img
+          class="card-img-top p-3 mb-5 img-fluid"
+          src="/assets/img/UX/projects/{{ project.logo }} "
+          alt="{{ project.title }}"
+        />
+        <div class="card-footer">
+          <h5><a href="{{ project.link }}">{{ project.title }}</a></h5>
+          <p>{{ project.description }}</p>
+        </div>
+      </div>
+      </div>
+  {% endfor %}
+</div>
+
+<script>
+  function on() {
+    document.getElementById("overlay").style.display = "block";
+  }
+
+  function off() {
+    document.getElementById("overlay").style.display = "none";
+  }
+</script>
+
