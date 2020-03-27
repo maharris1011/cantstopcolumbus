@@ -8,6 +8,7 @@
     - health
 
 - logo: odh-logo-white.png
+  backgroundcolor: "#356f9f"
   link: https://coronavirus.ohio.gov/wps/portal/gov/covid-19/home/dashboard
   title: Ohio Department of Health
   description: COVID-19 Resources from ODOH
@@ -43,4 +44,3 @@
   description: Provide reliable news updates to Ohioans
   tags:
     - news
-
