@@ -131,6 +131,16 @@ h1 {
   line-height: 42px;
 }
 
+.subtitle_small {
+  height: 42px;
+  text-align: left !important;
+  font-family: Roboto;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0.26px;
+  line-height: 42px;
+}
+
 .purple-font {
   color: #4B00FF;
 }
@@ -177,7 +187,7 @@ h1 {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(75,0,255,0.96);  
+  background-color: rgba(75,0,255,0.96);
   z-index: 2;
   cursor: pointer;
 }
@@ -187,7 +197,7 @@ h1 {
 }
 
 .nav-background {
-    background-color: rgba(75,0,255,0); 
+    background-color: rgba(75,0,255,0);
 }
 
 #close-nav {
@@ -233,4 +243,24 @@ h1 {
   font-weight: 500;
   line-height: 35px;
   text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .small-phone {
+    font-size: 14px;
+    vertical-align: middle;
+  }
+  .small-phone-div {
+    margin-top: .1em;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .small-phone {
+    font-size: 8px;
+    vertical-align: middle;
+  }
+  .small-phone-div {
+    margin-top: .1em;
+  }
 }
