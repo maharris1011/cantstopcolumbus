@@ -1,14 +1,7 @@
-- name: ALL
-  link: find-help.html
+- name: all
 - name: health
-  link: find-help.html?q=health
 - name: food
-  link: find-help.html?q=food
 - name: mobility
-  link: find-help.html?q=mobility
 - name: news
-  link: find-help.html?q=news
 - name: employment
-  link: find-help.html?q=employment
 - name: housing
-  link: find-help.html?q=housing

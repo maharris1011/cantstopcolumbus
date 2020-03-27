@@ -2,24 +2,43 @@
   link: https://www.columbus.gov
   title: columbus.gov
   description: COVID-19 Resources from the City of Columbus
+  tags: 
+    - housing
+    - news
+    - health
+    - all
 
 - logo: columbus-eats.png
   link: https://supportcolumbuseats.com
   title: Support Columbus Eats
   description: A list of restaurants open with info on how to order
+  tags:
+    - food
+    - all
 
 - logo: Next Door Munch.png
   link: https://nextdoormunch.com/
   title: Next Door Munch
-  description: Get groceries delivered by neighbors, for neighbors
+  description: Get groceries delivered by neighbors, for neighbors  
+  tags:
+    - food
+    - all
 
 - logo: Columbus Helper.jpg
   link: https://www.columbushelper.org/
   title: Columbus Helper
   description: Information about Food, Housing, and Transportation services
+  tags:
+    - food
+    - housing
+    - mobility
+    - all
 
 - logo: ohioready_logo_H_2c@4x.png
   link: #
   title: Ohio is Ready
   description: Provide reliable news updates to Ohioans
+  tags:
+    - news
+    - all
 
