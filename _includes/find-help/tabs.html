@@ -1,0 +1,24 @@
+<div class="jumbotron pb-1 mb-1 background-white">
+  <div class="tab-box shadow-sm bg-white rounded">
+    <div class="row">
+      <div class="col-12">
+        <ul id="project-tab" class="nav nav-pills nav-fill">
+          <!-- the "All" tab -->
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" id="#all-tab" href="#all"
+              ><span class="text-uppercase">all</span></a
+            >
+          </li>
+          <!-- all the other tabs -->
+          {% for tab in site.data.help-tabs %}
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" id="#{{ tab.name }}-tab" href="#{{ tab.name }}"
+              ><span class="text-uppercase">{{ tab.name }}</span></a
+            >
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

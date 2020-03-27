@@ -15,6 +15,48 @@ body {
   font-family: $bodyFont;
 }
 
+.cbus-logo-square {
+  height: 71px;
+  width: 71px;
+}
+
+.nav-link {
+  font-weight: bold;
+}
+
+.tab-box {
+  height: 68px;
+}
+
+#project-cards .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#project-cards .row > div[class*='col-'] {
+ display: flex;
+}
+
+.page-title {
+  height: 42px;
+  color: #000000;
+  font-family: Roboto;
+  font-size: 36px;
+  font-weight: 500;
+  letter-spacing: 0.26px;
+  line-height: 42px;
+}
+
+.page-lead {
+  height: 42px;
+  color: #000000;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.13px;
+  line-height: 21px;
+}
+
 .primary-blue {
   color: $primaryBlue;
 }
