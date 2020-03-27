@@ -1,17 +1,24 @@
+<div class="container">
 <div class="tab-content">
+  <div class="tab-pane" id="all" role="tabpanel">
+    <div class="row">
+      {% for project in site.data.projects %} 
+        {% include find-help/project-card.html proj=project %}
+      {% endfor %}
+    </div>
+  </div>
   {% for tab in site.data.help-tabs %}
   <div class="tab-pane" id="{{ tab.name }}" role="tabpanel">
-    <div class="col-md-12">
-      <div class="card-deck">
-        {% for project in site.data.projects %} 
-        {% for tag in project.tags %} 
-        {% if tag == tab.name %}
-          {% include find-help/project-card.html proj=project %}
-        {% endif %} 
-        {% endfor %} 
-        {% endfor %}
-      </div>
+    <div class="row">
+      {% for project in site.data.projects %} 
+      {% for tag in project.tags %} 
+      {% if tag == tab.name %}
+        {% include find-help/project-card.html proj=project %}
+      {% endif %} 
+      {% endfor %} 
+      {% endfor %}
     </div>
   </div>
   {% endfor %}
+</div>
 </div>
