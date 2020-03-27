@@ -1,4 +1,3 @@
-- name: all
 - name: health
 - name: food
 - name: mobility
