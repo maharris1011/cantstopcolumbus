@@ -28,6 +28,15 @@ body {
   height: 68px;
 }
 
+#project-cards .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#project-cards .row > div[class*='col-'] {
+ display: flex;
+}
+
 .page-title {
   height: 42px;
   color: #000000;
