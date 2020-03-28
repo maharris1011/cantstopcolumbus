@@ -2,7 +2,7 @@
   link: https://coronavirus.ohio.gov/wps/portal/gov/covid-19/
   title: columbus.gov
   description: COVID-19 Resources from the City of Columbus
-  tags: 
+  tags:
     - housing
     - news
     - health
@@ -25,11 +25,11 @@
 - logo: Next Door Munch.png
   link: https://nextdoormunch.com/
   title: Next Door Munch
-  description: Get groceries delivered by neighbors, for neighbors  
+  description: Get groceries delivered by neighbors, for neighbors
   tags:
     - food
 
-- logo: Columbus Helper.jpg
+- logo: columbushelperorg.png
   link: https://www.columbushelper.org/
   title: Columbus Helper
   description: Information about Food, Housing, and Transportation services
