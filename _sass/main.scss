@@ -1,5 +1,4 @@
 @import '_typography.scss'; 
-@import '_spacing.scss';
 
 $backgroundColor: #ffffff;
 $bodyBackgroundColor: #ECF0F6;
@@ -62,12 +61,15 @@ body {
   a {
     margin-bottom: 1rem; 
   }
+  a:last-of-type{
+    margin-bottom: 0; 
+  }
 
   @media #{$break-tablet-up} {
     flex-direction: row;
     justify-content: flex-start;
 
-    a{
+    a {
       margin-right: 1rem; 
       margin-bottom: 0; 
     }
