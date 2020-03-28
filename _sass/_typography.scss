@@ -1,0 +1,32 @@
+h1.display-4 {
+    font-weight: 500; 
+    font-size: 3rem;
+    line-height: 3rem;
+}
+
+@include media-breakpoint-up(md) {
+    h1.display-4 {
+      font-size: 3.5rem;
+      line-height: 3.5rem;
+    }
+}
+
+.page-title {
+    height: 42px;
+    color: #000000;
+    font-family: Roboto;
+    font-size: 36px;
+    font-weight: 500;
+    letter-spacing: 0.26px;
+    line-height: 42px;
+  }
+  
+  .page-lead {
+    height: 42px;
+    color: #000000;
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.13px;
+    line-height: 21px;
+  }
