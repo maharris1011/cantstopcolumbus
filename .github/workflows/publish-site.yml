@@ -7,7 +7,7 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
     - uses: actions/checkout@v1
 
@@ -16,7 +16,7 @@ jobs:
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll && jekyll build --future"
-      
+
     - name: FTP Deploy
       uses: SamKirkland/FTP-Deploy-Action@3.0.0
       with:
@@ -25,4 +25,3 @@ jobs:
         ftp-password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./_site/
         remote-root:  /
-        git-ftp-args: --dry-run
