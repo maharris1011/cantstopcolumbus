@@ -1,0 +1,61 @@
+<div class="jumbotron background-white">
+  <h2>Share the love</h2>
+  <div class="row mt-4">
+      <div class="col-md-6 d-flex flex-column social-links">
+        <div class="d-flex flex-row align-items-center mb-4">
+            <a role="button" href="https://twitter.com/cantstopcbus"
+                target="_blank">
+                    <img src="../assets/img/UX/icons/ico_twit.svg">
+            </a>
+            <h5>follow us on twitter</h5>
+        </div>
+        <div class="d-flex flex-row align-items-center mb-4">
+            <a role="button"
+                    href="https://www.facebook.com/cantstopcbus/" target="_blank">
+                <img src="../assets/img/UX/icons/ico_FB.svg">
+            </a>
+            <h5>like us on facebook</h5>
+        </div>
+        <div class="d-flex flex-row align-items-center mb-4">
+          <a role="button"
+                  href="https://www.instagram.com/cantstopcbus/" target="_blank">
+              <img src="../assets/img/UX/icons/ico_insta.svg">
+          </a>
+          <h5>follow on instagram</h5>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="d-flex flex-column">
+        <h6>Help keep the lights on</h6>
+        <div>
+          <a
+        class="btn btn-secondary mb-4"
+        role="button"
+        href="https://www.paypal.me/cantstopcbus" target="_blank">
+        DONATE &#36;
+      </a>
+        </div>
+          <h6>Click to copy</h6>
+          <div style="position: relative;">
+            <div id="copied-tooltip" style="display:none;"><span>copied</span></div>
+          <input type="text" value="#cantstopcolumbus" id="copyCSC" onclick="copyTag()" onblur="hideTag()">
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function copyTag() {
+    var copyText = document.getElementById("copyCSC");
+    var tooltip = document.getElementById("copied-tooltip");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");
+    tooltip.style.display = "block"; 
+  }
+  function hideTag() {
+    var tooltip = document.getElementById("copied-tooltip");
+    tooltip.style.display = "none"; 
+  }
+  </script>
