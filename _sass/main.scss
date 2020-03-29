@@ -138,3 +138,29 @@ div.jumbotron {
 .contact-us-links .btn {
   min-width: unset; 
 }
+
+#copyCSC{
+  font-size: 2rem;
+  font-weight: 500;
+  border: none;
+  max-width: 300px;
+}
+
+#copied-tooltip {
+  position: absolute;
+  left: 300px; 
+  height: 0;
+  width: 80px;
+  height: 50px;
+  margin-bottom: -50px;
+  line-height: 50px;
+  font-weight: 600;
+  span {
+    background-color: #00e096;
+    padding: .5rem; 
+  }
+
+  @media #{$break-tablet-up} {
+    left: -75px; 
+  }
+}

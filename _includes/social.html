@@ -25,24 +25,37 @@
       </div>
     </div>
     <div class="col-md-6">
-      <div class="row mb-1">
+      <div class="d-flex flex-column">
         <h6>Help keep the lights on</h6>
-      </div>
-      <div class="row">
-        <a
-        class="btn btn-secondary"
+        <div>
+          <a
+        class="btn btn-secondary mb-4"
         role="button"
         href="https://www.paypal.me/cantstopcbus" target="_blank">
         DONATE &#36;
       </a>
-      </div>
-      <br>
-      <div class="row">
-        <h6>Click to copy</h6>
-      </div>
-      <div class="row">
-        <h2>#cantstopcolumbus</h2>
+        </div>
+          <h6>Click to copy</h6>
+          <div style="position: relative;">
+            <div id="copied-tooltip" style="display:none;"><span>copied</span></div>
+          <input type="text" value="#cantstopcolumbus" id="copyCSC" onclick="copyTag()" onblur="hideTag()">
+          </div>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  function copyTag() {
+    var copyText = document.getElementById("copyCSC");
+    var tooltip = document.getElementById("copied-tooltip");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");
+    tooltip.style.display = "block"; 
+  }
+  function hideTag() {
+    var tooltip = document.getElementById("copied-tooltip");
+    tooltip.style.display = "none"; 
+  }
+  </script>
