@@ -2,7 +2,7 @@ name: Jekyll site CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ fixing_auto_deploy ]
 
 jobs:
   build-and-deploy:
