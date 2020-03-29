@@ -80,3 +80,17 @@ body {
     }
   }
 }
+
+.home-find-help-get-i {
+  width: 330px;
+  color: #FFFFFF;
+  font-family: Roboto;
+  font-size: 2rem;
+
+  @media #{$break-tablet-up} {
+    font-size: 60px;
+    font-weight: 500;
+    letter-spacing: 0.43px;
+    line-height: 100px;
+  }
+}
