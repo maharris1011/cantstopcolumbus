@@ -107,3 +107,34 @@ div.jumbotron {
     text-align: center;
   }
 }
+
+
+.btn-primary, .btn-secondary {
+  font-weight: 500; 
+  text-transform: uppercase; 
+  min-width: 150px; 
+  transition: all 350ms; 
+}
+
+.btn-primary {
+  border-color: #4300ff;
+  background-color: #4300ff; 
+  &:hover {
+    background-color: #0D00A4; 
+  }
+}
+
+.btn-secondary {
+  color: #3366ff;
+  border-color: #3366ff; 
+  background-color: #f1ebff; 
+  &:hover {
+    background-color: #3366ff; 
+    border-color: #3366ff; 
+    color: #fff; 
+  }
+}
+
+.contact-us-links .btn {
+  min-width: unset; 
+}
