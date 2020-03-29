@@ -17,11 +17,19 @@ jobs:
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll && jekyll build --future"
 
-    - name: FTP Deploy
-      uses: SamKirkland/FTP-Deploy-Action@3.0.0
+    # - name: FTP Deploy
+    #   uses: SamKirkland/FTP-Deploy-Action@3.0.0
+    #   with:
+    #     ftp-server: 205.186.128.139
+    #     ftp-username: developer@cantstopcolumbus.com
+    #     ftp-password: ${{ secrets.FTP_PASSWORD }}
+    #     local-dir: ./_site
+    #     remote-root:  /
+    - name: Upload ftp
+      uses: sebastianpopp/ftp-action@releases/v2
       with:
-        ftp-server: 205.186.128.139
-        ftp-username: developer@cantstopcolumbus.com
-        ftp-password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./_site/
-        remote-root:  /
+        host: 205.186.128.139
+        user: developer@cantstopcolumbus.com
+        password: ${{ secrets.FTP_PASSWORD }}
+        localDir: "_site"
+        remoteDir: "/"
