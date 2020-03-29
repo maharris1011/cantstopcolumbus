@@ -1,6 +1,6 @@
 <div class="container">
 <div id="project-cards" class="tab-content">
-  <div class="tab-pane" id="all" role="tabpanel">
+  <div class="tab-pane show active" id="all" role="tabpanel" aria-labelledby="all-tab">
     <div class="row">
       <!-- include all project in the 'all' tab -->
       {% for project in site.data.projects %} 
@@ -9,7 +9,12 @@
     </div>
   </div>
   {% for tab in site.data.help-tabs %}
-  <div class="tab-pane" id="{{ tab.name }}" role="tabpanel">
+  <div
+    class="tab-pane"
+    id="{{ tab.name }}"
+    role="tabpanel"
+    aria-labelledby="{{ tab.name }}-tab"
+  >
     <div class="row">
       <!-- only include projects that match the tab in each tab pane -->
       {% for project in site.data.projects %} 
