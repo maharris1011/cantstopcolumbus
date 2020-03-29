@@ -41,11 +41,16 @@ body {
   color: $primaryBlue;
 }
 
-.jumbotron {
+div.jumbotron {
   padding: 2rem 1rem; 
+  padding-top: 2rem;
+
+  &.header-tile{
+    padding-top: 1rem; 
+  }
 }
 @media #{$break-tablet-up} {
-  .jumbotron {
+  div.jumbotron {
     padding: 2rem; 
   }
 }
