@@ -35,10 +35,19 @@ body {
  display: flex;
 }
 
-
-
 .primary-blue {
   color: $primaryBlue;
+}
+
+.banner {
+  background-color: $primaryBlue;
+  width: 100%;
+
+  p {
+    color: #fff;
+    margin: 0;
+    padding: 1rem;
+  }
 }
 
 div.jumbotron {
