@@ -12,9 +12,13 @@ defaults:
 - scope:
     path: ''
   values:
+<<<<<<< HEAD
     permalink: "blog/:title/"
+=======
+    permalink: "/press-release/:title/"
+>>>>>>> 1bc3144f98f0e1865471e58eadf3fe04dce1acfe
 url: https://www.cantstopcolumbus.com
-baseurl:
+baseurl: 
 tagline: We're all in this together.
 plugins:
 - jekyll-autoprefixer
