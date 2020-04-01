@@ -1,6 +1,7 @@
 ---
 title: BLOG 2
 date: 2020-04-01 16:18:00 -04:00
+permalink: "/blog/"
 categories:
 - stories
 author: Casey
