@@ -13,9 +13,9 @@ defaults:
     path: ''
     type: posts
   values:
-    permalink: "/blog/:title/"
+    permalink: ":categories/:title/"
 url: https://www.cantstopcolumbus.com
-baseurl: 
+baseurl:
 tagline: We're all in this together.
 plugins:
 - jekyll-autoprefixer
