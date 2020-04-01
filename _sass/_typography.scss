@@ -12,14 +12,23 @@ h1.display-4 {
 }
 
 .page-title {
-    height: 42px;
-    color: #000000;
-    font-family: Roboto;
-    font-size: 36px;
-    font-weight: 500;
-    letter-spacing: 0.26px;
-    line-height: 42px;
-  }
+  height: 42px;
+  color: #000000;
+  font-family: Roboto;
+  font-size: 36px;
+  font-weight: 500;
+  letter-spacing: 0.26px;
+  line-height: 42px;
+}
+
+.page-lead-2 {
+  height: 21px;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.13px;
+  line-height: 21px;
+}
 
 .page-lead {
   height: 42px;
@@ -30,16 +39,6 @@ h1.display-4 {
   letter-spacing: 0.13px;
   line-height: 21px;
 }
-
-.button-text {
-  height: 16px;
-  width: 145px;
-  font-size: 14px;
-  font-weight: bold;
-  letter-spacing: 0;
-  line-height: 16px;
-}
-
 
 h6 {
   font-size: 1.25rem;
