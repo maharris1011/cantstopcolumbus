@@ -3,7 +3,7 @@ title: PRESS RELEASE 2
 date: 2020-04-01 16:20:00 -04:00
 categories:
 - pr
-author: Stacey Wright
+AUTHOR: Stacey Wright
 layout: press
 ---
 
