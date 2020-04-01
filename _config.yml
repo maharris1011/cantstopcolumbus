@@ -8,9 +8,6 @@ collections:
   uploads:
     title: Uploads
     output: true
-  author:
-    title: author
-    output: true
 defaults:
 - scope:
     path: ''
