@@ -3,7 +3,6 @@ title: This is a siteleaf test
 date: 2020-03-31 22:37:00 -04:00
 categories:
 - stories
-
 img:
   image: "/uploads/Screen Shot 2020-03-31 at 9.19.53 AM.png"
 layout: post
