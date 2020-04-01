@@ -2,7 +2,7 @@
 title: PRESS RELEASE TEST
 date: 2020-04-01 14:43:00 -04:00
 categories:
-- pr
+- press-release
 author: Preston
 layout: press
 ---
