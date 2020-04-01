@@ -6,7 +6,7 @@ layout: default
   {% include press-release/main-title.html %}
 <div class="jumbotron background-white my-3">
   <h1>{{ page.title }}</h1>
-  <p class="lead">{{ page.date | date_to_string: "ordinal", "US" }} - {{ page.author }}</p>
+  <p class="lead">{{ page.date | date_to_string: "ordinal", "US" }} - {{ page.AUTHOR or page.author or page.Author }}</p>
   {{ content }}
 </div>
 </div>
