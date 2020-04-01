@@ -8,6 +8,9 @@ collections:
   uploads:
     title: Uploads
     output: true
+  author:
+    title: author
+    output: true
 url: https://www.cantstopcolumbus.com
 baseurl: ''
 tagline: We're all in this together.
