@@ -12,7 +12,7 @@ defaults:
 - scope:
     path: ''
   values:
-  permalink: "blog/:title/"
+  permalink: /blog/:title
 url: https://www.cantstopcolumbus.com
 baseurl:
 tagline: We're all in this together.
