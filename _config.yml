@@ -1,24 +1,16 @@
 ---
 title: Can't Stop Columbus
 timezone: America/New_York
-defaults:
-- scope:
-    path: ''
-    type: posts
-  values:
-    permalink: "/blog/:title/"
-    layout: post
-    author:
-# collections:
-#   posts:
-#     title: Posts
-#     output: true
-#   uploads:
-#     title: Uploads
-#     output: true
-#   author:
-#     title: author
-#     output: true
+collections:
+  posts:
+    title: Posts
+    output: true
+  uploads:
+    title: Uploads
+    output: true
+  author:
+    title: author
+    output: true
 url: https://www.cantstopcolumbus.com
 baseurl:
 tagline: We're all in this together.
