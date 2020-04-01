@@ -1,6 +1,15 @@
 h1.display-4 {
-    font-weight: 500; 
+    font-weight: 500;
 }
+
+.post-title {
+   font-family: Roboto;
+ }
+
+ .post-read-more {
+   font-family: Roboto;
+   font-weight: 500;
+ }
 
 .page-title {
     height: 42px;
@@ -11,7 +20,7 @@ h1.display-4 {
     letter-spacing: 0.26px;
     line-height: 42px;
   }
-  
+
   .page-lead {
     height: 42px;
     color: #000000;
@@ -24,5 +33,5 @@ h1.display-4 {
 
 h6 {
   font-size: 1.25rem;
-  color: #575757; 
+  color: #575757;
 }
