@@ -1,6 +1,8 @@
 ---
 title: This is a siteleaf test
 date: 2020-04-01 02:37:00 Z
+categories:
+- stories
 layout: post
 ---
 

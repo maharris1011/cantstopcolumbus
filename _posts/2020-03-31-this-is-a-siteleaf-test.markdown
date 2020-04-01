@@ -2,9 +2,7 @@
 title: This is a siteleaf test
 date: 2020-03-31 22:37:00 -04:00
 categories:
-- test
-tags:
-- test
+- stories
 layout: post
 ---
 
