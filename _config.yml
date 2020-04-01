@@ -11,12 +11,10 @@ collections:
 defaults:
 - scope:
     path: ''
-    categories: stories
-    layout: post
   values:
     permalink: "/blog/:title"
 url: https://www.cantstopcolumbus.com
-baseurl:
+baseurl: 
 tagline: We're all in this together.
 plugins:
 - jekyll-autoprefixer
