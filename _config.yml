@@ -11,7 +11,6 @@ collections:
   author:
     title: author
     output: true
-
 defaults:
 - scope:
     path: ''
@@ -20,7 +19,7 @@ defaults:
     permalink: "/blog/:title/"
     layout: post
 url: https://www.cantstopcolumbus.com
-baseurl:
+baseurl: 
 tagline: We're all in this together.
 plugins:
 - jekyll-autoprefixer
