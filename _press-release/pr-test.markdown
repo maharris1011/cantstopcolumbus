@@ -1,6 +1,8 @@
 ---
 title: PR test
 date: 2020-04-01 11:41:00 -04:00
+categories:
+- stories
 layout: pr
 ---
 
