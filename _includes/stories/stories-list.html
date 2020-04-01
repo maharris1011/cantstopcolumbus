@@ -1,7 +1,7 @@
 {% for post in site.categories.stories %}
 <div class="jumbotron background-white my-3">
     <h2 class="post-title">{{ post.title }}</h2>
-    <img class="img-fluid" src="{{ page.author.image }}" />
+    <img class="img-fluid" src="{{ page.content.image }}" />
     <p class="post-excerpt">
       {{ post.excerpt }}
       <a href="{{ post.url }}"><span class="post-read-more">READ MORE</span></a>

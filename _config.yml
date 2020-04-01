@@ -19,6 +19,13 @@ defaults:
   values:
     permalink: "/blog/:title/"
     layout: post
+defaults:
+- scope:
+    path: ''
+    type: pr
+  values:
+    permalink: "/pr/:title/"
+    layout: pr
 url: https://www.cantstopcolumbus.com
 baseurl:
 tagline: We're all in this together.
