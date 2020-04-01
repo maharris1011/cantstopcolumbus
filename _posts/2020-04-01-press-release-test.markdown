@@ -4,7 +4,7 @@ date: 2020-04-01 14:43:00 -04:00
 categories:
 - pr
 author: Preston
-layout: post
+layout: press
 ---
 
 ![Screen Shot 2020-03-31 at 9.19.53 AM.png](/uploads/Screen%20Shot%202020-03-31%20at%209.19.53%20AM.png)Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus ornare suspendisse sed nisi. Eget gravida cum sociis natoque penatibus et magnis dis. Nec feugiat nisl pretium fusce. Semper eget duis at tellus at urna condimentum mattis. Ipsum nunc aliquet bibendum enim facilisis gravida neque convallis a. Sit amet consectetur adipiscing elit. Tincidunt dui ut ornare lectus sit amet est placerat in. Suspendisse ultrices gravida dictum fusce ut placerat orci nulla. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Enim eu turpis egestas pretium aenean. Amet venenatis urna cursus eget nunc scelerisque viverra mauris. Enim praesent elementum facilisis leo vel fringilla est ullamcorper. Urna et pharetra pharetra massa massa ultricies mi quis. Iaculis urna id volutpat lacus. Quam quisque id diam vel quam elementum pulvinar etiam non. Ligula ullamcorper malesuada proin libero nunc consequat interdum varius. Mauris vitae ultricies leo integer malesuada nunc vel.
