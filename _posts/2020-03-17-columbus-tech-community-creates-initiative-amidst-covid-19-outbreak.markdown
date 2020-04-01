@@ -3,7 +3,7 @@ title: Columbus Tech Community Creates Initiative Amidst COVID-19 Outbreak
 date: 2020-03-17 17:41:00 -04:00
 categories:
 - press-release
-Can't Stop Columbus: 
+author: Can't Stop Columbus
 layout: press
 ---
 
