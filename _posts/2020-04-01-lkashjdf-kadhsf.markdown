@@ -1,7 +1,6 @@
 ---
 title: defaulttest
 date: 2020-04-01 11:16:00 -04:00
-permalink: "/articles/title/"
 categories:
 - stories
 layout: post
