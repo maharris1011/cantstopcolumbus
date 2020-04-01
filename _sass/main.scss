@@ -29,6 +29,15 @@ body {
 #project-cards .row {
   display: flex;
   flex-wrap: wrap;
+
+  img {
+    &.limit-width {
+      display: block;
+      max-height: 180px;
+      max-width: 180px;
+      margin: auto;
+    }
+  }
 }
 
 #project-cards .row > div[class*='col-'] {
