@@ -1,8 +1,7 @@
 ---
 title: onnnnnnneeeee mooooore1
 date: 2020-04-01 12:05:00 -04:00
-image:
-  image: "/uploads/Screen%20Shot%202020-03-31%20at%209.19.53%20AM-9a1ae3.png"
+author: Tim
 layout: post
 ---
 
