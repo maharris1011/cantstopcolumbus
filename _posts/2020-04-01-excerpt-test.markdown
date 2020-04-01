@@ -1,10 +1,7 @@
 ---
 title: excerpt test
 date: 2020-04-01 12:20:00 -04:00
-<<<<<<< HEAD
-=======
 excerpt_separator: "<!-- more -->"
->>>>>>> 63a27f56d082d81b6a4812b61ee58b3b58b2811a
 layout: post
 ---
 
