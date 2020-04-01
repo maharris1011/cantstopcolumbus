@@ -3,6 +3,7 @@ title: defaulttest
 date: 2020-04-01 11:16:00 -04:00
 categories:
 - stories
+image: "/uploads/Screen%20Shot%202020-03-31%20at%209.53.43%20AM.png"
 layout: post
 ---
 
