@@ -1,5 +1,5 @@
 ---
-title: Fast Tracking FreshTrak for the Mid-Ohio Food Collective
+title: Fast-Tracking FreshTrak for the Mid-Ohio Food Collective
 date: 2020-04-01 21:17:00 -04:00
 categories:
 - stories
