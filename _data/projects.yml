@@ -26,6 +26,7 @@
   link: https://nextdoormunch.com/
   title: Next Door Munch
   description: Get groceries delivered by neighbors, for neighbors
+  limit-width: true
   tags:
     - food
 
@@ -67,5 +68,6 @@
   link: https://jobseeker.ohiomeansjobs.monster.com/
   title: Ohio Means Jobs
   description: Job listings and career-building resources
+  limit-width: true
   tags: 
     - employment
