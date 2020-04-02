@@ -20,8 +20,10 @@ GEM
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
     eventmachine (1.2.7)
+    eventmachine (1.2.7-x64-mingw32)
     execjs (2.7.0)
     ffi (1.12.2)
+    ffi (1.12.2-x64-mingw32)
     forwardable-extended (2.6.0)
     http_parser.rb (0.6.0)
     httparty (0.18.0)
@@ -42,12 +44,6 @@ GEM
       pathutil (~> 0.9)
       rouge (>= 1.7, < 4)
       safe_yaml (~> 1.0)
-    jekyll-airtable_data (1.0.0)
-      activesupport
-      airtable
-      bigdecimal
-      jekyll (~> 3.8)
-      json
     jekyll-autoprefixer (1.0.2)
       autoprefixer-rails (~> 9.3)
     jekyll-sass-converter (1.5.2)
@@ -86,21 +82,25 @@ GEM
     thread_safe (0.3.6)
     tzinfo (1.2.6)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2019.3)
+      tzinfo (>= 1.0.0)
     zeitwerk (2.3.0)
 
 PLATFORMS
   ruby
+  x64-mingw32
 
 DEPENDENCIES
   activesupport
   airtable
   bigdecimal
   jekyll
-  jekyll-airtable_data
   jekyll-autoprefixer
   jekyll-seo-tag
   jekyll-sitemap (~> 1.4)
   json
+  tzinfo
+  tzinfo-data
 
 BUNDLED WITH
    2.1.4

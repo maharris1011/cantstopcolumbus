@@ -11,3 +11,6 @@ gem 'airtable'
 gem 'bigdecimal'
 gem 'activesupport'
 gem 'json'
+
+gem 'tzinfo'
+gem 'tzinfo-data'

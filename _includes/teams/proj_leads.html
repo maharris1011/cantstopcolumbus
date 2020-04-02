@@ -1,23 +1,22 @@
 <div class="container">
-<div class="col-md-12">
-{% for item in site.data.proj_lead %}
-{% for photo in item.photo_upload %}
-
   <div class="card-deck">
-  <div class="card col-md-3 mx-1 my-2">
+      {% for item in site.data.proj_lead %}
+      {% for photo in item.photo_upload %}
+
+  
+  <div class="card">
 
 <img style="  display: block;
-padding: 20px;
-max-width:500px;
-max-height:350px;
-width: auto;
-height: auto;" src="{{ photo.url }}" class="card-img-top">
+      padding: 20px;
+      max-width:500px;
+      max-height:350px;
+      width: auto;
+      height: auto;" src="{{ photo.url }}" class="card-img-top">
     <div class="card-body">
       <h5 class="card-title">{{ item.first_name }} {{ item.last_name }}</h5>
       <p>{{ item.team_page_project_byline }}</p>
       <a href="{{ item.linked_in }}" target="_blank">Follow on LinkedIn</a>
     </div>
-  </div>
   </div>
 
   {% endfor %}
