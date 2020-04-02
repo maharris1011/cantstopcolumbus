@@ -1,5 +1,22 @@
 <div class="jumbotron background-white header-tile">
-  {% include nav.html %}
+  <!-- This page has special styling with the CTA that is why we're not using the nav.html -->
+  <div class="row m-0 justify-content-between">
+    <div>
+      <button class="navbar-toggler collapsed hamburger-background light-purple-background align-left" type="button"
+        data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+        aria-expanded="false" aria-label="Toggle navigation" onclick="on()">
+        <span class="icon-bar top-bar color-black"></span>
+        <span class="icon-bar middle-bar color-black"></span>
+        <span class="icon-bar bottom-bar color-black"></span>
+      </button>
+    </div>
+    <div>
+      <a href="/">
+          <img src="{{ 'assets/img/UX/cscbus_logo_square.svg' | relative_url }}" align="right" style="height: 75px;" alt="CSC Home" />
+        </a>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-md-8">
       <h1 class="display-4">Nice try COVID-19,</h1>
