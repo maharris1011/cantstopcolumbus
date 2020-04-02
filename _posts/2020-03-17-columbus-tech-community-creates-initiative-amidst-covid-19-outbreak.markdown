@@ -1,5 +1,6 @@
 ---
-title: Columbus Tech Community Creates Initiative Amidst COVID-19 Outbreak
+title: Columbus Tech Community Creates Initiative to Help Neighbors and Struggling
+  Businesses Amidst COVID-19 Outbreak
 date: 2020-03-17 17:41:00 -04:00
 categories:
 - press-release
@@ -7,7 +8,6 @@ author: Can't Stop Columbus
 layout: press
 ---
 
-# Columbus Tech Community Creates Initiative to Help Neighbors and Struggling Businesses Amidst COVID-19 Outbreak
 ## Hundreds of Citizens, Companies, and Organizations Collaborate to Use Their Talents and Technology to Mitigate Economic Impact of Coronavirus
 March 17, 2020 -- Columbus, Ohio -- Over the past few days, Columbus has seen events canceled and restaurants, schools, and universities closed. Businesses have begun to suffer, workers are adjusting to doing their jobs remotely, and students have been asked to leave their schools.  Countless unprecedented problems are slowly being exposed as social distancing and quarantine have the potential to negatively impact small businesses, restaurants, and nonprofits.
 
