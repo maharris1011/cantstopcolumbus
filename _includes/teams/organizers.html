@@ -1,20 +1,17 @@
-<div class="container">
+
   <div class="card-deck">
 {% for item in site.data.organizer %}
 {% for photo in item.photo_upload %}
+  <div class="card" style="display: flex;
+    flex: 1 0 0%;
+    flex-direction: column;
+    margin-bottom: 0;
+    width: auto;
+    height: auto;
+    max-width: 300px;">
 
-  
-  <div class="card" style="      display: flex;
-  flex: 1 0 0%;
-  flex-direction: column;
-  margin-bottom: 0; 
-  width: auto;
-  height: auto;
-  max-width: 300px;">
-
-    <img style="  display: block;
-    padding: 20px;
-    max-width:300px;
+    <img style="display: block;
+      max-width:300px;
       max-height:350px;
       width: auto;
       height: auto;
@@ -27,8 +24,6 @@
           <a href="{{ item.linked_in }}" target="_blank">Follow on LinkedIn</a>
         </div>
       </div>
-
       {% endfor %}
     {% endfor %}
     </div>
-</div>
