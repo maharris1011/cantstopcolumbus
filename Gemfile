@@ -7,3 +7,5 @@ group :jekyll_plugins do
 end
 
 gem "jekyll"
+gem 'tzinfo'
+gem 'tzinfo-data'
