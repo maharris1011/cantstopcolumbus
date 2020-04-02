@@ -1,5 +1,5 @@
-<div class="row justify-content-between">
-  <div class="col-auto mb-2">
+<div class="row m-0 justify-content-between">
+  <div class="order-1 order-md-1">
     <button class="navbar-toggler collapsed hamburger-background light-purple-background align-left" type="button"
       data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
       aria-expanded="false" aria-label="Toggle navigation" onclick="on()">
@@ -8,8 +8,10 @@
       <span class="icon-bar bottom-bar color-black"></span>
     </button>
   </div>
-  {{ include.between }}
-  <div class="col-auto float-right mb-2">
+  <div class="order-3 order-md-2 main-cta-container">
+    {{ include.between }}
+  </div>
+  <div class="order-2 order-md-3">
     <a href="/">
         <img src="{{ 'assets/img/UX/cscbus_logo_square.svg' | relative_url }}" align="right" style="height: 75px;" alt="CSC Home" />
       </a>
