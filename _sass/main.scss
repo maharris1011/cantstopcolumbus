@@ -26,6 +26,29 @@ body {
   font-weight: bold;
 }
 
+.main-cta-container {
+  @media #{$break-tablet-up} {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    padding: 0 2rem;
+
+    h1 {
+      line-height: 42px;
+    }
+
+    h4 {
+      line-height: 21px;
+    }
+  }
+
+  @media #{$break-desktop-up} {
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 0 2rem;
+  }
+}
+
 #project-cards .row {
   display: flex;
   flex-wrap: wrap;
