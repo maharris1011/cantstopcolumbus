@@ -51,17 +51,18 @@
     - food
 
 - logo: ohioready_logo_H_2c@4x.png
-  link: #
+  link: https://ohioready.org/
   title: Ohio is Ready
-  description: Provide reliable news updates to Ohioans
+  description: Trustworthy information, data, and news on COVID-19. Brought to you by the community at Can’t Stop Columbus.
   tags:
     - news
+    - health
 
 - logo: employ-ohio-now.svg
   link: #
   title: Employ Ohio Now
-  description: Find jobs and fill talent needs created by COVID-19 
-  tags: 
+  description: Find jobs and fill talent needs created by COVID-19
+  tags:
     - employment
 
 - logo: OMJ.svg
@@ -69,5 +70,5 @@
   title: Ohio Means Jobs
   description: Job listings and career-building resources
   limit-width: true
-  tags: 
+  tags:
     - employment
