@@ -6,12 +6,12 @@ require 'active_support/all'
 
 @table = @client.table("apppXeg0e2C1iuT8u", "People")
 
-@records_nav = @table.select(formula: "PubNavigator = 1", :limit => 100)
-@records_org = @table.select(formula: "PubOrganizer = 1", :limit => 100)
-@records_proj = @table.select(formula: "PubProject = 1", :limit => 100)
-@records_spec = @table.select(formula: "PubSpecial = 1", :limit => 100)
-@records_success = @table.select(formula: "PubSuccess = 1", :limit => 100)
-@records_impact = @table.select(formula: "PubImpact = 1", :limit => 100)
+@records_nav = @table.select(:sort => ["First Name", :asc], formula: "PubNavigator = 1", :limit => 100)
+@records_org = @table.select(:sort => ["First Name", :asc], formula: "PubOrganizer = 1", :limit => 100)
+@records_proj = @table.select(:sort => ["First Name", :asc], formula: "PubProject = 1", :limit => 100)
+@records_spec = @table.select(:sort => ["First Name", :asc], formula: "PubSpecial = 1", :limit => 100)
+@records_success = @table.select(:sort => ["First Name", :asc], formula: "PubSuccess = 1", :limit => 100)
+@records_impact = @table.select(:sort => ["First Name", :asc], formula: "PubImpact = 1", :limit => 100)
 
 File.open("_data/navigator.json", "w") do |f|
     data = @records_nav.map { |record| record.attributes }
