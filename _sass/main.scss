@@ -23,6 +23,12 @@ body {
   @include border-top-radius($card-inner-border-radius);
 }
 
+.card-img3-top {
+  width: 100%;
+  object-fit: fill;
+  @include border-top-radius($card-inner-border-radius);
+}
+
 .cbus-logo-square {
   height: 71px;
   width: 71px;
@@ -201,6 +207,21 @@ div.jumbotron {
       @media #{$break-tablet-up} {
         flex: 0 0 33.33%;
         max-width: 33.33%;
+      }
+    }
+  }
+}
+
+.artisan-ally-bootstrap-row {
+  div {
+    &.artisan-ally-bootstrap-col {
+      flex: 0 0 100%;
+      max-width: 100%;
+      padding: 0 5px;
+      margin-bottom: 1rem;
+      @media #{$break-tablet-up} {
+        flex: 0 0 20%;
+        max-width: 20%;
       }
     }
   }
