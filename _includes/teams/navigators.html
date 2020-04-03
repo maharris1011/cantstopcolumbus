@@ -3,10 +3,10 @@
   {% for photo in item.photo_upload %}
   <div class="artisan-bootstrap-col">
     <div class="card h-100">
-      <img src="{{ photo.url }}" class="card-img-top img-fluid" alt="{{ item.first_name }} {{ item.last_name }}">
+      <img src="{{ photo.url }}" class="card-img-top img-fluid" alt="{{ item.full_name }}">
       <div class="card-body">
-        <h5 class="card-title">{{ item.first_name }} {{ item.last_name }}</h5>
-        <p class="card-text">{{ item.team_page_project_byline }}</p>
+        <h5 class="card-title">{{{ item.full_name }}</h5>
+        <p class="card-text">{{ item.team_page_byline }}</p>
         <a class="card-text" href="{{ item.linked_in }}" target="_blank">Follow on LinkedIn</a>
       </div>
     </div>
