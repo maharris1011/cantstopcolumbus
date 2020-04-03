@@ -18,7 +18,7 @@ jobs:
         jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll && jekyll build --future"
 
     - name: Airtable
-      uses:  ./maharris1011/cantstopcolumbus/_plugins/pull_teams.rb
+      uses:  ./
       env:
         AIRTABLE_KEY: ${{ secrets.AIRTABLE_KEY }}
 
