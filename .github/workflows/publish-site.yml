@@ -16,7 +16,7 @@ jobs:
         docker run \
         -e AIRTABLE_KEY=${{ secrets.AIRTABLE_KEY }} \
         --mount type=bind,src=${{ github.workspace }},dst=/srv/jekyll \
-        jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll && jekyll build --vebose --future"
+        jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll && jekyll build --verbose --future"
 
     - name: Upload ftp
       uses: sebastianpopp/ftp-action@releases/v2
