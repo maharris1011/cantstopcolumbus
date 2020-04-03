@@ -1,5 +1,12 @@
+.env
 .DS_Store
 _site/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
+_data/impact.json
+_data/navigator.json
+_data/organizer.json
+_data/proj_lead.json
+_data/special.json
+_data/success.json

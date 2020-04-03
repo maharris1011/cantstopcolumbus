@@ -17,6 +17,11 @@ jobs:
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll && jekyll build --future"
 
+    - name: Airtable
+      uses: cantstopcolumbus/_plugins/pull_teams.rb
+      env:
+        AIRTABLE_KEY: ${{ secrets.AIRTABLE_KEY }}
+
     - name: Upload ftp
       uses: sebastianpopp/ftp-action@releases/v2
       with:
