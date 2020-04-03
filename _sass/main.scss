@@ -182,3 +182,20 @@ div.jumbotron {
     left: -75px; 
   }
 }
+
+// We are using bootstrap v4.0 which does not have grid like styles.
+// We'll need to decide if it is worth upgrading in the future.
+.artisan-bootstrap-row {
+  div {
+    &.artisan-bootstrap-col {
+      flex: 0 0 100%;
+      max-width: 100%;
+      padding: 0 15px;
+      margin-bottom: 1rem;
+      @media #{$break-tablet-up} {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+      }
+    }
+  }
+}
