@@ -13,7 +13,7 @@ jobs:
 
     - name: Build the site in the jekyll/builder container
       run: |
-        docker run \
+        sudo docker run \
         -e AIRTABLE_KEY=${{ secrets.AIRTABLE_KEY }} -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll && jekyll build --future"
 
