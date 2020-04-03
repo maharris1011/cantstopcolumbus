@@ -1,4 +1,4 @@
-@import '_typography.scss'; 
+@import '_typography.scss';
 
 $backgroundColor: #ffffff;
 $bodyBackgroundColor: #ECF0F6;
@@ -60,16 +60,16 @@ body {
 }
 
 div.jumbotron {
-  padding: 2rem 1rem; 
+  padding: 2rem 1rem;
   padding-top: 2rem;
 
   &.header-tile{
-    padding-top: 1rem; 
+    padding-top: 1rem;
   }
 }
 @media #{$break-tablet-up} {
   div.jumbotron {
-    padding: 2rem; 
+    padding: 2rem;
   }
 }
 
@@ -78,10 +78,10 @@ div.jumbotron {
   padding-top: 1rem;
 
   a {
-    margin-bottom: 1rem; 
+    margin-bottom: 1rem;
   }
   a:last-of-type{
-    margin-bottom: 0; 
+    margin-bottom: 0;
   }
 
   @media #{$break-tablet-up} {
@@ -89,8 +89,8 @@ div.jumbotron {
     justify-content: flex-start;
 
     a {
-      margin-right: 1rem; 
-      margin-bottom: 0; 
+      margin-right: 1rem;
+      margin-bottom: 0;
     }
   }
 }
@@ -120,41 +120,41 @@ div.jumbotron {
 
 .social-links {
   a {
-    min-width: 44px; 
-    margin-right: 2rem; 
+    min-width: 44px;
+    margin-right: 2rem;
     text-align: center;
   }
 }
 
 
 .btn-primary, .btn-secondary {
-  font-weight: 500; 
-  text-transform: uppercase; 
-  min-width: 150px; 
-  transition: all 350ms; 
+  font-weight: 500;
+  text-transform: uppercase;
+  min-width: 150px;
+  transition: all 350ms;
 }
 
 .btn-primary {
   border-color: #4300ff;
-  background-color: #4300ff; 
+  background-color: #4300ff;
   &:hover {
-    background-color: #0D00A4; 
+    background-color: #0D00A4;
   }
 }
 
 .btn-secondary {
   color: #3366ff;
-  border-color: #3366ff; 
-  background-color: #f1ebff; 
+  border-color: #3366ff;
+  background-color: #f1ebff;
   &:hover {
-    background-color: #3366ff; 
-    border-color: #3366ff; 
-    color: #fff; 
+    background-color: #3366ff;
+    border-color: #3366ff;
+    color: #fff;
   }
 }
 
 .contact-us-links .btn {
-  min-width: unset; 
+  min-width: unset;
 }
 
 #copyCSC{
@@ -166,7 +166,7 @@ div.jumbotron {
 
 #copied-tooltip {
   position: absolute;
-  left: 300px; 
+  left: 300px;
   height: 0;
   width: 80px;
   height: 50px;
@@ -175,11 +175,11 @@ div.jumbotron {
   font-weight: 600;
   span {
     background-color: #00e096;
-    padding: .5rem; 
+    padding: .5rem;
   }
 
   @media #{$break-tablet-up} {
-    left: -75px; 
+    left: -75px;
   }
 }
 
@@ -193,8 +193,8 @@ div.jumbotron {
       padding: 0 15px;
       margin-bottom: 1rem;
       @media #{$break-tablet-up} {
-        flex: 0 0 33.333333%;
-        max-width: 33.333333%;
+        flex: 0 0 16.66%;
+        max-width: 16.66%;
       }
     }
   }
