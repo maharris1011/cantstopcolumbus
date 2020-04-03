@@ -14,7 +14,8 @@ jobs:
     - name: Build the site in the jekyll/builder container
       run: |
         sudo docker run \
-        -e AIRTABLE_KEY=${{ secrets.AIRTABLE_KEY }} -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
+        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
+         -e AIRTABLE_KEY=${{ secrets.AIRTABLE_KEY }} \
         jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll && jekyll build --future"
 
     - name: Upload ftp
