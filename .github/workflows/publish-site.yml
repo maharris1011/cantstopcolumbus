@@ -18,7 +18,7 @@ jobs:
         jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll && jekyll build --future"
         
       env:
-        AIRTABLE_KEY: ${{ AIRTABLE_KEY }}
+        AIRTABLE_KEY: ${{ secrets.AIRTABLE_KEY }}
 
     - name: Upload ftp
       uses: sebastianpopp/ftp-action@releases/v2
