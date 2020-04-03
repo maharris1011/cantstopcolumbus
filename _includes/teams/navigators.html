@@ -1,28 +1,16 @@
 <div class="card-deck">
-        {% for item in site.data.navigator %}
-          {% for photo in item.photo_upload %}
-    <div class="card" style="display: flex;
-      flex: 1 0 0%;
-      flex-direction: column;
-      margin-bottom: 0;
-      width: auto;
-      height: auto;
-      max-width: 300px;">
-
-    <img style="display: block;
-      max-width:300px;
-      max-height:350px;
-      width: auto;
-      height: auto;
-      justify-content:center;
-      margin-left:auto;
-      margin-right:auto;" src="{{ photo.url }}" class="card-img-top">
-    <div class="card-body">
-      <h5 class="card-title">{{ item.first_name }} {{ item.last_name }}</h5>
+  <div class="row row-cols-1 row-cols-md-2">
+    {% for item in site.data.navigator %}
+    {% for photo in item.photo_upload %}
+    <div class="card teams-card">
+      <img src="{{ photo.url }}" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">{{ item.first_name }} {{ item.last_name }}</h5>
         <p>{{ item.team_page_project_byline }}</p>
-          <a href="{{ item.linked_in }}" target="_blank">Follow on LinkedIn</a>
+        <a href="{{ item.linked_in }}" target="_blank">Follow on LinkedIn</a>
       </div>
-      </div>
-      {% endfor %}
-      {% endfor %}
+    </div>
+    {% endfor %}
+    {% endfor %}
   </div>
+</div>

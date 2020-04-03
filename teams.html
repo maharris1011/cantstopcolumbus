@@ -3,21 +3,21 @@ title: TEST
 layout: default
 ---
 
-  <div class="container mt-3">
+<div class="container mt-3">
   {% include teams/main-title.html %}
+  
+  <div class="jumbotron mb-1">
+    <h2>Project Leads</h2>
+    {% include teams/proj_leads.html %}
   </div>
-
-<div class="jumbotron mb-1">
-    <h1>Project Leads</h1>
-        {% include teams/proj_leads.html %}
-  </div>
-
-<div class="jumbotron mb-1">
-  <h1>Navigators</h1>
+  
+  <div class="jumbotron mb-1">
+    <h2>Navigators</h2>
     {% include teams/navigators.html %}
   </div>
-
-<div class="jumbotron mb-1">
-  <h1>Organizers</h1>
+  
+  <div class="jumbotron mb-1">
+    <h2>Organizers</h2>
     {% include teams/organizers.html %}
   </div>
+</div>
