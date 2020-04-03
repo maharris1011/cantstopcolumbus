@@ -3,7 +3,9 @@
   {% for photo in item.photo_upload %}
   <div class="artisan-bootstrap-col">
     <div class="card h-100">
-      <img src="{{ photo.url }}" class="card-img-top img-fluid" alt="{{ item.full_name }}">
+      <div class="embed-responsive embed-responsive-1by1">
+           <img alt="{{ item.full_name }}" class="card-img2-top embed-responsive-item" src="{{ photo.url }}" />
+      </div>
       <div class="card-body">
         <h5 class="card-title">{{ item.full_name }}</h5>
         <p class="card-text">{{ item.team_page_project_byline }}</p>
