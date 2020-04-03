@@ -130,12 +130,6 @@
   @include border-top-radius($card-inner-border-radius);
 }
 
-.card-img2-top {
-  width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
-  object-fit: cover;
-  @include border-top-radius($card-inner-border-radius);
-}
-
 .card-img-bottom {
   width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
   @include border-bottom-radius($card-inner-border-radius);

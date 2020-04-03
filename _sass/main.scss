@@ -17,6 +17,12 @@ body {
   font-family: $bodyFont;
 }
 
+.card-img2-top {
+  width: 100%;
+  object-fit: cover;
+  @include border-top-radius($card-inner-border-radius);
+}
+
 .cbus-logo-square {
   height: 71px;
   width: 71px;
