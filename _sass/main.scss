@@ -199,8 +199,8 @@ div.jumbotron {
       padding: 0 15px;
       margin-bottom: 1rem;
       @media #{$break-tablet-up} {
-        flex: 0 0 25%;
-        max-width: 25%;
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
       }
     }
   }
