@@ -66,6 +66,14 @@
     var submitButton = document.getElementById("submitButton");
     var forms = document.getElementsByClassName('needs-validation');
 
+    
+    function toArray(x) {
+        for(var i = 0, a = []; i < x.length; i++)
+            a.push(x[i]);
+
+        return a
+    }
+
      copyText.addEventListener("input", function(){
           var maxlength = this.getAttribute("maxlength");
           var currentLength = this.value.length;
@@ -78,9 +86,9 @@
             window.addEventListener('load', function() {
                 // Fetch all the forms we want to apply custom Bootstrap validation styles to
                 var forms = document.getElementsByClassName('needs-validation');
-                //var formArray = Array.from(forms);
+                var formArray = toArray(forms);
                 // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function(form) {
+                var validation = formArray.forEach.call(forms, function(form) {
                 form.addEventListener('submit', function(event) {
                     if (form.checkValidity() === false) {
                         //event.preventDefault();
