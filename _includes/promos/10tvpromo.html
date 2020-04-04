@@ -86,25 +86,23 @@
             window.addEventListener('load', function() {
                 // Fetch all the forms we want to apply custom Bootstrap validation styles to
                 var forms = document.getElementsByClassName('needs-validation');
-                var formArray = toArray(forms);
-                // Loop over them and prevent submission
-                var validation = formArray.forEach.call(forms, function(form) {
-                form.addEventListener('submit', function(event) {
-                    if (form.checkValidity() === false) {
-                        //event.preventDefault();
-                        event.stopPropagation();
+                if (forms.length > 0) {
+                    for (var form of forms) {
+                        form.addEventListener('submit', function(e) {
+                            if (!form.checkValidity()) {
+                                event.stopPropagation();
+                                
+                            } else {
+                            submitText.style.color = 'black';
+                            submitButton.className = 'btn btn-success';
+                            submitButton.innerHTML = '&check;';
+                            submitButton.disabled = true;
+                            }
+                            event.preventDefault();
+                            form.classList.add('was-validated');
+                        });
                     }
-                    else{
-                        submitText.style.color = "black";
-                        submitButton.className="btn btn-success"
-                        submitButton.innerText="✓"
-                        submitButton.disabled = true;
-                    }
-                        event.preventDefault();
-                        form.classList.add('was-validated');
-
-                }, false);
-                });
+                }
             }, false);
             })();
 
