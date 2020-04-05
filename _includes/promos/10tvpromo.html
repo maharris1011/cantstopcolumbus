@@ -23,11 +23,11 @@
     <form name="promo" class="needs-validation"   novalidate accept-charset="UTF-8"> <!--accept-charset="UTF-8" action="https://formkeep.com/f/exampletoken" method="POST"-->
         <div class = "row">
             <div class="col-md-5">
-                <input type="text" required class="form-control promoField" name="name"  placeholder="Business Name">
+                <input type="text" id="name" required class="form-control promoField" name="name"  placeholder="Business Name">
                 <div class="invalid-feedback">
                     Please type in the business name
                   </div>
-                <input type="url" class="form-control promoField" name="website"  required placeholder="Website URL">
+                <input type="url" class="form-control promoField" id="website" name="website"  required placeholder="Website URL">
                 <div class="invalid-feedback">
                     Please type in a valid website URL
                   </div>
@@ -59,8 +59,14 @@
   </div>
   
 
+  <script  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  crossorigin="anonymous"></script>
+
   <script>
     var copyText = document.getElementById("promo_text");
+    var copyName = document.getElementById("name");
+    var copySite = document.getElementById("website");
     var charLeft = document.getElementById("rem_post");
     var submitText = document.getElementById("submitText");
     var submitButton = document.getElementById("submitButton");
@@ -90,14 +96,36 @@
                 if (forms.length > 0) {
                     for (var form of forms) {
                         form.addEventListener('submit', function(e) {
+                            console.log("Submitting");
                             if (!form.checkValidity()) {
                                 e.stopPropagation();
-                                
+                                e.preventDefault();
+                                console.log("FORM NOT VALID");
                             } else {
-                            submitText.style.color = 'black';
-                            submitButton.className = 'btn btn-success';
-                            submitButton.innerHTML = '&check;';
-                            submitButton.disabled = true;
+                                e.preventDefault();
+                                var xhr = new XMLHttpRequest();
+                                var myAPIKey = process.env.AIRTABLE_KEY;
+                                xhr.open('POST', 'https://api.airtable.com/v0/apppXeg0e2C1iuT8u/10TV%20Promos', true);
+                                xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+                                //will switch out with appropriate airtable_key
+                                xhr.setRequestHeader("Authorization", "Bearer " + "keyaHN8cY5NZmtCLX");
+
+                                // send the collected data as JSON
+                                xhr.onerror = function () {
+                                    console.log("** An error occurred during the transaction");
+                                };
+                                xhr.send(JSON.stringify({
+                                    "fields":{
+                                            "Business":copyName.value,
+                                            "Promo":copyText.value,
+                                            "Website": copySite.value
+                                    }
+
+                                }));
+                                submitText.style.color = 'black';
+                                submitButton.className = 'btn btn-success';
+                                submitButton.innerHTML = '&check;';
+                                submitButton.disabled = true;
                             }
                             e.preventDefault();
                             form.classList.add('was-validated');
