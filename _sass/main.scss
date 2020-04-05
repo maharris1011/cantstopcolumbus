@@ -226,3 +226,18 @@ div.jumbotron {
     }
   }
 }
+
+.artisan-featured-bootstrap-row {
+  div {
+    &.artisan-featured-bootstrap-col {
+      flex: 0 0 100%;
+      max-width: 100%;
+      padding: 0 5px;
+      margin-bottom: 1rem;
+      @media #{$break-tablet-up} {
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+      }
+    }
+  }
+}
