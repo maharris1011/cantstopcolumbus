@@ -90,7 +90,7 @@
                     for (var form of forms) {
                         form.addEventListener('submit', function(e) {
                             if (!form.checkValidity()) {
-                                event.stopPropagation();
+                                e.stopPropagation();
                                 
                             } else {
                             submitText.style.color = 'black';
@@ -98,7 +98,7 @@
                             submitButton.innerHTML = '&check;';
                             submitButton.disabled = true;
                             }
-                            event.preventDefault();
+                            e.preventDefault();
                             form.classList.add('was-validated');
                         });
                     }
