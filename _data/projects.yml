@@ -58,13 +58,6 @@
     - news
     - health
 
-- logo: employ-ohio-now.svg
-  link: #
-  title: Employ Ohio Now
-  description: Find jobs and fill talent needs created by COVID-19
-  tags:
-    - employment
-
 - logo: OMJ.svg
   link: https://jobseeker.ohiomeansjobs.monster.com/
   title: Ohio Means Jobs
