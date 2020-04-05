@@ -2,8 +2,7 @@ require 'json'
 require 'airtable'
 require 'active_support/all'
 
-# @client = Airtable::Client.new(ENV["AIRTABLE_KEY"])
-@client = Airtable::Client.new('keyIuXwxsBI2cvWJG')
+@client = Airtable::Client.new(ENV["AIRTABLE_KEY"])
 
 @table = @client.table("apppXeg0e2C1iuT8u", "Partners")
 
