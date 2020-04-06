@@ -54,6 +54,9 @@
         <div class="col-md-12 text-center">
             <span id="submitText" class="submitText">Thank you! Your ad will be up within 24 hours.</span>
         </div>
+        <div class="col-md-12 text-center">
+            <span id="errorText" class="submitText">We are sorry but there is already a submission created for your business</span>
+        </div>
     </div>
     <span id="key" style="display:hidden">{{ site.env.AIRTABLE_KEY }}</span>
     <br>
@@ -70,6 +73,7 @@
     var copySite = document.getElementById("website");
     var charLeft = document.getElementById("rem_post");
     var myAPIKey = document.getElementById("key").value;
+    var errorText = document.getElementById("errorText");
     var submitText = document.getElementById("submitText");
     var submitButton = document.getElementById("submitButton");
     var forms = document.getElementsByClassName('needs-validation');
@@ -81,6 +85,36 @@
 
         return a
     }
+    const doesItExist = () => new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest();
+
+        var url = 'https://api.airtable.com/v0/apppXeg0e2C1iuT8u/10TV%20Promos?filterByFormula=(TRIM(LOWER(Business)) = TRIM(LOWER("' + copyName.value + '")))';
+
+        xhr.open('GET', url, true);
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+                                        //will switch out with appropriate airtable_key
+        xhr.setRequestHeader("Authorization", "Bearer " + "keyaHN8cY5NZmtCLX");
+        xhr.send();
+
+        xhr.onload = async function() {
+         console.log(`Loaded: ${xhr.status} ${xhr.response}`);
+         var body = JSON.parse(xhr.responseText);
+         console.log(body["records"]);
+         console.log(body["records"] != []);
+         console.log(body["records"].length > 0);
+            
+         if(body["records"].length <= 0)
+            resolve("Success");
+         else
+            reject("Failure");
+        }; });
+    
+        async function myFunction() {
+            var result = await doesItExist();
+            console.log( result );
+            return result;
+        }
+    
 
      copyText.addEventListener("input", function(){
           var maxlength = this.getAttribute("maxlength");
@@ -89,48 +123,81 @@
           charLeft.innerText = currentLength;
       });
 
-            (function() {
+            ( function() {
             // We are currently not using babel. ES 5 syntax
             'use strict';
-            window.addEventListener('load', function() {
+            window.addEventListener('load', async function() {
                 // Fetch all the forms we want to apply custom Bootstrap validation styles to
                 var forms = document.getElementsByClassName('needs-validation');
                 if (forms.length > 0) {
                     for (var form of forms) {
-                        form.addEventListener('submit', function(e) {
+                        form.addEventListener('submit', async function(e) {
                             console.log("Submitting");
                             if (!form.checkValidity()) {
+                                errorText.style.color = 'white';
+                                submitText.style.color = 'white';
                                 e.stopPropagation();
                                 e.preventDefault();
                                 console.log("FORM NOT VALID");
+                                form.classList.add('was-validated');
                             } else {
                                 e.preventDefault();
-                                var xhr = new XMLHttpRequest();
+                                console.log("COMMENCING CHECK");
+                                myFunction()
+                                .catch(stuff => {
+                                    console.log("CHECK FAILED")
+                                            errorText.style.color = 'red';
+                                            submitText.style.color = 'white';
+                                            e.stopPropagation();
+                                            e.preventDefault();
+                                })
+                                .then(stuff => {
+                                    console.log(stuff);
+                                    if(stuff)
+                                        {
+                                            console.log("IT DOESNT EXIST");
+                                            var xhrPost = new XMLHttpRequest();
 
-                                xhr.open('POST', 'https://api.airtable.com/v0/apppXeg0e2C1iuT8u/10TV%20Promos', true);
-                                xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-                                //will switch out with appropriate airtable_key
-                                xhr.setRequestHeader("Authorization", "Bearer " + myAPIKey);
+                                            xhrPost.open('POST', 'https://api.airtable.com/v0/apppXeg0e2C1iuT8u/10TV%20Promos', true);
+                                            xhrPost.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+                                            //will switch out with appropriate airtable_key
+                                            xhrPost.setRequestHeader("Authorization", "Bearer " + "keyaHN8cY5NZmtCLX");
 
-                                // send the collected data as JSON
-                                xhr.onerror = function () {
-                                    console.log("** An error occurred during the transaction");
-                                };
-                                xhr.send(JSON.stringify({
-                                    "fields":{
-                                            "Business":copyName.value,
-                                            "Promo":copyText.value,
-                                            "Website": copySite.value
-                                    }
+                                            // send the collected data as JSON
+                                            xhrPost.onerror = function () {
+                                                console.log("** An error occurred during the transaction");
+                                            };
+                                            xhrPost.send(JSON.stringify({
+                                                "fields":{
+                                                        "Business":copyName.value,
+                                                        "Promo":copyText.value,
+                                                        "Website": copySite.value
+                                                }
 
-                                }));
-                                submitText.style.color = 'black';
-                                submitButton.className = 'btn btn-success';
-                                submitButton.innerHTML = '&check;';
-                                submitButton.disabled = true;
+                                            }));
+
+                                            xhrPost.onload = function() {
+                                                submitText.style.color = 'black';
+                                                errorText.style.color = 'white';
+                                                submitButton.className = 'btn btn-success';
+                                                submitButton.innerHTML = '&check;';
+                                                submitButton.disabled = true;
+                                                e.preventDefault();
+                                                form.classList.add('was-validated');
+                                            }
+                                            
+                                        }
+                                        else {
+                                            console.log("CHECK FAILED")
+                                            errorText.style.color = 'red';
+                                            submitText.style.color = 'white';
+                                            e.stopPropagation();
+                                            e.preventDefault();
+                                        }
+                                    });
+
+                                
                             }
-                            e.preventDefault();
-                            form.classList.add('was-validated');
                         });
                     }
                 }
