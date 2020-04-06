@@ -209,6 +209,8 @@ h1 {
 
 .navigation-menu {
   margin-top: -22px;
+  max-height: 95vh;
+  overflow-y: auto;
   padding-left: 50px;
 }
 

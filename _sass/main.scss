@@ -123,10 +123,8 @@ div.jumbotron {
   font-size: 2rem;
 
   @media #{$break-tablet-up} {
-    font-size: 60px;
+    font-size: 3rem;
     font-weight: 500;
-    letter-spacing: 0.43px;
-    line-height: 100px;
   }
 }
 
