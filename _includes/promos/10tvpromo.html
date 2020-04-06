@@ -55,6 +55,7 @@
             <span id="submitText" class="submitText">Thank you! Your ad will be up within 24 hours.</span>
         </div>
     </div>
+    <span id="key" style="display:hidden">{{ site.env.AIRTABLE_KEY }}</span>
     <br>
   </div>
   
@@ -68,6 +69,7 @@
     var copyName = document.getElementById("name");
     var copySite = document.getElementById("website");
     var charLeft = document.getElementById("rem_post");
+    var myAPIKey = document.getElementById("key").value;
     var submitText = document.getElementById("submitText");
     var submitButton = document.getElementById("submitButton");
     var forms = document.getElementsByClassName('needs-validation');
@@ -104,7 +106,7 @@
                             } else {
                                 e.preventDefault();
                                 var xhr = new XMLHttpRequest();
-                                var myAPIKey = process.env.AIRTABLE_KEY;
+
                                 xhr.open('POST', 'https://api.airtable.com/v0/apppXeg0e2C1iuT8u/10TV%20Promos', true);
                                 xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
                                 //will switch out with appropriate airtable_key
