@@ -23,17 +23,17 @@
     <form name="promo" class="needs-validation"   novalidate accept-charset="UTF-8"> <!--accept-charset="UTF-8" action="https://formkeep.com/f/exampletoken" method="POST"-->
         <div class = "row">
             <div class="col-md-5">
-                <input type="text" id="name" required class="form-control promoField" name="name"  placeholder="Business Name">
+                <input type="text" id="name" required class="form-control promoField" name="Business"  placeholder="Business Name">
                 <div class="invalid-feedback">
                     Please type in the business name
                   </div>
-                <input type="url" class="form-control promoField" id="website" name="website"  required placeholder="Website URL">
+                <input type="url" class="form-control promoField" id="website" name="Website"  required placeholder="Website URL">
                 <div class="invalid-feedback">
                     Please type in a valid website URL
                   </div>
             </div> 
             <div class="col-md-5">
-                <input type="text" required name="promo_text"  class="form-control promoField"  id="promo_text"  maxlength="100" placeholder="Promotional Text">
+                <input type="text" required name="Promo"  class="form-control promoField"  id="promo_text"  maxlength="100" placeholder="Promotional Text">
                 <div class="invalid-feedback">
                     Please type in a valid text
                   </div>
@@ -55,7 +55,10 @@
             <span id="submitText" class="submitText">Thank you! Your ad will be up within 24 hours.</span>
         </div>
         <div class="col-md-12 text-center">
-            <span id="errorText" class="submitText">We are sorry but there is already a submission created for your business</span>
+            <span id="errorSubmissionText" class="submitText">We are sorry but there is already a submission created for your business</span>
+        </div>
+        <div class="col-md-12 text-center">
+            <span id="errorText" class="submitText">We are sorry but we are unable to process this Promo form at this time. Please try again later.</span>
         </div>
     </div>
     <span id="key" style="display:hidden">{{ site.env.AIRTABLE_KEY }}</span>
@@ -67,141 +70,83 @@
   integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
   crossorigin="anonymous"></script>
 
+
   <script>
-    var copyText = document.getElementById("promo_text");
-    var copyName = document.getElementById("name");
-    var copySite = document.getElementById("website");
-    var charLeft = document.getElementById("rem_post");
-    var myAPIKey = document.getElementById("key").value;
-    var errorText = document.getElementById("errorText");
-    var submitText = document.getElementById("submitText");
-    var submitButton = document.getElementById("submitButton");
-    var forms = document.getElementsByClassName('needs-validation');
-
+    $( document ).ready(function() {
+    console.log( "ready!" );
+    });
     
-    function toArray(x) {
-        for(var i = 0, a = []; i < x.length; i++)
-            a.push(x[i]);
+    var copyText = $('#promo_text')[0];
+    var copyName = $('#name')[0];//document.getElementById("name");
+    var copySite = $('#website')[0];//document.getElementById("website");
+    var charLeft = $('#rem_post')[0];//document.getElementById("rem_post");
+    var errorText = $('#errorText')[0];//document.getElementById("errorText");
+    var errorSubmissionText = $('#errorSubmissionText')[0];//document.getElementById("errorText");
+    var submitText = $('#submitText')[0];//document.getElementById("submitText");
+    var submitButton = $('#submitButton')[0];//document.getElementById("submitButton");
+    var forms = $("[name='needs-validation']");
+    //document.getElementsByClassName('needs-validation');
 
-        return a
-    }
-    const doesItExist = () => new Promise(function (resolve, reject) {
-        var xhr = new XMLHttpRequest();
 
-        var url = 'https://api.airtable.com/v0/apppXeg0e2C1iuT8u/10TV%20Promos?filterByFormula=(TRIM(LOWER(Business)) = TRIM(LOWER("' + copyName.value + '")))';
-
-        xhr.open('GET', url, true);
-        xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-                                        //will switch out with appropriate airtable_key
-        xhr.setRequestHeader("Authorization", "Bearer " + "keyaHN8cY5NZmtCLX");
-        xhr.send();
-
-        xhr.onload = async function() {
-         console.log(`Loaded: ${xhr.status} ${xhr.response}`);
-         var body = JSON.parse(xhr.responseText);
-         console.log(body["records"]);
-         console.log(body["records"] != []);
-         console.log(body["records"].length > 0);
-            
-         if(body["records"].length <= 0)
-            resolve("Success");
-         else
-            reject("Failure");
-        }; });
-    
-        async function myFunction() {
-            var result = await doesItExist();
-            console.log( result );
-            return result;
-        }
-    
-
-     copyText.addEventListener("input", function(){
-          var maxlength = this.getAttribute("maxlength");
-          var currentLength = this.value.length;
-
-          charLeft.innerText = currentLength;
-      });
-
-            ( function() {
+      $(function() {
             // We are currently not using babel. ES 5 syntax
             'use strict';
-            window.addEventListener('load', async function() {
+            $( document ).ready(function() {
+
+                $('input[type="url"]').on('blur', function(){
+                    var string = $(this).val();
+                    if (!string.match(/^https?:/) && string.length) {
+                        string = "http://" + string;
+                        $(this).val(string)
+                    }
+                    });
+
+
+
+
                 // Fetch all the forms we want to apply custom Bootstrap validation styles to
                 var forms = document.getElementsByClassName('needs-validation');
                 if (forms.length > 0) {
                     for (var form of forms) {
-                        form.addEventListener('submit', async function(e) {
+                        form.addEventListener('submit', function(e) {
                             console.log("Submitting");
                             if (!form.checkValidity()) {
-                                errorText.style.color = 'white';
-                                submitText.style.color = 'white';
                                 e.stopPropagation();
                                 e.preventDefault();
                                 console.log("FORM NOT VALID");
-                                form.classList.add('was-validated');
                             } else {
+                                var xhrPost = new XMLHttpRequest();
                                 e.preventDefault();
-                                console.log("COMMENCING CHECK");
-                                myFunction()
-                                .catch(stuff => {
-                                    console.log("CHECK FAILED")
-                                            errorText.style.color = 'red';
-                                            submitText.style.color = 'white';
+
+                                xhrPost.open('POST', 'https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/promotions', true);
+                                xhrPost.setRequestHeader('Content-Type', 'application/json');
+
+                                xhrPost.send(JSON.stringify({
+                                            "Business":copyName.value,
+                                            "Promo":copyText.value,
+                                            "Website": copySite.value
+                                }));
+
+                                xhrPost.onerror = function () {
+                                            errorText.className = 'errorText';
                                             e.stopPropagation();
-                                            e.preventDefault();
-                                })
-                                .then(stuff => {
-                                    console.log(stuff);
-                                    if(stuff)
-                                        {
-                                            console.log("IT DOESNT EXIST");
-                                            var xhrPost = new XMLHttpRequest();
+                                            submitButton.className = 'btn btn-danger submitSuccess';
+                                            submitButton.innerHTML = 'X';
+                                            submitButton.disabled = true;
+                                };
 
-                                            xhrPost.open('POST', 'https://api.airtable.com/v0/apppXeg0e2C1iuT8u/10TV%20Promos', true);
-                                            xhrPost.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-                                            //will switch out with appropriate airtable_key
-                                            xhrPost.setRequestHeader("Authorization", "Bearer " + "keyaHN8cY5NZmtCLX");
-
-                                            // send the collected data as JSON
-                                            xhrPost.onerror = function () {
-                                                console.log("** An error occurred during the transaction");
-                                            };
-                                            xhrPost.send(JSON.stringify({
-                                                "fields":{
-                                                        "Business":copyName.value,
-                                                        "Promo":copyText.value,
-                                                        "Website": copySite.value
-                                                }
-
-                                            }));
-
-                                            xhrPost.onload = function() {
-                                                submitText.style.color = 'black';
-                                                errorText.style.color = 'white';
-                                                submitButton.className = 'btn btn-success';
-                                                submitButton.innerHTML = '&check;';
-                                                submitButton.disabled = true;
-                                                e.preventDefault();
-                                                form.classList.add('was-validated');
-                                            }
-                                            
-                                        }
-                                        else {
-                                            console.log("CHECK FAILED")
-                                            errorText.style.color = 'red';
-                                            submitText.style.color = 'white';
-                                            e.stopPropagation();
-                                            e.preventDefault();
-                                        }
-                                    });
-
-                                
+                                xhrPost.onload = function() {
+                                    errorText.className = 'submitText';
+                                    submitText.className = 'submitTextSuccess';
+                                    submitButton.className = 'btn btn-success submitSuccess';
+                                    submitButton.innerHTML = '&check;';
+                                    submitButton.disabled = true;
+                                }
                             }
+                            form.classList.add('was-validated');
                         });
                     }
                 }
-            }, false);
-            })();
-
+            } , false);
+            })
   </script>
