@@ -22,10 +22,18 @@
   tags:
     - food
 
+- logo: facemask_logo.png
+  link: https://facemasksforus.com/
+  title: Face Masks For Us
+  description: Information and resources for the creation of community masks.
+  tags:
+    - health
+
 - logo: Next Door Munch.png
   link: https://nextdoormunch.com/
   title: Next Door Munch
   description: Get groceries delivered by neighbors, for neighbors
+  limit-width: true
   tags:
     - food
 
@@ -38,23 +46,29 @@
     - housing
     - mobility
 
-- logo: ohioready_logo_H_2c@4x.png
-  link: #
-  title: Ohio is Ready
-  description: Provide reliable news updates to Ohioans
+- logo: ask-cbus.png
+  link: https://www.askcb.us
+  title: AskCBUS
+  description: Ask questions and receive answers from other members of the community
   tags:
     - news
+    - health
+    - mobility
+    - housing
+    - food
 
-- logo: employ-ohio-now.svg
-  link: https://5e7cff6e7313380211c8e562--employohionow.netlify.com/#/
-  title: Employ Ohio Now
-  description: Find jobs and fill talent needs created by COVID-19 
-  tags: 
-    - employment
+- logo: ohioready_logo_H_2c@4x.png
+  link: https://ohioready.org/
+  title: Ohio is Ready
+  description: Trustworthy information, data, and news on COVID-19. Brought to you by the community at Can’t Stop Columbus.
+  tags:
+    - news
+    - health
 
 - logo: OMJ.svg
   link: https://jobseeker.ohiomeansjobs.monster.com/
   title: Ohio Means Jobs
   description: Job listings and career-building resources
-  tags: 
+  limit-width: true
+  tags:
     - employment
