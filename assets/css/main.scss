@@ -1,5 +1,6 @@
 ---
 ---
+
 $brand-success: #FF8F1C;
 $brand-info: #01426A;
 $brand-warning: #6787B7;
@@ -208,6 +209,8 @@ h1 {
 
 .navigation-menu {
   margin-top: -22px;
+  max-height: 95vh;
+  overflow-y: auto;
   padding-left: 50px;
 }
 

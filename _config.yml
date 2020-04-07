@@ -1,25 +1,52 @@
-url: "https://www.cantstopcolumbus.com" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "" # the subpath of your site, e.g. /blog
-title: "Can't Stop Columbus" # the name of your site, e.g. ACME Corp.
-tagline: "We're all in this together."
+---
+collections:
+  People:
+    output: true
+  posts:
+    title: Posts
+    output: true
+  uploads:
+    title: Uploads
+    output: true
+defaults:
+- scope:
+    path: ''
+    type: posts
+  values:
+    permalink: ":categories/:title/"
+
+title: Can't Stop Columbus
+timezone: America/New_York
+url: https://www.cantstopcolumbus.com
+baseurl:
+tagline: We're all in this together.
 
 plugins:
-  - jekyll-autoprefixer
-  - jekyll-seo-tag
-  - jekyll-sitemap
+- jekyll-autoprefixer
+- jekyll-seo-tag
+- jekyll-sitemap
+- airtable
+
+airtable:
+  enable_sync: true
+  base_uid: 'apppXeg0e2C1iuT8u'
+  tables:
+    - name: 'People'
 
 email: hello@cantstopcolumbus.com
-description: >- 
-  On Sunday, March 15, 2020, the Columbus, Ohio tech and business
-  community started talking about the idea of a virtual hackathon in
-  response to the Covid-19 situation. With social distancing, no school,
-  remote work, and a sense of urgency, there's a lot of energy focused on
-  helping. We proposed an online hacking event where anyone can 
-  contribute by defining challenges, building projects, and sharing resources.
+description: On Sunday, March 15, 2020, the Columbus, Ohio tech and business community
+  started talking about the idea of a virtual hackathon in response to the Covid-19
+  situation. With social distancing, no school, remote work, and a sense of urgency,
+  there's a lot of energy focused on helping. We proposed an online hacking event
+  where anyone can  contribute by defining challenges, building projects, and sharing
+  resources.
+
 author: Can't Stop Columbus
-google_analytics: UA-111111111-1 # TODO: need real google analytics number
+google_analytics: UA-111111111-1
 twitter:
   username: cantstopcbus
-  card: summary #keep this to generate a twitter share card  
-
-exclude: ['README.md', 'Gemfile.lock', 'Gemfile']
+  card: summary
+exclude:
+- README.md
+- Gemfile.lock
+- Gemfile

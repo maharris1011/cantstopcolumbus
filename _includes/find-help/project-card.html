@@ -1,4 +1,4 @@
-<div class="col-sm-3">
+<div class="col-sm-6 col-lg-3">
   <div class="card my-2">
     <div class="d-flex p-1 h-100">
     <img
@@ -6,7 +6,11 @@
       style="background-color: {{ include.proj.backgroundcolor }};"
     {% endif %}
       src="assets/img/UX/projects/{{ include.proj.logo }}"
+    {% if include.proj.limit-width %}
+      class="p-2 card-img-top limit-width"
+    {% else %}
       class="p-2 card-img-top align-self-center"
+    {% endif %}
     />
     </div>
     <div class="card-body">

@@ -1,0 +1,110 @@
+<div class="jumbotron background-white">
+    <div class="row" style="padding-bottom:20px;">
+        <div class="col-md-9">
+            <h1 style="display:inline; font-family: Roboto;
+            font-size: 54px;
+            font-weight: 500;
+            letter-spacing: 0.43px; padding-bottom:20px;
+            line-height: 71px;">Thank you 10tv</h1>
+            <h4><br/>10tv has partnered with Can't Stop Columbus and has graciously<br />volunteered to give free advertising space on their <a href="https://www.10tv.com/" target="_blank">website</a>.</h4>
+            <h4><br/>Offer valid until May 1st, 2020<br />To submit your business, fill out the form below.</h4>
+        </div>
+        <div class="col-md-3">
+            <br><img style="max-width: 100%;
+            height: auto;" src="assets/img/UX/logos/10tv.jpg">
+        </div>
+    </div>
+    <div class="row" >
+        <div class="col-md-6">
+            <p class="subtitle" style="display:inline">Submit Your Business</p>
+        </div>
+    </div>
+    <br />
+    <form name="promo" class="needs-validation"   novalidate accept-charset="UTF-8"> <!--accept-charset="UTF-8" action="https://formkeep.com/f/exampletoken" method="POST"-->
+        <div class = "row">
+            <div class="col-md-5">
+                <input type="text" required class="form-control promoField" name="name"  placeholder="Business Name">
+                <div class="invalid-feedback">
+                    Please type in the business name
+                  </div>
+                <input type="url" class="form-control promoField" name="website"  required placeholder="Website URL">
+                <div class="invalid-feedback">
+                    Please type in a valid website URL
+                  </div>
+            </div>
+            <div class="col-md-5">
+                <input type="text" required name="promo_text"  class="form-control promoField"  id="promo_text"  maxlength="100" placeholder="Promotional Text">
+                <div class="invalid-feedback">
+                    Please type in a valid text
+                  </div>
+                    <span id="charLeft"  style="color:grey; padding-left:10px; font-size:14px;"><span id="rem_post" title="1000">0</span>/100 characters   </span>
+
+            </div>
+        </div>
+        <div class = "row">
+            <br />
+        </div>
+        <div class = "row">
+            <div class="col-md-12 text-center align-center">
+                 <button class="btn btn-primary dark-purple"  style="width:25%;margin-bottom:10px;" type="submit" id="submitButton">Submit</button>
+            </div>
+        </div>
+      </form>
+    <div class = "row">
+        <div class="col-md-12 text-center">
+            <span id="submitText" class="submitText">Thank you! Your ad will be up within 24 hours.</span>
+        </div>
+    </div>
+    <br>
+  </div>
+
+
+  <script>
+    var copyText = document.getElementById("promo_text");
+    var charLeft = document.getElementById("rem_post");
+    var submitText = document.getElementById("submitText");
+    var submitButton = document.getElementById("submitButton");
+    var forms = document.getElementsByClassName('needs-validation');
+
+
+    function toArray(x) {
+        for(var i = 0, a = []; i < x.length; i++)
+            a.push(x[i]);
+
+        return a
+    }
+
+     copyText.addEventListener("input", function(){
+          var maxlength = this.getAttribute("maxlength");
+          var currentLength = this.value.length;
+
+          charLeft.innerText = currentLength;
+      });
+
+            (function() {
+            // We are currently not using babel. ES 5 syntax
+            'use strict';
+            window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                if (forms.length > 0) {
+                    for (var form of forms) {
+                        form.addEventListener('submit', function(e) {
+                            if (!form.checkValidity()) {
+                                e.stopPropagation();
+
+                            } else {
+                            submitText.style.color = 'black';
+                            submitButton.className = 'btn btn-success';
+                            submitButton.innerHTML = '&check;';
+                            submitButton.disabled = true;
+                            }
+                            e.preventDefault();
+                            form.classList.add('was-validated');
+                        });
+                    }
+                }
+            }, false);
+            })();
+
+  </script>
