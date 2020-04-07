@@ -6,10 +6,10 @@
             font-weight: 500;
             letter-spacing: 0.43px; padding-bottom:20px;
             line-height: 71px;">Thank you 10tv</h1>
-            <h4><br/>10tv has partnered with Can't Stop Columbus and has graciously<br />volunteered to give free advertizing space on their <a href="https://www.10tv.com/">website</a>.</h4>
+            <h4><br/>10tv has partnered with Can't Stop Columbus and has graciously<br />volunteered to give free advertising space on their <a href="https://www.10tv.com/" target="_blank">website</a>.</h4>
             <h4><br/>Offer valid until May 1st, 2020<br />To submit your business, fill out the form below.</h4>
         </div>
-        <div class="col-md-3">  
+        <div class="col-md-3">
             <br><img style="max-width: 100%;
             height: auto;" src="assets/img/UX/logos/10tv.jpg">
         </div>
@@ -31,14 +31,14 @@
                 <div class="invalid-feedback">
                     Please type in a valid website URL
                   </div>
-            </div> 
+            </div>
             <div class="col-md-5">
                 <input type="text" required name="promo_text"  class="form-control promoField"  id="promo_text"  maxlength="100" placeholder="Promotional Text">
                 <div class="invalid-feedback">
                     Please type in a valid text
                   </div>
                     <span id="charLeft"  style="color:grey; padding-left:10px; font-size:14px;"><span id="rem_post" title="1000">0</span>/100 characters   </span>
-                
+
             </div>
         </div>
         <div class = "row">
@@ -57,7 +57,7 @@
     </div>
     <br>
   </div>
-  
+
 
   <script>
     var copyText = document.getElementById("promo_text");
@@ -66,7 +66,7 @@
     var submitButton = document.getElementById("submitButton");
     var forms = document.getElementsByClassName('needs-validation');
 
-    
+
     function toArray(x) {
         for(var i = 0, a = []; i < x.length; i++)
             a.push(x[i]);
@@ -92,7 +92,7 @@
                         form.addEventListener('submit', function(e) {
                             if (!form.checkValidity()) {
                                 e.stopPropagation();
-                                
+
                             } else {
                             submitText.style.color = 'black';
                             submitButton.className = 'btn btn-success';

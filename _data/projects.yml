@@ -22,6 +22,13 @@
   tags:
     - food
 
+- logo: facemask_logo.png
+  link: https://facemasksforus.com/
+  title: Face Masks For Us
+  description: Information and resources for the creation of community masks.
+  tags:
+    - health
+
 - logo: Next Door Munch.png
   link: https://nextdoormunch.com/
   title: Next Door Munch
@@ -57,13 +64,6 @@
   tags:
     - news
     - health
-
-- logo: employ-ohio-now.svg
-  link: #
-  title: Employ Ohio Now
-  description: Find jobs and fill talent needs created by COVID-19
-  tags:
-    - employment
 
 - logo: OMJ.svg
   link: https://jobseeker.ohiomeansjobs.monster.com/
