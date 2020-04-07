@@ -251,3 +251,16 @@ div.jumbotron {
 .promoField{
   padding: 15px; margin-top:5px; margin-bottom:5px; 
 }
+
+// TODO separate the scss into page specific files.
+// This has already started with the import _typography
+
+.list-of-skills {
+  ul {
+    margin-bottom: 0;
+  }
+  @media #{$break-tablet-up} {
+    display: flex;
+    justify-content: space-between;
+  }
+}
