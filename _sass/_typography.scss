@@ -2,28 +2,33 @@ h1.display-4 {
   font-weight: 500;
 }
 
-.post-title {
-  font-family: Roboto;
+.title-content {
+  h1 {
+    color: #000000;
+    font-family: Roboto;
+    font-size: 36px;
+    font-weight: 500;
+    letter-spacing: 0.26px;
+  }
+  
+  h4 {
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.13px;
+  }  
 }
 
-.post-read-more {
+.post {
   font-family: Roboto;
-  font-weight: 500;
-}
 
-.page-title {
-  color: #000000;
-  font-family: Roboto;
-  font-size: 36px;
-  font-weight: 500;
-  letter-spacing: 0.26px;
-}
-
-.page-lead-2 {
-  font-family: Roboto;
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: 0.13px;
+  .title {
+    font-family: Roboto;
+  }
+  .read-more {
+    font-family: Roboto;
+    font-weight: 500;  
+  }
 }
 
 .page-lead {
