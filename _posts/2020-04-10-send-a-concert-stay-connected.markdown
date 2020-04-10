@@ -3,6 +3,8 @@ title: Send a Concert, Stay Connected
 date: 2020-04-10 10:29:00 -04:00
 categories:
 - stories
+tags:
+- Curbside Concerts
 author: Veronica Johnson
 layout: post
 ---
