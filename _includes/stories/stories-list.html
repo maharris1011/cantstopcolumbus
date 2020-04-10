@@ -1,9 +1,9 @@
 {% for post in site.categories.stories %}
-<div class="jumbotron background-white my-3">
-    <h2 class="post-title">{{ post.title }}</h2>
+<div class="jumbotron post background-white my-3">
+    <h2 class="title">{{ post.title }}</h2>
     <p class="post-excerpt">
       {{ post.excerpt }}
-      <a href="{{ post.url }}"><span class="post-read-more">READ MORE</span></a>
+      <a href="{{ post.url }}"><span class="read-more">READ MORE</span></a>
     </p>
 </div>
 {% endfor %}
