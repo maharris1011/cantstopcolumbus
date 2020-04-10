@@ -1,17 +1,20 @@
-<div class="jumbotron mb-1">
-  {% include nav.html %}
-  <div class="row align-items-center">
-    <div class="col-md-8">
-      <h1>Stories</h1>
-      <h4>Read about the impact of <span class="highlight">Can't Stop Columbus</span></h4>
-      <div class="d-flex help-button-group">
-        <a  class="btn btn-primary btn-lg dark-purple"
-            role="button"
-            href="https://airtable.com/shr6r8e5dIaTfke5z/tbl1mR3hyIJoKxwox?blocks=hide"
-            >
-            <i class="fa fa-external-link-alt"></i>&nbsp;Volunteer
-          </a>
-      </div>
+{% capture between_content %}
+  <div class="title-content col-auto mb-2">
+    <h1>Stories</h1>
+    <h4>Read about the impact of <span class="highlight">Can't Stop Columbus</span></h4>
+  </div>
+  <div class="col-auto mb-2">
+    <div class="d-flex help-button-group">
+      <a  class="btn btn-primary btn-lg dark-purple"
+          role="button"
+          href="https://airtable.com/shr6r8e5dIaTfke5z/tbl1mR3hyIJoKxwox?blocks=hide"
+          >
+          <i class="fa fa-external-link-alt"></i>&nbsp;Volunteer
+        </a>
     </div>
   </div>
+{% endcapture %}
+
+<div class="jumbotron mb-1">
+  {% include nav.html between=between_content %}
 </div>

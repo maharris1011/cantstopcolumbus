@@ -1,9 +1,9 @@
 {% for press in site.categories.press-release %}
-<div class="jumbotron background-white my-3">
-    <h2 class="post-title">{{ press.title }}</h2>
+<div class="post jumbotron background-white my-3">
+    <h2 class="title">{{ press.title }}</h2>
     <p class="post-excerpt">
       {{ press.excerpt }}
-      <a href="{{ press.url }}"><span class="post-read-more">READ MORE</span></a>
+      <a href="{{ press.url }}"><span class="read-more">READ MORE</span></a>
     </p>
 </div>
 {% endfor %}

@@ -1,20 +1,21 @@
-<div class="jumbotron">
-  {% include nav.html %}
-  <div class="row align-items-center">
-    <div class="col-md-8">
-      <h1>Get involved</h1>
-      <h4>Find ways to help in <span class="highlight">Columbus</span></h4>
-      <div class="d-flex help-button-group">
-        <a
-          class="btn btn-primary dark-purple"
-          href="https://airtable.com/shrDrTCZQmDlCN8sg"
-          target="_blank"
-        >
-        <i class="fas fa-external-link-alt"></i>&nbsp;Volunteer
-        </a>
-      </div>
-    </div>
+{% capture between_content %}
+<div class="title-content col-md-8">
+  <h1>Get involved</h1>
+  <h4>Find ways to help in <span class="highlight">Columbus</span></h4>
+  <div class="d-flex help-button-group">
+    <a
+      class="btn btn-primary dark-purple"
+      href="https://airtable.com/shrDrTCZQmDlCN8sg"
+      target="_blank"
+    >
+    <i class="fas fa-external-link-alt"></i>&nbsp;Volunteer
+    </a>
   </div>
+</div>
+{% endcapture %}
+
+<div class="jumbotron">
+  {% include nav.html between=between_content %}
 </div>
 
 <div class="jumbotron">

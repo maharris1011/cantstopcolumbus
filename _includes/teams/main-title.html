@@ -1,17 +1,17 @@
-<div class="jumbotron background-white">
-  {% include nav.html %}
-  <div class="row align-items-center">
-    <div class="col-md-8">
-      <h1>Team</h1>
-      <h4>The lovely folks who made all this possible</h4>
-      <div class="d-flex help-button-group">
-        <a  class="btn btn-primary btn-lg dark-purple"
-            role="button"
-            href="https://airtable.com/shrDrTCZQmDlCN8sg" target="_blank"
-            >
-            <i class="fa fa-external-link-alt"></i>&nbsp;Volunteer
-          </a>
-      </div>
-    </div>
+{% capture between_content %}
+<div class="title-content col-md-8">
+  <h1>Team</h1>
+  <h4>The lovely folks who made all this possible</h4>
+  <div class="d-flex help-button-group">
+    <a  class="btn btn-primary btn-lg dark-purple"
+        role="button"
+        href="https://airtable.com/shrDrTCZQmDlCN8sg" target="_blank"
+        >
+        <i class="fa fa-external-link-alt"></i>&nbsp;Volunteer
+      </a>
   </div>
+</div>
+{% endcapture %}
+<div class="jumbotron background-white">
+  {% include nav.html between=between_content %}
 </div>

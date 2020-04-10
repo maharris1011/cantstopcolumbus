@@ -11,13 +11,6 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    # - name: Build the site in the jekyll/builder container
-    #   run: |
-    #     docker run \
-    #     -e AIRTABLE_KEY=${{ secrets.AIRTABLE_KEY }} \
-    #     --mount type=bind,src=${{ github.workspace }},dst=/srv/jekyll \
-    #     jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll && jekyll build --verbose --future"
-
     - name: Build
       uses: jerryjvl/jekyll-build-action@v1
       env: 
