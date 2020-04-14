@@ -1,6 +1,8 @@
-- name: health
+- name: art
+- name: education
+- name: employment
 - name: food
+- name: health
+- name: housing
 - name: mobility
 - name: news
-- name: employment
-- name: housing
