@@ -191,10 +191,14 @@ div.jumbotron {
 }
 
 #copyCSC{
-  font-size: 2rem;
+  font-size: 1.25rem;
   font-weight: 500;
   border: none;
   max-width: 300px;
+
+  @media #{$break-tablet-up} {
+    font-size: 2rem;
+  }
 }
 
 #copied-tooltip {
