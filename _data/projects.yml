@@ -43,6 +43,27 @@
   tags:
     - health
 
+- logo: masterpieces.gif
+  link: https://meetingmasterpieces.com
+  title: Meeting Masterpieces
+  description: Meeting Masterpieces gives artists a venue to sell virtual meeting backgrounds or raise funds for direct relief.
+  tags:
+    - art
+
+- logo: we-feed-cbus.jpg
+  link: https://wefeedcbus.com
+  title: We Feed Columbus
+  description: We Feed Cbus aims to provide local restaurants affected by COVID-19 the financial support needed to deliver safely packaged meals to front line workers and communities experiencing food insecurity.
+  tags:
+    - food
+
+- logo: keep-learning.png
+  link: https://keeplearningcbus.com
+  title: Keep Learning Columbus
+  description: A list of curated tools for teachers to help them deliver their lessons and support their students.
+  tags:
+    - education
+
 - logo: Next Door Munch.png
   link: https://nextdoormunch.com/
   title: Next Door Munch
