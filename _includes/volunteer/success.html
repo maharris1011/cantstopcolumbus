@@ -1,0 +1,92 @@
+<div class="jumbotron background-white">
+    <div class="row" style="padding-bottom:20px;">
+        <div class="col-md-9">
+            <h1 class="nextSteps">Next Steps</h1>
+        </div>
+    </div>
+    <ol>
+        <li class="orderedList"><div class="row" >
+            <div class = "col-md-1">
+                <button class="navbar-toggler collapsed hamburger-background light-purple-background align-left buttonSlack" type="button" onclick="redirect()" >
+                    <i class="fab fa-slack fa-2x" style="color:#9933CC; "></i>
+                </button>
+            </div>
+            <div class="col-md-8">
+                <a class="linkSuccess" style="display:inline; color:#9933CC; " href="http://slack.cantstopcolumbus.com/" target="_blank">Request to join our slack</a>
+            </div>
+        </div></li>
+        <li class="orderedList"><div class="row" >
+            <div class="col-md-8">
+                <p class="subtitle" style="display:inline">Watch our <a class="linkSuccess" href="https://www.youtube.com/watch?v=8sQSMoyZQ7Y" target="_blank">onboarding video</a> </p>
+            </div>
+        </div></li>
+        <li class="orderedList">
+            <div class="row" >
+            <div class="col-md-8">
+                <p class="subtitle" style="display:inline">Read the <a style="display:inline; color:#9933CC; " class="linkSuccess" target="_blank" href="https://cantstopcolumbus.slack.com/archives/C0103K362TH">#000 get started</a> channel</p>
+            </div>
+        </div></li>
+        <li class="orderedList">
+            <div class="row" >
+            <div class="col-md-8">
+                <p class="subtitle" style="display:inline">Jump into a project!</p>
+            </div>
+        </div></li>
+    </ol>
+  </div>
+
+  <script  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  crossorigin="anonymous"></script>
+
+
+  <script>
+
+
+      function redirect() {
+        window.open('https://www.slack.com', '_blank');
+      }
+
+  </script>
+
+  <style>
+      .linkSuccess {
+        display:inline; color:#9933CC;
+        height: 42px;
+        text-align: left !important;
+        font-family: Roboto;
+        font-size: 36px;
+        font-weight: 500;
+        letter-spacing: 0.26px;
+        line-height: 42px;
+      }
+
+      .buttonSlack {
+        height: auto;
+                    width: auto;
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+      }
+
+      .orderedList {
+        font-family: Roboto;
+        font-size: 54px;
+        font-weight: 500;
+        letter-spacing: 0.43px;
+        padding-bottom: 20px;
+        margin-left: 40px;
+        line-height: 71px; 
+        text-indent:40px;
+      }
+
+      .nextSteps {
+        display:inline; 
+        font-family: Roboto;
+        font-size: 54px;
+        font-weight: 500;
+        letter-spacing: 0.43px; padding-bottom:20px;
+        line-height: 71px; 
+      }
+  </style>
