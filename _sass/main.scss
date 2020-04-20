@@ -275,8 +275,12 @@ div.jumbotron {
   margin-bottom:-25px;
 }
 
-.promoField{
+.promoField {
   padding: 15px; margin-top:5px; margin-bottom:5px; 
+}
+
+.volunteerField {
+  padding: 15px; margin-top:5px; margin-bottom:5px; border: 1px solid black; 
 }
 
 // TODO separate the scss into page specific files.
