@@ -1,0 +1,39 @@
+<div class="jumbotron text-center background-white">
+  <div class="row">
+    <div class="col-md-12">
+      <p class="subtitle" style="display:inline">We're <span class="primary-blue">Just</span> Getting Started</p>
+    </div>
+  </div>
+  </br>
+  <div class="col-md-12">
+    <div class="card-deck" id="carousel2">
+      <div v-for="project in projects" class="card col-md-3 mx-1 my-2">
+        <div style="height: 50%; padding-top:40px;">
+          <span class="helper"></span>
+          <img style="vertical-align: middle;" src="assets/img/UX/projects/ohioready_logo_H_2c@4x.png" class="card-img-top">
+        </div>
+        <div class="card-body">
+          <a href="https://ohioready.org/" target="_blank">
+            <h5 class="card-title">{$ project.Title $}</h5>
+          </a>
+          <p class="card-text">{$ project.Email $}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <a
+      class="btn btn-secondary"
+      role="button"
+      href="/find-help.html"
+      >
+        VIEW ALL RESOURCES
+      </a>
+      <!-- <a class="mt-4 btn btn-outline-primary btn-lg dark-bg" href="mailto:hello@cantstopcolumbus.com?Subject=Submit%20a%20Resource">
+        <i class="fa fa-envelope-square"></i>&nbsp;Submit a Resource</a> -->
+    </div>
+  </div>
+</div>
+
+

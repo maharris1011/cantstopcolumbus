@@ -43,6 +43,9 @@
   integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
   crossorigin="anonymous"
 ></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
 
 <script>
   function on() {
@@ -55,6 +58,26 @@
 
   $(function() {
     $('img').addClass('img-fluid');
+  })
+
+  var cantstopcbus = new Vue({
+    el: '#carousel2',
+    delimiters:['{$', '$}'],
+    data: {
+      projects: []
+    }, 
+    mounted() {
+      axios.get("https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/projects")
+        .then((response) => {
+            console.log(response)
+            for (i = 0; i < 4; i++) {
+              idx = Math.floor(Math.random() * response.data.length)
+              this.projects.push(response.data[idx])
+            }
+        }, error => {
+            console.error(error);
+        })
+    }
   })
 
 </script>
