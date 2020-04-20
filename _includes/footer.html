@@ -73,6 +73,7 @@
             for (i = 0; i < 4; i++) {
               idx = Math.floor(Math.random() * response.data.length)
               this.projects.push(response.data[idx])
+              response.data.splice(idx, 1)
             }
         }, error => {
             console.error(error);
