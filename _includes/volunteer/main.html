@@ -1,0 +1,733 @@
+<div class="jumbotron background-white">
+
+
+    <form name="volunteer" class="needs-validation" method="post" action="volunteer-success.html" style="margin-left:100px"  novalidate accept-charset="UTF-8"> <!--accept-charset="UTF-8" action="https://formkeep.com/f/exampletoken" method="POST"-->
+        <div class = "row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <input type="text" id="firstName" required class="form-control volunteerField " name="firstName">
+                    <label for="firstName" class="form-control-placeholder">First Name</label>
+                    <div class="invalid-feedback">
+                        Please type in your first name
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <div class = "row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <input type="text" id="lastName" required class="form-control volunteerField" name="lastName">
+                    <label for="lastName" class="form-control-placeholder">Last Name</label>
+                    <div class="invalid-feedback">
+                        Please type in your last name
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <div class = "row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <input type="email" id="primEmail" required class="form-control volunteerField" name="primEmail" >
+                    <label for="primEmail" class="form-control-placeholder">Primary Email</label>
+                    <div class="invalid-feedback">
+                        Please type in a valid email
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <div class = "row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <input type="tel" id="phone" required class="form-control volunteerField" name="phone" >
+                    <label for="phone" class="form-control-placeholder">Phone Number</label>
+                </div>
+            </div> 
+        </div>
+        <div class = "row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <input type="text" id="work"  class="form-control volunteerField" name="work" >
+                    <label for="work" class="form-control-placeholder">Where can people see your work?</label>
+                </div>
+            </div> 
+        </div>
+        <div class = "row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    
+                    <input type="text" id="other"  class="form-control volunteerField" name="other" >
+                    <label for="other" class="form-control-placeholder">Anywhere else?</label>
+                </div>
+            </div> 
+        </div>
+        <div class = "row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    
+                    <input type="text" id="city"  class="form-control volunteerField" name="city" >
+                    <label for="city" class="form-control-placeholder">City</label>
+                </div>
+            </div> 
+        </div>
+        <div class = "row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    
+                        <select class="form-control selectpicker volunteerField" style="height: calc(3.25rem + 2px)!important" id="state" name="state">
+                            <option value="">N/A</option>
+                            <option value="AK">Alaska</option>
+                            <option value="AL">Alabama</option>
+                            <option value="AR">Arkansas</option>
+                            <option value="AZ">Arizona</option>
+                            <option value="CA">California</option>
+                            <option value="CO">Colorado</option>
+                            <option value="CT">Connecticut</option>
+                            <option value="DC">District of Columbia</option>
+                            <option value="DE">Delaware</option>
+                            <option value="FL">Florida</option>
+                            <option value="GA">Georgia</option>
+                            <option value="HI">Hawaii</option>
+                            <option value="IA">Iowa</option>
+                            <option value="ID">Idaho</option>
+                            <option value="IL">Illinois</option>
+                            <option value="IN">Indiana</option>
+                            <option value="KS">Kansas</option>
+                            <option value="KY">Kentucky</option>
+                            <option value="LA">Louisiana</option>
+                            <option value="MA">Massachusetts</option>
+                            <option value="MD">Maryland</option>
+                            <option value="ME">Maine</option>
+                            <option value="MI">Michigan</option>
+                            <option value="MN">Minnesota</option>
+                            <option value="MO">Missouri</option>
+                            <option value="MS">Mississippi</option>
+                            <option value="MT">Montana</option>
+                            <option value="NC">North Carolina</option>
+                            <option value="ND">North Dakota</option>
+                            <option value="NE">Nebraska</option>
+                            <option value="NH">New Hampshire</option>
+                            <option value="NJ">New Jersey</option>
+                            <option value="NM">New Mexico</option>
+                            <option value="NV">Nevada</option>
+                            <option value="NY">New York</option>
+                            <option value="OH">Ohio</option>
+                            <option value="OK">Oklahoma</option>
+                            <option value="OR">Oregon</option>
+                            <option value="PA">Pennsylvania</option>
+                            <option value="PR">Puerto Rico</option>
+                            <option value="RI">Rhode Island</option>
+                            <option value="SC">South Carolina</option>
+                            <option value="SD">South Dakota</option>
+                            <option value="TN">Tennessee</option>
+                            <option value="TX">Texas</option>
+                            <option value="UT">Utah</option>
+                            <option value="VA">Virginia</option>
+                            <option value="VT">Vermont</option>
+                            <option value="WA">Washington</option>
+                            <option value="WI">Wisconsin</option>
+                            <option value="WV">West Virginia</option>
+                            <option value="WY">Wyoming</option>
+                        </select>
+                        <label for="state" class="form-control-placeholder stateField ">State</label>
+                </div>
+            </div> 
+        </div>
+        <div class = "row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    
+                    <input type="text" id="linkedin"  class="form-control volunteerField" name="linkedin" >
+                    <label for="linkedin" class="form-control-placeholder">LinkedIn</label>
+                </div>
+            </div> 
+        </div>
+        <div class = "row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    
+                    <input type="text" id="twitter"  class="form-control volunteerField" name="twitter" >
+                    <label for="twitter" class="form-control-placeholder">Twitter</label>
+                </div>
+            </div> 
+        </div>
+        <div class = "row">
+            <div class="col-md-7">
+                <div class="form-group">
+                    <label style="font-size: 1.25rem; color: #575757;" for="passionWork">Are there any types of problems you're particularly passionate about solving?</label>
+                    <br>
+                    <button type="button" id="passionWorkButton" onclick="openPassionList()" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#modal">+ Add</button>
+                    <div class="btn-group-vertical" style="margin-top:10px;" id = "passionWorkButtonGroup">
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <div class = "row">
+            <div class="col-md-7">
+                <div class="form-group">
+                    <label style="font-size: 1.25rem; color: #575757;" for="position">What are you in a position to volunteer? Add all the skills you can muster.</label>
+                    <br>
+                    <button type="button" id="positionButton" onclick="openPositionList()" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#modal">+ Add</button>
+                    <div class="btn-group-vertical" style="margin-top:10px" id = "positionButtonGroup">
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <div class = "row">
+            <div class="col-md-7">
+                <div class="form-group">
+                    <label style="font-size: 1.25rem; color: #575757;" for="activities">Below are some types of regular needs that have emerged, what type of activities are you best suited to support?</label>
+                    <button type="button" id="activitiesButton" onclick="openActivitiesList()" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#modal">+ Add</button>
+                    <div class="btn-group-vertical" style="margin-top:10px" id = "activitiesButtonGroup">
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <div class = "row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <input type="number" id="hours"  class="form-control volunteerField" name="hours" >
+                    <label for="hours" class="form-control-placeholder">Hours Per Week Available?</label>
+                    <p style="text-indent: 20px;"><small>Your best guess is fine. This is just services as a guideline for us to best connect you with a project!</small></p>
+                </div>
+            </div> 
+        </div>
+
+        <div class = "row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label style="font-size: 1.25rem; color: #575757;"  for="contributeSkills">I am interested in contributing my skills to ...</label>
+                    <div class="checkbox">
+                        <label class="customcheck" style="font-size: 1.25rem; color: #575757; text-indent:15px;"  ><input type="checkbox" value=""><span class="checkmark" style="margin-right:25px;"></span>Contributing</label>
+                      </div>
+                      <div class="checkbox">
+                        <label  class="customcheck" style="font-size: 1.25rem; color: #575757; text-indent:15px;" ><input type="checkbox" value=""> <span class="checkmark"></span>Mentoring</label>
+                      </div>
+                      <div class="checkbox ">
+                        <label  class="customcheck" style="font-size: 1.25rem; color: #575757; text-indent:15px;" ><input type="checkbox" value="" ><span class="checkmark"></span>Giving a remote talk</label>
+                      </div>
+                </div>
+            </div> 
+        </div>
+        <div class = "row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="photo" style="font-size: 1.25rem; color: #575757;">Upload a photo. Since we're all remote, let us see your face!</label>
+                    <div id="upload_Box" style="  border-radius: 25px; border: 5px dashed  #575757; padding: 20px; width: 500px; height: 150px;">
+                        <!--<button class="btn btn-secondary" id="photoUpload" type="button"  style="border: 2px solid #4300FF; background-color: #F1EBFF; padding:10px;"><i class="fa fa-paperclip" style="color: #4300FF;">
+                        </i><strong style="padding:10px; color: #4300FF;;">Attach File</strong></button> 
+                        <span style="font-size: 1.25rem; color: #575757;"> or drop here</span>-->
+                        <label for="photoUpload" class="custom-file-upload" style="border: 2px solid #4300FF; background-color: #F1EBFF; padding:10px; border-radius: 0.25rem;">
+                            <i class="fa fa-paperclip" style="color: #4300FF;">
+                            </i><strong style="padding:10px; color: #4300FF;;">Attach File</strong> 
+                        </label> <span style="font-size: 1.25rem; color: #575757;"> or drop here</span>
+                        <input id="photoUpload" type="file"/>
+                        <img src="" id="preview">
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <div class = "row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    
+                    <input type="text" class="form-control volunteerField" id="misc" rows="3"></input>
+                    <label for="misc" class="form-control-placeholder">Anything else we should know?</label>
+                    <!--<input type="text" id="hours"  class="form-control" name="hours" >-->
+                </div>
+            </div> 
+        </div>
+        <div class = "row">
+            <div class="col-md-9">
+                <div class="form-group">
+                    <div class= "row">
+                        <div class="checkbox ">
+                            <label  class="customcheck" style="font-size: 1.25rem; color: #575757; text-indent:15px;" ><input type="checkbox" value="" required><span class="checkmark"></span>I have read the <a href="https://cantstopcolumbus.com/code-of-conduct.html" style="font-style:bold; color:#4300FF">Code of Conduct</a></label>
+                          </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <div class = "row">
+            <br />
+        </div>
+        <div class = "row">
+            <div class="col-md-12 text-center align-center">
+                 <button class="btn btn-primary dark-purple"  type="submit" id="submitButton">Submit</button>
+            </div>
+        </div>
+      </form>
+    <!--<span id="key" style="display:hidden;">{{ site.env.AIRTABLE_KEY }}</span>-->
+    <br>
+  </div>
+
+
+  <div class="modal fade "  id="modal" tabindex="-1" #modal role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog " style="width: 600px;"  role="document">
+      <div class="modal-content " id="modal-content" style="width: 600px;">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Choose an Option Below</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body scrollable-menu" id="modalBody">
+            <div class="btn-group-vertical " id = "modalButtonGroup">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  crossorigin="anonymous"></script>
+
+
+  <script>
+      var passionList=['Access to Information', 'Education', 'Elderly & At-Risk Populations', 'Emergency Services', 'Employment', 'Financial Support', 'Food & Hunger', 'General Aid', 'Healthcare \\\ Medical Resources', 'K-12 Education', 'Mental Health', 'Minority, Immigrant & Refugee Resources', 'Mobility', 'Non-Profit Support', 'Small Business', 'Other (describe below)'];
+      var positionList=['3D Printing', 'Animation', 'Audio Editing', 'Business Analysis', 'Community Volunteering', 'Copywriting', 'Crafting', 'Data - Product Analytics', 'Data - Synthesis', 'Data - Visualization', 'Data Entry', 'Digitial Strategy', 'DIY', 'E-Commerce', 'Education - K-12', 'Education - Post-Secondary', 'Education - Pre-K', 'Epidemiology', 'Graphic Design', 'Healthcare', 'Hustle', 'Internet Research', 'Language - Spanish', 'Legal', 'Marketing', 'Non-Profit Volunteering', 'Performing Arts/Music', 'Personal /// Professional Network - Government', 'Personal /// Professional Network - Health', 'Personal /// Professional Network - Other', 'Personal /// Professional Network - Students', 'Podcast Production/Hosting', 'Process Engineering', 'Product Management', 'Project Management', 'Real Estate Development', 'Recruiting', 'Social Media', 'Tech - .NET', 'Tech - Android Development', 'Tech - Backend Development', 'Tech - C++', 'Tech - Database', 'Tech - Excel', 'Tech - Flask', 'Tech - Frontend Development', 'Tech - GIS', 'Tech - HTML///CSS', 'Tech - Information Security', 'Tech - Infrastructure', 'Tech - iOS Development', 'Tech - Java', 'Tech - JavaScript', 'Tech - Microcontrollers', 'Tech - Node', 'Tech - Python', 'Tech - QA', 'Tech - R', 'Tech - Rails', 'Tech - React', 'Tech - Redux', 'Tech - Spring Boot', 'Tech - SquareSpace', 'Tech - Swift', 'Tech - TensorFlow', 'Tech - VBA', 'Tech - Vue.js', 'Tech - WordPress Development', 'UI Design', 'UX Design', 'UX Research', 'Video Editing', 'Visual Arts', ];
+      var activitiesList=['Research and Data Collection', 'Administration and Documentation', 'Coding and Tech Development', 'Project and/or Product Management', 'Organizing and/or Hosting Virtual Programming', 'Recruiting New Members and Skillsets', 'Ideation and Solution Discovery', 'External Communications (Social Media, PR, Copywriting, etc)', 'Graphic Design', 'Fundraising and Forming Community Partnerships'];
+
+      var chosenPassionList=[];
+      var chosenActivitiesList=[];
+      var chosenPositionList=[];
+
+      var fileTag = document.getElementById("photoUpload"),
+      preview = document.getElementById("preview"),
+      uploadBox = document.getElementById("upload_Box");
+
+      var img = preview.getAttribute('src');
+
+      var forms = $("[name='needs-validation']");
+
+      function openPassionList() {
+        clearChildren();
+        passionList.forEach(function (passionWork, index) {
+            console.log("Entering For Each");
+            if(!chosenPassionList.includes(passionWork))
+            {
+                console.log("Adding HTML");
+                var text = "<button class=\"modalButton\" type=\"button\" id=\"" + passionWork + "\" onclick=\"addPassionToChosen('" + passionWork + "')\" >"  + passionWork + "</button>"
+                $("#modalButtonGroup").append(text);
+            }
+        });
+      }
+
+      function addPassionToChosen(passion){
+         console.log("HI");
+         console.log(passion);
+         chosenPassionList.push(passion);
+         var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + passion.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + passion + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deletePassion('" + passion  + "')\">&times;</span></button>"
+         $("#passionWorkButtonGroup").append(newButton);
+         $("#modal").modal("hide");
+      }
+
+      function deletePassion(passion){
+        console.log("FUNCTION CLICKED");
+        console.log(passion);
+        const index = chosenPassionList.indexOf(passion);
+        if (index > -1) {
+            chosenPassionList.splice(index, 1); 
+        }
+        
+        var removeText = "chosen"+passion.toString().replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_');
+        console.log(removeText);
+        var child = document.getElementById(removeText)
+        document.getElementById("passionWorkButtonGroup").removeChild(child);
+        console.log(chosenPassionList);
+      }
+
+       function openPositionList() {
+        clearChildren();
+        positionList.forEach(function (position, index) {
+            if(!chosenPositionList.includes(position)){
+                console.log(position)
+                var text = "<button class=\"modalButton\" type=\"button\" id=\"" + position + "\" onclick=\"addPositionToChosen('" + position + "')\" >"  + position + "</button>"
+                $("#modalButtonGroup").append(text)
+            }
+
+        });
+
+       // $("#modal-content").classList.add("modal-dialog-scrollable");
+       }
+
+       function addPositionToChosen(position){
+           console.log("Pushing " + position);
+         chosenPositionList.push(position);
+         console.log(position)
+         var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + position.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + position + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deletePosition('" + position  + "')\">&times;</span></button>"
+         $("#positionButtonGroup").append(newButton);
+         $("#modal").modal("hide");
+      }
+
+      function deletePosition(position){
+        console.log("DELETING POSITION" + position)
+        console.log(chosenPositionList);
+        const index = chosenPositionList.indexOf(position);
+        console.log(index);
+        if (index > -1) {
+            chosenPositionList.splice(index, 1);
+        }
+        
+        var removeText = "chosen" + position.toString().replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_');
+        //console
+        console.log(removeText);
+        var child = document.getElementById(removeText);
+        console.log(child);
+        document.getElementById("positionButtonGroup").removeChild(child);
+      }
+
+       function openActivitiesList() {
+         clearChildren();
+         activitiesList.forEach(function (activity, index) {
+            if(!chosenActivitiesList.includes(activity))
+            {
+                var text = "<button class=\"modalButton\" type=\"button\" id=\"" + activity + "\" onclick=\"addActivityToChosen('" + activity + "')\" >"  + activity + "</button>"
+                $("#modalButtonGroup").append(text)
+            }
+        });
+       }
+
+       function addActivityToChosen(activity){
+         chosenActivitiesList.push(activity);
+         var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + activity.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + activity + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deleteActivity('" + activity + "')\">&times;</span></button>"
+         $("#activitiesButtonGroup").append(newButton);
+         $("#modal").modal("hide");
+      }
+
+      function deleteActivity(activity){
+          console.log("DELETING ACTIVITY");
+          console.log(activity);
+        const index = chosenActivitiesList.indexOf(activity);
+        if (index > -1) {
+            chosenActivitiesList.splice(index, 1);
+        }
+        
+        var removeText = "chosen" + activity.toString().replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_');
+        var child = document.getElementById(removeText)
+        document.getElementById("activitiesButtonGroup").removeChild(child);
+      }
+
+        function clearChildren() { 
+            $("#modalButtonGroup").empty();
+        } 
+
+        
+    
+
+    $(function() {
+            // We are currently not using babel. ES 5 syntax
+            'use strict';
+            $( document ).ready(function() {
+
+                console.log( "ready!" );
+
+                chosenPassionList=[];
+                chosenActivitiesList=[];
+                chosenPositionList=[];
+
+                    fileTag.addEventListener("change", function() {
+                        changeImage(this);
+                    });
+
+                    ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                        uploadBox.addEventListener(eventName, preventDefaults, false)   
+                         document.body.addEventListener(eventName, preventDefaults, false)
+                        })
+
+                        // Highlight drop area when item is dragged over it
+                        ;['dragenter', 'dragover'].forEach(eventName => {
+                            uploadBox.addEventListener(eventName, highlight, false)
+                        })
+
+                        ;['dragleave', 'drop'].forEach(eventName => {
+                            uploadBox.addEventListener(eventName, unhighlight, false)
+                        })
+
+                        // Handle dropped files
+                        uploadBox.addEventListener('drop', handleDrop, false)
+
+
+                        function highlight(e) {
+                            uploadBox.classList.add('highlightBox')
+                        }
+
+                        function unhighlight(e) {
+                            uploadBox.classList.remove('highlightBox')
+                        }
+                        
+                        function preventDefaults (e) {
+                           e.preventDefault()
+                           e.stopPropagation()
+                        }
+
+                        function handleDrop(e) {
+                            var dt = e.dataTransfer
+                            //var files = dt.files
+
+                            changeImage(dt);
+                            //handleFiles(files)
+                        }
+
+                    
+
+                    function changeImage(input) {
+                        var reader;
+
+                        if (input.files && input.files[0]) {
+                                reader = new FileReader();
+
+                                reader.onload =  function(e) {
+                                 // console.log(e.target.result);
+                                preview.setAttribute('src', e.target.result);
+
+                                let img = new Image()
+                                img.src = e.target.result
+                                img.onload = () => {
+                                    console.log(img.height);
+                                    
+                                    console.log(parseInt(document.getElementById("upload_Box").style.height));
+                                    console.log((img.height - parseInt(document.getElementById("upload_Box").style.height)));
+                                    console.log(parseInt(document.getElementById("upload_Box").style.height) + (img.height - parseInt(document.getElementById("upload_Box").style.height)));
+                                    //console.log(parseInt(document.getElementById("upload_Box").style.width) + (img.width - parseInt(document.getElementById("upload_Box").style.width)));
+                                    let newHeight = parseInt(document.getElementById("upload_Box").style.height) + (img.height - parseInt(document.getElementById("upload_Box").style.height) + 100)
+                                    let newWidth = parseInt(document.getElementById("upload_Box").style.width) + (img.width - parseInt(document.getElementById("upload_Box").style.width) + 150)
+                                    document.getElementById("upload_Box").style.height = newHeight.toString() + "px";
+                                    document.getElementById("upload_Box").style.width = newWidth.toString() + "px";
+                                }
+                                  
+                                }
+
+                                
+                                reader.readAsDataURL(input.files[0]);
+                               // console.log(input.files[0].height);
+                                 // console.log(document.getElementById("upload_Box").style.height);
+                                document.getElementById("upload_Box").style.height = document.getElementById("upload_Box").style.height + input.files[0].height;
+                                
+                            }
+                        }
+
+                $('input[type="url"]').on('blur', function(){
+                    var string = $(this).val();
+                    if (!string.match(/^https?:/) && string.length) {
+                        string = "http://" + string;
+                        $(this).val(string)
+                    }
+                    });
+
+
+
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                if (forms.length > 0) {
+                    for (var form of forms) {
+                        form.addEventListener('submit', function(e) {
+                            console.log("Submitting");
+                            window.location.pathname = '/volunteer-success.html'
+                            if (!form.checkValidity()) {
+                                e.stopPropagation();
+                                e.preventDefault();
+                                window.location.pathname = '/volunteer-success.html'
+                            //    console.log("FORM NOT VALID");
+                            } else {
+
+                                window.location.pathname = '/volunteer-success.html'
+                             /*   var xhrPost = new XMLHttpRequest();
+                                e.preventDefault();
+
+                                xhrPost.open('POST', 'https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/promotions', true);
+                                xhrPost.setRequestHeader('Content-Type', 'application/json');
+
+                                xhrPost.send(JSON.stringify({
+                                            "Business":copyName.value,
+                                            "Promo":copyText.value,
+                                            "Website": copySite.value
+                                }));
+
+                                xhrPost.onerror = function () {
+                                            errorText.className = 'errorText';
+                                            e.stopPropagation();
+                                            submitButton.className = 'btn btn-danger submitSuccess';
+                                            submitButton.innerHTML = 'X';
+                                            submitButton.disabled = true;
+                                };
+
+                                xhrPost.onload = function() {
+                                    errorText.className = 'submitText';
+                                    submitText.className = 'submitTextSuccess';
+                                    submitButton.className = 'btn btn-success submitSuccess';
+                                    submitButton.innerHTML = '&check;';
+                                    submitButton.disabled = true;
+                                }*/
+                            }
+                            form.classList.add('was-validated');
+                        });
+                    }
+                }
+            } , false);
+            })
+
+
+    function readURL(input) {
+          if (input.files && input.files[0]) {
+              var reader = new FileReader();
+
+              reader.onload = function (e) {
+                  $('#imageResult')
+                      .attr('src', e.target.result);
+              };
+              reader.readAsDataURL(input.files[0]);
+          }
+      }
+
+      $(function () {
+          $('#upload').on('change', function () {
+              readURL(input);
+          });
+      });
+</script>
+
+<style>
+
+.scrollable-menu {
+    height: auto;
+    max-height: 600px;
+    overflow-x: hidden;
+}
+
+.modalButton{
+    position: relative;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #4300FF;
+    background-color: white;
+    border-radius: 6px;
+    /* position: absolute; */
+    /* top: 10px; */
+    /* left: 18px; */
+    width: 547px;
+    height: 40px;
+    text-align:left;
+    font-size: 1.1rem; color: #575757;
+    margin: 5px;
+    font-weight: 600;
+}
+
+
+.btn-outline-volunteer{
+    color: #4300FF;
+    background-color: transparent;
+    background-image: none;
+    border-color: #4300FF;
+}
+
+#upload_Box.highlightBox {
+  border:5px dashed #4300FF!important;
+}
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+    .form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.form-control-placeholder {
+  position: absolute;
+  top: 0;
+  font-size:1.1rem;
+  padding: 10px 0 0 13px;
+  transition: all 200ms;
+  opacity: 0.5;
+}
+
+.volunteerField:focus + .form-control-placeholder,
+.stateField {
+  font-size: 90%;
+  transform: translate3d(0, -100%, 0);
+  opacity: 1;
+}
+
+/* The customcheck */
+.customcheck {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-left:10px;
+}
+
+/* Hide the browser's default checkbox */
+.customcheck input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 5px;
+    border: 2px solid #a9a9a9;
+    margin-left:10px;
+}
+
+/* On mouse-over, add a grey background color */
+.customcheck:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.customcheck input:checked ~ .checkmark {
+    background-color: #4300FF;
+    border-radius: 5px;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.customcheck input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.customcheck .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+</style>
