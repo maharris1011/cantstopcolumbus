@@ -1,7 +1,7 @@
 <div class="jumbotron background-white">
 
 
-    <form name="volunteer" class="needs-validation" method="post" action="volunteer-success.html"  novalidate accept-charset="UTF-8"> <!--accept-charset="UTF-8" action="https://formkeep.com/f/exampletoken" method="POST"-->
+    <form name="volunteer" class="needs-validation" method="post" action="volunteer-success.html"  novalidate accept-charset="UTF-8"> 
         <div class = "row">
             <div class="col-md-7 col-lg-5">
                 <div class="form-group">
@@ -229,7 +229,6 @@
         <div class = "row">
             <div class="col-md-7 col-lg-5">
                 <div class="form-group">
-                    
                     <input type="text" class="form-control volunteerField" id="misc" rows="3"></input>
                     <label for="misc" class="form-control-placeholder">Anything else we should know?</label>
                     <!--<input type="text" id="hours"  class="form-control" name="hours" >-->
@@ -241,7 +240,10 @@
                 <div class="form-group">
                     <div class= "row">
                         <div class="checkbox ">
-                            <label  class="customcheck d-block volunteerLabel"  style="text-indent:15px;" ><input type="checkbox" value="" required><span class="checkmark"></span>I have read the <a href="https://cantstopcolumbus.com/code-of-conduct.html" style="font-style:bold; color:#4300FF">Code of Conduct</a></label>
+                            <label  class="customcheck d-block volunteerLabel"  style="text-indent:15px;" >
+                                <input type="checkbox" value="" required><span class="checkmark"></span>
+                                I have read the <a href="https://cantstopcolumbus.com/code-of-conduct.html" style="font-style:bold; color:#4300FF">Code of Conduct</a>
+                            </label>
                           </div>
                     </div>
                 </div>
@@ -281,11 +283,6 @@
     </div>
   </div>
 
-  <script  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-  crossorigin="anonymous"></script>
-
-
   <script>
       var passionList=['Access to Information', 'Education', 'Elderly & At-Risk Populations', 'Emergency Services', 'Employment', 'Financial Support', 'Food & Hunger', 'General Aid', 'Healthcare \\\ Medical Resources', 'K-12 Education', 'Mental Health', 'Minority, Immigrant & Refugee Resources', 'Mobility', 'Non-Profit Support', 'Small Business', 'Other (describe below)'];
       var positionList=['3D Printing', 'Animation', 'Audio Editing', 'Business Analysis', 'Community Volunteering', 'Copywriting', 'Crafting', 'Data - Product Analytics', 'Data - Synthesis', 'Data - Visualization', 'Data Entry', 'Digitial Strategy', 'DIY', 'E-Commerce', 'Education - K-12', 'Education - Post-Secondary', 'Education - Pre-K', 'Epidemiology', 'Graphic Design', 'Healthcare', 'Hustle', 'Internet Research', 'Language - Spanish', 'Legal', 'Marketing', 'Non-Profit Volunteering', 'Performing Arts/Music', 'Personal /// Professional Network - Government', 'Personal /// Professional Network - Health', 'Personal /// Professional Network - Other', 'Personal /// Professional Network - Students', 'Podcast Production/Hosting', 'Process Engineering', 'Product Management', 'Project Management', 'Real Estate Development', 'Recruiting', 'Social Media', 'Tech - .NET', 'Tech - Android Development', 'Tech - Backend Development', 'Tech - C++', 'Tech - Database', 'Tech - Excel', 'Tech - Flask', 'Tech - Frontend Development', 'Tech - GIS', 'Tech - HTML///CSS', 'Tech - Information Security', 'Tech - Infrastructure', 'Tech - iOS Development', 'Tech - Java', 'Tech - JavaScript', 'Tech - Microcontrollers', 'Tech - Node', 'Tech - Python', 'Tech - QA', 'Tech - R', 'Tech - Rails', 'Tech - React', 'Tech - Redux', 'Tech - Spring Boot', 'Tech - SquareSpace', 'Tech - Swift', 'Tech - TensorFlow', 'Tech - VBA', 'Tech - Vue.js', 'Tech - WordPress Development', 'UI Design', 'UX Design', 'UX Research', 'Video Editing', 'Visual Arts', ];
@@ -317,7 +314,6 @@
       }
 
       function addPassionToChosen(passion){
-         console.log("HI");
          console.log(passion);
          chosenPassionList.push(passion);
          var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + passion.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + passion + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deletePassion('" + passion  + "')\">&times;</span></button>"
@@ -326,7 +322,6 @@
       }
 
       function deletePassion(passion){
-        console.log("FUNCTION CLICKED");
         console.log(passion);
         const index = chosenPassionList.indexOf(passion);
         if (index > -1) {
@@ -340,7 +335,7 @@
         console.log(chosenPassionList);
       }
 
-       function openPositionList() {
+      function openPositionList() {
         clearChildren();
         positionList.forEach(function (position, index) {
             if(!chosenPositionList.includes(position)){
@@ -352,10 +347,10 @@
         });
 
        // $("#modal-content").classList.add("modal-dialog-scrollable");
-       }
+      }
 
-       function addPositionToChosen(position){
-           console.log("Pushing " + position);
+      function addPositionToChosen(position){
+         console.log("Pushing " + position);
          chosenPositionList.push(position);
          console.log(position)
          var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + position.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + position + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deletePosition('" + position  + "')\">&times;</span></button>"
@@ -391,9 +386,12 @@
         });
        }
 
-       function addActivityToChosen(activity){
+      function addActivityToChosen(activity){
          chosenActivitiesList.push(activity);
-         var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + activity.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + activity + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deleteActivity('" + activity + "')\">&times;</span></button>"
+         var newButton = '<button class="modalButton" type="button" id="chosen"' 
+                         + activity.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + '" >"'
+                         + activity + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deleteActivity('" + activity + "')\">&times;</span></button>"
+         var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" 
          $("#activitiesButtonGroup").append(newButton);
          $("#modal").modal("hide");
       }
