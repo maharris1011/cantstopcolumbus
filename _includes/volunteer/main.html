@@ -1,9 +1,9 @@
 <div class="jumbotron background-white">
 
 
-    <form name="volunteer" class="needs-validation" method="post" action="volunteer-success.html" style="margin-left:100px"  novalidate accept-charset="UTF-8"> <!--accept-charset="UTF-8" action="https://formkeep.com/f/exampletoken" method="POST"-->
+    <form name="volunteer" class="needs-validation" method="post" action="volunteer-success.html"  novalidate accept-charset="UTF-8"> <!--accept-charset="UTF-8" action="https://formkeep.com/f/exampletoken" method="POST"-->
         <div class = "row">
-            <div class="col-md-5">
+            <div class="col-md-7 col-lg-5">
                 <div class="form-group">
                     <input type="text" id="firstName" required class="form-control volunteerField " name="firstName">
                     <label for="firstName" class="form-control-placeholder">First Name</label>
@@ -14,7 +14,7 @@
             </div> 
         </div>
         <div class = "row">
-            <div class="col-md-5">
+            <div class="col-md-7 col-lg-5">
                 <div class="form-group">
                     <input type="text" id="lastName" required class="form-control volunteerField" name="lastName">
                     <label for="lastName" class="form-control-placeholder">Last Name</label>
@@ -25,7 +25,7 @@
             </div> 
         </div>
         <div class = "row">
-            <div class="col-md-5">
+            <div class="col-md-7 col-lg-5">
                 <div class="form-group">
                     <input type="email" id="primEmail" required class="form-control volunteerField" name="primEmail" >
                     <label for="primEmail" class="form-control-placeholder">Primary Email</label>
@@ -36,7 +36,7 @@
             </div> 
         </div>
         <div class = "row">
-            <div class="col-md-5">
+            <div class="col-md-7 col-lg-5">
                 <div class="form-group">
                     <input type="tel" id="phone" required class="form-control volunteerField" name="phone" >
                     <label for="phone" class="form-control-placeholder">Phone Number</label>
@@ -44,7 +44,7 @@
             </div> 
         </div>
         <div class = "row">
-            <div class="col-md-5">
+            <div class="col-md-7 col-lg-5">
                 <div class="form-group">
                     <input type="text" id="work"  class="form-control volunteerField" name="work" >
                     <label for="work" class="form-control-placeholder">Where can people see your work?</label>
@@ -52,7 +52,7 @@
             </div> 
         </div>
         <div class = "row">
-            <div class="col-md-5">
+            <div class="col-md-7 col-lg-5">
                 <div class="form-group">
                     
                     <input type="text" id="other"  class="form-control volunteerField" name="other" >
@@ -61,18 +61,16 @@
             </div> 
         </div>
         <div class = "row">
-            <div class="col-md-5">
+            <div class="col-md-7 col-lg-5">
                 <div class="form-group">
-                    
                     <input type="text" id="city"  class="form-control volunteerField" name="city" >
                     <label for="city" class="form-control-placeholder">City</label>
                 </div>
             </div> 
         </div>
         <div class = "row">
-            <div class="col-md-5">
+            <div class="col-md-7 col-lg-5">
                 <div class="form-group">
-                    
                         <select class="form-control selectpicker volunteerField" style="height: calc(3.25rem + 2px)!important" id="state" name="state">
                             <option value="">N/A</option>
                             <option value="AK">Alaska</option>
@@ -133,16 +131,15 @@
             </div> 
         </div>
         <div class = "row">
-            <div class="col-md-5">
+            <div class="col-md-7 col-lg-5">
                 <div class="form-group">
-                    
                     <input type="text" id="linkedin"  class="form-control volunteerField" name="linkedin" >
                     <label for="linkedin" class="form-control-placeholder">LinkedIn</label>
                 </div>
             </div> 
         </div>
         <div class = "row">
-            <div class="col-md-5">
+            <div class="col-md-7 col-lg-5">
                 <div class="form-group">
                     
                     <input type="text" id="twitter"  class="form-control volunteerField" name="twitter" >
@@ -151,9 +148,9 @@
             </div> 
         </div>
         <div class = "row">
-            <div class="col-md-7">
+            <div class="col-md-7 col-lg-5">
                 <div class="form-group">
-                    <label style="font-size: 1.25rem; color: #575757;" for="passionWork">Are there any types of problems you're particularly passionate about solving?</label>
+                    <label class="volunteerLabel"  for="passionWork">Are there any types of problems you're particularly passionate about solving?</label>
                     <br>
                     <button type="button" id="passionWorkButton" onclick="openPassionList()" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#modal">+ Add</button>
                     <div class="btn-group-vertical" style="margin-top:10px;" id = "passionWorkButtonGroup">
@@ -162,9 +159,9 @@
             </div> 
         </div>
         <div class = "row">
-            <div class="col-md-7">
+            <div class="col-md-7 col-lg-5">
                 <div class="form-group">
-                    <label style="font-size: 1.25rem; color: #575757;" for="position">What are you in a position to volunteer? Add all the skills you can muster.</label>
+                    <label class="volunteerLabel" for="position">What are you in a position to volunteer? Add all the skills you can muster.</label>
                     <br>
                     <button type="button" id="positionButton" onclick="openPositionList()" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#modal">+ Add</button>
                     <div class="btn-group-vertical" style="margin-top:10px" id = "positionButtonGroup">
@@ -173,9 +170,9 @@
             </div> 
         </div>
         <div class = "row">
-            <div class="col-md-7">
+            <div class="col-md-7 col-lg-5">
                 <div class="form-group">
-                    <label style="font-size: 1.25rem; color: #575757;" for="activities">Below are some types of regular needs that have emerged, what type of activities are you best suited to support?</label>
+                    <label class="volunteerLabel"  for="activities">Below are some types of regular needs that have emerged, what type of activities are you best suited to support?</label>
                     <button type="button" id="activitiesButton" onclick="openActivitiesList()" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#modal">+ Add</button>
                     <div class="btn-group-vertical" style="margin-top:10px" id = "activitiesButtonGroup">
                     </div>
@@ -183,51 +180,54 @@
             </div> 
         </div>
         <div class = "row">
-            <div class="col-md-8">
+            <div class="col-md-8 col-lg-6">
                 <div class="form-group">
                     <input type="number" id="hours"  class="form-control volunteerField" name="hours" >
                     <label for="hours" class="form-control-placeholder">Hours Per Week Available?</label>
-                    <p style="text-indent: 20px;"><small>Your best guess is fine. This is just services as a guideline for us to best connect you with a project!</small></p>
+                    <p ><small>Your best guess is fine. This is just services as a guideline for us to best connect you with a project!</small></p>
                 </div>
             </div> 
         </div>
 
         <div class = "row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-lg-4">
                 <div class="form-group">
-                    <label style="font-size: 1.25rem; color: #575757;"  for="contributeSkills">I am interested in contributing my skills to ...</label>
+                    <label class="volunteerLabel"  for="contributeSkills">I am interested in contributing my skills to ...</label>
                     <div class="checkbox">
-                        <label class="customcheck" style="font-size: 1.25rem; color: #575757; text-indent:15px;"  ><input type="checkbox" value=""><span class="checkmark" style="margin-right:25px;"></span>Contributing</label>
+                        <label class="customcheck d-block volunteerLabel"  style=" text-indent:15px;"  ><input type="checkbox" value=""><span class="checkmark" style="margin-right:25px;"></span>Contributing</label>
                       </div>
                       <div class="checkbox">
-                        <label  class="customcheck" style="font-size: 1.25rem; color: #575757; text-indent:15px;" ><input type="checkbox" value=""> <span class="checkmark"></span>Mentoring</label>
+                        <label  class="customcheck d-block volunteerLabel" style=" text-indent:15px;" ><input type="checkbox" value=""> <span class="checkmark"></span>Mentoring</label>
                       </div>
                       <div class="checkbox ">
-                        <label  class="customcheck" style="font-size: 1.25rem; color: #575757; text-indent:15px;" ><input type="checkbox" value="" ><span class="checkmark"></span>Giving a remote talk</label>
+                        <label  class="customcheck d-block volunteerLabel" style=" text-indent:15px;" ><input type="checkbox" value="" ><span class="checkmark"></span>Giving a remote talk</label>
                       </div>
                 </div>
             </div> 
         </div>
         <div class = "row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-lg-4">
                 <div class="form-group">
-                    <label for="photo" style="font-size: 1.25rem; color: #575757;">Upload a photo. Since we're all remote, let us see your face!</label>
-                    <div id="upload_Box" style="  border-radius: 25px; border: 5px dashed  #575757; padding: 20px; width: 500px; height: 150px;">
+                    <label for="photo" class="volunteerLabel" >Upload a photo. Since we're all remote, let us see your face!</label>
+                    <div id="upload_Box" >
                         <!--<button class="btn btn-secondary" id="photoUpload" type="button"  style="border: 2px solid #4300FF; background-color: #F1EBFF; padding:10px;"><i class="fa fa-paperclip" style="color: #4300FF;">
                         </i><strong style="padding:10px; color: #4300FF;;">Attach File</strong></button> 
                         <span style="font-size: 1.25rem; color: #575757;"> or drop here</span>-->
-                        <label for="photoUpload" class="custom-file-upload" style="border: 2px solid #4300FF; background-color: #F1EBFF; padding:10px; border-radius: 0.25rem;">
+                        <label for="photoUpload" class="custom-file-upload" 
+                            style="border: 2px solid #4300FF; background-color: #F1EBFF; padding:10px; border-radius: 0.25rem;">
                             <i class="fa fa-paperclip" style="color: #4300FF;">
                             </i><strong style="padding:10px; color: #4300FF;;">Attach File</strong> 
-                        </label> <span style="font-size: 1.25rem; color: #575757;"> or drop here</span>
+                        </label> <span class="volunteerLabel" > or drop here</span>
                         <input id="photoUpload" type="file"/>
-                        <img src="" id="preview">
+                        <div id="preview">
+
+                        </div>
                     </div>
                 </div>
             </div> 
         </div>
         <div class = "row">
-            <div class="col-md-5">
+            <div class="col-md-7 col-lg-5">
                 <div class="form-group">
                     
                     <input type="text" class="form-control volunteerField" id="misc" rows="3"></input>
@@ -237,11 +237,11 @@
             </div> 
         </div>
         <div class = "row">
-            <div class="col-md-9">
+            <div class="col-md-9 col-lg-7">
                 <div class="form-group">
                     <div class= "row">
                         <div class="checkbox ">
-                            <label  class="customcheck" style="font-size: 1.25rem; color: #575757; text-indent:15px;" ><input type="checkbox" value="" required><span class="checkmark"></span>I have read the <a href="https://cantstopcolumbus.com/code-of-conduct.html" style="font-style:bold; color:#4300FF">Code of Conduct</a></label>
+                            <label  class="customcheck d-block volunteerLabel"  style="text-indent:15px;" ><input type="checkbox" value="" required><span class="checkmark"></span>I have read the <a href="https://cantstopcolumbus.com/code-of-conduct.html" style="font-style:bold; color:#4300FF">Code of Conduct</a></label>
                           </div>
                     </div>
                 </div>
@@ -262,16 +262,16 @@
 
 
   <div class="modal fade "  id="modal" tabindex="-1" #modal role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog " style="width: 600px;"  role="document">
-      <div class="modal-content " id="modal-content" style="width: 600px;">
+    <div class="modal-dialog modal-dialog-scrollable volunteerModal"   role="document">
+      <div class="modal-content volunteerModal " id="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Choose an Option Below</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body scrollable-menu" id="modalBody">
-            <div class="btn-group-vertical " id = "modalButtonGroup">
+        <div class="modal-body  justify-content-center" id="modalBody">
+            <div class="btn-group-vertical justify-content-center" id = "modalButtonGroup">
             </div>
         </div>
         <div class="modal-footer">
@@ -482,7 +482,10 @@
 
                                 reader.onload =  function(e) {
                                  // console.log(e.target.result);
-                                preview.setAttribute('src', e.target.result);
+                                var newFile = "<div class=\"row\"><div class=\"col-md-5\"><button style=\"margin-left:-10px;\" class=\"modalButton\" disabled id=\"file\">"  + input.files[0].name + "</button></div></div>"
+                                $("#preview").append(newFile);
+                                
+                                //.setAttribute('src', e.target.result);
 
                                 let img = new Image()
                                 img.src = e.target.result
@@ -592,6 +595,11 @@
 
 <style>
 
+.modal-body{
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .scrollable-menu {
     height: auto;
     max-height: 600px;
@@ -605,15 +613,8 @@
     border-color: #4300FF;
     background-color: white;
     border-radius: 6px;
-    /* position: absolute; */
-    /* top: 10px; */
-    /* left: 18px; */
-    width: 547px;
-    height: 40px;
     text-align:left;
-    font-size: 1.1rem; color: #575757;
     margin: 5px;
-    font-weight: 600;
 }
 
 
@@ -627,6 +628,8 @@
 #upload_Box.highlightBox {
   border:5px dashed #4300FF!important;
 }
+
+
 
 input[type="file"] {
     display: none;
@@ -660,12 +663,10 @@ input[type="file"] {
 
 /* The customcheck */
 .customcheck {
-    display: block;
     position: relative;
     padding-left: 35px;
     margin-bottom: 12px;
     cursor: pointer;
-    font-size: 22px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
