@@ -10,13 +10,13 @@
       <div v-for="project in projects" class="card col-md-3 mx-1 my-2">
         <div style="height: 50%; padding-top:40px;">
           <span class="helper"></span>
-          <img style="vertical-align: middle;" src="assets/img/UX/projects/ohioready_logo_H_2c@4x.png" class="card-img-top">
+          <img style="vertical-align: middle;" src="{$ project.Logo $}" class="card-img-top">
         </div>
         <div class="card-body">
-          <a href="https://ohioready.org/" target="_blank">
+          <a href="{$ project.Website $}" target="_blank">
             <h5 class="card-title">{$ project.Title $}</h5>
           </a>
-          <p class="card-text">{$ project.Email $}</p>
+          <p class="card-text">{$ project["Short Description"] $}</p>
         </div>
       </div>
     </div>
