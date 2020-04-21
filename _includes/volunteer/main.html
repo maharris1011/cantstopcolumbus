@@ -1,7 +1,7 @@
 <div class="jumbotron background-white">
 
 
-    <form name="volunteer" class="needs-validation" method="post" action="volunteer-success.html"   novalidate accept-charset="UTF-8"> <!--accept-charset="UTF-8" action="https://formkeep.com/f/exampletoken" method="POST"-->
+    <form name="volunteer" class="needs-validation" method="post" action="volunteer-success.html"  novalidate accept-charset="UTF-8"> 
         <div class = "row">
             <div class="col-md-7 col-lg-5">
                 <div class="form-group">
@@ -232,7 +232,6 @@
         <div class = "row">
             <div class="col-md-7 col-lg-5">
                 <div class="form-group">
-                    
                     <input type="text" class="form-control volunteerField" id="misc" rows="3"></input>
                     <label for="misc" class="form-control-placeholder">Anything else we should know?</label>
                     <!--<input type="text" id="hours"  class="form-control" name="hours" >-->
@@ -243,17 +242,11 @@
             <div class="col-md-9 col-lg-7">
                 <div class="form-group">
                     <div class= "row">
-                        <div class="form-check">
-                            
-                            <input type="checkbox" hidden class="form-check-input"  id="pseudoConduct" value="" required>
-                            <label  class="customcheck d-block volunteerLabel form-check-label"  style="text-indent:15px;" >
-                                <input type="checkbox"  id="conduct" value="">
-                                <span class="checkmark"></span>
+                        <div class="checkbox ">
+                            <label  class="customcheck d-block volunteerLabel"  style="text-indent:15px;" >
+                                <input type="checkbox" value="" required><span class="checkmark"></span>
                                 I have read the <a href="https://cantstopcolumbus.com/code-of-conduct.html" style="font-style:bold; color:#4300FF">Code of Conduct</a>
                             </label>
-                            <div class="invalid-feedback">
-                                Please confirm if you have read the Can't Stop Columbus Code of Conduct 
-                                </div>
                           </div>
 
                     </div>
@@ -293,11 +286,6 @@
       </div>
     </div>
   </div>
-
-  <script  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-  crossorigin="anonymous"></script>
-
 
   <script>
 
@@ -390,8 +378,7 @@
         });
       }
 
-      function addPassionToChosen(passion, id){
-         console.log("HI");
+      function addPassionToChosen(passion){
          console.log(passion);
          chosenPassionList.push(id);
          var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + passion.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + passion + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deletePassion('" + passion + "', '" + id + "')\">&times;</span></button>"
@@ -399,8 +386,7 @@
          $("#modal").modal("hide");
       }
 
-      function deletePassion(passion, id){
-        console.log("FUNCTION CLICKED");
+      function deletePassion(passion){
         console.log(passion);
         const index = chosenPassionList.indexOf(id);
         if (index > -1) {
@@ -414,7 +400,7 @@
         console.log(chosenPassionList);
       }
 
-       function openPositionList() {
+      function openPositionList() {
         clearChildren();
         positionList.forEach(function (position, index) {
             if(!chosenPositionList.includes(position.id)){
@@ -426,11 +412,11 @@
         });
 
        // $("#modal-content").classList.add("modal-dialog-scrollable");
-       }
+      }
 
-       function addPositionToChosen(position, id){
-           console.log("Pushing " + position);
-         chosenPositionList.push(id);
+      function addPositionToChosen(position){
+         console.log("Pushing " + position);
+         chosenPositionList.push(position);
          console.log(position)
          var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + position.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + position + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deletePosition('" + position + "', '" + id + "')\">&times;</span></button>"
          $("#positionButtonGroup").append(newButton);
@@ -465,9 +451,12 @@
         });
        }
 
-       function addActivityToChosen(activity, id){
-         chosenActivitiesList.push(id);
-         var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + activity.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + activity + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deleteActivity('" + activity.name + "', '" + activity.id + "')\">&times;</span></button>"
+      function addActivityToChosen(activity){
+         chosenActivitiesList.push(activity);
+         var newButton = '<button class="modalButton" type="button" id="chosen"' 
+                         + activity.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + '" >"'
+                         + activity + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deleteActivity('" + activity + "')\">&times;</span></button>"
+         var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" 
          $("#activitiesButtonGroup").append(newButton);
          $("#modal").modal("hide");
       }
