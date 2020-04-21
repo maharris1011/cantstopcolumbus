@@ -295,3 +295,221 @@ div.jumbotron {
     justify-content: space-between;
   }
 }
+
+
+
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .volunteerModal{
+    width:375px;
+  }
+  .modalButton{
+    width: 275px;
+    height: 40px;
+    font-size: .8rem; color: #575757;
+    font-weight: 600;
+  }
+
+  div.title-content h1{
+    font-size:32px!important;
+  }
+
+  #upload_Box{
+    border-radius: 25px; 
+    border: 5px dashed  #575757; 
+    padding: 20px; 
+    width: 300px; 
+    height: 150px;
+  }
+  .volunteerLabel{
+    font-size: .95rem; 
+    color: #575757;
+  }
+  .volunteerSlack{
+    font-size: 1em !important;
+  }
+
+  .successHeaders{
+    font-weight:bold;
+    font-size:1em
+  }
+  .buttonSlack {
+    border: 1px solid #3366FF;
+    height: auto;
+                width: auto;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .volunteerModal{
+    width:375px;
+  }
+  div.title-content h1{
+    font-size:32px!important;
+  }
+  .modalButton{
+    width: 375px;
+    height: 40px;
+    font-size: .8rem; color: #575757;
+    font-weight: 600;
+  }
+  #upload_Box{
+    border-radius: 25px; 
+    border: 5px dashed  #575757; 
+    padding: 20px; 
+    width: 400px; 
+    height: 150px;
+  }
+  .volunteerLabel{
+    font-size: .95rem; 
+    color: #575757;
+  }
+  .volunteerSlack{
+    font-size: 1.5em !important;
+  }
+  .successHeaders{
+    font-weight:bold;
+    font-size:1em
+  }
+
+  .buttonSlack {
+    border: 1px solid #3366FF;
+    height: auto;
+                width: auto;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .volunteerModal{
+    width:450px;
+  }
+  .modalButton{
+    width: 300px;
+    height: 40px;
+    font-size: .9rem; color: #575757;
+    font-weight: 600;
+  }
+
+  #upload_Box{
+    border-radius: 25px; 
+    border: 5px dashed  #575757; 
+    padding: 20px; 
+    width: 400px; 
+    height: 150px;
+  }
+  .volunteerLabel{
+    font-size: 1.15rem; 
+    color: #575757;
+  }
+
+  .volunteerSlack{
+    font-size: 2em !important;
+  }
+  .successHeaders{
+    font-weight:bold;
+    font-size:1.25em
+  }
+  .buttonSlack {
+    border: 1px solid #3366FF;
+    height: auto;
+                width: auto;
+                padding-left: 15px;
+                padding-right: 15px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .volunteerModal{
+    width:600px;
+  }
+  .modalButton{
+    width: 545px;
+    height: 40px;
+    font-size: 1.1rem; color: #575757;
+    font-weight: 600;
+  }
+  #upload_Box{
+    border-radius: 25px; 
+    border: 5px dashed  #575757; 
+    padding: 20px; 
+    width: 600px; 
+    height: 150px;
+  }
+
+  .volunteerLabel{
+    font-size: 1.25rem; 
+    color: #575757;
+  }
+  .volunteerSlack{
+    font-size: 2.5em !important;
+  }
+  .successHeaders{
+    font-weight:bold;
+    font-size:1.5em
+  }
+  .buttonSlack {
+    border: 1px solid #3366FF;
+    height: auto;
+                width: auto;
+                padding-left: 15px;
+                padding-right: 15px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .volunteerModal{
+    width:600px;
+  }
+  .modalButton{
+    width: 545px;
+    height: 40px;
+    font-size: 1.1rem; color: #575757;
+    font-weight: 600;
+  }
+  #upload_Box{
+    border-radius: 25px; 
+    border: 5px dashed  #575757; 
+    padding: 20px; 
+    width: 600px; 
+    height: 150px;
+  }
+
+  .volunteerLabel{
+    font-size: 1.25rem; 
+    color: #575757;
+  }
+  .volunteerSlack{
+    font-size: 2em !important;
+  }
+  .successHeaders{
+    font-weight:bold;
+    font-size:1.5em
+  }
+  .buttonSlack {
+    border: 1px solid #3366FF;
+    height: auto;
+                width: auto;
+                padding-left: 15px;
+                padding-right: 15px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+  }
+}
