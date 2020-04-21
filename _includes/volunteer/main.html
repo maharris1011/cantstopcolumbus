@@ -1,7 +1,5 @@
 <div class="jumbotron background-white">
-
-
-    <form name="volunteer" class="needs-validation" method="post" action="volunteer-success.html"   novalidate accept-charset="UTF-8"> <!--accept-charset="UTF-8" action="https://formkeep.com/f/exampletoken" method="POST"-->
+    <form name="volunteer" class="needs-validation" method="post" action="volunteer-success.html"  novalidate accept-charset="UTF-8"> 
         <div class = "row">
             <div class="col-md-7 col-lg-5">
                 <div class="form-group">
@@ -232,7 +230,6 @@
         <div class = "row">
             <div class="col-md-7 col-lg-5">
                 <div class="form-group">
-                    
                     <input type="text" class="form-control volunteerField" id="misc" rows="3"></input>
                     <label for="misc" class="form-control-placeholder">Anything else we should know?</label>
                     <!--<input type="text" id="hours"  class="form-control" name="hours" >-->
@@ -293,11 +290,6 @@
       </div>
     </div>
   </div>
-
-  <script  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-  crossorigin="anonymous"></script>
-
 
   <script>
 
@@ -414,7 +406,7 @@
         console.log(chosenPassionList);
       }
 
-       function openPositionList() {
+      function openPositionList() {
         clearChildren();
         positionList.forEach(function (position, index) {
             if(!chosenPositionList.includes(position.id)){
@@ -426,7 +418,7 @@
         });
 
        // $("#modal-content").classList.add("modal-dialog-scrollable");
-       }
+      }
 
        function addPositionToChosen(position, id){
            console.log("Pushing " + position);
