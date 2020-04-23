@@ -79,6 +79,20 @@
     return array
   }
 
+  let transformProject = (project) => {
+    var retval = {
+      website: project["Project Website"],
+      text: project["Project Public Desc"],
+      title: project.Title
+    }
+    if (project.hasOwnProperty("Project Logo")) {
+      retval.logo = project["Project Logo"][0].url
+    } else {
+      retval.logo = "https://dl.airtable.com/.attachments/2fa5823b40f01050e459b6f8952081bc/bf5509f5/nextdoormunch.png"
+    }
+    return retval
+  }
+
   var cantstopcbus = new Vue({
     el: "#carousel2",
     delimiters: ["{$", "$}"],
@@ -92,22 +106,24 @@
         )
         .then(
           (response) => {
-            let projectsShuffled = shuffle(response.data)
-            let maxProjectsInCarousel = 4
-            for (var i = 0; i < maxProjectsInCarousel; i++) {
-              project = projectsShuffled[i]
-              this.projects.push({
-                website: project["Project Website"],
-                logo: project["Project Logo"][0].url,
-                text: project["Project Public Desc"],
-                title: project.Title
-              })
-            }
+            this.projects = shuffle(response.data).slice(0,4).map((project) => {
+              return transformProject(project)
+            })
           },
           (error) => {
             console.error(error)
           }
         )
     }
+  })
+
+  Vue.component("button-counter", {
+    data: function () {
+      return {
+        count: 0
+      }
+    },
+    template:
+      '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
   })
 </script>
