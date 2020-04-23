@@ -7,24 +7,25 @@
   </br>
   <div class="col-md-12">
     <div class="card-deck" id="carousel2">
-      <div v-for="project in projects" class="card col-md-3 mx-1 my-2">
-        <div style="height: 50%; padding-top:40px;">
-          <span class="helper"></span>
-          <img style="vertical-align: middle;" :src="project.logo" class="card-img-top">
-        </div>
-        <div class="card-body">
-          <a :href="project.website" target="_blank">
-            <h5 class="card-title">{$ project.title $}</h5>
-          </a>
-          <p class="card-text">{$ project.text $}</p>
+      <div v-for="project in projects" class="card my-2 col-sm-6 col-lg-3">
+        <div style="height: 50%; padding-top:2em;">
+          <div class="d-flex p-1 h-100">
+          <img :src="project.logo" class="p-2 card-img-top align-self-center"/>
+          </div>
+          <div class="card-body">
+            <a :href="project.website" target="_blank">
+              <h5 class="card-title">{$ project.title $}</h5>
+            </a>
+            <p class="card-text">{$ project.text $}</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 my-2">
       <a
-      class="btn btn-secondary"
+      class="btn btn-secondary btn-lg"
       role="button"
       href="/find-help.html"
       >
