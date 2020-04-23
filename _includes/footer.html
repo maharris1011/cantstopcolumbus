@@ -1,27 +1,32 @@
 <div class="container">
   <footer class="footer background-white" data-background-color="black">
-        <div class="row">
-          <div class="col-sm text-center">
-            <a href="/code-of-conduct.html" style="font-weight:bold;color:#9933CC">Code of Conduct</a>
-          </div>
-          <div class="col-sm text-center">
-            <a style="font-weight:bold;color:#9933CC">Media Kit</a>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm">
-            <div class="copyright text-center background-white">
-              Made with <i class="fa fa-heart" style="color:#9933CC"></i> by Columbus on
-              <a href="https://github.com/maharris1011/cantstopcolumbus">
-                GitHub
-              </a>
-            </div>
+    <div class="row">
+      <div class="col-sm text-center">
+        <a
+          href="/code-of-conduct.html"
+          style="font-weight: bold; color: #9933cc;"
+          >Code of Conduct</a
+        >
+      </div>
+      <div class="col-sm text-center">
+        <a style="font-weight: bold; color: #9933cc;">Media Kit</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm">
+        <div class="copyright text-center background-white">
+          Made with <i class="fa fa-heart" style="color: #9933cc;"></i> by
+          Columbus on
+          <a href="https://github.com/maharris1011/cantstopcolumbus">
+            GitHub
+          </a>
         </div>
       </div>
+    </div>
   </footer>
-  <br/>
+  <br />
 </div>
-<br/>
+<br />
 <script
   defer
   src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"
@@ -46,39 +51,50 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
-
 <script>
-  function on() {
-    document.getElementById("overlay").style.display = "block";
-  }
-
-  function off() {
-    document.getElementById("overlay").style.display = "none";
-  }
-
-  $(function() {
-    $('img').addClass('img-fluid');
-  })
-
-  var cantstopcbus = new Vue({
-    el: '#carousel2',
-    delimiters:['{$', '$}'],
-    data: {
-      projects: []
-    }, 
-    mounted() {
-      axios.get("https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/projects")
-        .then((response) => {
-            console.log(response)
-            for (i = 0; i < 4; i++) {
-              idx = Math.floor(Math.random() * response.data.length)
-              this.projects.push(response.data[idx])
-              response.data.splice(idx, 1)
-            }
-        }, error => {
-            console.error(error);
-        })
+    function on() {
+      document.getElementById("overlay").style.display = "block";
     }
-  })
 
+    function off() {
+      document.getElementById("overlay").style.display = "none";
+    }
+
+    $(function() {
+      $('img').addClass('img-fluid');
+    })
+
+    var cantstopcbus = new Vue({
+      el: '#carousel2',
+      delimiters:['{$', '$}'],
+      data: {
+        projects: []
+      },
+      mounted() {
+        axios.get("https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/projects")
+          .then((response) => {
+            let shuffle = (array) => {
+              for(var i = array.length - 1; i> 0; i--) {
+                const j = Math.floor(Math.random() * i)
+                const temp = array[i]
+                array[i] = array[j]
+                array[j] = temp
+              }
+              return array
+            }
+            let projectsShuffled = shuffle(response.data)
+            for (var i = 0; i < 4; i++) {
+              project = projectsShuffled[i]
+              this.projects.push({
+                website: project["Project Website"],
+                logo: project["Project Logo"][0].url,
+                text: project["Project Public Desc"],
+                title: project.Title
+              })
+            }
+          }, error => {
+              console.error(error);
+          })
+      }
+    })
 </script>
