@@ -1,5 +1,5 @@
-<div class="col-sm-6 col-lg-3">
-  <div class="card my-2">
+<div class="col-sm-6 col-lg-3 card my-2">
+  <div style="height: 50%; padding-top:2em;">
     <div class="d-flex p-1 h-100">
     <img
     {% if include.proj.backgroundcolor %}
@@ -13,7 +13,7 @@
     {% endif %}
     />
     </div>
-    <div class="card-body">
+    <div class="card-body text-center">
       <a href="{{ include.proj.link }}" target="_blank"
         ><h5 class="card-title">{{ include.proj.title }}</h5></a
       >
