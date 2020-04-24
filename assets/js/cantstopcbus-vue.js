@@ -28,7 +28,7 @@ let transformProject = (project) => {
     title: project.Title
   }
   let defaultLogo = "/assets/img/UX/cscbus_logo_square.svg"
-  let defaultCategory = "Other"
+  let defaultCategory = "Everything Else"
   retval.category = project.hasOwnProperty("Category")
     ? project.Category[0].Category
     : defaultCategory
