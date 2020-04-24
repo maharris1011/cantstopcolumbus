@@ -64,11 +64,11 @@
     $("img").addClass("img-fluid")
   })
 
-  let swap = (rg, i, j) => {
-    let temp = rg[i]
-    rg[i] = rg[j]
-    rg[j] = temp
-    return rg
+  let swap = (array, i, j) => {
+    let temp = array[i]
+    array[i] = array[j]
+    array[j] = temp
+    return array
   }
 
   let shuffle = (array) => {
@@ -85,19 +85,35 @@
       text: project["Project Public Desc"],
       title: project.Title
     }
-    if (project.hasOwnProperty("Project Logo")) {
-      retval.logo = project["Project Logo"][0].url
-    } else {
-      retval.logo = "https://dl.airtable.com/.attachments/2fa5823b40f01050e459b6f8952081bc/bf5509f5/nextdoormunch.png"
-    }
+    let defaultLogo = "/assets/img/UX/cscbus_logo_square.svg"
+    let defaultCategory = "Other"
+    retval.category = project.hasOwnProperty("Category")
+      ? project.Category[0].Category
+      : defaultCategory
+    retval.logo = project.hasOwnProperty("Project Logo")
+      ? project["Project Logo"][0].url
+      : defaultLogo
     return retval
   }
 
+  let matchTab = (tabName, projects) => {
+    return projects.filter((project) => project.category === tabName)
+  }
+
+  let projectCategories = (projects) => {
+    return projects
+      .map((project) => project.category)
+      .filter((value, idx, self) => self.indexOf(value) === idx)
+      .sort((a,b) => a >= b)
+  }
+
   var cantstopcbus = new Vue({
-    el: "#carousel2",
+    el: "#cantstopcbus-content",
     delimiters: ["{$", "$}"],
     data: {
-      projects: []
+      carouselProjects: [],
+      allProjects: [],
+      projectCategories: []
     },
     mounted() {
       axios
@@ -106,14 +122,36 @@
         )
         .then(
           (response) => {
-            this.projects = shuffle(response.data).slice(0,4).map((project) => {
-              return transformProject(project)
-            })
+            this.allProjects = response.data.map((project) =>
+              transformProject(project)
+            )
+            this.projectCategories = projectCategories(this.allProjects)
+            this.carouselProjects = shuffle(this.allProjects).slice(0, 4)
           },
           (error) => {
             console.error(error)
           }
         )
     }
+  })
+  // Define a new component called button-counter
+  Vue.component("project-card", {
+    props: ["project"],
+    delimiters: ["{$", "$}"],
+    template: `
+      <div class="card my-2 col-sm-6 col-lg-3">
+        <div style="height: 50%; padding-top:2em;">
+          <div class="d-flex p-1 h-100">
+            <img :src="project.logo" class="card-img-top align-self-center"/>
+          </div>
+          <div class="card-body">
+            <a :href="project.website" target="_blank">
+              <h5 class="card-title">{$ project.title $}</h5>
+            </a>
+            <p class="card-text">{$ project.text $}</p>
+          </div>
+        </div>
+      </div>
+      `
   })
 </script>

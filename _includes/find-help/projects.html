@@ -1,31 +1,28 @@
 <div class="container">
-<div id="project-cards" class="tab-content">
-  <div class="tab-pane show active" id="all" role="tabpanel" aria-labelledby="all-tab">
-    <div class="row">
-      <!-- include all project in the 'all' tab -->
-      {% for project in site.data.projects %} 
-        {% include find-help/project-card.html proj=project %}
-      {% endfor %}
+  <div id="project-cards" class="tab-content">
+    <div
+      class="tab-pane show active"
+      id="all"
+      role="tabpanel"
+      aria-labelledby="all-tab"
+    >
+      <div class="row">
+        <project-card v-for="proj in allProjects" v-bind:project="proj">
+        </project-card>
+       </div>
+    </div>
+    <div
+      v-for="category in projectCategories"
+      class="tab-pane"
+      :id="category"
+      role="tabpanel"
+      :aria-labelledby="category + '-tab'"
+    >
+      <div class="row">
+        <!-- only include projects that match the tab in each tab pane -->
+        <project-card v-for="proj in matchTab(category, allProjects)" v-bind:project="proj">
+        </project-card>
+      </div>
     </div>
   </div>
-  {% for tab in site.data.help-tabs %}
-  <div
-    class="tab-pane"
-    id="{{ tab.name }}"
-    role="tabpanel"
-    aria-labelledby="{{ tab.name }}-tab"
-  >
-    <div class="row">
-      <!-- only include projects that match the tab in each tab pane -->
-      {% for project in site.data.projects %} 
-      {% for tag in project.tags %} 
-      {% if tag == tab.name %}
-        {% include find-help/project-card.html proj=project %}
-      {% endif %} 
-      {% endfor %} 
-      {% endfor %}
-    </div>
-  </div>
-  {% endfor %}
-</div>
 </div>
