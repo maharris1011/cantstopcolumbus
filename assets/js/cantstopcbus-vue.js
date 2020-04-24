@@ -28,7 +28,6 @@ let transformProject = (project) => {
     title: project.Title,
     impact: project["Primary Impact Area"][0]["Impact Area"]
   }
-  console.log(`project=${JSON.stringify(project)}`)
   let defaultLogo = "/assets/img/UX/cscbus_logo_square.svg"
   retval.logo = project.hasOwnProperty("Project Logo")
     ? project["Project Logo"][0].url
