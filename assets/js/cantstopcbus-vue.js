@@ -25,13 +25,11 @@ let transformProject = (project) => {
   var retval = {
     website: project["Project Website"],
     text: project["Project Public Desc"],
-    title: project.Title
+    title: project.Title,
+    impact: project["Primary Impact Area"][0]["Impact Area"]
   }
+  console.log(`project=${JSON.stringify(project)}`)
   let defaultLogo = "/assets/img/UX/cscbus_logo_square.svg"
-  let defaultCategory = "Everything Else"
-  retval.category = project.hasOwnProperty("Category")
-    ? project.Category[0].Category
-    : defaultCategory
   retval.logo = project.hasOwnProperty("Project Logo")
     ? project["Project Logo"][0].url
     : defaultLogo
@@ -39,12 +37,12 @@ let transformProject = (project) => {
 }
 
 let matchTab = (tabName, projects) => {
-  return projects.filter((project) => project.category === tabName)
+  return projects.filter((project) => project.impact === tabName)
 }
 
-let projectCategories = (projects) => {
+let projectImpacts = (projects) => {
   return projects
-    .map((project) => project.category)
+    .map((project) => project.impact)
     .filter((value, idx, self) => self.indexOf(value) === idx)
     .sort((a, b) => a >= b)
 }
@@ -55,7 +53,7 @@ var cantstopcbus = new Vue({
   data: {
     carouselProjects: [],
     allProjects: [],
-    projectCategories: []
+    projectImpacts: []
   },
   mounted() {
     axios
@@ -67,7 +65,7 @@ var cantstopcbus = new Vue({
           this.allProjects = response.data.map((project) =>
             transformProject(project)
           )
-          this.projectCategories = projectCategories(this.allProjects)
+          this.projectImpacts = projectImpacts(this.allProjects)
           this.carouselProjects = shuffle(this.allProjects).slice(0, 4)
         },
         (error) => {

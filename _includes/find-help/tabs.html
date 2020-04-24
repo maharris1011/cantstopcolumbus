@@ -11,16 +11,16 @@
         ALL
       </a>
     </li>
-    <li v-for="category in projectCategories" class="nav-item border-control">
+    <li v-for="impact in projectImpacts" class="nav-item border-control">
       <a
         class="nav-link"
         data-toggle="pill"
-        :id="'#' + category + '-tab'"
-        :href="'#' + category"
-        :aria-controls="'category' + '-tab'"
+        :id="'#' + impact + '-tab'"
+        :href="'#' + impact"
+        :aria-controls="'impact' + '-tab'"
         aria-selected="false"
       >
-        <span class="text-uppercase">{$ category $}</span>
+        <span class="text-uppercase">{$ impact $}</span>
       </a>
     </li>
   </ul>
