@@ -82,13 +82,13 @@ Vue.component("project-card", {
     <div class="card my-2 col-sm-6 col-lg-3">
       <div style="height: 50%; padding-top:2em;">
         <div class="d-flex p-1 h-100">
-          <img :src="project.logo" class="card-img-top align-self-center"/>
+          <img :src="project.logo" class="p-2 card-img-top align-self-center limit-width"/>
         </div>
         <div class="card-body">
           <a :href="project.website" target="_blank">
             <h5 class="card-title">{$ project.title $}</h5>
           </a>
-          <p class="card-text">{$ project.text $}</p>
+          <p style="padding-bottom: 2em;" class="card-text">{$ project.text $}</p>
         </div>
       </div>
     </div>
