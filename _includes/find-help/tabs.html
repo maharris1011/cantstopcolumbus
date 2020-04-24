@@ -11,19 +11,17 @@
         ALL
       </a>
     </li>
-    {% for tab in site.data.help-tabs %}
-    <li class="nav-item border-control">
+    <li v-for="impact in projectImpacts" class="nav-item border-control">
       <a
         class="nav-link"
         data-toggle="pill"
-        id="#{{ tab.name }}-tab"
-        href="#{{ tab.name }}"
-        aria-controls="{{ tab.name }}-tab"
+        :id="'#' + impact + '-tab'"
+        :href="'#' + impact"
+        :aria-controls="'impact' + '-tab'"
         aria-selected="false"
       >
-        <span class="text-uppercase">{{ tab.name }}</span>
+        <span class="text-uppercase">{$ impact $}</span>
       </a>
     </li>
-    {% endfor %}
   </ul>
 </div>
