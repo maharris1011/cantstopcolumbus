@@ -49,11 +49,11 @@ var cantstopcbus = new Vue({
     partnerFilter: function (attribute) {
       return this.allPartners.filter((partner) => partner[attribute] === true && partner.Logo)
     },
+  },
+  computed: {
     carouselProjects: function () {
       return shuffle(this.allProjects).slice(0, 4)
     },
-  },
-  computed: {
     projectCategories: function () {
       return this.allProjects
         .map((project) => project.category)
