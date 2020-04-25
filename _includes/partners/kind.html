@@ -1,5 +1,5 @@
 <div class="row artisan-ally-bootstrap-row">
-  <div v-for="partner in partnerInKind" class="artisan-ally-bootstrap-col" >
+  <div v-for="partner in partnerFilter('PubInKind')" class="artisan-ally-bootstrap-col" >
     <partner-card v-bind:item=partner></partner-card>
   </div>
 </div>

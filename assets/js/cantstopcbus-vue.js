@@ -21,10 +21,6 @@ let shuffle = (array) => {
   return array
 }
 
-let transformPartner = (partner) => {
-  return partner
-}
-
 let transformProject = (project) => {
   var retval = {
     website: project["Project Website"],
@@ -39,47 +35,46 @@ let transformProject = (project) => {
   return retval
 }
 
-let matchTab = (tabName, projects) => {
-  return projects.filter((project) => project.impact === tabName)
-}
-
-let projectImpacts = (projects) => {
-  return projects
-    .map((project) => project.impact)
-    .filter((value, idx, self) => self.indexOf(value) === idx)
-    .sort((a, b) => a >= b)
-}
-
-let partnerFilter = (all, attribute ) => {
-  return all.filter((partner) => partner[attribute] === true && partner.Logo)
-}
-
 var cantstopcbus = new Vue({
   el: "#cantstopcbus-content",
   delimiters: ["{$", "$}"],
   data: {
-    carouselProjects: [],
-    allProjects: [],
-    projectImpacts: [],
-    partnerAllies: [],
-    partnerAngels: [],
-    partnerCommunity: [],
-    partnerProfPartner: [],
-    partnerInKind: [],
-    partnerFeatured: []
+    projects: [],
+    partners: [],
   },
-  mounted() {
+  methods: {
+    matchTab: function (tabName) {
+      return this.allProjects().filter((project) => project.impact === tabName)
+    },
+    partnerFilter: function (attribute) {
+      return this.allPartners().filter((partner) => partner[attribute] === true && partner.Logo)
+    },
+    projectImpacts: function () {
+      return this.allProjects()
+        .map((project) => project.impact)
+        .filter((value, idx, self) => self.indexOf(value) === idx)
+        .sort((a, b) => a >= b)
+    },
+    carouselProjects: function () {
+      return shuffle(this.allProjects()).slice(0, 4)
+    },
+    allPartners: function () {
+      return this.partners
+    },
+    allProjects: function () {
+      return this.projects.map((project) => {
+        return transformProject(project)
+      })
+    }
+  },
+  created: function () {
     axios
       .get(
         "https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/projects"
       )
       .then(
         (response) => {
-          this.allProjects = response.data.map((project) =>
-            transformProject(project)
-          )
-          this.projectImpacts = projectImpacts(this.allProjects)
-          this.carouselProjects = shuffle(this.allProjects).slice(0, 4)
+          this.projects = response.data
         },
         (error) => {
           console.error(error)
@@ -87,22 +82,11 @@ var cantstopcbus = new Vue({
       )
     axios.get("https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/partners")
         .then((response) => {
-          this.allPartners = response.data.map((partner) => transformPartner(partner))
-          this.partnerAllies = partnerFilter(this.allPartners, "PubAlly")
-          this.partnerAngels = partnerFilter(this.allPartners, "PubAngel")
-          this.partnerCommunity = partnerFilter(this.allPartners, "PubCommPartner")
-          this.partnerProfPartner = partnerFilter(this.allPartners, "PubProfPartner")
-          this.partnerInKind = partnerFilter(this.allPartners, "PubInKind")
-          this.partnerFeatured = partnerFilter(this.allPartners, "PubFeatured")          
+          this.partners = response.data
         },
         (error) => {
           console.error(error)
         })
-  },
-  methods: {
-    partnerCommunity: function () {
-      return this.allPartners.filter((partner) => partner.pubComm === true && partner.Logo)
-    }
   }
 })
 

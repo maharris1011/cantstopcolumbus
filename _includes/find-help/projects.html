@@ -7,12 +7,12 @@
       aria-labelledby="all-tab"
     >
       <div class="row">
-        <project-card v-for="proj in allProjects" v-bind:project="proj">
+        <project-card v-for="proj in allProjects()" v-bind:project="proj">
         </project-card>
        </div>
     </div>
     <div
-      v-for="impact in projectImpacts"
+      v-for="impact in projectImpacts()"
       class="tab-pane"
       :id="impact"
       role="tabpanel"
@@ -20,7 +20,7 @@
     >
       <div class="row">
         <!-- only include projects that match the tab in each tab pane -->
-        <project-card v-for="proj in matchTab(impact, allProjects)" v-bind:project="proj">
+        <project-card v-for="proj in matchTab(impact)" v-bind:project="proj">
         </project-card>
       </div>
     </div>
