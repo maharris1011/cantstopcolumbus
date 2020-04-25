@@ -21,6 +21,10 @@ let shuffle = (array) => {
   return array
 }
 
+let transformPartner = (partner) => {
+  return partner
+}
+
 let transformProject = (project) => {
   var retval = {
     website: project["Project Website"],
@@ -46,13 +50,23 @@ let projectImpacts = (projects) => {
     .sort((a, b) => a >= b)
 }
 
+let partnerFilter = (all, attribute ) => {
+  return all.filter((partner) => partner[attribute] === true && partner.Logo)
+}
+
 var cantstopcbus = new Vue({
   el: "#cantstopcbus-content",
   delimiters: ["{$", "$}"],
   data: {
     carouselProjects: [],
     allProjects: [],
-    projectImpacts: []
+    projectImpacts: [],
+    partnerAllies: [],
+    partnerAngels: [],
+    partnerCommunity: [],
+    partnerProfPartner: [],
+    partnerInKind: [],
+    partnerFeatured: []
   },
   mounted() {
     axios
@@ -71,6 +85,24 @@ var cantstopcbus = new Vue({
           console.error(error)
         }
       )
+    axios.get("https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/partners")
+        .then((response) => {
+          this.allPartners = response.data.map((partner) => transformPartner(partner))
+          this.partnerAllies = partnerFilter(this.allPartners, "PubAlly")
+          this.partnerAngels = partnerFilter(this.allPartners, "PubAngel")
+          this.partnerCommunity = partnerFilter(this.allPartners, "PubCommPartner")
+          this.partnerProfPartner = partnerFilter(this.allPartners, "PubProfPartner")
+          this.partnerInKind = partnerFilter(this.allPartners, "PubInKind")
+          this.partnerFeatured = partnerFilter(this.allPartners, "PubFeatured")          
+        },
+        (error) => {
+          console.error(error)
+        })
+  },
+  methods: {
+    partnerCommunity: function () {
+      return this.allPartners.filter((partner) => partner.pubComm === true && partner.Logo)
+    }
   }
 })
 
@@ -92,4 +124,21 @@ Vue.component("project-card", {
       </div>
     </div>
     `
+})
+
+Vue.component("partner-card", {
+  props: ["item"],
+  delimiters: ["{$", "$}"],
+  template: `
+    <a class="card-link text-info text-center mt-auto" :href="item.URL" target="_blank">
+    <div class="card h-100">
+      <div class="embed-responsive embed-responsive-21by9">
+          <img :alt="item.Partner" class="sponsorlogo" :src="item.Logo[0].url" />
+      </div>
+      <div class="card-body d-flex flex-column">
+        <p class="card-link text-info text-center mt-auto">{$ item.Partner $}</p>
+      </div>
+    </div>
+    </a>
+  `
 })

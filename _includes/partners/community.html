@@ -1,18 +1,5 @@
 <div class="row artisan-ally-bootstrap-row">
-  {% for item in site.data.community %}
-  {% for photo in item.logo %}
-  <div class="artisan-ally-bootstrap-col" >
-    <a class="card-link text-info text-center mt-auto" href="{{ item.url }}" target="_blank">
-    <div class="card h-100">
-      <div class="embed-responsive embed-responsive-21by9">
-          <img alt="{{ item.partner }}" class="sponsorlogo" src="{{ photo.url }}" />
-      </div>
-      <div class="card-body d-flex flex-column">
-        <p class="card-link text-info text-center mt-auto">{{ item.partner }}</p>
-      </div>
-    </div>
-    </a>
+  <div v-for="partner in partnerCommunity" class="artisan-ally-bootstrap-col" >
+    <partner-card v-bind:item=partner></partner-card>
   </div>
-  {% endfor %}
-{% endfor %}
 </div>
