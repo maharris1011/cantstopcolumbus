@@ -1,18 +1,5 @@
 <div class="row artisan-featured-bootstrap-row">
-  {% for item in site.data.feature %}
-    {% for photo in item.logo %}
-  <div class="artisan-featured-bootstrap-col" >
-    <a class="card-link text-info" href="{{ item.url }}" target="_blank">
-    <div class="card h-100">
-      <div class="embed-responsive">
-          <img alt="{{ item.partner }}" class="sponsorlogofeature" src="{{ photo.url }}" />
-      </div>
-      <div class="card-body d-flex flex-column">
-        <p class="card-link text-info text-center mt-auto">{{ item.partner }}</p>
-      </div>
-    </div>
-    </a>
+  <div v-for="partner in partnerFilter('PubFeatured')" class="artisan-featured-bootstrap-col" >
+    <partner-card v-bind:item=partner></partner-card>
   </div>
-  {% endfor %}
-{% endfor %}
 </div>

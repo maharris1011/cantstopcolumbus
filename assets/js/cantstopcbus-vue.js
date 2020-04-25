@@ -35,42 +35,58 @@ let transformProject = (project) => {
   return retval
 }
 
-let matchTab = (tabName, projects) => {
-  return projects.filter((project) => project.impact === tabName)
-}
-
-let projectImpacts = (projects) => {
-  return projects
-    .map((project) => project.impact)
-    .filter((value, idx, self) => self.indexOf(value) === idx)
-    .sort((a, b) => a >= b)
-}
-
 var cantstopcbus = new Vue({
   el: "#cantstopcbus-content",
   delimiters: ["{$", "$}"],
   data: {
-    carouselProjects: [],
-    allProjects: [],
-    projectImpacts: []
+    projects: [],
+    partners: [],
   },
-  mounted() {
+  methods: {
+    matchTab: function (tabName) {
+      return this.allProjects().filter((project) => project.impact === tabName)
+    },
+    partnerFilter: function (attribute) {
+      return this.allPartners().filter((partner) => partner[attribute] === true && partner.Logo)
+    },
+    projectImpacts: function () {
+      return this.allProjects()
+        .map((project) => project.impact)
+        .filter((value, idx, self) => self.indexOf(value) === idx)
+        .sort((a, b) => a >= b)
+    },
+    carouselProjects: function () {
+      return shuffle(this.allProjects()).slice(0, 4)
+    },
+    allPartners: function () {
+      return this.partners
+    },
+    allProjects: function () {
+      return this.projects.map((project) => {
+        return transformProject(project)
+      })
+    }
+  },
+  created: function () {
     axios
       .get(
         "https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/projects"
       )
       .then(
         (response) => {
-          this.allProjects = response.data.map((project) =>
-            transformProject(project)
-          )
-          this.projectImpacts = projectImpacts(this.allProjects)
-          this.carouselProjects = shuffle(this.allProjects).slice(0, 4)
+          this.projects = response.data
         },
         (error) => {
           console.error(error)
         }
       )
+    axios.get("https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/partners")
+        .then((response) => {
+          this.partners = response.data
+        },
+        (error) => {
+          console.error(error)
+        })
   }
 })
 
@@ -92,4 +108,21 @@ Vue.component("project-card", {
       </div>
     </div>
     `
+})
+
+Vue.component("partner-card", {
+  props: ["item"],
+  delimiters: ["{$", "$}"],
+  template: `
+    <a class="card-link text-info text-center mt-auto" :href="item.URL" target="_blank">
+    <div class="card h-100">
+      <div class="embed-responsive embed-responsive-21by9">
+          <img :alt="item.Partner" class="sponsorlogo" :src="item.Logo[0].url" />
+      </div>
+      <div class="card-body d-flex flex-column">
+        <p class="card-link text-info text-center mt-auto">{$ item.Partner $}</p>
+      </div>
+    </div>
+    </a>
+  `
 })
