@@ -1,18 +1,12 @@
 <div class="jumbotron background-white">
-
-
-<<<<<<< HEAD
-    <form name="volunteer" class="needs-validation" method="post" action="volunteer-success.html"   novalidate accept-charset="UTF-8"> <!--accept-charset="UTF-8" action="https://formkeep.com/f/exampletoken" method="POST"-->
-=======
-    <form name="volunteer" class="needs-validation" method="post" action="volunteer-success.html"  novalidate accept-charset="UTF-8"> 
->>>>>>> aca9a382644c66bb360fc27c803e2a6094661d92
+    <form name="volunteer" id="volunteer" @submit="checkSubmit" method="post" action="volunteer-success.html" class="needs-validation"  novalidate accept-charset="UTF-8"> 
         <div class = "row">
             <div class="col-md-7 col-lg-5">
                 <div class="form-group">
-                    <input type="text" id="firstName" required class="form-control volunteerField " name="firstName">
+                    <input type="text" id="firstName" v-model="firstName" :class="{ 'is-invalid': submitted && $firstName.$error }" required class="form-control volunteerField " name="firstName"  >
                     <label for="firstName" class="form-control-placeholder">First Name</label>
-                    <div class="invalid-feedback">
-                        Please type in your first name
+                    <div class="invalid-feedback" v-if="submitted && !firstName.required">
+                        First Name is required
                     </div>
                 </div>
             </div> 
@@ -20,10 +14,10 @@
         <div class = "row">
             <div class="col-md-7 col-lg-5">
                 <div class="form-group">
-                    <input type="text" id="lastName" required class="form-control volunteerField" name="lastName">
+                    <input type="text" id="lastName" v-model="lastName" :class="{ 'is-invalid': submitted && $lastName.$error }" required class="form-control volunteerField" name="lastName">
                     <label for="lastName" class="form-control-placeholder">Last Name</label>
-                    <div class="invalid-feedback">
-                        Please type in your last name
+                    <div class="invalid-feedback"  v-if="submitted && !firstName.required">
+                        Last Name is required
                     </div>
                 </div>
             </div> 
@@ -31,9 +25,12 @@
         <div class = "row">
             <div class="col-md-7 col-lg-5">
                 <div class="form-group">
-                    <input type="email" id="primEmail" required class="form-control volunteerField" name="primEmail" >
+                    <input type="email" id="primEmail" v-model="primEmail" :class="{ 'is-invalid': submitted && $primEmail.$error }" required class="form-control volunteerField" name="primEmail" >
                     <label for="primEmail" class="form-control-placeholder">Primary Email</label>
-                    <div class="invalid-feedback">
+                    <div class="invalid-feedback"  v-if="submitted && !primEmail.required">
+                        Email is required
+                    </div>
+                    <div class="invalid-feedback"  v-if="submitted && !primEmail.invalid">
                         Please type in a valid email
                     </div>
                 </div>
@@ -42,7 +39,7 @@
         <div class = "row">
             <div class="col-md-7 col-lg-5">
                 <div class="form-group">
-                    <input type="tel" id="phone" class="form-control volunteerField" name="phone" >
+                    <input type="tel" id="phone" class="form-control volunteerField"  v-model="phone"  name="phone" >
                     <label for="phone" class="form-control-placeholder">Phone Number</label>
                 </div>
             </div> 
@@ -50,7 +47,7 @@
         <div class = "row">
             <div class="col-md-7 col-lg-5">
                 <div class="form-group">
-                    <input type="text" id="work"  class="form-control volunteerField" name="work" >
+                    <input type="url" @blur="urlValid()" id="work"  v-model="work"  class="form-control volunteerField" name="work" >
                     <label for="work" class="form-control-placeholder">Where can people see your work?</label>
                 </div>
             </div> 
@@ -59,7 +56,7 @@
             <div class="col-md-7 col-lg-5">
                 <div class="form-group">
                     
-                    <input type="text" id="other"  class="form-control volunteerField" name="other" >
+                    <input type="url" @blur="urlValid()" id="other"   v-model="other" class="form-control volunteerField" name="other" >
                     <label for="other" class="form-control-placeholder">Anywhere else?</label>
                 </div>
             </div> 
@@ -67,7 +64,7 @@
         <div class = "row">
             <div class="col-md-7 col-lg-5">
                 <div class="form-group">
-                    <input type="text" id="city"  class="form-control volunteerField" name="city" >
+                    <input type="text" id="city"  v-model="city"  class="form-control volunteerField" name="city" >
                     <label for="city" class="form-control-placeholder">City</label>
                 </div>
             </div> 
@@ -75,7 +72,7 @@
         <div class = "row">
             <div class="col-md-7 col-lg-5">
                 <div class="form-group">
-                        <select class="form-control selectpicker volunteerField" style="height: calc(3.25rem + 2px)!important" id="state" name="state">
+                        <select class="form-control selectpicker volunteerField" v-model="state"  style="height: calc(3.25rem + 2px)!important" id="state" name="state">
                             <option value="">N/A</option>
                             <option value="AK">Alaska</option>
                             <option value="AL">Alabama</option>
@@ -137,7 +134,7 @@
         <div class = "row">
             <div class="col-md-7 col-lg-5">
                 <div class="form-group">
-                    <input type="text" id="linkedin"  class="form-control volunteerField" name="linkedin" >
+                    <input type="url" @blur="urlValid()" id="linkedin"  class="form-control volunteerField" v-model="linkedin" name="linkedin" >
                     <label for="linkedin" class="form-control-placeholder">LinkedIn</label>
                 </div>
             </div> 
@@ -146,7 +143,7 @@
             <div class="col-md-7 col-lg-5">
                 <div class="form-group">
                     
-                    <input type="text" id="twitter"  class="form-control volunteerField" name="twitter" >
+                    <input type="url" @blur="urlValid()" id="twitter"  class="form-control volunteerField" v-model="twitter" name="twitter" >
                     <label for="twitter" class="form-control-placeholder">Twitter</label>
                 </div>
             </div> 
@@ -156,8 +153,9 @@
                 <div class="form-group">
                     <label class="volunteerLabel"  for="passionWork">Are there any types of problems you're particularly passionate about solving?</label>
                     <br>
-                    <button type="button" id="passionWorkButton" onclick="openPassionList()" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#modal">+ Add</button>
+                    <button type="button" id="passionWorkButton" @click="openPassionList()" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#modal">+ Add</button>
                     <div class="btn-group-vertical" style="margin-top:10px;" id = "passionWorkButtonGroup">
+                        <button v-for="(input) in chosenPassionList" class="modalButton"  type="button">{{input.name}}<span aria-hidden="true" style="float:right;"  @click="deletePassion(input)">&times;</span></button>
                     </div>
                 </div>
             </div> 
@@ -167,8 +165,9 @@
                 <div class="form-group">
                     <label class="volunteerLabel" for="position">What are you in a position to volunteer? Add all the skills you can muster.</label>
                     <br>
-                    <button type="button" id="positionButton" onclick="openPositionList()" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#modal">+ Add</button>
-                    <div class="btn-group-vertical" style="margin-top:10px" id = "positionButtonGroup">
+                    <button type="button" id="positionButton" @click="openPositionList()" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#modal">+ Add</button>
+                    <div class="btn-group-vertical" style="margin-top:10px"  v-bind:id="input.ID" id = "positionButtonGroup">
+                        <button v-for="(input) in chosenPositionList" class="modalButton"  type="button">{{input.name}}<span aria-hidden="true" style="float:right;"  @click="deletePosition(input)">&times;</span></button>
                     </div>
                 </div>
             </div> 
@@ -177,8 +176,9 @@
             <div class="col-md-7 col-lg-5">
                 <div class="form-group">
                     <label class="volunteerLabel"  for="activities">Below are some types of regular needs that have emerged, what type of activities are you best suited to support?</label>
-                    <button type="button" id="activitiesButton" onclick="openActivitiesList()" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#modal">+ Add</button>
+                    <button type="button" id="activitiesButton" @click="openActivitiesList()" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#modal">+ Add</button>
                     <div class="btn-group-vertical" style="margin-top:10px" id = "activitiesButtonGroup">
+                        <button v-for="(input) in chosenActivitiesList" class="modalButton"  type="button">{{input.name}}<span aria-hidden="true" style="float:right;"  @click="deleteActivities(input)">&times;</span></button>
                     </div>
                 </div>
             </div> 
@@ -186,7 +186,7 @@
         <div class = "row">
             <div class="col-md-8 col-lg-6">
                 <div class="form-group">
-                    <input type="number" id="hours"  class="form-control volunteerField" name="hours" >
+                    <input type="number" id="hours" v-model="hours" class="form-control volunteerField" name="hours" >
                     <label for="hours" class="form-control-placeholder">Hours Per Week Available?</label>
                     <p ><small>Your best guess is fine. This is just services as a guideline for us to best connect you with a project!</small></p>
                 </div>
@@ -199,15 +199,15 @@
                     <label class="volunteerLabel"  for="contributeSkills">I am interested in contributing my skills to ...</label>
                     <div class="checkbox">
                         <label class="customcheck d-block volunteerLabel"  style=" text-indent:15px;"  >
-                            <input type="checkbox" id="contributing" value=""><span class="checkmark" style="margin-right:25px;"></span>Contributing</label>
+                            <input type="checkbox" v-model="contributing" id="contributing" value=""><span class="checkmark" style="margin-right:25px;"></span>Contributing</label>
                       </div>
                       <div class="checkbox">
                         <label  class="customcheck d-block volunteerLabel" style=" text-indent:15px;" >
-                            <input type="checkbox" id="mentoring" value=""> <span class="checkmark"></span>Mentoring</label>
+                            <input type="checkbox" v-model="mentoring" id="mentoring" value=""> <span class="checkmark"></span>Mentoring</label>
                       </div>
                       <div class="checkbox ">
                         <label  class="customcheck d-block volunteerLabel" style=" text-indent:15px;" >
-                            <input type="checkbox" id="remote" value="" ><span class="checkmark"></span>Giving a remote talk</label>
+                            <input type="checkbox" v-model="remote" id="remote" value="" ><span class="checkmark"></span>Giving a remote talk</label>
                       </div>
                 </div>
             </div> 
@@ -227,7 +227,11 @@
                         </label> <span class="volunteerLabel" > or drop here</span>
                         <input id="photoUpload" type="file"/>
                         <div id="preview">
-
+                            <div v-if="imgName != null" class="row">
+                                <div class="col-md-5">
+                                    <button style="margin-left:-10px;" class="modalButtonImage" disabled id="file">{{imgName}}</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -236,7 +240,7 @@
         <div class = "row">
             <div class="col-md-7 col-lg-5">
                 <div class="form-group">
-                    <input type="text" class="form-control volunteerField" id="misc" rows="3"></input>
+                    <input type="text" v-model="misc" class="form-control volunteerField" id="misc" rows="3"></input>
                     <label for="misc" class="form-control-placeholder">Anything else we should know?</label>
                     <!--<input type="text" id="hours"  class="form-control" name="hours" >-->
                 </div>
@@ -246,25 +250,17 @@
             <div class="col-md-9 col-lg-7">
                 <div class="form-group">
                     <div class= "row">
-<<<<<<< HEAD
                         <div class="form-check">
                             
-                            <input type="checkbox" hidden class="form-check-input"  id="pseudoConduct" value="" required>
+                            <input type="checkbox" hidden class="form-check-input" v-model="pseudoConduct" id="pseudoConduct" value="" required>
                             <label  class="customcheck d-block volunteerLabel form-check-label"  style="text-indent:15px;" >
-                                <input type="checkbox"  id="conduct" value="">
+                                <input type="checkbox" @change="changeConductValue()" id="conduct" value="">
                                 <span class="checkmark"></span>
-                                I have read the <a href="https://cantstopcolumbus.com/code-of-conduct.html" style="font-style:bold; color:#4300FF">Code of Conduct</a>
+                                I have read the <a href="https://cantstopcolumbus.com/code-of-conduct.html" :class="{ 'is-invalid': submitted && $pseudoConduct.$error }" style="font-style:bold; color:#4300FF">Code of Conduct</a>
                             </label>
-                            <div class="invalid-feedback">
+                            <div class="invalid-feedback" v-if="submitted && !pseudoConduct.required">
                                 Please confirm if you have read the Can't Stop Columbus Code of Conduct 
                                 </div>
-=======
-                        <div class="checkbox ">
-                            <label  class="customcheck d-block volunteerLabel"  style="text-indent:15px;" >
-                                <input type="checkbox" value="" required><span class="checkmark"></span>
-                                I have read the <a href="https://cantstopcolumbus.com/code-of-conduct.html" style="font-style:bold; color:#4300FF">Code of Conduct</a>
-                            </label>
->>>>>>> aca9a382644c66bb360fc27c803e2a6094661d92
                           </div>
 
                     </div>
@@ -295,7 +291,10 @@
           </button>
         </div>
         <div class="modal-body  justify-content-center" id="modalBody">
-            <div class="btn-group-vertical justify-content-center" id = "modalButtonGroup">
+            <div class="btn-group-vertical justify-content-center"  id = "modalButtonGroup">
+                <button v-if="type==='PassionWork' && !chosenPassionList.includes(input)" v-for="(input) in passionList" class="modalButton" type="button" id="input.id" @click="addPassionToChosen(input)" >{{input.name}}</button>
+                <button v-if="type==='Position' && !chosenPositionList.includes(input)" v-for="(input) in positionList" class="modalButton" type="button" id="input.id" @click="addPositionToChosen(input)" >{{input.name}}</button>
+                <button v-if="type==='Activities' && !chosenActivitiesList.includes(input)" v-for="(input) in activitiesList" class="modalButton" type="button" id="input.id" @click="addActivityToChosen(input)" >{{input.name}}</button>
             </div>
         </div>
         <div class="modal-footer">
@@ -307,231 +306,382 @@
 
   <script>
 
-      var passionList = []//=['Access to Information', 'Education', 'Elderly & At-Risk Populations', 'Emergency Services', 'Employment', 'Financial Support', 'Food & Hunger', 'General Aid', 'Healthcare \\\ Medical Resources', 'K-12 Education', 'Mental Health', 'Minority, Immigrant & Refugee Resources', 'Mobility', 'Non-Profit Support', 'Small Business', 'Other (describe below)'];
-      var positionList = []//=['3D Printing', 'Animation', 'Audio Editing', 'Business Analysis', 'Community Volunteering', 'Copywriting', 'Crafting', 'Data - Product Analytics', 'Data - Synthesis', 'Data - Visualization', 'Data Entry', 'Digitial Strategy', 'DIY', 'E-Commerce', 'Education - K-12', 'Education - Post-Secondary', 'Education - Pre-K', 'Epidemiology', 'Graphic Design', 'Healthcare', 'Hustle', 'Internet Research', 'Language - Spanish', 'Legal', 'Marketing', 'Non-Profit Volunteering', 'Performing Arts/Music', 'Personal /// Professional Network - Government', 'Personal /// Professional Network - Health', 'Personal /// Professional Network - Other', 'Personal /// Professional Network - Students', 'Podcast Production/Hosting', 'Process Engineering', 'Product Management', 'Project Management', 'Real Estate Development', 'Recruiting', 'Social Media', 'Tech - .NET', 'Tech - Android Development', 'Tech - Backend Development', 'Tech - C++', 'Tech - Database', 'Tech - Excel', 'Tech - Flask', 'Tech - Frontend Development', 'Tech - GIS', 'Tech - HTML///CSS', 'Tech - Information Security', 'Tech - Infrastructure', 'Tech - iOS Development', 'Tech - Java', 'Tech - JavaScript', 'Tech - Microcontrollers', 'Tech - Node', 'Tech - Python', 'Tech - QA', 'Tech - R', 'Tech - Rails', 'Tech - React', 'Tech - Redux', 'Tech - Spring Boot', 'Tech - SquareSpace', 'Tech - Swift', 'Tech - TensorFlow', 'Tech - VBA', 'Tech - Vue.js', 'Tech - WordPress Development', 'UI Design', 'UX Design', 'UX Research', 'Video Editing', 'Visual Arts', ];
-      var activitiesList = []//=['Research and Data Collection', 'Administration and Documentation', 'Coding and Tech Development', 'Project and/or Product Management', 'Organizing and/or Hosting Virtual Programming', 'Recruiting New Members and Skillsets', 'Ideation and Solution Discovery', 'External Communications (Social Media, PR, Copywriting, etc)', 'Graphic Design', 'Fundraising and Forming Community Partnerships'];
-
-
-      var chosenPassionList=[];
-      var chosenActivitiesList=[];
-      var chosenPositionList=[];
-
-      var fileTag = document.getElementById("photoUpload"),
-      preview = document.getElementById("preview"),
-      uploadBox = document.getElementById("upload_Box");
-
-      var objItem = function(name, id) {
-        this.name = name;
-        this.id = id;
-      }
-
-      var forms = $("[name='needs-validation']");
-
-
-      //forimage
-      var reader = new FileReader();
-      var img = new Image();
-      var imgURL;
-
-
-      function creatingLists() {
-        console.log("CREATING LISTS")
-        var xhrGetSkills = new XMLHttpRequest();
-        var xhrGetPassions = new XMLHttpRequest();                    
-        var xhrGetActivities = new XMLHttpRequest();
-
-        xhrGetSkills.open('GET', 'https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/skills', true);
-        xhrGetSkills.setRequestHeader('Content-Type', 'application/json');
-        xhrGetSkills.send();
-
-        xhrGetPassions.open('GET', 'https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/categories', true);
-        xhrGetPassions.setRequestHeader('Content-Type', 'application/json');
-        xhrGetPassions.send();
-
-        xhrGetActivities.open('GET', 'https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/activities', true);
-        xhrGetActivities.setRequestHeader('Content-Type', 'application/json');
-        xhrGetActivities.send();
+        const app = new Vue({
+        el:'#volunteer',
+        data:{
+            firstName:null,
+            lastName:null,
+            primEmail:null,
+            phone:null,
+            work:null,
+            other:null,
+            city:null,
+            state:null,
+            linkedin:null,
+            twitter:null,
+            hours:null,
+            misc:null,
+            mentoring:null,
+            contributing:null,
+            remote:null,
+            errors:[],
+            pseudoConduct:false,
+            passionList:[],
+            positionList:[],
+            activitiesList:[],
+            chosenPassionList:[],
+            chosenActivitiesList:[],
+            chosenPositionList:[],
+            newObj: {
+                 name: null,
+                 id: null
+            },
+            modalInputs: [],
+            type:null,
+            imgURL: null,
+            imgName: null,
+            submitted : false
             
-        xhrGetSkills.onload = function() {
-            var jsonResponse = JSON.parse(xhrGetSkills.responseText);
-                jsonResponse.forEach(function(item) {
-                   //console.log(item)
-                  // console.log(item["Skill"]);
-                   var newObj = new objItem(item["Skill"], item["id"]);
-                   console.log(newObj);
-                   positionList.push(newObj);
-                });
-            console.log("HAVE SKILLS");
-            console.log(positionList)
-        }
-        xhrGetPassions.onload = function() {
-            var jsonResponse = JSON.parse(xhrGetPassions.responseText);
-                jsonResponse.forEach(function(item) {
-                   var newObj = new objItem(item["Category"], item["id"]);
-                   passionList.push(newObj);
-                });
-            console.log("HAVE PASSIONS");
-        }
-        xhrGetActivities.onload = function() {
-            var jsonResponse = JSON.parse(xhrGetActivities.responseText);
-                jsonResponse.forEach(function(item) {
-                   var newObj = new objItem(item["Activity"], item["id"]);
-                   activitiesList.push(newObj)
-                });
-            console.log("HAVE ACTIVITIES");
-        }
-      }
+           /* var copyFirstName = document.getElementById("firstName"),
+                copyLastName = document.getElementById("lastName"),
+                copyPrimEmail = document.getElementById("primEmail"),
+                copyPhone = document.getElementById("phone"),
+                copyWork = document.getElementById("work"),
+                copyOther = document.getElementById("other"),
+                copyCity = document.getElementById("city"),
+                copyState = document.getElementById("state"),
+                copyLinkedIn = document.getElementById("linkedin"),
+                copyTwitter = document.getElementById("twitter"),
+                copyHours = document.getElementById("hours"),
+                copyMisc = document.getElementById("misc"),
+                var passionList = []//=['Access to Information', 'Education', 'Elderly & At-Risk Populations', 'Emergency Services', 'Employment', 'Financial Support', 'Food & Hunger', 'General Aid', 'Healthcare \\\ Medical Resources', 'K-12 Education', 'Mental Health', 'Minority, Immigrant & Refugee Resources', 'Mobility', 'Non-Profit Support', 'Small Business', 'Other (describe below)'];
+                var positionList = []//=['3D Printing', 'Animation', 'Audio Editing', 'Business Analysis', 'Community Volunteering', 'Copywriting', 'Crafting', 'Data - Product Analytics', 'Data - Synthesis', 'Data - Visualization', 'Data Entry', 'Digitial Strategy', 'DIY', 'E-Commerce', 'Education - K-12', 'Education - Post-Secondary', 'Education - Pre-K', 'Epidemiology', 'Graphic Design', 'Healthcare', 'Hustle', 'Internet Research', 'Language - Spanish', 'Legal', 'Marketing', 'Non-Profit Volunteering', 'Performing Arts/Music', 'Personal /// Professional Network - Government', 'Personal /// Professional Network - Health', 'Personal /// Professional Network - Other', 'Personal /// Professional Network - Students', 'Podcast Production/Hosting', 'Process Engineering', 'Product Management', 'Project Management', 'Real Estate Development', 'Recruiting', 'Social Media', 'Tech - .NET', 'Tech - Android Development', 'Tech - Backend Development', 'Tech - C++', 'Tech - Database', 'Tech - Excel', 'Tech - Flask', 'Tech - Frontend Development', 'Tech - GIS', 'Tech - HTML///CSS', 'Tech - Information Security', 'Tech - Infrastructure', 'Tech - iOS Development', 'Tech - Java', 'Tech - JavaScript', 'Tech - Microcontrollers', 'Tech - Node', 'Tech - Python', 'Tech - QA', 'Tech - R', 'Tech - Rails', 'Tech - React', 'Tech - Redux', 'Tech - Spring Boot', 'Tech - SquareSpace', 'Tech - Swift', 'Tech - TensorFlow', 'Tech - VBA', 'Tech - Vue.js', 'Tech - WordPress Development', 'UI Design', 'UX Design', 'UX Research', 'Video Editing', 'Visual Arts', ];
+                var activitiesList = []//=['Research and Data Collection', 'Administration and Documentation', 'Coding and Tech Development', 'Project and/or Product Management', 'Organizing and/or Hosting Virtual Programming', 'Recruiting New Members and Skillsets', 'Ideation and Solution Discovery', 'External Communications (Social Media, PR, Copywriting, etc)', 'Graphic Design', 'Fundraising and Forming Community Partnerships'];
 
-      function openPassionList() {
-        clearChildren();
-        passionList.forEach(function (passionWork, index) {
-            console.log("Entering For Each");
-            console.log(passionWork);
-            if(!chosenPassionList.includes(passionWork.id))
-            {
-                console.log(chosenPassionList);
-                var text = "<button class=\"modalButton\" type=\"button\" id=\"" + passionWork.name + "\" onclick=\"addPassionToChosen('" + passionWork.name + "', '" + passionWork.id + "')\" >"  + passionWork.name + "</button>"
-                $("#modalButtonGroup").append(text);
-            }
-        });
-      }
 
-      function addPassionToChosen(passion, id){
-         console.log("HI");
-         console.log(passion);
-         chosenPassionList.push(id);
-         var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + passion.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + passion + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deletePassion('" + passion + "', '" + id + "')\">&times;</span></button>"
-         $("#passionWorkButtonGroup").append(newButton);
-         $("#modal").modal("hide");
-      }
+                var chosenPassionList=[];
+                var chosenActivitiesList=[];
+                var chosenPositionList=[];    
+                */
+        },
+        mounted: function () {
+            // `this` points to the vm instance
+            console.log('a is: ' + this.a)
+            creatingListsMounted();
 
-      function deletePassion(passion, id){
-        console.log("FUNCTION CLICKED");
-        console.log(passion);
-        const index = chosenPassionList.indexOf(id);
-        if (index > -1) {
-            chosenPassionList.splice(index, 1); 
-        }
-        
-        var removeText = "chosen"+passion.toString().replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_');
-        console.log(removeText);
-        var child = document.getElementById(removeText)
-        document.getElementById("passionWorkButtonGroup").removeChild(child);
-        console.log(chosenPassionList);
-      }
+            this.$ref.fileTag.addEventListener("change", function() {
+                        changeImage(this);
+            });
 
-      function openPositionList() {
-        clearChildren();
-        positionList.forEach(function (position, index) {
-            if(!chosenPositionList.includes(position.id)){
-                console.log(position)
-                var text = "<button class=\"modalButton\" type=\"button\" id=\"" + position.name + "\" onclick=\"addPositionToChosen('" + position.name + "', '" + position.id + "')\" >"  + position.name + "</button>"
-                $("#modalButtonGroup").append(text)
-            }
+            ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                        this.$ref.uploadBox.addEventListener(eventName, preventDefaults, false)   
+                         document.body.addEventListener(eventName, preventDefaults, false)
+            })
 
-        });
+                        // Highlight drop area when item is dragged over it
+            ;['dragenter', 'dragover'].forEach(eventName => {
+                            this.$ref.uploadBox.addEventListener(eventName, highlight, false)
+            })
 
-       // $("#modal-content").classList.add("modal-dialog-scrollable");
-      }
+            ;['dragleave', 'drop'].forEach(eventName => {
+                            this.$ref.uploadBox.addEventListener(eventName, unhighlight, false)
+            })
 
-       function addPositionToChosen(position, id){
-           console.log("Pushing " + position);
-         chosenPositionList.push(id);
-         console.log(position)
-         var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + position.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + position + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deletePosition('" + position + "', '" + id + "')\">&times;</span></button>"
-         $("#positionButtonGroup").append(newButton);
-         $("#modal").modal("hide");
-       }
+            this.$ref.uploadBox.addEventListener('drop', handleDrop, false)
 
-      function deletePosition(position, id){
-        console.log("DELETING POSITION" + position)
-        console.log(chosenPositionList);
-        const index = chosenPositionList.indexOf(id);
-        console.log(index);
-        if (index > -1) {
-            chosenPositionList.splice(index, 1);
-        }
-        
-        var removeText = "chosen" + position.toString().replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_');
-        //console
-        console.log(removeText);
-        var child = document.getElementById(removeText);
-        console.log(child);
-        document.getElementById("positionButtonGroup").removeChild(child);
-      }
+            this.$el.querySelectorAll('.volunteerField').forEach( (button) => {
+                button.addEventListener('change', (e) => {
+                    if (e.target.value.length > 0 && $(this)[0].nodeName=="INPUT")
+                        {
+                            console.log(e.target.id);
+                            var string = "label[for='" +e.target.id + "']";
+                            console.log(string);
+                            if($(string).length){
+                                console.log("Success")
+                                $(string)[0].classList.add("stateField")
+                            }
+                            
+                        }
+                        //console.log($("label[for='firstName']"));
+                       // console.log($("label[for='firstName']")[0].classList);
+                       // $("label[for='firstName']")[0].classList.add("stateField")
+                    else if(e.target.value.length <= 0){
+                        var string = "label[for='" +e.target.id + "']";
+                            console.log(string);
+                            if($(string).length){
+                                console.log("Success")
+                                $(string)[0].classList.remove("stateField")
+                            }
+                    }
+                })
+            } );
 
-       function openActivitiesList() {
-         clearChildren();
-         activitiesList.forEach(function (activity, index) {
-            if(!chosenActivitiesList.includes(activity.id))
-            {
-                var text = "<button class=\"modalButton\" type=\"button\" id=\"" + activity.name + "\" onclick=\"addActivityToChosen('" + activity.name + "', '" + activity.id + "')\" >"  + activity.name + "</button>"
-                $("#modalButtonGroup").append(text)
-            }
-        });
-       }
+        },
+        watch:{
 
-      function addActivityToChosen(activity){
-         chosenActivitiesList.push(activity);
-         var newButton = '<button class="modalButton" type="button" id="chosen"' 
-                         + activity.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + '" >"'
-                         + activity + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deleteActivity('" + activity + "')\">&times;</span></button>"
-         var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" 
-         $("#activitiesButtonGroup").append(newButton);
-         $("#modal").modal("hide");
-      }
+        } ,
+        methods: {
+                checkForm: function (e) {
+                    this.submitted = true;
+                    this.errors = [];
 
-      function deleteActivity(activity, id){
-          console.log("DELETING ACTIVITY");
-          console.log(activity);
-        const index = chosenActivitiesList.indexOf(id);
-        if (index > -1) {
-            chosenActivitiesList.splice(index, 1);
-        }
-        
-        var removeText = "chosen" + activity.toString().replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_');
-        var child = document.getElementById(removeText)
-        document.getElementById("activitiesButtonGroup").removeChild(child);
-      }
+                    if (!this.firstName) {
+                        this.errors.push("First Name required.");
+                    }
+                    if (!this.lastName) {
+                        this.errors.push("Last Name required.");
+                    }            
+                    if (!this.primEmail) {
+                        this.errors.push('Email required.');
+                    } else if (!this.validEmail(this.primEmail)) {
+                        this.errors.push('Valid email required.');
+                    }
+                    if (!this.pseudoConduct) {
+                        this.errors.push("Conduct Agremment required.");
+                    }
+                    if (!this.errors.length) {
+                                var interested=[];
+                                console.log(copyMentoring);
+                                if(this.mentoring){
+                                    console.log("MENTORING");
+                                    interested.push("Mentoring")
+                                }
 
-        function clearChildren() { 
-            $("#modalButtonGroup").empty();
-        } 
+                                if(this.contributing){
+                                    interested.push("Contributing")
+                                }
 
-        
-        function highlight(e) {
-            uploadBox.classList.add('highlightBox')
-        }
+                                if(this.remote){
+                                    interested.push("Giving a remote talk")
+                                }
+                                axios.post(`https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/volunteers`, {
+                                    body: JSON.stringify({
+                                            /*"Business":copyName.value,
+                                            "Promo":copyText.value,
+                                            "Website": copySite.value*/
+                                            "First Name": this.firstName,
+                                            "Last Name": this.lastName,
+                                            "Primary Email": this.primEmail,
+                                            "Phone": this.phone,
+                                            "Website 1": this.work,
+                                            "Website 2": this.other,
+                                            "City": this.city,
+                                            "State": this.state,
+                                            "LinkedIn": this.linkedin,
+                                            "Twitter": this.twitter,
+                                            "Available hours/week": this.hours,
+                                            "Talent notes": this.misc,
+                                            "Skills": this.chosenPositionList,
+                                            "Passions": this.chosenPassionList,
+                                            "Activities": this.chosenActivitiesList,
+                                            "Photo Upload": [
+                                                {
+                                                "url": this.imgURL
+                                                }
+                                            ],
+                                            "I am interested in contributing my skills to ...": interested,
+                                            "COC Affirmation": true,
+                                            })
+                                    })
+                                .then(response => {
+                                    if(response.status == '200')
+                                    {
+                                        e.target.classList.add('was-validated');
+                                        window.location.pathname = '/volunteer-success.html';
+                                        return true;
+                                    }
+                                })
+                                .catch(e => {
+                                     this.errors.push(e)
+                                     e.stopPropagation()
+                                    })
 
-        function unhighlight(e) {
-            uploadBox.classList.remove('highlightBox')
-        }
-                        
-        function preventDefaults (e) {
-            e.preventDefault()
-            e.stopPropagation()
-        }
+                                //
+                            }
+                            else {
+                                e.preventDefault();
+                            }
+                            e.target.classList.add('was-validated');
+                    }
+            },
+            changeConductValue: function(event){
+                this.$ref.pseudoConduct.checked = event.target.checked
+            },
+            urlValidate: function(event){
+                var string = $(this).val();
+                    if (!string.match(/^https?:/) && string.length) {
+                        string = "http://" + string;
+                        $(this).val(string)
+                    }
+            },
+            validEmail: function (email) {
+                var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+            },
+            creatingListsMounted: function(){
+                axios.get('https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/skills').then(response => {
+                    for (var item in response.data) {
+                        this.positionList.push(this.objItem(item["Skill"], item["id"]));
+                    }
+                 });
 
-        function handleDrop(e) {
-            var dt = e.dataTransfer
-                            //var files = dt.files
+                 axios.get('https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/categories').then(response => {
+                    for (var item in response.data) {
+                        this.passionList.push(this.objItem(item["Skill"], item["id"]));
+                    }
+                 });
 
-            changeImage(dt);
+                 axios.get('https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/activities').then(response => {
+                    for (var item in response.data) {
+                        this.activitiesList.push(this.objItem(item["Skill"], item["id"]));
+                    }
+                 });
+            },
+            clearChildren: function() { 
+                //this.$refs.modalButtonGroup.empty();
+                this.type=null;
+            }, 
+            highlight: function(e) {
+                this.$refs.uploadBox.classList.add('highlightBox')
+             },
+            unhighlight: function(e) {
+                this.$refs.unloadBox.classList.remove('highlightBox')
+            },
+            preventDefaults: function(e) {
+                e.preventDefault()
+                e.stopPropagation()
+            },
+            handleDrop: function (e) {
+                var dt = e.dataTransfer
+                                //var files = dt.files
+
+                changeImage(e.dataTransfer);
                             //handleFiles(files)
-        }
+            },
+            
+             openPassionList: function() {
+                
+               /* passionList.forEach(function (passionWork, index) {
+                    if(!this.chosenPassionList.includes(passionWork.id))
+                    {
+                        var text = "<button class=\"modalButton\" type=\"button\" id=\"" + passionWork.name + "\" @click=\"addPassionToChosen(" + passionWork + ")\" >"  + passionWork.name + "</button>"
+                        this.modalInputs.push(text);
+                        //this.$refs.modalButtonGroup.append(text);
+                    }
+                });*/
+                this.type='Passion';
+            },
+            addPassionToChosen: function(passion){
+                console.log("HI");
+                console.log(passion);
+                this.chosenPassionList.push(passion);
+              //  var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + passion.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + passion + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deletePassion('" + passion + "', '" + id + "')\">&times;</span></button>"
+              //  this.$refs.passionWorkButtonGroup.append(newButton);
+                this.$refs.modal.modal("hide");
+                clearChildren();
+            },
+            deletePassion: function(passion){
+                console.log("FUNCTION CLICKED");
+                console.log(passion);
+                if (this.chosenPassionList.indexOf(passion) > -1) {
+                    this.chosenPassionList.splice(this.chosenPassionList.indexOf(position), 1);
+                }
+                
+               // var removeText = "chosen"+passion.toString().replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_');
+               // console.log(removeText);
+               // this.$refs.passionWorkButtonGroup.removeChild(this.$refs.removeText);
+                //var child = document.getElementById(removeText)
+                //
+            },
+            openPositionList: function() {
+                
+                this.type='Position';
+                /*positionList.forEach(function (position, index) {
+                    if(!this.chosenPositionList.includes(position.id)){
+                        console.log(position)
+                        var text = "<button class=\"modalButton\" type=\"button\" id=\"" + position.name + "\" @click=\"addPositionToChosen(" + position + ")\" >"  + position.name + "</button>"
+                        this.modalInputs.push(text);
+                        //this.$refs.modalButtonGroup.append(text);
+                    }
 
-                    
+                });*/
+            },
+            addPositionToChosen: function(position){
+                console.log("Pushing " + position);
+                this.chosenPositionList.push(position);
+                console.log(position)
+                //var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + position.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + position + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deletePosition('" + position + "', '" + id + "')\">&times;</span></button>"
+                //this.$refs.positionButtonGroup.append(newButton);
+                this.$refs.modal.modal("hide");
+                clearChildren();
+            },
 
-        function changeImage(input) {
-            var reader;
+            deletePosition: function(position){
+                console.log("DELETING POSITION" + this.position)
+                console.log(chosenPositionList);
+                console.log(index);
+                if (this.chosenPositionList.indexOf(position) > -1) {
+                    this.chosenPositionList.splice(this.chosenPositionList.indexOf(position), 1);
+                }
+                
+               // var removeText = "chosen" + position.toString().replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_');
+                //console
+               // console.log(removeText);
+                //var child = document.getElementById(removeText);
+                //console.log(child);
+              //  document.getElementById("positionButtonGroup").removeChild(child);
+            },
 
-            if (input.files && input.files[0]) {
-                reader = new FileReader();
+            openActivitiesList: function() {
+                this.type="Activities"
+               /* activitiesList.forEach(function (activity, index) {
+                    if(!chosenActivitiesList.includes(activity.id))
+                    {
+                        var text = "<button class=\"modalButton\" type=\"button\" id=\"" + activity.name + "\" @click=\"addActivityToChosen('" + activity.name + "', '" + activity.id + "')\" >"  + activity.name + "</button>"
+                        this.modalInputs.push(text);
+                        //$("#modalButtonGroup").append(text)
+                    }
+                });*/
+            },
 
-                reader.onload =  function(e) {
+            addActivityToChosen: function(activity){
+                chosenActivitiesList.push(activity);
+               /*var newButton = '<button class="modalButton" type="button" id="chosen"' 
+                                + activity.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + '" >"'
+                                + activity + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deleteActivity('" + activity + "')\">&times;</span></button>"
+                //var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" */
+                //$("#activitiesButtonGroup").append(newButton);
+                this.$refs.modal.modal("hide");
+                clearChildren();
+            },
+
+            deleteActivity: function(activity){
+                console.log("DELETING ACTIVITY");
+                console.log(activity);
+                if (this.chosenActivitiesList.indexOf(activity) > -1) {
+                    this.chosenActivitiesList.splice(this.chosenActivitiesList.indexOf(activity), 1);
+                }
+                
+             //   var removeText = "chosen" + activity.toString().replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_');
+             //   var child = document.getElementById(removeText)
+             //   document.getElementById("activitiesButtonGroup").removeChild(child);
+            },
+            changeImage: function(input) {
+                const reader = new FileReader();
+                const file = input.files[0];
+                const reader = new FileReader();
+
+                reader.onload  = (event) => {
+                    //this.product.image = event.target.result
+                    this.imgName = event.target.result.name
+                    this.imgURL = getDataUrl(event.target.result)
+                }
+                reader.readAsDataURL(file);
+               // imgURL = file.src;
+                
+
+                /*reader.onload =  function(e) {
                                  // console.log(e.target.result);
-                    var newFile = "<div class=\"row\"><div class=\"col-md-5\"><button style=\"margin-left:-10px;\" class=\"modalButtonImage\" disabled id=\"file\">"  + input.files[0].name + "</button></div></div>"
-                    $("#preview").append(newFile);
                     
                     img.src = e.target.result
                     img.url = e.target.result
@@ -554,19 +704,18 @@
                                     document.getElementById("upload_Box").style.height = newHeight.toString() + "px";
                                     document.getElementById("upload_Box").style.width = newWidth.toString() + "px";
                                 }
-                                  */
-                 }
+                                  
 
                                 
-                reader.readAsDataURL(input.files[0]);
+                
                                // console.log(input.files[0].height);
                                  // console.log(document.getElementById("upload_Box").style.height);
                                // document.getElementById("upload_Box").style.height = document.getElementById("upload_Box").style.height + input.files[0].height;
                                 
-            }
-        }
+            }*/
+        },
 
-        var getDataUrl = function (img) {
+        getDataUrl:function (img) {
             var canvas = document.createElement('canvas')
             var ctx = canvas.getContext('2d')
 
@@ -578,215 +727,18 @@
             // must be specified here
             return canvas.toDataURL("image/jpg");
         }
+          
+        
+        })
+
+      
 
 
-    $(function() {
-            // We are currently not using babel. ES 5 syntax
-            'use strict';
-            $( document ).ready(function() {
-
-                console.log( "ready!" );
-
-                creatingLists();
-
-                chosenPassionList=[];
-                chosenActivitiesList=[];
-                chosenPositionList=[];
-
-                $(".volunteerField").change(function(event){
-                    console.log($(this));
-                    if (event.target.value.length > 0 && $(this)[0].nodeName=="INPUT")
-                        {
-                            console.log(event.target.id);
-                            var string = "label[for='" +event.target.id + "']";
-                            console.log(string);
-                            if($(string).length){
-                                console.log("Success")
-                                $(string)[0].classList.add("stateField")
-                            }
-                            
-                        }
-                        //console.log($("label[for='firstName']"));
-                       // console.log($("label[for='firstName']")[0].classList);
-                       // $("label[for='firstName']")[0].classList.add("stateField")
-                    else if(event.target.value.length <= 0){
-                        var string = "label[for='" +event.target.id + "']";
-                            console.log(string);
-                            if($(string).length){
-                                console.log("Success")
-                                $(string)[0].classList.remove("stateField")
-                            }
-                    }
-                });
-
-                    fileTag.addEventListener("change", function() {
-                        changeImage(this);
-                    });
-
-                    ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-                        uploadBox.addEventListener(eventName, preventDefaults, false)   
-                         document.body.addEventListener(eventName, preventDefaults, false)
-                        })
-
-                        // Highlight drop area when item is dragged over it
-                        ;['dragenter', 'dragover'].forEach(eventName => {
-                            uploadBox.addEventListener(eventName, highlight, false)
-                        })
-
-                        ;['dragleave', 'drop'].forEach(eventName => {
-                            uploadBox.addEventListener(eventName, unhighlight, false)
-                        })
-
-                        // Handle dropped files
-                        uploadBox.addEventListener('drop', handleDrop, false)
-                
-                $('#conduct').on('change', function (event) {
-                    console.log("CHECKBOX")
-                    document.getElementById('pseudoConduct').checked = document.getElementById('conduct').checked
-                    console.log(document.getElementById('pseudoConduct').checked);
-                });
-
-                       
-                img.addEventListener('load', function (event) {
-                     imgURL = getDataUrl(event.currentTarget)
-                    console.log(imgURL)
-                });
-
-                $('input[type="url"]').on('blur', function(){
-                    var string = $(this).val();
-                    if (!string.match(/^https?:/) && string.length) {
-                        string = "http://" + string;
-                        $(this).val(string)
-                    }
-                    });
+      //forimage
 
 
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var copyFirstName = document.getElementById("firstName"),
-                copyLastName = document.getElementById("lastName"),
-                copyPrimEmail = document.getElementById("primEmail"),
-                copyPhone = document.getElementById("phone"),
-                copyWork = document.getElementById("work"),
-                copyOther = document.getElementById("other"),
-                copyCity = document.getElementById("city"),
-                copyState = document.getElementById("state"),
-                copyLinkedIn = document.getElementById("linkedin"),
-                copyTwitter = document.getElementById("twitter"),
-                copyHours = document.getElementById("hours"),
-                copyMisc = document.getElementById("misc"),
 
-                copyContributing = document.getElementById("contributing"),
-                copyMentoring = document.getElementById("mentoring"),
-                copyRemote = document.getElementById("remote");
 
-                console.log(copyMentoring);
-                var forms = document.getElementsByClassName('needs-validation');
-
-                if (forms.length > 0) {
-                    for (var form of forms) {
-                        console.log(form);
-                        form.addEventListener('submit', function(e) {
-                            e.preventDefault();
-                            console.log("Submitting");
-                            //window.location.pathname = '/volunteer-success.html'
-                            if (!form.checkValidity()) {
-                                e.stopPropagation();
-                                e.preventDefault();
-                            } else {
-                                e.preventDefault();
-                                
-                                var xhrPost = new XMLHttpRequest();
-                               // e.preventDefault();
-
-                                var interested=[];
-                                console.log(copyMentoring);
-                                if(copyMentoring.checked){
-                                    console.log("MENTORING");
-                                    interested.push("Mentoring")
-                                }
-
-                                if(copyContributing.checked){
-                                    interested.push("Contributing")
-                                }
-
-                                if(copyRemote.checked){
-                                    interested.push("Giving a remote talk")
-                                }
-
-                                xhrPost.open('POST', 'https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/volunteers', true);
-                                xhrPost.setRequestHeader('Content-Type', 'application/json');
-
-                                var json = JSON.stringify({
-                                            /*"Business":copyName.value,
-                                            "Promo":copyText.value,
-                                            "Website": copySite.value*/
-                                            "First Name": copyFirstName.value,
-                                            "Last Name": copyLastName.value,
-                                            "Primary Email": copyPrimEmail.value,
-                                            "Phone": copyPhone.value,
-                                            "Website 1": copyWork.value,
-                                            "Website 2": copyOther.value,
-                                            "City": copyCity.value,
-                                            "State": copyState.value,
-                                            "LinkedIn": copyLinkedIn.value,
-                                            "Twitter": copyTwitter.value,
-                                            "Available hours/week": copyHours.value,
-                                            "Talent notes": copyMisc.value,
-                                            "Skills": chosenPositionList,
-                                            "Passions": chosenPassionList,
-                                            "Activities": chosenActivitiesList,
-                                            "Photo Upload": [
-                                                {
-                                                "url": imgURL
-                                                }
-                                            ],
-                                            "I am interested in contributing my skills to ...": interested,
-                                            "COC Affirmation": true,
-                                });
-                                console.log(json)
-
-                                xhrPost.send(JSON.stringify({
-                                            "First Name": copyFirstName.value,
-                                            "Last Name": copyLastName.value,
-                                            "Primary Email": copyPrimEmail.value,
-                                            "Phone": copyPhone.value,
-                                            "Website 1": copyWork.value,
-                                            "Website 2": copyOther.value,
-                                            "City": copyCity.value,
-                                            "State": copyState.value,
-                                            "LinkedIn": copyLinkedIn.value,
-                                            "Twitter": copyTwitter.value,
-                                            "Available hours/week": parseInt(copyHours.value),
-                                            "Talent notes": copyMisc.value,
-                                            "Skills": chosenPositionList,
-                                            "Passions": chosenPassionList,
-                                            "Activities": chosenActivitiesList,
-                                            //"Photo Upload": [
-                                            //    {
-                                            //        "url": "https://dl.airtable.com/.attachments/1a7ee9922499f776ca18dd84e0cb7238/4ae02f9c/0320202046.jpg"
-                                            //    }
-                                            //],
-                                            "I am interested in contributing my skills to ...": interested,
-                                            "COC Affirmation": true,
-                                }));
-
-                                xhrPost.onerror = function () {
-                                            e.stopPropagation();
-                                };
-                                xhrPost.onload = function() {
-                                    console.log(xhrPost.responseText);
-                                    if(xhrPost.status == 200)
-                                        window.location.pathname = '/volunteer-success.html';
-                                }
-
-                                //
-                            }
-                            form.classList.add('was-validated');
-                        });
-                    }
-                }
-            } , false);
-            })
 
 
     
