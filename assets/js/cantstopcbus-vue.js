@@ -67,6 +67,24 @@ var cantstopcbus = new Vue({
     },
     allPartners: function () {
       return this.partners
+    },
+    professionalPartners: function () {
+      return this.partnerFilter("PubProfPartner")
+    },
+    allies: function () {
+      return this.partnerFilter("PubAlly")
+    },
+    angels: function () {
+      return this.partnerFilter("PubAngel")
+    },
+    communityPartners: function () {
+      return this.partnerFilter("PubCommPartner")
+    },
+    featuredPartners: function () {
+      return this.partnerFilter("PubFeatured")
+    },
+    inKindPartners: function () {
+      return this.partnerFilter("PubInKind")
     }
   },
   mounted () {
