@@ -26,7 +26,7 @@ let transformProject = (project) => {
     website: project["Project Website"],
     text: project["Project Public Desc"],
     title: project.Title,
-    impact: project["Primary Impact Area"][0]["Impact Area"]
+    category: project.Category[0].Category
   }
   let defaultLogo = "/assets/img/UX/cscbus_logo_square.svg"
   retval.logo = project.hasOwnProperty("Project Logo")
@@ -43,31 +43,51 @@ var cantstopcbus = new Vue({
     partners: [],
   },
   methods: {
-    matchTab: function (tabName) {
-      return this.allProjects().filter((project) => project.impact === tabName)
+    projectsForCategory: function (category) {
+      return this.allProjects.filter((project) => project.category === category)
     },
     partnerFilter: function (attribute) {
-      return this.allPartners().filter((partner) => partner[attribute] === true && partner.Logo)
+      return this.allPartners.filter((partner) => partner[attribute] === true && partner.Logo)
     },
-    projectImpacts: function () {
-      return this.allProjects()
-        .map((project) => project.impact)
-        .filter((value, idx, self) => self.indexOf(value) === idx)
-        .sort((a, b) => a >= b)
-    },
+  },
+  computed: {
     carouselProjects: function () {
-      return shuffle(this.allProjects()).slice(0, 4)
+      return shuffle(this.allProjects).slice(0, 4)
     },
-    allPartners: function () {
-      return this.partners
+    projectCategories: function () {
+      return this.allProjects
+        .map((project) => project.category)
+        .filter((value, idx, self) => self.indexOf(value) === idx)
+        .sort((a,b) => a >= b)
     },
     allProjects: function () {
       return this.projects.map((project) => {
         return transformProject(project)
       })
+    },
+    allPartners: function () {
+      return this.partners
+    },
+    professionalPartners: function () {
+      return this.partnerFilter("PubProfPartner")
+    },
+    allies: function () {
+      return this.partnerFilter("PubAlly")
+    },
+    angels: function () {
+      return this.partnerFilter("PubAngel")
+    },
+    communityPartners: function () {
+      return this.partnerFilter("PubCommPartner")
+    },
+    featuredPartners: function () {
+      return this.partnerFilter("PubFeatured")
+    },
+    inKindPartners: function () {
+      return this.partnerFilter("PubInKind")
     }
   },
-  created: function () {
+  mounted () {
     axios
       .get(
         "https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/projects"
