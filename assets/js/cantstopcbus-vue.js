@@ -41,14 +41,22 @@ var cantstopcbus = new Vue({
   data: {
     projects: [],
     partners: [],
+    people: []
   },
   methods: {
     projectsForCategory: function (category) {
       return this.allProjects.filter((project) => project.category === category)
     },
     partnerFilter: function (attribute) {
-      return this.allPartners.filter((partner) => partner[attribute] === true && partner.Logo)
+      return this.allPartners().filter(
+        (partner) => partner[attribute] === true && partner.Logo
+      )
     },
+    peopleFilterByType: function (type) {
+      return this.people.filter((person) => {
+        return person[type] === true
+      }).sort()
+    }
   },
   computed: {
     carouselProjects: function () {
@@ -65,6 +73,7 @@ var cantstopcbus = new Vue({
         return transformProject(project)
       })
     },
+    // Partners
     allPartners: function () {
       return this.partners
     },
@@ -85,9 +94,28 @@ var cantstopcbus = new Vue({
     },
     inKindPartners: function () {
       return this.partnerFilter("PubInKind")
+    },
+    // Team Members
+    navigators: function () {
+      return this.peopleFilterByType("PubNavigator")
+    },
+    organizers: function () {
+      return this.peopleFilterByType("PubOrganizer")
+    },
+    projectLeads: function () {
+      return this.peopleFilterByType("PubProject")
+    },
+    special: function () {
+      return this.peopleFilterByType("PubSpecial")
+    },
+    success: function () {
+      return this.peopleFilterByType("PubSuccess")
+    },
+    impact: function () {
+      return this.peopleFilterByType("PubImpact")
     }
   },
-  mounted () {
+  created() {
     axios
       .get(
         "https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/projects"
@@ -97,16 +125,35 @@ var cantstopcbus = new Vue({
           this.projects = response.data
         },
         (error) => {
-          console.error(error)
+          console.error(`unable to retrieve projects ${error}`)
         }
       )
-    axios.get("https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/partners")
-        .then((response) => {
+
+    axios
+      .get(
+        "https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/partners"
+      )
+      .then(
+        (response) => {
           this.partners = response.data
         },
         (error) => {
-          console.error(error)
-        })
+          console.error(`unable to retrieve partners ${error}`)
+        }
+      )
+
+    axios
+      .get(
+        "https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/volunteers"
+      )
+      .then(
+        (response) => {
+          this.people = response.data
+        },
+        (error) => {
+          console.error(`unable to retrieve volunteers ${error}`)
+        }
+      )
   }
 })
 
@@ -144,5 +191,26 @@ Vue.component("partner-card", {
       </div>
     </div>
     </a>
+  `
+})
+
+Vue.component("person-card", {
+  props: ["item"],
+  delimiters: ["{$", "$}"],
+  template: `
+    <div class="card h-100">
+      <div class="embed-responsive embed-responsive-1by1">
+        <img :alt="item['Full Name']" 
+             class="card-img2-top embed-responsive-item" 
+             :src="item['Photo Upload'][0].url" />
+      </div>
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title">{$ item['Full Name'] $}</h5>
+        <p>{$ item['Team Page Byline'] $}</p>
+        <a class="card-link text-info text-left mt-auto" :href="item.LinkedIn" target="_blank">
+          <i class="fab fa-linkedin" style="font-size:36px"></i>
+        </a>
+      </div>
+    </div>
   `
 })
