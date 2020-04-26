@@ -2,7 +2,7 @@
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
 <div id="app">
-  <p>At Parent: {{ variableAtParent }}</p>
+  <p>At Parent: {$ variableAtParent $}</p>
   <child-comp :message="variableAtParent"></child-comp>
 </div>
 
@@ -19,6 +19,7 @@ Vue.component('child-comp', {
 
 var app = new Vue({
   el: '#app',
+  delimiters:["{$", "$}"],
   data: {
     variableAtParent: 'DATA FROM PARENT!'
   }

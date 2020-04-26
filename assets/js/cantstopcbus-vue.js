@@ -99,14 +99,6 @@ Vue.component('child-comp', {
 })
 
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    variableAtParent: 'DATA FROM PARENT!'
-  }
-})
-
-
 Vue.component("project-card", {
   props: ["project"],
   delimiters: ["{$", "$}"],
