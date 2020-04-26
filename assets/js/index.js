@@ -36,7 +36,6 @@ let transformProject = (project) => {
 }
 
 
-
 var cantstopcbus = new Vue({
   el: "#cantstopcbus-content",
   delimiters: ["{$", "$}"],
@@ -73,7 +72,6 @@ var cantstopcbus = new Vue({
       )
   }
 })
-
 
 
 
