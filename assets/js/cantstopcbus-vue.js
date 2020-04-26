@@ -48,7 +48,7 @@ var cantstopcbus = new Vue({
       return this.allProjects.filter((project) => project.category === category)
     },
     partnerFilter: function (attribute) {
-      return this.allPartners().filter(
+      return this.allPartners.filter(
         (partner) => partner[attribute] === true && partner.Logo
       )
     },
