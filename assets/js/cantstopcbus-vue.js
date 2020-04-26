@@ -35,6 +35,14 @@ let transformProject = (project) => {
   return retval
 }
 
+var app = new Vue({
+  el: '#app',
+  delimiters:["{$", "$}"],
+  data: {
+    variableAtParent: 'DATA FROM PARENT!'
+  }
+})
+
 var cantstopcbus = new Vue({
   el: "#cantstopcbus-content",
   delimiters: ["{$", "$}"],
@@ -100,19 +108,6 @@ Vue.component('child-comp', {
   }
 })
 
-
-<<<<<<< HEAD
-var app = new Vue({
-  el: '#app',
-  delimiters:["{$", "$}"],
-  data: {
-    variableAtParent: 'DATA FROM PARENT!'
-  }
-})
-
-
-=======
->>>>>>> 1f65a06bac7afa75d597d72ec93b7599d767a651
 Vue.component("project-card", {
   props: ["project"],
   delimiters: ["{$", "$}"],
