@@ -72,8 +72,10 @@ var cantstopcbus = new Vue({
   }
 })
 
+
 Vue.component('child-comp', {
   props: ['message'], // declare the props
+  delimiters:["{$", "$}"],
   template: '<p>At child-comp, using props in the template: {{ message }}</p>',
   mounted: function () {
     console.log('The props are also available in JS:', this.message);
@@ -83,6 +85,7 @@ Vue.component('child-comp', {
 
 var app = new Vue({
   el: '#app',
+  delimiters:["{$", "$}"],
   data: {
     variableAtParent: 'DATA FROM PARENT!'
   }
