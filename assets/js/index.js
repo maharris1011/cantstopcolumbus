@@ -35,6 +35,14 @@ let transformProject = (project) => {
   return retval
 }
 
+var app = new Vue({
+  el: '#app',
+  delimiters:["{$", "$}"],
+  data: {
+    variableAtParent: 'DATA FROM PARENT!'
+  }
+})
+
 var cantstopcbus = new Vue({
   el: "#cantstopcbus-content",
   delimiters: ["{$", "$}"],
@@ -81,7 +89,6 @@ Vue.component('child-comp', {
     console.log('The props are also available in JS:', this.message);
   }
 })
-
 
 Vue.component("project-card", {
   props: ["project"],
