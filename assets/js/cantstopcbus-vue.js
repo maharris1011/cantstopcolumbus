@@ -101,6 +101,7 @@ Vue.component('child-comp', {
 })
 
 
+<<<<<<< HEAD
 var app = new Vue({
   el: '#app',
   delimiters:["{$", "$}"],
@@ -110,6 +111,8 @@ var app = new Vue({
 })
 
 
+=======
+>>>>>>> 1f65a06bac7afa75d597d72ec93b7599d767a651
 Vue.component("project-card", {
   props: ["project"],
   delimiters: ["{$", "$}"],
