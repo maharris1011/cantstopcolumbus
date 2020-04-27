@@ -164,15 +164,12 @@
   <div class="form-group">
       <label for="photo" class="volunteerLabel" >Upload a photo. Since we're all remote, let us see your face!</label>
       <div id="upload_Box" >
-          <!--<button class="btn btn-secondary" id="photoUpload" type="button"  style="border: 2px solid #4300FF; background-color: #F1EBFF; padding:10px;"><i class="fa fa-paperclip" style="color: #4300FF;">
-          </i><strong style="padding:10px; color: #4300FF;;">Attach File</strong></button> 
-          <span style="font-size: 1.25rem; color: #575757;"> or drop here</span>-->
           <label for="photoUpload" class="custom-file-upload" 
               style="border: 2px solid #4300FF; background-color: #F1EBFF; padding:10px; border-radius: 0.25rem;">
               <i class="fa fa-paperclip" style="color: #4300FF;">
               </i><strong style="padding:10px; color: #4300FF;;">Attach File</strong> 
           </label> <span class="volunteerLabel" > or drop here</span>
-          <input id="photoUpload" type="file"/>
+          <input id="photoUpload" v-on:change="changeImage" v-on:drop="handleDrop" type="file"/>
           <div id="preview">
 
           </div>

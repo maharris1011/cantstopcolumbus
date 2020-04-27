@@ -22,6 +22,7 @@ var app = new Vue({
       chosenPositionList: [],
       interested: [],
       cocaffirmation: false,
+      photo: null
     },
     pseudoConduct: false,
     passionList: [],
@@ -222,10 +223,10 @@ var app = new Vue({
       e.stopPropagation()
     },
     handleDrop: function (e) {
-      var dt = e.dataTransfer
+      var dt = e.target.dataTransfer
       //var files = dt.files
 
-      changeImage(e.dataTransfer)
+      changeImage(e.target.dataTransfer)
       //handleFiles(files)
     },
 
@@ -319,7 +320,6 @@ var app = new Vue({
       this.$refs.modal.modal("hide")
       clearChildren()
     },
-
     deleteActivity: function (activity) {
       console.log("DELETING ACTIVITY")
       console.log(activity)
@@ -331,52 +331,8 @@ var app = new Vue({
       }
     },
     changeImage: function (input) {
-      const reader = new FileReader()
-      const file = input.files[0]
-
-      reader.onload = (event) => {
-        //this.product.image = event.target.result
-        this.imgName = event.target.result.name
-        this.imgURL = getDataUrl(event.target.result)
-      }
-      reader.readAsDataURL(file)
-      // imgURL = file.src;
-
-      /*reader.onload =  function(e) {
-                               // console.log(e.target.result);
-                  
-                  img.src = e.target.result
-                  img.url = e.target.result
-                  console.log(img.url);
-                  console.log(input.files[0].url)
-                              
-                              //.setAttribute('src', e.target.result);
-  
-                              /*let img = new Image()
-                              img.src = e.target.result
-                              img.onload = () => {
-                                  console.log(img.height);
-                                  
-                                  console.log(parseInt(document.getElementById("upload_Box").style.height));
-                                  console.log((img.height - parseInt(document.getElementById("upload_Box").style.height)));
-                                  console.log(parseInt(document.getElementById("upload_Box").style.height) + (img.height - parseInt(document.getElementById("upload_Box").style.height)));
-                                  //console.log(parseInt(document.getElementById("upload_Box").style.width) + (img.width - parseInt(document.getElementById("upload_Box").style.width)));
-                                  let newHeight = parseInt(document.getElementById("upload_Box").style.height) + (img.height - parseInt(document.getElementById("upload_Box").style.height) + 100)
-                                  let newWidth = parseInt(document.getElementById("upload_Box").style.width) + (img.width - parseInt(document.getElementById("upload_Box").style.width) + 150)
-                                  document.getElementById("upload_Box").style.height = newHeight.toString() + "px";
-                                  document.getElementById("upload_Box").style.width = newWidth.toString() + "px";
-                              }
-                                
-  
-                              
-              
-                             // console.log(input.files[0].height);
-                               // console.log(document.getElementById("upload_Box").style.height);
-                             // document.getElementById("upload_Box").style.height = document.getElementById("upload_Box").style.height + input.files[0].height;
-                              
-          }*/
+      this.newVolunteer.photo = input.target.files[0]
     },
-
     getDataUrl: function (img) {
       var canvas = document.createElement("canvas")
       var ctx = canvas.getContext("2d")
