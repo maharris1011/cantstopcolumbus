@@ -1,7 +1,7 @@
 
 
 <div class="jumbotron background-white">
-  <form name="volunteer" id="volunteer" @submit="checkSubmit" method="post" action="volunteer-success.html" class="needs-validation"  novalidate accept-charset="UTF-8"> 
+  <form name="cantstopcbus-content" id="volunteer" @submit.prevent="checkSubmit" method="post" action="volunteer-success.html" class="needs-validation"  novalidate accept-charset="UTF-8"> 
       <div class = "row">
           <div class="col-md-7 col-lg-5">
               <div class="form-group">
@@ -217,7 +217,7 @@
             <div class="col-md-9 col-lg-7">
                 <div class="form-group">
                     <label for="photo" class="volunteerLabel" >Upload a photo. Since we're all remote, let us see your face!</label>
-                    <div id="upload_Box" >
+                    <div id="upload_Box" ref="upload_Box">
                         <!--<button class="btn btn-secondary" id="photoUpload" type="button"  style="border: 2px solid #4300FF; background-color: #F1EBFF; padding:10px;"><i class="fa fa-paperclip" style="color: #4300FF;">
                         </i><strong style="padding:10px; color: #4300FF;;">Attach File</strong></button> 
                         <span style="font-size: 1.25rem; color: #575757;"> or drop here</span>-->
@@ -281,7 +281,7 @@
     <br>
   </div>
 
-  <div class="modal fade "  id="modal" tabindex="-1" #modal role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!--<div class="modal fade "  id="modal" tabindex="-1" #modal role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable volunteerModal"   role="document">
       <div class="modal-content volunteerModal " id="modal-content">
         <div class="modal-header">
@@ -302,4 +302,4 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
