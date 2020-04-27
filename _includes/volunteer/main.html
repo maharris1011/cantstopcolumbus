@@ -1,4 +1,16 @@
-<div id="app">
-  <p>At Parent: {$ variableAtParent $}</p>
-  <child-comp :message="variableAtParent"></child-comp>
+
+
+<div id="volunteer">
+  <div class = "row">
+    <div class="col-md-7 col-lg-5">
+        <div class="form-group">
+            <label class="volunteerLabel"  for="passionWork">Are there any types of problems you're particularly passionate about solving?</label>
+            <br>
+            <button type="button" id="passionWorkButton" @click="openPassionList()" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#modal">+ Add</button>
+            <div class="btn-group-vertical" style="margin-top:10px;" id = "passionWorkButtonGroup">
+                <button v-for="var input in pF()" class="modalButton"  type="button">{$ input.name $}<span aria-hidden="true" style="float:right;"  @click="deletePassion(input)">&times;</span></button>
+            </div>
+        </div>
+    </div> 
+  </div>
 </div>
