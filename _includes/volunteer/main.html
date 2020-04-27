@@ -1,5 +1,5 @@
 <h2>What's your superpower?</h2>
-<form id="volunteer-form" name="volunteer" v-on:submit.prevent="addVolunteer"> 
+<form id="volunteer-form" name="volunteer" enctype="multipart/form-data" v-on:submit.prevent="addVolunteer"> 
   <div class="form-group">
     <input type="text" id="firstName" v-model="newVolunteer.firstName" required class="form-control volunteerField">
     <label for="firstName" class="form-control-placeholder">First Name</label>
@@ -163,7 +163,7 @@
   </div>
   <div class="form-group">
       <label for="photo" class="volunteerLabel" >Upload a photo. Since we're all remote, let us see your face!</label>
-      <div id="upload_Box" >
+      <div id="uploadBox">
           <label for="photoUpload" class="custom-file-upload" 
               style="border: 2px solid #4300FF; background-color: #F1EBFF; padding:10px; border-radius: 0.25rem;">
               <i class="fa fa-paperclip" style="color: #4300FF;">
@@ -178,7 +178,6 @@
   <div class="form-group">
       <input type="text" v-model="newVolunteer.misc" class="form-control volunteerField" id="misc" rows="3"></input>
       <label for="misc" class="form-control-placeholder">Anything else we should know?</label>
-      <!--<input type="text" id="hours"  class="form-control" name="hours" >-->
   </div>
   <div class="form-group">
     <div class="checkbox ">
@@ -194,22 +193,4 @@
     <button class="btn btn-primary dark-purple"  type="submit" id="submitButton">Submit</button>
   </div>
 </form>
-
-<div class="modal fade"  id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable volunteerModal"   role="document">
-    <div class="modal-content volunteerModal " id="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Choose an Option Below</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body  justify-content-center" id="modalBody">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 
