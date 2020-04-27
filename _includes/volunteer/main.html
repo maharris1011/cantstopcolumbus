@@ -113,7 +113,8 @@
     <label class="volunteerLabel"  for="passionWork">Are there any types of problems you're particularly passionate about solving?</label>
     <br/>
     <button type="button" id="passionWorkButton" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#modal">+ Add</button>
-    <div class="btn-group-vertical" style="margin-top:10px;" id = "passionWorkButtonGroup">
+    <div v-for="passion in newVolunteer.chosenPassionList" class="btn-group-vertical" style="margin-top:10px;" id = "passionWorkButtonGroup">
+      {$ passion.name $}
     </div>
   </div>
   <div class="form-group">
@@ -176,15 +177,12 @@
       <!--<input type="text" id="hours"  class="form-control" name="hours" >-->
   </div>
   <div class="form-group">
-      <div class= "row">
-          <div class="checkbox ">
-              <label  class="customcheck d-block volunteerLabel"  style="text-indent:15px;" >
-                  <input type="checkbox" v-model="newVolunteer.cocaffirmation" required><span class="checkmark"></span>
-                  I have read the <a href="https://cantstopcolumbus.com/code-of-conduct.html" style="font-style:bold; color:#4300FF">Code of Conduct</a>
-              </label>
-            </div>
-
-      </div>
+    <div class="checkbox ">
+      <label  class="customcheck d-block volunteerLabel"  style="text-indent:15px;" >
+          <input type="checkbox" v-model="newVolunteer.cocaffirmation" required><span class="checkmark"></span>
+          I have read the <a href="https://cantstopcolumbus.com/code-of-conduct.html" style="font-style:bold; color:#4300FF">Code of Conduct</a>
+      </label>
+    </div>
   </div>
 
 
@@ -203,8 +201,14 @@
         </button>
       </div>
       <div class="modal-body  justify-content-center" id="modalBody">
-          <div class="btn-group-vertical justify-content-center" id = "modalButtonGroup">
+        <div class="form-group">
+          <label class="volunteerLabel"  for="problemsToSolve">Are there any types of problems you're particularly passionate about solving?</label>
+          <div v-for="passion in passionList" class="checkbox">
+              <label class="customcheck d-block volunteerLabel"  style=" text-indent:15px;"  >
+                  <input type="checkbox" v-model="newVolunteer.chosenPassionList" :value="passion.id"><span class="checkmark" style="margin-right:25px;"></span>{$ passion.name $}
+              </label>
           </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
