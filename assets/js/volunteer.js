@@ -7,69 +7,73 @@
 //
 
 
-const app = new Vue({
+var cantstopcbus = new Vue({
     el:'#volunteer',
     delimiters: ["{$", "$}"],
-    data: {
-      chosenPassionList:[],
-       chosenActivitiesList:[null],
-        chosenPositionList:null,
-        firstName:null,
-        lastName:null,
-        primEmail:null,
-        phone:null,
-        work:null,
-        other:null,
-        city:null,
-        state:null,
-        linkedin:null,
-        twitter:null,
-        hours:null,
-        misc:null,
-        mentoring:null,
-        contributing:null,
-        remote:null,
-        errors:[],
-        pseudoConduct:false,
-        passionList:[],
-        positionList:[],
-        activitiesList:[],
-        objItem: {
-             name: null,
-             id: null
-        },
-        modalInputs: [],
-        type:null,
-        imgURL: null,
-        imgName: null,
-        submitted : false,
-        fileTag: null
+    data: () => {
+        let defaultLists = [];
+      return {
+        chosenPassionList:defaultLists,
+        chosenActivitiesList: defaultLists,
+         chosenPositionList:defaultLists,
+         passionList:defaultLists,
+         positionList:defaultLists,
+         activitiesList:defaultLists,
+ 
+         firstName:null,
+         lastName:null,
+         primEmail:null,
+         phone:null,
+         work:null,
+         other:null,
+         city:null,
+         state:null,
+         linkedin:null,
+         twitter:null,
+         hours:null,
+         misc:null,
+         mentoring:null,
+         contributing:null,
+         remote:null,
+         errors:[],
+         pseudoConduct:false,
+         modalInputs:defaultLists,
+         type:null,
+         imgURL: null,
+         imgName: null,
+         submitted : false,
+         fileTag: null
+      }
+      
    },
    mounted: function () {
+       
     console.log("Hi")
     this.creatingListsMounted();
-    
+    setTimeout(() => {
+        console.log('timeout ', this.$refs);
+      }, 0)
 
 
-   /* this.$ref.fileTag.addEventListener("change", function() {
+    /*this.fileTag.addEventListener("change", function() {
                 changeImage(this);
     });
 
     ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-                this.$ref.uploadBox.addEventListener(eventName, preventDefaults, false)   
+                this.$ref.upload_Box.addEventListener(eventName, preventDefaults, false)   
                 document.body.addEventListener(eventName, preventDefaults, false)
     })
 
                 // Highlight drop area when item is dragged over it
     ;['dragenter', 'dragover'].forEach(eventName => {
-                    this.$ref.uploadBox.addEventListener(eventName, highlight, false)
+                    this.$ref.upload_Box.addEventListener(eventName, highlight, false)
     })
 
     ;['dragleave', 'drop'].forEach(eventName => {
-                    this.$ref.uploadBox.addEventListener(eventName, unhighlight, false)
+                    this.$ref.upload_Box.addEventListener(eventName, unhighlight, false)
     })
 
-    this.$ref.uploadBox.addEventListener('drop', handleDrop, false)
+    this.$ref.upload_Box.addEventListener('drop', handleDrop, false)
 */
  
 
@@ -81,36 +85,37 @@ const app = new Vue({
         },
       
             checkForm: function (e) {
+                let component = this;
                 this.submitted = true;
                 this.errors = [];
   
-                if (!this.firstName) {
+                if (!component.firstName) {
                     this.errors.push("First Name required.");
                 }
-                if (!this.lastName) {
+                if (!component.lastName) {
                     this.errors.push("Last Name required.");
                 }            
-                if (!this.primEmail) {
+                if (!component.primEmail) {
                     this.errors.push('Email required.');
-                } else if (!this.validEmail(this.primEmail)) {
-                    this.errors.push('Valid email required.');
+                } else if (!component.validEmail(component.primEmail)) {
+                    component.errors.push('Valid email required.');
                 }
-                if (!this.pseudoConduct) {
-                    this.errors.push("Conduct Agremment required.");
+                if (!component.pseudoConduct) {
+                    component.errors.push("Conduct Agremment required.");
                 }
-                if (!this.errors.length) {
+                if (!component.errors.length) {
                             var interested=[];
                             console.log(copyMentoring);
-                            if(this.mentoring){
+                            if(component.mentoring){
                                 console.log("MENTORING");
                                 interested.push("Mentoring")
                             }
   
-                            if(this.contributing){
+                            if(component.contributing){
                                 interested.push("Contributing")
                             }
   
-                            if(this.remote){
+                            if(component.remote){
                                 interested.push("Giving a remote talk")
                             }
                             axios.post(`https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/volunteers`, {
@@ -118,24 +123,24 @@ const app = new Vue({
                                         /*"Business":copyName.value,
                                         "Promo":copyText.value,
                                         "Website": copySite.value*/
-                                        "First Name": this.firstName,
-                                        "Last Name": this.lastName,
-                                        "Primary Email": this.primEmail,
-                                        "Phone": this.phone,
-                                        "Website 1": this.work,
-                                        "Website 2": this.other,
-                                        "City": this.city,
-                                        "State": this.state,
-                                        "LinkedIn": this.linkedin,
-                                        "Twitter": this.twitter,
-                                        "Available hours/week": this.hours,
-                                        "Talent notes": this.misc,
-                                        "Skills": this.chosenPositionList,
-                                        "Passions": this.chosenPassionList,
-                                        "Activities": this.chosenActivitiesList,
+                                        "First Name": component.firstName,
+                                        "Last Name": component.lastName,
+                                        "Primary Email": component.primEmail,
+                                        "Phone": component.phone,
+                                        "Website 1": component.work,
+                                        "Website 2": component.other,
+                                        "City": component.city,
+                                        "State": component.state,
+                                        "LinkedIn": component.linkedin,
+                                        "Twitter": component.twitter,
+                                        "Available hours/week": component.hours,
+                                        "Talent notes": component.misc,
+                                        "Skills": component.chosenPositionList,
+                                        "Passions": component.chosenPassionList,
+                                        "Activities": component.chosenActivitiesList,
                                         "Photo Upload": [
                                             {
-                                            "url": this.imgURL
+                                            "url": component.imgURL
                                             }
                                         ],
                                         "I am interested in contributing my skills to ...": interested,
@@ -151,7 +156,7 @@ const app = new Vue({
                                 }
                             })
                             .catch(e => {
-                                 this.errors.push(e)
+                                component.errors.push(e)
                                  e.stopPropagation()
                                 })
   
@@ -164,7 +169,7 @@ const app = new Vue({
                 },
         
         changeConductValue: function(event){
-            this.$ref.pseudoConduct.checked = event.target.checked
+            this.$refs.pseudoConduct.checked = event.target.checked
         },
         urlValidate: function(event){
             var string = $(this).val();
@@ -178,38 +183,38 @@ const app = new Vue({
             return re.test(email);
         },
         creatingListsMounted: function(){
-          
-            console.log(this.chosenPassionList)
+            let component = this;
+            console.log(component.positionList)
             axios.get('https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/skills').then(response => {
-                for (var item in response.data) {
-                    var object = {name: item["Skill"], id: item["id"]}
-                    this.positionList.push(object);
-                }
+                response.data.map(function(value, key) {
+                    component.positionList.push({name: value["Skill"], id: value["id"]});
+                  });
              });
   
              axios.get('https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/categories').then(response => {
-                for (var item in response.data) {
-                    var object = {name: item["Category"], id: item["id"]}
-                    this.passionList.push(object);
-                }
+                response.data.map(function(value, key) {
+                    component.passionList.push({name: value["Category"], id: value["id"]});
+                  });
              });
   
              axios.get('https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/activities').then(response => {
-                for (var item in response.data) {
-                    var object = {name: item["Activity"], id: item["id"]}
-                    this.activitiesList.push(object);
-                }
+                response.data.map(function(value, key) {
+                    component.activitiesList.push({name: value["Activity"], id: value["id"]});
+                  });
              });
         },
         clearChildren: function() { 
+            let component = this;
             //this.$refs.modalButtonGroup.empty();
-            this.type=null;
+            component.type=null;
         }, 
         highlight: function(e) {
-            this.$refs.uploadBox.classList.add('highlightBox')
+            let component = this;
+            component.$refs.upload_Box.classList.add('highlightBox')
          },
         unhighlight: function(e) {
-            this.$refs.unloadBox.classList.remove('highlightBox')
+            let component = this;
+            component.$refs.upload_Box.classList.remove('highlightBox')
         },
         preventDefaults: function(e) {
             e.preventDefault()
@@ -223,7 +228,7 @@ const app = new Vue({
                         //handleFiles(files)
         },
         openPassionList: function() {
-            
+            let component = this;
             /* passionList.forEach(function (passionWork, index) {
                  if(!this.chosenPassionList.includes(passionWork.id))
                  {
@@ -232,22 +237,24 @@ const app = new Vue({
                      //this.$refs.modalButtonGroup.append(text);
                  }
              });*/
-             this.type='Passion';
+             component.type='Passion';
          },
          addPassionToChosen: function(passion){
              console.log("HI");
              console.log(passion);
-             this.chosenPassionList.push(passion);
+             let component = this;
+             component.chosenPassionList.push(passion);
            //  var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + passion.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + passion + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deletePassion('" + passion + "', '" + id + "')\">&times;</span></button>"
            //  this.$refs.passionWorkButtonGroup.append(newButton);
-             this.$refs.modal.modal("hide");
+             component.$refs.modal.modal("hide");
              clearChildren();
          },
          deletePassion: function(passion){
+            let component = this;
              console.log("FUNCTION CLICKED");
              console.log(passion);
-             if (this.chosenPassionList.indexOf(passion) > -1) {
-                 this.chosenPassionList.splice(this.chosenPassionList.indexOf(position), 1);
+             if (component.chosenPassionList.indexOf(passion) > -1) {
+                component.chosenPassionList.splice(component.chosenPassionList.indexOf(position), 1);
              }
              
             // var removeText = "chosen"+passion.toString().replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_');
@@ -257,8 +264,8 @@ const app = new Vue({
              //
          },
          openPositionList: function() {
-             
-             this.type='Position';
+            let component = this;
+            component.type='Position';
              /*positionList.forEach(function (position, index) {
                  if(!this.chosenPositionList.includes(position.id)){
                      console.log(position)
@@ -271,11 +278,12 @@ const app = new Vue({
          },
          addPositionToChosen: function(position){
              console.log("Pushing " + position);
-             this.chosenPositionList.push(position);
+             let component = this;
+             component.chosenPositionList.push(position);
              console.log(position)
              //var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + position.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + position + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deletePosition('" + position + "', '" + id + "')\">&times;</span></button>"
              //this.$refs.positionButtonGroup.append(newButton);
-             this.$refs.modal.modal("hide");
+             component.$refs.modal.modal("hide");
              clearChildren();
          },
  
@@ -283,8 +291,9 @@ const app = new Vue({
              console.log("DELETING POSITION" + this.position)
              console.log(chosenPositionList);
              console.log(index);
-             if (this.chosenPositionList.indexOf(position) > -1) {
-                 this.chosenPositionList.splice(this.chosenPositionList.indexOf(position), 1);
+             let component = this;
+             if (component.chosenPositionList.indexOf(position) > -1) {
+                component.chosenPositionList.splice(component.chosenPositionList.indexOf(position), 1);
              }
              
             // var removeText = "chosen" + position.toString().replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_');
@@ -296,7 +305,8 @@ const app = new Vue({
          },
  
          openActivitiesList: function() {
-             this.type="Activities"
+            let component = this;
+            component.type="Activities"
             /* activitiesList.forEach(function (activity, index) {
                  if(!chosenActivitiesList.includes(activity.id))
                  {
@@ -308,34 +318,38 @@ const app = new Vue({
          },
          addActivityToChosen: function(activity){
             chosenActivitiesList.push(activity);
+            let component = this;
            /*var newButton = '<button class="modalButton" type="button" id="chosen"' 
                             + activity.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + '" >"'
                             + activity + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deleteActivity('" + activity + "')\">&times;</span></button>"
             //var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" */
             //$("#activitiesButtonGroup").append(newButton);
-            this.$refs.modal.modal("hide");
+            component.$refs.modal.modal("hide");
             clearChildren();
         },
 
         deleteActivity: function(activity){
             console.log("DELETING ACTIVITY");
             console.log(activity);
-            if (this.chosenActivitiesList.indexOf(activity) > -1) {
-                this.chosenActivitiesList.splice(this.chosenActivitiesList.indexOf(activity), 1);
+            let component = this;
+            if (component.chosenActivitiesList.indexOf(activity) > -1) {
+                component.chosenActivitiesList.splice(component.chosenActivitiesList.indexOf(activity), 1);
             }
             
          //   var removeText = "chosen" + activity.toString().replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_');
          //   var child = document.getElementById(removeText)
          //   document.getElementById("activitiesButtonGroup").removeChild(child);
         },
+
         changeImage: function(input) {
             const reader = new FileReader();
             const file = input.files[0];
+            let component = this;
 
             reader.onload  = (event) => {
                 //this.product.image = event.target.result
-                this.imgName = event.target.result.name
-                this.imgURL = getDataUrl(event.target.result)
+                component.imgName = event.target.result.name
+                component.imgURL = getDataUrl(event.target.result)
             }
             reader.readAsDataURL(file);
         },
@@ -352,7 +366,5 @@ const app = new Vue({
             // must be specified here
             return canvas.toDataURL("image/jpg");
         } 
-    },
-
-    
+    }    
 })
