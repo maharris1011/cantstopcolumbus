@@ -1,3 +1,12 @@
+//
+// volunteer.js
+//
+// Contains all of the functions needed for interactivity using Vuejs
+// on the volunteer page, including the main Vue instance and all Vue Components
+//
+//
+
+
 const app = new Vue({
     el:'#volunteer',
     delimiters: ["{$", "$}"],
