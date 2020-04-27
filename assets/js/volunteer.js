@@ -1,23 +1,25 @@
-const app = new Vue({
-  el: "#volunteer",
+var emailRE = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+var app = new Vue({
+  el: "#cantstopcbus-content",
   delimiters: ["{$", "$}"],
   data: {
-    firstName: null,
-    lastName: null,
-    primEmail: null,
-    phone: null,
-    work: null,
-    other: null,
-    city: null,
-    state: null,
-    linkedin: null,
-    twitter: null,
-    hours: null,
-    misc: null,
-    mentoring: null,
-    contributing: null,
-    remote: null,
-    errors: [],
+    newVolunteer: {
+      firstName: null,
+      lastName: null,
+      primEmail: null,
+      phone: null,
+      work: null,
+      other: null,
+      city: null,
+      state: null,
+      linkedin: null,
+      twitter: null,
+      hours: null,
+      misc: null,
+      interested: [],
+      cocaffirmation: false,
+    },
     pseudoConduct: false,
     passionList: [],
     positionList: [],
@@ -25,183 +27,185 @@ const app = new Vue({
     chosenPassionList: [],
     chosenActivitiesList: [],
     chosenPositionList: [],
-    newObj: {
-      name: null,
-      id: null
-    },
     modalInputs: [],
     type: null,
     imgURL: null,
     imgName: null,
-    submitted: false,
-    variableAtParent: "hello"
   },
-  mounted () {
-    creatingListsMounted()
+  mounted() {
+    this.loadActivities()
+    this.loadPassions()
+    this.loadPositions()
 
-    this.$ref.fileTag.addEventListener("change", function () {
-      changeImage(this)
-    })
+    // this.$ref.fileTag
+    //   .addEventListener("change", function () {
+    //     changeImage(this)
+    //   })
 
-    ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
-      this.$ref.uploadBox.addEventListener(eventName, preventDefaults, false)
-      document.body.addEventListener(eventName, preventDefaults, false)
-    })
+    //   [("dragenter", "dragover", "dragleave", "drop")].forEach((eventName) => {
+    //     this.$ref.uploadBox.addEventListener(eventName, preventDefaults, false)
+    //     document.body.addEventListener(eventName, preventDefaults, false)
+    //   })
 
-    // Highlight drop area when item is dragged over it
-    ["dragenter", "dragover"].forEach((eventName) => {
-      this.$ref.uploadBox.addEventListener(eventName, highlight, false)
-    })
-    ["dragleave", "drop"].forEach((eventName) => {
-      this.$ref.uploadBox.addEventListener(eventName, unhighlight, false)
-    })
-    this.$ref.uploadBox.addEventListener("drop", handleDrop, false)
+    //   [
+    //     // Highlight drop area when item is dragged over it
+    //     ("dragenter", "dragover")
+    //   ].forEach((eventName) => {
+    //     this.$ref.uploadBox.addEventListener(eventName, highlight, false)
+    //   })
+    //   [("dragleave", "drop")].forEach((eventName) => {
+    //     this.$ref.uploadBox.addEventListener(eventName, unhighlight, false)
+    //   })
+    // this.$ref.uploadBox.addEventListener("drop", handleDrop, false)
 
-    this.$el.querySelectorAll(".volunteerField").forEach((button) => {
-      button.addEventListener("change", (e) => {
-        if (e.target.value.length > 0 && $(this)[0].nodeName == "INPUT") {
-          console.log(e.target.id)
-          var string = "label[for='" + e.target.id + "']"
-          console.log(string)
-          if ($(string).length) {
-            console.log("Success")
-            $(string)[0].classList.add("stateField")
-          }
-        }
-        else if (e.target.value.length <= 0) {
-          var string = "label[for='" + e.target.id + "']"
-          console.log(string)
-          if ($(string).length) {
-            console.log("Success")
-            $(string)[0].classList.remove("stateField")
-          }
-        }
-      })
-    })
+    // this.$el.querySelectorAll(".volunteerField").forEach((button) => {
+    //   button.addEventListener("change", (e) => {
+    //     if (e.target.value.length > 0 && $(this)[0].nodeName == "INPUT") {
+    //       console.log(e.target.id)
+    //       var string = "label[for='" + e.target.id + "']"
+    //       console.log(string)
+    //       if ($(string).length) {
+    //         console.log("Success")
+    //         $(string)[0].classList.add("stateField")
+    //       }
+    //     } else if (e.target.value.length <= 0) {
+    //       var string = "label[for='" + e.target.id + "']"
+    //       console.log(string)
+    //       if ($(string).length) {
+    //         console.log("Success")
+    //         $(string)[0].classList.remove("stateField")
+    //       }
+    //     }
+    //   })
+    // })
   },
   watch: {},
+  computed: {
+    validation: function() {
+      return {
+        firstName: !!this.newVolunteer.firstName.trim(),
+        lastName: !!this.newVolunteer.lastName.trim(),
+        primEmail: this.validEmail(this.newVolunteer.primEmail),
+        phone: !!this.newVolunteer.phone.trim(),
+        work: !!this.newVolunteer.work.trim(),
+        other: !!this.newVolunteer.other.trim(),
+        city: !!this.newVolunteer.city.trim(),
+        state: !!this.newVolunteer.state.trim(),
+        linkedin: !!this.urlValidate(this.newVolunteer.linkedin).trim(),
+        twitter: !!this.newVolunteer.twitter.trim(),
+        hours: !!this.newVolunteer.hours.trim(),
+        cocaffirmation: this.newVolunteer.cocaffirmation === true,
+      }
+    },
+    isValid: function() {
+      var validation = this.validation;
+      return Object.keys(validation).every(function(key) {
+        return validation[key];
+      });
+    }
+  },  
   methods: {
-    checkForm: function (e) {
-      this.submitted = true
-      this.errors = []
-
-      if (!this.firstName) {
-        this.errors.push("First Name required.")
+    objItem: function(name, id) {
+      return {
+        name: name,
+        id: id
       }
-      if (!this.lastName) {
-        this.errors.push("Last Name required.")
-      }
-      if (!this.primEmail) {
-        this.errors.push("Email required.")
-      } 
-      if (!this.validEmail(this.primEmail)) {
-        this.errors.push("Valid email required.")
-      }
-      if (!this.pseudoConduct) {
-        this.errors.push("Conduct Agremment required.")
-      }
-      if (this.errors.length === 0) {
-        var interested = []
-        if (this.mentoring) {
-          interested.push("Mentoring")
-        }
-
-        if (this.contributing) {
-          interested.push("Contributing")
-        }
-
-        if (this.remote) {
-          interested.push("Giving a remote talk")
-        }
-
-        axios
-          .post(
-            `https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/volunteers`,
-            {
-              body: JSON.stringify({
-                "First Name": this.firstName,
-                "Last Name": this.lastName,
-                "Primary Email": this.primEmail,
-                Phone: this.phone,
-                "Website 1": this.work,
-                "Website 2": this.other,
-                City: this.city,
-                State: this.state,
-                LinkedIn: this.linkedin,
-                Twitter: this.twitter,
-                "Available hours/week": this.hours,
-                "Talent notes": this.misc,
-                Skills: this.chosenPositionList,
-                Passions: this.chosenPassionList,
-                Activities: this.chosenActivitiesList,
-                "Photo Upload": [
-                  {
-                    url: this.imgURL
-                  }
-                ],
-                "I am interested in contributing my skills to ...": interested,
-                "COC Affirmation": true
-              })
-            }
-          )
-          .then((response) => {
-            if (response.status === "200") {
-              e.target.classList.add("was-validated")
-              window.location.pathname = "/volunteer-success.html"
-              return true
-            }
-          })
-          .catch((e) => {
-            this.errors.push(e)
-            e.stopPropagation()
-          })
+    },
+    addVolunteer: function () {
+      if (this.isValid) {
+        this.postToAPI(this.newVolunteer)
+        Object.keys(this.newVolunteer).forEach((key) => {
+          this.newVolunteer[key] = ""
+        })
       } else {
-        e.preventDefault()
+        console.log(`invalid volunteer ${this.isValid} ${JSON.stringify(this.newVolunteer)}`)
       }
-      e.target.classList.add("was-validated")
+    },
+    postToAPI: function (volunteer) {
+      console.log(`posting ${JSON.stringify(volunteer)}`)
+      return true
+      axios
+        .post(
+          `https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/volunteers`,
+          {
+            body: JSON.stringify({
+              "First Name": volunteer.firstName,
+              "Last Name": volunteer.lastName,
+              "Primary Email": volunteer.primEmail,
+              Phone: volunteer.phone,
+              "Website 1": volunteer.work,
+              "Website 2": volunteer.other,
+              City: volunteer.city,
+              State: volunteer.state,
+              LinkedIn: volunteer.linkedin,
+              Twitter: volunteer.twitter,
+              "Available hours/week": volunteer.hours,
+              "Talent notes": volunteer.misc,
+              // Skills: this.chosenPositionList,
+              // Passions: this.chosenPassionList,
+              // Activities: this.chosenActivitiesList,
+              // "Photo Upload": [
+              //   {
+              //     url: this.imgURL
+              //   }
+              // ],
+              "I am interested in contributing my skills to ...": volunteer.interested,
+              "COC Affirmation": volunteer.cocaffirmation
+            })
+          }
+        )
+        .then((response) => {
+          if (response.status === "200") {
+            e.target.classList.add("was-validated")
+            window.location.pathname = "/volunteer-success.html"
+            return true
+          }
+        })
+        .catch((e) => {
+          this.errors.push(e)
+          e.stopPropagation()
+        })
     },
     changeConductValue: function (event) {
       this.$ref.pseudoConduct.checked = event.target.checked
     },
-    urlValidate: function (event) {
-      var string = $(this).val()
-      if (!string.match(/^https?:/) && string.length) {
-        string = "http://" + string
-        $(this).val(string)
+    urlValidate: function (url) {
+      if (!url.match(/^https?:/) && url.length) {
+        url = "http://" + url
       }
+      return url
     },
-    validEmail: function (email) {
-      var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      return re.test(email)
-    },
-    creatingListsMounted: function () {
+    loadPositions: function () {
       axios
-        .get("https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/skills")
+        .get(
+          "https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/skills"
+        )
         .then((response) => {
-          for (var item in response.data) {
-            this.positionList.push(this.objItem(item["Skill"], item["id"]))
-          }
+          this.positionList = response.data.map((skill) => this.objItem(skill.Skill, skill.id))
         })
-  
+      return true
+    },
+    loadPassions: function () {
       axios
         .get(
           "https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/categories"
         )
         .then((response) => {
-          for (var item in response.data) {
-            this.passionList.push(this.objItem(item["Skill"], item["id"]))
-          }
+          this.passionList = response.data.map((cat) => this.objItem(cat.Category, cat.id))
         })
-  
+    },
+    loadActivities: function () {
       axios
         .get(
           "https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/activities"
         )
         .then((response) => {
-          for (var item in response.data) {
-            this.activitiesList.push(this.objItem(item["Skill"], item["id"]))
-          }
+          this.activitiesList = response.data.map((activity) => this.objItem(activity.Activity, activity.id))
         })
+    },
+    validEmail: function (email) {
+      var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      return re.test(email)
     },
     clearChildren: function () {
       //this.$refs.modalButtonGroup.empty();
@@ -220,11 +224,11 @@ const app = new Vue({
     handleDrop: function (e) {
       var dt = e.dataTransfer
       //var files = dt.files
-  
+
       changeImage(e.dataTransfer)
       //handleFiles(files)
     },
-  
+
     openPassionList: function () {
       /* passionList.forEach(function (passionWork, index) {
                   if(!this.chosenPassionList.includes(passionWork.id))
@@ -237,8 +241,6 @@ const app = new Vue({
       this.type = "Passion"
     },
     addPassionToChosen: function (passion) {
-      console.log("HI")
-      console.log(passion)
       this.chosenPassionList.push(passion)
       //  var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + passion.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + passion + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deletePassion('" + passion + "', '" + id + "')\">&times;</span></button>"
       //  this.$refs.passionWorkButtonGroup.append(newButton);
@@ -246,12 +248,13 @@ const app = new Vue({
       clearChildren()
     },
     deletePassion: function (passion) {
-      console.log("FUNCTION CLICKED")
-      console.log(passion)
       if (this.chosenPassionList.indexOf(passion) > -1) {
-        this.chosenPassionList.splice(this.chosenPassionList.indexOf(position), 1)
+        this.chosenPassionList.splice(
+          this.chosenPassionList.indexOf(position),
+          1
+        )
       }
-  
+
       // var removeText = "chosen"+passion.toString().replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_');
       // console.log(removeText);
       // this.$refs.passionWorkButtonGroup.removeChild(this.$refs.removeText);
@@ -279,7 +282,7 @@ const app = new Vue({
       this.$refs.modal.modal("hide")
       clearChildren()
     },
-  
+
     deletePosition: function (position) {
       console.log("DELETING POSITION" + this.position)
       console.log(chosenPositionList)
@@ -290,7 +293,7 @@ const app = new Vue({
           1
         )
       }
-  
+
       // var removeText = "chosen" + position.toString().replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_');
       //console
       // console.log(removeText);
@@ -298,7 +301,7 @@ const app = new Vue({
       //console.log(child);
       //  document.getElementById("positionButtonGroup").removeChild(child);
     },
-  
+
     openActivitiesList: function () {
       this.type = "Activities"
       /* activitiesList.forEach(function (activity, index) {
@@ -310,13 +313,13 @@ const app = new Vue({
                   }
               });*/
     },
-  
+
     addActivityToChosen: function (activity) {
       chosenActivitiesList.push(activity)
       this.$refs.modal.modal("hide")
       clearChildren()
     },
-  
+
     deleteActivity: function (activity) {
       console.log("DELETING ACTIVITY")
       console.log(activity)
@@ -330,7 +333,7 @@ const app = new Vue({
     changeImage: function (input) {
       const reader = new FileReader()
       const file = input.files[0]
-  
+
       reader.onload = (event) => {
         //this.product.image = event.target.result
         this.imgName = event.target.result.name
@@ -338,7 +341,7 @@ const app = new Vue({
       }
       reader.readAsDataURL(file)
       // imgURL = file.src;
-  
+
       /*reader.onload =  function(e) {
                                // console.log(e.target.result);
                   
@@ -373,20 +376,18 @@ const app = new Vue({
                               
           }*/
     },
-  
+
     getDataUrl: function (img) {
       var canvas = document.createElement("canvas")
       var ctx = canvas.getContext("2d")
-  
+
       canvas.width = img.width
       canvas.height = img.height
       ctx.drawImage(img, 0, 0)
-  
+
       // If the image is not png, the format
       // must be specified here
       return canvas.toDataURL("image/jpg")
-    }  
+    }
   }
 })
-
-//forimage
