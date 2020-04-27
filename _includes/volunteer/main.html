@@ -169,7 +169,7 @@
               <i class="fa fa-paperclip" style="color: #4300FF;">
               </i><strong style="padding:10px; color: #4300FF;;">Attach File</strong> 
           </label> <span class="volunteerLabel" > or drop here</span>
-          <input id="photoUpload" v-on:change="changeImage" v-on:drop="handleDrop" type="file"/>
+          <input id="photoUpload" accept="image/*" @change="changeImage" @drop="handleDrop" type="file"/>
           <div id="preview">
 
           </div>
