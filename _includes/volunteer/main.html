@@ -1,18 +1,3 @@
-<div id="app">
+<div id="volunteer">
   <p>At Parent: {$ variableAtParent $}</p>
-  <child-comp :message="variableAtParent"></child-comp>
 </div>
-
-<script>
-
-
-
-var app = new Vue({
-  el: '#app',
-  delimiters:["{$", "$}"],
-  data: {
-    variableAtParent: 'DATA FROM PARENT!'
-  }
-})
-
-</script>

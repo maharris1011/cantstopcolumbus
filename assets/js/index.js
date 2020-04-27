@@ -35,14 +35,6 @@ let transformProject = (project) => {
   return retval
 }
 
-var app = new Vue({
-  el: '#app',
-  delimiters:["{$", "$}"],
-  data: {
-    variableAtParent: 'DATA FROM PARENT!'
-  }
-})
-
 var cantstopcbus = new Vue({
   el: "#cantstopcbus-content",
   delimiters: ["{$", "$}"],
@@ -50,9 +42,6 @@ var cantstopcbus = new Vue({
     projects: []
   },
   methods: {
-    projectsForCategory: function (category) {
-      return this.allProjects.filter((project) => project.category === category)
-    }
   },
   computed: {
     carouselProjects: function () {
@@ -80,16 +69,6 @@ var cantstopcbus = new Vue({
   }
 })
 
-
-Vue.component('child-comp', {
-  props: ['message'], // declare the props
-  delimiters:["{$", "$}"],
-  template: '<p>At child-comp, using props in the template: {{ message }}</p>',
-  mounted: function () {
-    console.log('The props are also available in JS:', this.message);
-  }
-})
-
 Vue.component("project-card", {
   props: ["project"],
   delimiters: ["{$", "$}"],
@@ -108,24 +87,4 @@ Vue.component("project-card", {
       </div>
     </div>
     `
-})
-
-
-
-
-Vue.component("partner-card", {
-  props: ["item"],
-  delimiters: ["{$", "$}"],
-  template: `
-    <a class="card-link text-info text-center mt-auto" :href="item.URL" target="_blank">
-    <div class="card h-100">
-      <div class="embed-responsive embed-responsive-21by9">
-          <img :alt="item.Partner" class="sponsorlogo" :src="item.Logo[0].url" />
-      </div>
-      <div class="card-body d-flex flex-column">
-        <p class="card-link text-info text-center mt-auto">{$ item.Partner $}</p>
-      </div>
-    </div>
-    </a>
-  `
 })
