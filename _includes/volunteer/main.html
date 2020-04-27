@@ -110,26 +110,33 @@
     <label for="twitter" class="form-control-placeholder">Twitter</label>
   </div>
   <div class="form-group">
-    <label class="volunteerLabel"  for="passionWork">Are there any types of problems you're particularly passionate about solving?</label>
+    <label class="volunteerLabel" for="passionWork">
+      Are there any types of problems you're particularly passionate about solving?
+    </label>
     <br/>
-    <button type="button" id="passionWorkButton" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#modal">+ Add</button>
-    <div v-for="passion in newVolunteer.chosenPassionList" class="btn-group-vertical" style="margin-top:10px;" id = "passionWorkButtonGroup">
-      {$ passion.name $}
+    <div v-for="passion in passionList" class="checkbox">
+      <label class="customcheck d-block volunteerLabel"  style=" text-indent:15px;"  >
+          <input id="passionWork" type="checkbox" v-model="newVolunteer.chosenPassionList" :value="passion.id"><span class="checkmark" style="margin-right:25px;"></span>{$ passion.name $}
+      </label>
     </div>
   </div>
   <div class="form-group">
     <label class="volunteerLabel" for="position">What are you in a position to volunteer? Add all the skills you can muster.</label>
     <br/>
-    <button type="button" id="positionButton" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#modal">+ Add</button>
-    <div class="btn-group-vertical" style="margin-top:10px" id = "positionButtonGroup">
+    <div v-for="position in positionList" class="checkbox">
+      <label class="customcheck d-block volunteerLabel"  style=" text-indent:15px;"  >
+          <input id="position" type="checkbox" v-model="newVolunteer.chosenPositionList" :value="position.id"><span class="checkmark" style="margin-right:25px;"></span>{$ position.name $}
+      </label>
     </div>
   </div>
   <div class="form-group">
-    <label class="volunteerLabel"  for="activities">Below are some types of regular needs that have emerged, what type of activities are you best suited to support?</label>
+    <label class="volunteerLabel" for="activities">Below are some types of regular needs that have emerged, what type of activities are you best suited to support?</label>
     <br/>
-    <button type="button" id="activitiesButton" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#modal">+ Add</button>
-    <div class="btn-group-vertical" style="margin-top:10px" id = "activitiesButtonGroup">
-    </div>
+    <div v-for="activity in activitiesList" class="checkbox">
+      <label class="customcheck d-block volunteerLabel"  style=" text-indent:15px;"  >
+          <input id="activities" type="checkbox" v-model="newVolunteer.chosenActivitiesList" :value="activity.id"><span class="checkmark" style="margin-right:25px;"></span>{$ activity.name $}
+      </label>
+    </div>  
   </div>
   <div class="form-group">
     <input type="number" id="hours" v-model="newVolunteer.hours" class="form-control volunteerField" name="hours" >
@@ -201,14 +208,6 @@
         </button>
       </div>
       <div class="modal-body  justify-content-center" id="modalBody">
-        <div class="form-group">
-          <label class="volunteerLabel"  for="problemsToSolve">Are there any types of problems you're particularly passionate about solving?</label>
-          <div v-for="passion in passionList" class="checkbox">
-              <label class="customcheck d-block volunteerLabel"  style=" text-indent:15px;"  >
-                  <input type="checkbox" v-model="newVolunteer.chosenPassionList" :value="passion.id"><span class="checkmark" style="margin-right:25px;"></span>{$ passion.name $}
-              </label>
-          </div>
-        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
