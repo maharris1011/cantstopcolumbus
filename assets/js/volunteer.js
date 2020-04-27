@@ -38,26 +38,21 @@ var app = new Vue({
     this.loadPassions()
     this.loadPositions()
 
-    // this.$ref.fileTag
-    //   .addEventListener("change", function () {
-    //     changeImage(this)
-    //   })
 
-    //   [("dragenter", "dragover", "dragleave", "drop")].forEach((eventName) => {
-    //     this.$ref.uploadBox.addEventListener(eventName, preventDefaults, false)
-    //     document.body.addEventListener(eventName, preventDefaults, false)
-    //   })
+    // [("dragenter", "dragover", "dragleave", "drop")].forEach((eventName) => {
+    //   this.$ref.uploadBox.$on(eventName, this.preventDefaults)
+    //   document.body.$on(eventName, this.preventDefaults)
+    // })
 
-    //   [
-    //     // Highlight drop area when item is dragged over it
-    //     ("dragenter", "dragover")
-    //   ].forEach((eventName) => {
-    //     this.$ref.uploadBox.addEventListener(eventName, highlight, false)
-    //   })
-    //   [("dragleave", "drop")].forEach((eventName) => {
-    //     this.$ref.uploadBox.addEventListener(eventName, unhighlight, false)
-    //   })
-    // this.$ref.uploadBox.addEventListener("drop", handleDrop, false)
+    // ["dragenter", "dragover"].forEach((eventName) => {
+    //   this.$ref.uploadBox.$on(eventName, this.highlight)
+    // })
+
+    // ["dragleave", "drop"].forEach((eventName) => {
+    //   this.$ref.uploadBox.$on(eventName, this.unhighlight)
+    // })
+
+    // this.$ref.uploadBox.$on("drop", this.handleDrop)
 
     // this.$el.querySelectorAll(".volunteerField").forEach((button) => {
     //   button.addEventListener("change", (e) => {
@@ -88,13 +83,13 @@ var app = new Vue({
         lastName: !!this.newVolunteer.lastName.trim(),
         primEmail: this.validEmail(this.newVolunteer.primEmail),
         phone: !!this.newVolunteer.phone.trim(),
-        work: !!this.newVolunteer.work.trim(),
-        other: !!this.newVolunteer.other.trim(),
+        // work: !!this.newVolunteer.work.trim(),
+        // other: !!this.newVolunteer.other.trim(),
         city: !!this.newVolunteer.city.trim(),
         state: !!this.newVolunteer.state.trim(),
-        linkedin: !!this.urlValidate(this.newVolunteer.linkedin).trim(),
-        twitter: !!this.newVolunteer.twitter.trim(),
-        hours: !!this.newVolunteer.hours.trim(),
+        // linkedin: !!this.urlValidate(this.newVolunteer.linkedin).trim(),
+        // twitter: !!this.newVolunteer.twitter.trim(),
+        // hours: !!this.newVolunteer.hours.trim(),
         cocaffirmation: this.newVolunteer.cocaffirmation === true,
       }
     },
@@ -142,9 +137,9 @@ var app = new Vue({
               Twitter: volunteer.twitter,
               "Available hours/week": volunteer.hours,
               "Talent notes": volunteer.misc,
-              // Skills: this.chosenPositionList,
-              // Passions: this.chosenPassionList,
-              // Activities: this.chosenActivitiesList,
+              Skills: this.chosenPositionList,
+              Passions: this.chosenPassionList,
+              Activities: this.chosenActivitiesList,
               // "Photo Upload": [
               //   {
               //     url: this.imgURL
@@ -213,122 +208,17 @@ var app = new Vue({
       this.type = null
     },
     highlight: function (e) {
-      this.$refs.uploadBox.classList.add("highlightBox")
+      e.target.addClass("highlightBox")
     },
     unhighlight: function (e) {
-      this.$refs.unloadBox.classList.remove("highlightBox")
+      e.target.removeClass("highlightBox")
     },
     preventDefaults: function (e) {
       e.preventDefault()
       e.stopPropagation()
     },
     handleDrop: function (e) {
-      var dt = e.target.dataTransfer
-      //var files = dt.files
-
       changeImage(e.target.dataTransfer)
-      //handleFiles(files)
-    },
-
-    openPassionList: function () {
-      /* passionList.forEach(function (passionWork, index) {
-                  if(!this.chosenPassionList.includes(passionWork.id))
-                  {
-                      var text = "<button class=\"modalButton\" type=\"button\" id=\"" + passionWork.name + "\" @click=\"addPassionToChosen(" + passionWork + ")\" >"  + passionWork.name + "</button>"
-                      this.modalInputs.push(text);
-                      //this.$refs.modalButtonGroup.append(text);
-                  }
-              });*/
-      this.type = "Passion"
-    },
-    addPassionToChosen: function (passion) {
-      this.chosenPassionList.push(passion)
-      //  var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + passion.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + passion + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deletePassion('" + passion + "', '" + id + "')\">&times;</span></button>"
-      //  this.$refs.passionWorkButtonGroup.append(newButton);
-      this.$refs.modal.modal("hide")
-      clearChildren()
-    },
-    deletePassion: function (passion) {
-      if (this.chosenPassionList.indexOf(passion) > -1) {
-        this.chosenPassionList.splice(
-          this.chosenPassionList.indexOf(position),
-          1
-        )
-      }
-
-      // var removeText = "chosen"+passion.toString().replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_');
-      // console.log(removeText);
-      // this.$refs.passionWorkButtonGroup.removeChild(this.$refs.removeText);
-      //var child = document.getElementById(removeText)
-      //
-    },
-    openPositionList: function () {
-      this.type = "Position"
-      /*positionList.forEach(function (position, index) {
-                  if(!this.chosenPositionList.includes(position.id)){
-                      console.log(position)
-                      var text = "<button class=\"modalButton\" type=\"button\" id=\"" + position.name + "\" @click=\"addPositionToChosen(" + position + ")\" >"  + position.name + "</button>"
-                      this.modalInputs.push(text);
-                      //this.$refs.modalButtonGroup.append(text);
-                  }
-  
-              });*/
-    },
-    addPositionToChosen: function (position) {
-      console.log("Pushing " + position)
-      this.chosenPositionList.push(position)
-      console.log(position)
-      //var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + position.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + position + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deletePosition('" + position + "', '" + id + "')\">&times;</span></button>"
-      //this.$refs.positionButtonGroup.append(newButton);
-      this.$refs.modal.modal("hide")
-      clearChildren()
-    },
-
-    deletePosition: function (position) {
-      console.log("DELETING POSITION" + this.position)
-      console.log(chosenPositionList)
-      console.log(index)
-      if (this.chosenPositionList.indexOf(position) > -1) {
-        this.chosenPositionList.splice(
-          this.chosenPositionList.indexOf(position),
-          1
-        )
-      }
-
-      // var removeText = "chosen" + position.toString().replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_');
-      //console
-      // console.log(removeText);
-      //var child = document.getElementById(removeText);
-      //console.log(child);
-      //  document.getElementById("positionButtonGroup").removeChild(child);
-    },
-
-    openActivitiesList: function () {
-      this.type = "Activities"
-      /* activitiesList.forEach(function (activity, index) {
-                  if(!chosenActivitiesList.includes(activity.id))
-                  {
-                      var text = "<button class=\"modalButton\" type=\"button\" id=\"" + activity.name + "\" @click=\"addActivityToChosen('" + activity.name + "', '" + activity.id + "')\" >"  + activity.name + "</button>"
-                      this.modalInputs.push(text);
-                      //$("#modalButtonGroup").append(text)
-                  }
-              });*/
-    },
-
-    addActivityToChosen: function (activity) {
-      chosenActivitiesList.push(activity)
-      this.$refs.modal.modal("hide")
-      clearChildren()
-    },
-    deleteActivity: function (activity) {
-      console.log("DELETING ACTIVITY")
-      console.log(activity)
-      if (this.chosenActivitiesList.indexOf(activity) > -1) {
-        this.chosenActivitiesList.splice(
-          this.chosenActivitiesList.indexOf(activity),
-          1
-        )
-      }
     },
     changeImage: function (input) {
       this.newVolunteer.photo = input.target.files[0]
