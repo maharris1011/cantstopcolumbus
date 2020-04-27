@@ -218,10 +218,11 @@ var app = new Vue({
       e.stopPropagation()
     },
     handleDrop: function (e) {
-      changeImage(e.target.dataTransfer)
+      console.log(`e.target = ${e.target}`)
+      // changeImage(e.target.dataTransfer.files[0])
     },
-    changeImage: function (input) {
-      this.newVolunteer.photo = input.target.files[0]
+    changeImage: function (e) {
+      this.newVolunteer.photo = e.target.files[0]
     },
     getDataUrl: function (img) {
       var canvas = document.createElement("canvas")
