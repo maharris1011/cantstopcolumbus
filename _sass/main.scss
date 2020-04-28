@@ -543,3 +543,183 @@ div.jumbotron {
                 padding-bottom: 10px;
   }
 }
+
+
+
+.modal-body{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.scrollable-menu {
+  height: auto;
+  max-height: 600px;
+  overflow-x: hidden;
+}
+
+.modalButton{
+  position: relative;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #4300FF;
+  background-color: white;
+  border-radius: 6px;
+  text-align:left;
+  margin: 5px;
+}
+
+.modalButtonImage{
+  position: relative;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #4300FF;
+  background-color: white;
+  border-radius: 6px;
+  text-align:left;
+  margin: 5px;
+}
+
+
+.btn-outline-volunteer{
+  color: #4300FF;
+  background-color: transparent;
+  background-image: none;
+  border-color: #4300FF;
+}
+
+#upload_Box.highlightBox {
+border:5px dashed #4300FF!important;
+}
+
+
+
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+  .form-group {
+position: relative;
+margin-bottom: 1.5rem;
+}
+
+.form-control-placeholder {
+position: absolute;
+top: 0;
+font-size:1.1rem;
+padding: 10px 0 0 13px;
+transition: all 200ms;
+opacity: 0.5;
+}
+
+.volunteerField:focus + .form-control-placeholder,
+.stateField {
+font-size: 90%;
+transform: translate3d(0, -100%, 0);
+opacity: 1;
+}
+
+/* The customcheck */
+.customcheck {
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-left:10px;
+}
+
+/* Hide the browser's default checkbox */
+.customcheck input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 5px;
+  border: 2px solid #a9a9a9;
+  margin-left:10px;
+}
+
+/* On mouse-over, add a grey background color */
+.customcheck:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.customcheck input:checked ~ .checkmark {
+  background-color: #4300FF;
+  border-radius: 5px;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.customcheck input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.customcheck .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.drop {
+  background-color: #f2f2f2;
+  border: 4px dashed #ccc;
+  background-color: #f6f6f6;
+  border-radius: 2px;
+  height: 100%;
+  max-height: 400px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.imgUpload {
+  border: 1px solid #f6f6f6;
+  display: inline-block;
+  height: auto;
+  max-height: 80%;
+  max-width: 80%;
+  width: auto;
+}
+
+.display-inline {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.helper {
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  width: 0;
+}

@@ -32,6 +32,7 @@ var app = new Vue({
     type: null,
     imgURL: null,
     imgName: null,
+    showModal: false
   },
   mounted() {
     this.loadActivities()
@@ -101,11 +102,46 @@ var app = new Vue({
     }
   },  
   methods: {
+
+    onDrop: function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        var files = e.dataTransfer.files;
+        this.createFile(files[0]);
+      },
+      onChange(e) {
+        var files = e.target.files;
+        this.createFile(files[0]);
+      },
+      createFile(file) {
+        if (!file.type.match('image.*')) {
+          alert('Select an image');
+          return;
+        }
+        var img = new Image();
+        var reader = new FileReader();
+        var vm = this.newVolunteer;
+
+        reader.onload = function(e) {
+          vm.photo = e.target.result;
+        }
+        reader.readAsDataURL(file);
+      },
+      removeFile() {
+        this.newVolunteer.photo = '';
+      },
     objItem: function(name, id) {
       return {
         name: name,
         id: id
       }
+    },
+    toggleModal(interest) {
+        this.showModal = !this.showModal;
+        this.type = interest;
+        if(!this.showModal){
+            $("#myModal").modal('hide');
+        }
     },
     addVolunteer: function () {
       if (this.isValid) {
@@ -223,6 +259,7 @@ var app = new Vue({
     },
     changeImage: function (e) {
       this.newVolunteer.photo = e.target.files[0]
+      this.imgName = e.target.files[0].name
     },
     getDataUrl: function (img) {
       var canvas = document.createElement("canvas")
@@ -235,6 +272,78 @@ var app = new Vue({
       // If the image is not png, the format
       // must be specified here
       return canvas.toDataURL("image/jpg")
-    }
+    },
+
+     addPassionToChosen: function(passion){
+         console.log("HI");
+         console.log(passion);
+         this.newVolunteer.chosenPassionList.push(passion);
+         
+       //  var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + passion.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + passion + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deletePassion('" + passion + "', '" + id + "')\">&times;</span></button>"
+       //  this.$refs.passionWorkButtonGroup.append(newButton);
+         this.toggleModal(null);
+     },
+     deletePassion: function(passion){
+         console.log("FUNCTION CLICKED");
+         console.log(passion);
+         if (this.newVolunteer.chosenPassionList.indexOf(passion) > -1) {
+             this.newVolunteer.chosenPassionList.splice(this.newVolunteer.chosenPassionList.indexOf(passion), 1);
+         }
+         
+        // var removeText = "chosen"+passion.toString().replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_');
+        // console.log(removeText);
+        // this.$refs.passionWorkButtonGroup.removeChild(this.$refs.removeText);
+         //var child = document.getElementById(removeText)
+         //
+     },
+     addPositionToChosen: function(position){
+         console.log("Pushing " + position);
+         this.newVolunteer.chosenPositionList.push(position);
+         console.log(position)
+         //var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + position.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + position + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deletePosition('" + position + "', '" + id + "')\">&times;</span></button>"
+         //this.$refs.positionButtonGroup.append(newButton);
+         //this.$refs.modal.modal("hide");
+         this.toggleModal(null);
+     },
+
+     deletePosition: function(position){
+         if (this.newVolunteer.chosenPositionList.indexOf(position) > -1) {
+             this.newVolunteer.chosenPositionList.splice(this.newVolunteer.chosenPositionList.indexOf(position), 1);
+         }
+         
+        // var removeText = "chosen" + position.toString().replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_');
+         //console
+        // console.log(removeText);
+         //var child = document.getElementById(removeText);
+         //console.log(child);
+       //  document.getElementById("positionButtonGroup").removeChild(child);
+     },
+
+
+     addActivityToChosen: function(activity){
+         this.newVolunteer.chosenActivitiesList.push(activity);
+        /*var newButton = '<button class="modalButton" type="button" id="chosen"' 
+                         + activity.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + '" >"'
+                         + activity + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deleteActivity('" + activity + "')\">&times;</span></button>"
+         //var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" */
+         //$("#activitiesButtonGroup").append(newButton);
+         //this.$refs.modal.modal("hide");
+         this.toggleModal(null);
+     },
+
+     deleteActivity: function(activity){
+         console.log("DELETING ACTIVITY");
+         console.log(activity);
+         if (this.newVolunteer.chosenActivitiesList.indexOf(activity) > -1) {
+             this.newVolunteer.chosenActivitiesList.splice(this.newVolunteer.chosenActivitiesList.indexOf(activity), 1);
+         }
+         
+      //   var removeText = "chosen" + activity.toString().replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_');
+      //   var child = document.getElementById(removeText)
+      //   document.getElementById("activitiesButtonGroup").removeChild(child);
+     },
+     clearChildren: function(){
+         this.type=null;
+     }
   }
 })
