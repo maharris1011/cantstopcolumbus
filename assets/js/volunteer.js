@@ -1,4 +1,3 @@
-var emailRE = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 var app = new Vue({
   el: "#cantstopcbus-content",
@@ -38,47 +37,10 @@ var app = new Vue({
     this.loadActivities()
     this.loadPassions()
     this.loadPositions()
-
-
-    // [("dragenter", "dragover", "dragleave", "drop")].forEach((eventName) => {
-    //   this.$ref.uploadBox.$on(eventName, this.preventDefaults)
-    //   document.body.$on(eventName, this.preventDefaults)
-    // })
-
-    // ["dragenter", "dragover"].forEach((eventName) => {
-    //   this.$ref.uploadBox.$on(eventName, this.highlight)
-    // })
-
-    // ["dragleave", "drop"].forEach((eventName) => {
-    //   this.$ref.uploadBox.$on(eventName, this.unhighlight)
-    // })
-
-    // this.$ref.uploadBox.$on("drop", this.handleDrop)
-
-    // this.$el.querySelectorAll(".volunteerField").forEach((button) => {
-    //   button.addEventListener("change", (e) => {
-    //     if (e.target.value.length > 0 && $(this)[0].nodeName == "INPUT") {
-    //       console.log(e.target.id)
-    //       var string = "label[for='" + e.target.id + "']"
-    //       console.log(string)
-    //       if ($(string).length) {
-    //         console.log("Success")
-    //         $(string)[0].classList.add("stateField")
-    //       }
-    //     } else if (e.target.value.length <= 0) {
-    //       var string = "label[for='" + e.target.id + "']"
-    //       console.log(string)
-    //       if ($(string).length) {
-    //         console.log("Success")
-    //         $(string)[0].classList.remove("stateField")
-    //       }
-    //     }
-    //   })
-    // })
   },
   watch: {},
   computed: {
-    validation: function() {
+    validation: function () {
       return {
         firstName: !!this.newVolunteer.firstName.trim(),
         lastName: !!this.newVolunteer.lastName.trim(),
@@ -90,58 +52,57 @@ var app = new Vue({
         state: !!this.newVolunteer.state.trim(),
         // linkedin: !!this.urlValidate(this.newVolunteer.linkedin).trim(),
         // twitter: !!this.newVolunteer.twitter.trim(),
-        // hours: !!this.newVolunteer.hours.trim(),
-        cocaffirmation: this.newVolunteer.cocaffirmation === true,
+        hours: !!this.newVolunteer.hours.trim(),
+        cocaffirmation: this.newVolunteer.cocaffirmation === true
       }
     },
-    isValid: function() {
-      var validation = this.validation;
-      return Object.keys(validation).every(function(key) {
-        return validation[key];
-      });
+    isValid: function () {
+      var validation = this.validation
+      return Object.keys(validation).every(function (key) {
+        return validation[key]
+      })
     }
-  },  
+  },
   methods: {
+    onDrop: function (e) {
+      e.stopPropagation()
+      e.preventDefault()
+      var files = e.dataTransfer.files
+      this.createFile(files[0])
+    },
+    onChange(e) {
+      var files = e.target.files
+      this.createFile(files[0])
+    },
+    createFile(file) {
+      if (!file.type.match("image.*")) {
+        alert("Select an image")
+        return
+      }
+      var img = new Image()
+      var reader = new FileReader()
+      var vm = this.newVolunteer
 
-    onDrop: function(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        var files = e.dataTransfer.files;
-        this.createFile(files[0]);
-      },
-      onChange(e) {
-        var files = e.target.files;
-        this.createFile(files[0]);
-      },
-      createFile(file) {
-        if (!file.type.match('image.*')) {
-          alert('Select an image');
-          return;
-        }
-        var img = new Image();
-        var reader = new FileReader();
-        var vm = this.newVolunteer;
-
-        reader.onload = function(e) {
-          vm.photo = e.target.result;
-        }
-        reader.readAsDataURL(file);
-      },
-      removeFile() {
-        this.newVolunteer.photo = '';
-      },
-    objItem: function(name, id) {
+      reader.onload = function (e) {
+        vm.photo = e.target.result
+      }
+      reader.readAsDataURL(file)
+    },
+    removeFile() {
+      this.newVolunteer.photo = ""
+    },
+    objItem: function (name, id) {
       return {
         name: name,
         id: id
       }
     },
     toggleModal(interest) {
-        this.showModal = !this.showModal;
-        this.type = interest;
-        if(!this.showModal){
-            $("#myModal").modal('hide');
-        }
+      this.showModal = !this.showModal
+      this.type = interest
+      if (!this.showModal) {
+        $("#myModal").modal("hide")
+      }
     },
     addVolunteer: function () {
       if (this.isValid) {
@@ -150,40 +111,47 @@ var app = new Vue({
           this.newVolunteer[key] = ""
         })
       } else {
-        console.log(`invalid volunteer ${this.isValid} ${JSON.stringify(this.newVolunteer)}`)
+        console.log(
+          `invalid volunteer ${this.isValid} ${JSON.stringify(
+            this.newVolunteer
+          )}`
+        )
       }
     },
     postToAPI: function (volunteer) {
-      console.log(`posting ${JSON.stringify(volunteer)}`)
+      let vol = JSON.stringify({
+        "First Name": volunteer.firstName,
+        "Last Name": volunteer.lastName,
+        "Primary Email": volunteer.primEmail,
+        Phone: volunteer.phone,
+        "Website 1": volunteer.work,
+        "Website 2": volunteer.other,
+        City: volunteer.city,
+        State: volunteer.state,
+        LinkedIn: volunteer.linkedin,
+        Twitter: volunteer.twitter,
+        "Available hours/week": volunteer.hours,
+        "Talent notes": volunteer.misc,
+        Skills: volunteer.chosenPositionList,
+        Passions: volunteer.chosenPassionList,
+        Activities: volunteer.chosenActivitiesList,
+        photo: volunteer.photo,
+        // "Photo Upload": [
+        //   {
+        //     url: this.imgURL
+        //   }
+        // ],
+        "I am interested in contributing my skills to ...":
+          volunteer.interested,
+        "COC Affirmation": volunteer.cocaffirmation
+      })
+      console.log(`posting ${vol}`)
       return true
       axios
         .post(
           `https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/volunteers`,
           {
-            body: JSON.stringify({
-              "First Name": volunteer.firstName,
-              "Last Name": volunteer.lastName,
-              "Primary Email": volunteer.primEmail,
-              Phone: volunteer.phone,
-              "Website 1": volunteer.work,
-              "Website 2": volunteer.other,
-              City: volunteer.city,
-              State: volunteer.state,
-              LinkedIn: volunteer.linkedin,
-              Twitter: volunteer.twitter,
-              "Available hours/week": volunteer.hours,
-              "Talent notes": volunteer.misc,
-              Skills: this.chosenPositionList,
-              Passions: this.chosenPassionList,
-              Activities: this.chosenActivitiesList,
-              // "Photo Upload": [
-              //   {
-              //     url: this.imgURL
-              //   }
-              // ],
-              "I am interested in contributing my skills to ...": volunteer.interested,
-              "COC Affirmation": volunteer.cocaffirmation
-            })
+            body: vol
           }
         )
         .then((response) => {
@@ -213,7 +181,9 @@ var app = new Vue({
           "https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/skills"
         )
         .then((response) => {
-          this.positionList = response.data.map((skill) => this.objItem(skill.Skill, skill.id))
+          this.positionList = response.data.map((skill) =>
+            this.objItem(skill.Skill, skill.id)
+          )
         })
       return true
     },
@@ -223,7 +193,9 @@ var app = new Vue({
           "https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/categories"
         )
         .then((response) => {
-          this.passionList = response.data.map((cat) => this.objItem(cat.Category, cat.id))
+          this.passionList = response.data.map((cat) =>
+            this.objItem(cat.Category, cat.id)
+          )
         })
     },
     loadActivities: function () {
@@ -232,7 +204,9 @@ var app = new Vue({
           "https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/activities"
         )
         .then((response) => {
-          this.activitiesList = response.data.map((activity) => this.objItem(activity.Activity, activity.id))
+          this.activitiesList = response.data.map((activity) =>
+            this.objItem(activity.Activity, activity.id)
+          )
         })
     },
     validEmail: function (email) {
@@ -240,7 +214,6 @@ var app = new Vue({
       return re.test(email)
     },
     clearChildren: function () {
-      //this.$refs.modalButtonGroup.empty();
       this.type = null
     },
     highlight: function (e) {
@@ -274,76 +247,67 @@ var app = new Vue({
       return canvas.toDataURL("image/jpg")
     },
 
-     addPassionToChosen: function(passion){
-         console.log("HI");
-         console.log(passion);
-         this.newVolunteer.chosenPassionList.push(passion);
-         
-       //  var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + passion.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + passion + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deletePassion('" + passion + "', '" + id + "')\">&times;</span></button>"
-       //  this.$refs.passionWorkButtonGroup.append(newButton);
-         this.toggleModal(null);
-     },
-     deletePassion: function(passion){
-         console.log("FUNCTION CLICKED");
-         console.log(passion);
-         if (this.newVolunteer.chosenPassionList.indexOf(passion) > -1) {
-             this.newVolunteer.chosenPassionList.splice(this.newVolunteer.chosenPassionList.indexOf(passion), 1);
-         }
-         
-        // var removeText = "chosen"+passion.toString().replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_');
-        // console.log(removeText);
-        // this.$refs.passionWorkButtonGroup.removeChild(this.$refs.removeText);
-         //var child = document.getElementById(removeText)
-         //
-     },
-     addPositionToChosen: function(position){
-         console.log("Pushing " + position);
-         this.newVolunteer.chosenPositionList.push(position);
-         console.log(position)
-         //var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + position.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + position + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deletePosition('" + position + "', '" + id + "')\">&times;</span></button>"
-         //this.$refs.positionButtonGroup.append(newButton);
-         //this.$refs.modal.modal("hide");
-         this.toggleModal(null);
-     },
+    addPassionToChosen: function (passion) {
+      console.log("HI")
+      console.log(passion)
+      this.newVolunteer.chosenPassionList.push(passion)
 
-     deletePosition: function(position){
-         if (this.newVolunteer.chosenPositionList.indexOf(position) > -1) {
-             this.newVolunteer.chosenPositionList.splice(this.newVolunteer.chosenPositionList.indexOf(position), 1);
-         }
-         
-        // var removeText = "chosen" + position.toString().replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_');
-         //console
-        // console.log(removeText);
-         //var child = document.getElementById(removeText);
-         //console.log(child);
-       //  document.getElementById("positionButtonGroup").removeChild(child);
-     },
+      //  var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + passion.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + passion + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deletePassion('" + passion + "', '" + id + "')\">&times;</span></button>"
+      //  this.$refs.passionWorkButtonGroup.append(newButton);
+      this.toggleModal(null)
+    },
+    deletePassion: function (passion) {
+      console.log("FUNCTION CLICKED")
+      console.log(passion)
+      if (this.newVolunteer.chosenPassionList.indexOf(passion) > -1) {
+        this.newVolunteer.chosenPassionList.splice(
+          this.newVolunteer.chosenPassionList.indexOf(passion),
+          1
+        )
+      }
+    },
+    addPositionToChosen: function (position) {
+      console.log("Pushing " + position)
+      this.newVolunteer.chosenPositionList.push(position)
+      console.log(position)
+      //var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + position.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + position + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deletePosition('" + position + "', '" + id + "')\">&times;</span></button>"
+      //this.$refs.positionButtonGroup.append(newButton);
+      //this.$refs.modal.modal("hide");
+      this.toggleModal(null)
+    },
 
+    deletePosition: function (position) {
+      if (this.newVolunteer.chosenPositionList.indexOf(position) > -1) {
+        this.newVolunteer.chosenPositionList.splice(
+          this.newVolunteer.chosenPositionList.indexOf(position),
+          1
+        )
+      }
+    },
 
-     addActivityToChosen: function(activity){
-         this.newVolunteer.chosenActivitiesList.push(activity);
-        /*var newButton = '<button class="modalButton" type="button" id="chosen"' 
+    addActivityToChosen: function (activity) {
+      this.newVolunteer.chosenActivitiesList.push(activity)
+      /*var newButton = '<button class="modalButton" type="button" id="chosen"' 
                          + activity.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + '" >"'
                          + activity + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deleteActivity('" + activity + "')\">&times;</span></button>"
          //var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" */
-         //$("#activitiesButtonGroup").append(newButton);
-         //this.$refs.modal.modal("hide");
-         this.toggleModal(null);
-     },
+      //$("#activitiesButtonGroup").append(newButton);
+      //this.$refs.modal.modal("hide");
+      this.toggleModal(null)
+    },
 
-     deleteActivity: function(activity){
-         console.log("DELETING ACTIVITY");
-         console.log(activity);
-         if (this.newVolunteer.chosenActivitiesList.indexOf(activity) > -1) {
-             this.newVolunteer.chosenActivitiesList.splice(this.newVolunteer.chosenActivitiesList.indexOf(activity), 1);
-         }
-         
-      //   var removeText = "chosen" + activity.toString().replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_');
-      //   var child = document.getElementById(removeText)
-      //   document.getElementById("activitiesButtonGroup").removeChild(child);
-     },
-     clearChildren: function(){
-         this.type=null;
-     }
+    deleteActivity: function (activity) {
+      console.log("DELETING ACTIVITY")
+      console.log(activity)
+      if (this.newVolunteer.chosenActivitiesList.indexOf(activity) > -1) {
+        this.newVolunteer.chosenActivitiesList.splice(
+          this.newVolunteer.chosenActivitiesList.indexOf(activity),
+          1
+        )
+      }
+    },
+    clearChildren: function () {
+      this.type = null
+    }
   }
 })
