@@ -23,6 +23,7 @@ var app = new Vue({
       cocaffirmation: false,
       photo: null
     },
+    potentialInterests: ['Contributing', 'Mentoring', 'Giving a remote talk'],
     pseudoConduct: false,
     passionList: [],
     positionList: [],
