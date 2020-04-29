@@ -234,19 +234,9 @@
     <div class="col-md-6 col-lg-4">
       <div class="form-group">
         <label class="volunteerLabel"  for="contributeSkills">I am interested in contributing my skills to ...</label>
-        <div class="checkbox">
-            <label class="customcheck d-block volunteerLabel"  style=" text-indent:15px;"  >
-                <input type="checkbox" v-model="newVolunteer.interested" value="Contributing" id="contributing" value=""><span class="checkmark" style="margin-right:25px;"></span>Contributing
-            </label>
-        </div>
-        <div class="checkbox">
-          <label  class="customcheck d-block volunteerLabel" style=" text-indent:15px;" >
-              <input type="checkbox" v-model="newVolunteer.interested" value="Mentoring" id="mentoring" value=""> <span class="checkmark" style="margin-right:25px;"></span>Mentoring
-          </label>
-        </div>
-        <div class="checkbox ">
-          <label  class="customcheck d-block volunteerLabel" style=" text-indent:15px;" >
-              <input type="checkbox" v-model="newVolunteer.interested" value="Giving a remote talk" id="remote" value="" ><span class="checkmark" style="margin-right:25px;"></span>Giving a remote talk
+        <div v-for="interest in potentialInterests" class="checkbox">
+          <label class="customcheck d-block volunteerLabel"  style=" text-indent:15px;"  >
+            <input type="checkbox" v-model="newVolunteer.interested" :value="interest" :id="interest"><span class="checkmark" style="margin-right:25px;"></span>{$ interest $}
           </label>
         </div>
       </div>
