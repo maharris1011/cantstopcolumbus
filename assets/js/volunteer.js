@@ -1,4 +1,3 @@
-
 var app = new Vue({
   el: "#cantstopcbus-content",
   delimiters: ["{$", "$}"],
@@ -23,16 +22,12 @@ var app = new Vue({
       cocaffirmation: false,
       photo: null
     },
-    potentialInterests: ['Contributing', 'Mentoring', 'Giving a remote talk'],
-    pseudoConduct: false,
+    potentialInterests: ["Contributing", "Mentoring", "Giving a remote talk"],
     passionList: [],
     positionList: [],
     activitiesList: [],
-    modalInputs: [],
-    type: null,
     imgURL: null,
-    imgName: null,
-    showModal: false
+    imgName: null
   },
   mounted() {
     this.loadActivities()
@@ -98,13 +93,6 @@ var app = new Vue({
         id: id
       }
     },
-    toggleModal(modal) {
-      this.showModal = !this.showModal
-      this.type = modal
-      if (false === this.showModal) {
-        $(modal).modal("hide")
-      }
-    },
     addVolunteer: function () {
       if (this.isValid) {
         this.postToAPI(this.newVolunteer)
@@ -140,23 +128,24 @@ var app = new Vue({
         Passions: this.mapToIds(volunteer.chosenPassionList),
         Activities: this.mapToIds(volunteer.chosenActivitiesList),
         photo: volunteer.photo,
-        // "Photo Upload": [
-        //   {
-        //     url: this.imgURL
-        //   }
-        // ],
         "I am interested in contributing my skills to ...":
           volunteer.interested,
         "COC Affirmation": volunteer.cocaffirmation
       })
       console.log(`posting ${vol}`)
       return true
+      const config = {
+        headers: {
+          "content-type": "multipart/form-data"
+        }
+      }
       axios
         .post(
           `https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/volunteers`,
           {
             body: vol
-          }
+          },
+          config
         )
         .then((response) => {
           if (response.status === "200") {
@@ -169,9 +158,6 @@ var app = new Vue({
           this.errors.push(e)
           e.stopPropagation()
         })
-    },
-    changeConductValue: function (event) {
-      this.$ref.pseudoConduct.checked = event.target.checked
     },
     urlValidate: function (url) {
       if (!url.match(/^https?:/) && url.length) {
