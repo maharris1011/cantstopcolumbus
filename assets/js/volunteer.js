@@ -97,11 +97,11 @@ var app = new Vue({
         id: id
       }
     },
-    toggleModal(interest) {
+    toggleModal(modal) {
       this.showModal = !this.showModal
-      this.type = interest
-      if (!this.showModal) {
-        $("#myModal").modal("hide")
+      this.type = modal
+      if (false === this.showModal) {
+        $(modal).modal("hide")
       }
     },
     addVolunteer: function () {
@@ -118,6 +118,9 @@ var app = new Vue({
         )
       }
     },
+    mapToIds: function (list) {
+      return list.map((elem) => elem.id)
+    },
     postToAPI: function (volunteer) {
       let vol = JSON.stringify({
         "First Name": volunteer.firstName,
@@ -132,9 +135,9 @@ var app = new Vue({
         Twitter: volunteer.twitter,
         "Available hours/week": volunteer.hours,
         "Talent notes": volunteer.misc,
-        Skills: volunteer.chosenPositionList,
-        Passions: volunteer.chosenPassionList,
-        Activities: volunteer.chosenActivitiesList,
+        Skills: this.mapToIds(volunteer.chosenPositionList),
+        Passions: this.mapToIds(volunteer.chosenPassionList),
+        Activities: this.mapToIds(volunteer.chosenActivitiesList),
         photo: volunteer.photo,
         // "Photo Upload": [
         //   {
@@ -213,9 +216,6 @@ var app = new Vue({
       var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       return re.test(email)
     },
-    clearChildren: function () {
-      this.type = null
-    },
     highlight: function (e) {
       e.target.addClass("highlightBox")
     },
@@ -246,68 +246,39 @@ var app = new Vue({
       // must be specified here
       return canvas.toDataURL("image/jpg")
     },
-
-    addPassionToChosen: function (passion) {
-      console.log("HI")
-      console.log(passion)
-      this.newVolunteer.chosenPassionList.push(passion)
-
-      //  var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + passion.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + passion + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deletePassion('" + passion + "', '" + id + "')\">&times;</span></button>"
-      //  this.$refs.passionWorkButtonGroup.append(newButton);
-      this.toggleModal(null)
+    addToChosen(list, choice) {
+      list.push(choice)
     },
-    deletePassion: function (passion) {
-      console.log("FUNCTION CLICKED")
-      console.log(passion)
-      if (this.newVolunteer.chosenPassionList.indexOf(passion) > -1) {
-        this.newVolunteer.chosenPassionList.splice(
-          this.newVolunteer.chosenPassionList.indexOf(passion),
-          1
-        )
-      }
-    },
-    addPositionToChosen: function (position) {
-      console.log("Pushing " + position)
-      this.newVolunteer.chosenPositionList.push(position)
-      console.log(position)
-      //var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" + position.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + "\" >"  + position + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deletePosition('" + position + "', '" + id + "')\">&times;</span></button>"
-      //this.$refs.positionButtonGroup.append(newButton);
-      //this.$refs.modal.modal("hide");
-      this.toggleModal(null)
-    },
-
-    deletePosition: function (position) {
-      if (this.newVolunteer.chosenPositionList.indexOf(position) > -1) {
-        this.newVolunteer.chosenPositionList.splice(
-          this.newVolunteer.chosenPositionList.indexOf(position),
-          1
-        )
-      }
-    },
-
-    addActivityToChosen: function (activity) {
-      this.newVolunteer.chosenActivitiesList.push(activity)
-      /*var newButton = '<button class="modalButton" type="button" id="chosen"' 
-                         + activity.replace(/\s/g, "").replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_')  + '" >"'
-                         + activity + "<span aria-hidden=\"true\" style=\"float:right;\" onclick=\"deleteActivity('" + activity + "')\">&times;</span></button>"
-         //var newButton = "<button class=\"modalButton\"  type=\"button\" id=\"chosen" */
-      //$("#activitiesButtonGroup").append(newButton);
-      //this.$refs.modal.modal("hide");
-      this.toggleModal(null)
-    },
-
-    deleteActivity: function (activity) {
-      console.log("DELETING ACTIVITY")
-      console.log(activity)
-      if (this.newVolunteer.chosenActivitiesList.indexOf(activity) > -1) {
-        this.newVolunteer.chosenActivitiesList.splice(
-          this.newVolunteer.chosenActivitiesList.indexOf(activity),
-          1
-        )
-      }
-    },
-    clearChildren: function () {
-      this.type = null
+    deleteFromChosen(list, choice) {
+      list = list.filter((elem) => elem !== choice)
     }
   }
+})
+
+Vue.component("modal-choices", {
+  props: ["modalId"],
+  delimiters: ["{$", "$}"],
+  template: `
+    <div class="modal fade" ref="modal" role="dialog">
+      <div class="modal-dialog modal-dialog-scrollable volunteerModal" role="document">
+        <div class="modal-content volunteerModal" id="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Choose an Option Below</h5>
+            <button type="button" data-dismiss="modal" class="close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body justify-content-center" id="modalBody">
+            <slot name="body">
+            </slot>
+          </div>
+          <slot name="footer">
+            <button class="btn btn-secondary" data-dismiss="modal">
+              Close
+            </button>
+          </slot>
+        </div>
+      </div>
+    </div>
+    `
 })
