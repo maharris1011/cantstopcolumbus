@@ -221,18 +221,6 @@ var app = new Vue({
       this.newVolunteer.photo = e.target.files[0]
       this.imgName = e.target.files[0].name
     },
-    getDataUrl: function (img) {
-      var canvas = document.createElement("canvas")
-      var ctx = canvas.getContext("2d")
-
-      canvas.width = img.width
-      canvas.height = img.height
-      ctx.drawImage(img, 0, 0)
-
-      // If the image is not png, the format
-      // must be specified here
-      return canvas.toDataURL("image/jpg")
-    },
     addToChosen(list, choice) {
       list.push(choice)
     },
