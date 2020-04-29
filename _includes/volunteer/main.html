@@ -165,9 +165,16 @@
           Are there any types of problems you're particularly passionate about solving?
         </label>
         <br/>
-        <button type="button" id="passionButton" v-on:click="toggleModal('PassionWork')" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#myModal">+ Add</button>
-        <div class="btn-group-vertical" style="margin-top:10px"   id = "passionButtonGroup">
-          <button v-for="input in newVolunteer.chosenPassionList" class="modalButton" :id="input.id"  type="button">{$ input.name $}<span aria-hidden="true" style="float:right;"  v-on:click="deletePassion(input)">&times;</span></button>
+        <button type="button" id="passionButton" data-toggle="modal" data-target="#passionModal" class="btn btn-outline-volunteer">+ Add</button>
+        <modal-choices id="passionModal">
+          <div slot="body" class="btn-group-vertical justify-content-center" id="modalButtonGroup">
+            <span v-for="input in passionList">
+              <button v-if="!newVolunteer.chosenPassionList.includes(input)" class="modalButton" type="button" id="input.id" @click="addToChosen(newVolunteer.chosenPassionList, input)">{$ input.name $}</button>
+            </span>
+          </div>
+        </modal-choices>        
+        <div class="btn-group-vertical" style="margin-top:10px" id="passionButtonGroup">
+          <button v-for="input in newVolunteer.chosenPassionList" class="modalButton" :id="input.id" type="button">{$ input.name $}<span aria-hidden="true" style="float:right;"  v-on:click="deletePassion(input)">&times;</span></button>
         </div>
       </div>
     </div>
@@ -177,7 +184,16 @@
       <div class="form-group">
         <label class="volunteerLabel" for="position">What are you in a position to volunteer? Add all the skills you can muster.</label>
         <br/>
-        <button type="button" id="positionButton" v-on:click="toggleModal('Position')" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#myModal">+ Add</button>
+        <button type="button" id="positionButton" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#positionModal">+ Add</button>
+
+        <modal-choices id="positionModal">
+          <div slot="body" class="btn-group-vertical justify-content-center" id="modalButtonGroup">
+            <span v-for="input in positionList">
+              <button v-if="!newVolunteer.chosenPositionList.includes(input)" class="modalButton" type="button" id="input.id" @click="addToChosen(newVolunteer.chosenPositionList, input)">{$ input.name $}</button>
+            </span>
+          </div>
+        </modal-choices>        
+
         <div class="btn-group-vertical" style="margin-top:10px"  id = "positionButtonGroup">
             <button v-for="input in newVolunteer.chosenPositionList" class="modalButton"  :id="input.id"  type="button">{$ input.name $}<span aria-hidden="true" style="float:right;"  v-on:click="deletePosition(input)">&times;</span></button>
         </div>
@@ -189,7 +205,16 @@
       <div class="form-group">
         <label class="volunteerLabel" for="activities">Below are some types of regular needs that have emerged, what type of activities are you best suited to support?</label>
         <br/>
-        <button type="button" id="activitiesButton"  v-on:click="toggleModal('Activities')" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#myModal">+ Add</button>
+        <button type="button" id="activitiesButton"  class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#activitiesModal">+ Add</button>
+
+        <modal-choices id="activitiesModal">
+          <div slot="body" class="btn-group-vertical justify-content-center" id="modalButtonGroup">
+            <span v-for="input in activitiesList">
+              <button v-if="!newVolunteer.chosenActivitiesList.includes(input)" class="modalButton" type="button" id="input.id" @click="addToChosen(newVolunteer.chosenActivitiesList, input)">{$ input.name $}</button>
+            </span>
+          </div>
+        </modal-choices>        
+
         <div class="btn-group-vertical" style="margin-top:10px" id = "activitiesButtonGroup">
             <button v-for="input in newVolunteer.chosenActivitiesList" class="modalButton"  type="button">{$ input.name $}<span aria-hidden="true" style="float:right;"  v-on:click="deleteActivity(input)">&times;</span></button>
         </div>
@@ -274,26 +299,3 @@
    </div>
   </div>
 </form>
-
-<div class="modal fade" ref="modal"  id="myModal" role="dialog">
-  <div class="modal-dialog modal-dialog-scrollable volunteerModal"   role="document">
-    <div class="modal-content volunteerModal " id="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Choose an Option Below</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body  justify-content-center" id="modalBody">
-          <div class="btn-group-vertical justify-content-center"  id = "modalButtonGroup">
-            <button v-if="type==='PassionWork' && !newVolunteer.chosenPassionList.includes(input)" v-for="input in passionList" class="modalButton" type="button" id="input.id" v-on:click="addPassionToChosen(input)" >{$ input.name $}</button>
-            <button v-if="type==='Position' && !newVolunteer.chosenPositionList.includes(input)" v-for="input in positionList" class="modalButton" type="button" id="input.id" v-on:click="addPositionToChosen(input)" >{$ input.name $}</button>
-            <button v-if="type==='Activities' && !newVolunteer.chosenActivitiesList.includes(input)" v-for="input in activitiesList" class="modalButton" type="button" id="input.id" v-on:click="addActivityToChosen(input)" >{$ input.name $}</button>
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
