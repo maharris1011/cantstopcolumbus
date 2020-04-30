@@ -222,9 +222,6 @@ var app = new Vue({
       console.log(`e.target = ${e.target}`)
       // changeImage(e.target.dataTransfer.files[0])
     },
-    changeImage: function (e) {
-      this.newVolunteer.photo = e.target.files[0]
-    },
     addToChosen(list, choice) {
       list.push(choice)
     },
