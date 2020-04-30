@@ -22,7 +22,8 @@ var app = new Vue({
       chosenPositionList: [],
       interested: [],
       cocaffirmation: false,
-      photo: null
+      photo: null, //photo for preview
+      img: null //file for upload
     },
     pseudoConduct: false,
     passionList: [],
@@ -31,7 +32,6 @@ var app = new Vue({
     modalInputs: [],
     type: null,
     imgURL: null,
-    imgName: null,
     showModal: false
   },
   mounted() {
@@ -118,9 +118,11 @@ var app = new Vue({
           alert('Select an image');
           return;
         }
+
         var img = new Image();
         var reader = new FileReader();
         var vm = this.newVolunteer;
+        vm.img = file;
 
         reader.onload = function(e) {
           vm.photo = e.target.result;
@@ -256,10 +258,6 @@ var app = new Vue({
     handleDrop: function (e) {
       console.log(`e.target = ${e.target}`)
       // changeImage(e.target.dataTransfer.files[0])
-    },
-    changeImage: function (e) {
-      this.newVolunteer.photo = e.target.files[0]
-      this.imgName = e.target.files[0].name
     },
     getDataUrl: function (img) {
       var canvas = document.createElement("canvas")
