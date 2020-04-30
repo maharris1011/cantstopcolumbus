@@ -252,7 +252,7 @@
             <label v-if="!newVolunteer.photo" class="btn display-inline custom-file-upload" style="border: 2px solid #4300FF; background-color: #F1EBFF; padding:10px; border-radius: 0.25rem; margin-left:10px;">
               <i class="fa fa-paperclip" style="color: #4300FF;">
               </i><strong style="padding:10px; color: #4300FF;">Attach File or Drag</strong>
-              <input type="file" name="image" @change="onChange">
+              <input type="file" name="image" @change="onChange" tabindex="-1">
             </label> 
           </div>
           <div v-else class="hidden display-inline align-center" :class="{ 'image': true }">
