@@ -4,7 +4,7 @@
     <div class="col-md-7 col-lg-5">
       <div class="form-group">
         <input type="text" id="firstName"  v-model="newVolunteer.firstName" required class="form-control volunteerField">
-        <label for="firstName" v-bind:class="{'stateField': newVolunteer.firstName}" class="form-control-placeholder">First Name</label>
+        <label for="firstName" :class="{'stateField': newVolunteer.firstName}" class="form-control-placeholder">First Name</label>
         <div class="invalid-feedback">
             Please type in your first name
         </div>
@@ -15,7 +15,7 @@
     <div class="col-md-7 col-lg-5">
       <div class="form-group">
         <input type="text" id="lastName"  v-model="newVolunteer.lastName" required class="form-control volunteerField" name="lastName">
-        <label for="lastName"  v-bind:class="{'stateField': newVolunteer.lastName}"  class="form-control-placeholder">Last Name</label>
+        <label for="lastName"  :class="{'stateField': newVolunteer.lastName}"  class="form-control-placeholder">Last Name</label>
         <div class="invalid-feedback">
             Please type in your last name
         </div>
@@ -26,7 +26,7 @@
     <div class="col-md-7 col-lg-5">
         <div class="form-group">
           <input type="email" id="primEmail" v-model="newVolunteer.primEmail" required class="form-control volunteerField" name="primEmail" >
-          <label for="primEmail" v-bind:class="{'stateField': newVolunteer.primEmail}" class="form-control-placeholder">Primary Email</label>
+          <label for="primEmail" :class="{'stateField': newVolunteer.primEmail}" class="form-control-placeholder">Primary Email</label>
           <div class="invalid-feedback">
               Please type in a valid email
           </div>
@@ -37,7 +37,7 @@
     <div class="col-md-7 col-lg-5">
       <div class="form-group">
           <input type="tel" required id="phone" v-model="newVolunteer.phone" class="form-control volunteerField" name="phone" >
-          <label for="phone"  v-bind:class="{'stateField': newVolunteer.phone}" class="form-control-placeholder">Phone Number</label>
+          <label for="phone"  :class="{'stateField': newVolunteer.phone}" class="form-control-placeholder">Phone Number</label>
           <div class="invalid-feedback">
             Please type in a valid phone number
           </div>
@@ -48,7 +48,7 @@
     <div class="col-md-7 col-lg-5">
       <div class="form-group">
           <input type="text" id="work"  v-model="newVolunteer.work" class="form-control volunteerField" name="work" >
-          <label for="work" v-bind:class="{'stateField': newVolunteer.work}" class="form-control-placeholder">Where can people see your work?</label>
+          <label for="work" :class="{'stateField': newVolunteer.work}" class="form-control-placeholder">Where can people see your work?</label>
       </div>
     </div>
   </div>
@@ -56,7 +56,7 @@
     <div class="col-md-7 col-lg-5">
       <div class="form-group">            
           <input type="text" id="other" v-model="newVolunteer.other" class="form-control volunteerField" name="other" >
-          <label for="other" v-bind:class="{'stateField': newVolunteer.other}" class="form-control-placeholder">Anywhere else?</label>
+          <label for="other" :class="{'stateField': newVolunteer.other}" class="form-control-placeholder">Anywhere else?</label>
       </div>
     </div>
   </div>
@@ -64,7 +64,7 @@
     <div class="col-md-7 col-lg-5">
       <div class="form-group">
           <input type="text" required id="city" v-model="newVolunteer.city" class="form-control volunteerField" name="city" >
-          <label for="city"  v-bind:class="{'stateField': newVolunteer.city}" class="form-control-placeholder">City</label>
+          <label for="city"  :class="{'stateField': newVolunteer.city}" class="form-control-placeholder">City</label>
       </div>
       <div class="invalid-feedback">
         Please type in a valid city
@@ -144,7 +144,7 @@
               v-on:blur="newVolunteer.linkedin = urlValidate(newVolunteer.linkedin)"
               class="form-control volunteerField" 
               name="linkedin" >
-        <label for="linkedin" v-bind:class="{'stateField': newVolunteer.linkedin}" class="form-control-placeholder">LinkedIn</label>
+        <label for="linkedin" :class="{'stateField': newVolunteer.linkedin}" class="form-control-placeholder">LinkedIn</label>
       </div>
     </div>
   </div>
@@ -154,7 +154,7 @@
         <input type="text" id="twitter" 
               v-model="newVolunteer.twitter"
               class="form-control volunteerField" name="twitter" >
-        <label for="twitter" v-bind:class="{'stateField': newVolunteer.twitter}" class="form-control-placeholder">Twitter</label>
+        <label for="twitter" :class="{'stateField': newVolunteer.twitter}" class="form-control-placeholder">Twitter</label>
       </div>
     </div>
   </div>
@@ -165,15 +165,17 @@
           Are there any types of problems you're particularly passionate about solving?
         </label>
         <br/>
-        <button type="button" id="passionButton" v-on:click="toggleModal('PassionWork')" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#myModal">+ Add</button>
-        <div class="btn-group-vertical" style="margin-top:10px"   id = "passionButtonGroup">
-          <button v-for="input in newVolunteer.chosenPassionList" class="modalButton" v-bind:id="input.id"  type="button">{$ input.name $}<span aria-hidden="true" style="float:right;"  v-on:click="deletePassion(input)">&times;</span></button>
+        <button type="button" id="passionButton" data-toggle="modal" data-target="#passionModal" class="btn btn-outline-volunteer">+ Add</button>
+        <modal-choices id="passionModal">
+          <div slot="body" class="btn-group-vertical justify-content-center" id="modalButtonGroup">
+            <span v-for="input in passionList">
+              <button v-if="!newVolunteer.chosenPassionList.includes(input)" class="modalButton" type="button" id="input.id" @click="addToChosen(newVolunteer.chosenPassionList, input)">{$ input.name $}</button>
+            </span>
+          </div>
+        </modal-choices>        
+        <div class="btn-group-vertical" style="margin-top:10px" id="passionButtonGroup">
+          <button v-for="input in newVolunteer.chosenPassionList" class="modalButton" :id="input.id" type="button">{$ input.name $}<span aria-hidden="true" style="float:right;"  v-on:click="deletePassion(input)">&times;</span></button>
         </div>
-        <!--<div v-for="passion in passionList" class="checkbox">
-          <label class="customcheck d-block volunteerLabel"  style=" text-indent:15px;"  >
-              <input id="passionWork" type="checkbox" v-model="newVolunteer.chosenPassionList" :value="passion.id"><span class="checkmark" style="margin-right:25px;"></span>{$ passion.name $}
-          </label>
-        </div>-->
       </div>
     </div>
   </div>
@@ -182,15 +184,19 @@
       <div class="form-group">
         <label class="volunteerLabel" for="position">What are you in a position to volunteer? Add all the skills you can muster.</label>
         <br/>
-        <button type="button" id="positionButton" v-on:click="toggleModal('Position')" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#myModal">+ Add</button>
+        <button type="button" id="positionButton" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#positionModal">+ Add</button>
+
+        <modal-choices id="positionModal">
+          <div slot="body" class="btn-group-vertical justify-content-center" id="modalButtonGroup">
+            <span v-for="input in positionList">
+              <button v-if="!newVolunteer.chosenPositionList.includes(input)" class="modalButton" type="button" id="input.id" @click="addToChosen(newVolunteer.chosenPositionList, input)">{$ input.name $}</button>
+            </span>
+          </div>
+        </modal-choices>        
+
         <div class="btn-group-vertical" style="margin-top:10px"  id = "positionButtonGroup">
-            <button v-for="(input) in newVolunteer.chosenPositionList" class="modalButton"  v-bind:id="input.id"  type="button">{$ input.name $}<span aria-hidden="true" style="float:right;"  v-on:click="deletePosition(input)">&times;</span></button>
+            <button v-for="input in newVolunteer.chosenPositionList" class="modalButton"  :id="input.id"  type="button">{$ input.name $}<span aria-hidden="true" style="float:right;"  v-on:click="deletePosition(input)">&times;</span></button>
         </div>
-        <!--<div v-for="position in positionList" class="checkbox">
-          <label class="customcheck d-block volunteerLabel"  style=" text-indent:15px;"  >
-              <input id="position" type="checkbox" v-model="newVolunteer.chosenPositionList" :value="position.id"><span class="checkmark" style="margin-right:25px;"></span>{$ position.name $}
-          </label>
-        </div>-->
       </div>
     </div>
   </div>
@@ -199,15 +205,19 @@
       <div class="form-group">
         <label class="volunteerLabel" for="activities">Below are some types of regular needs that have emerged, what type of activities are you best suited to support?</label>
         <br/>
-        <button type="button" id="activitiesButton"  v-on:click="toggleModal('Activities')" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#myModal">+ Add</button>
+        <button type="button" id="activitiesButton"  class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#activitiesModal">+ Add</button>
+
+        <modal-choices id="activitiesModal">
+          <div slot="body" class="btn-group-vertical justify-content-center" id="modalButtonGroup">
+            <span v-for="input in activitiesList">
+              <button v-if="!newVolunteer.chosenActivitiesList.includes(input)" class="modalButton" type="button" id="input.id" @click="addToChosen(newVolunteer.chosenActivitiesList, input)">{$ input.name $}</button>
+            </span>
+          </div>
+        </modal-choices>        
+
         <div class="btn-group-vertical" style="margin-top:10px" id = "activitiesButtonGroup">
-            <button v-for="(input) in newVolunteer.chosenActivitiesList" class="modalButton"  type="button">{$ input.name $}<span aria-hidden="true" style="float:right;"  v-on:click="deleteActivity(input)">&times;</span></button>
+            <button v-for="input in newVolunteer.chosenActivitiesList" class="modalButton"  type="button">{$ input.name $}<span aria-hidden="true" style="float:right;"  v-on:click="deleteActivity(input)">&times;</span></button>
         </div>
-      <!-- <div v-for="activity in activitiesList" class="checkbox">
-          <label class="customcheck d-block volunteerLabel"  style=" text-indent:15px;"  >
-              <input id="activities" type="checkbox" v-model="newVolunteer.chosenActivitiesList" :value="activity.id"><span class="checkmark" style="margin-right:25px;"></span>{$ activity.name $}
-          </label>
-        </div> --> 
       </div>
     </div>
   </div>
@@ -215,7 +225,7 @@
     <div class="col-md-8 col-lg-6">
       <div class="form-group">
         <input type="number" id="hours" v-model="newVolunteer.hours" class="form-control volunteerField" name="hours" >
-        <label for="hours" v-bind:class="{'stateField': newVolunteer.hours}" class="form-control-placeholder">Hours Per Week Available?</label>
+        <label for="hours" :class="{'stateField': newVolunteer.hours}" class="form-control-placeholder">Hours Per Week Available?</label>
         <p><small>Your best guess is fine. This is just services as a guideline for us to best connect you with a project!</small></p>
       </div>
     </div>
@@ -224,19 +234,9 @@
     <div class="col-md-6 col-lg-4">
       <div class="form-group">
         <label class="volunteerLabel"  for="contributeSkills">I am interested in contributing my skills to ...</label>
-        <div class="checkbox">
-            <label class="customcheck d-block volunteerLabel"  style=" text-indent:15px;"  >
-                <input type="checkbox" v-model="newVolunteer.interested" value="Contributing" id="contributing" value=""><span class="checkmark" style="margin-right:25px;"></span>Contributing
-            </label>
-        </div>
-        <div class="checkbox">
-          <label  class="customcheck d-block volunteerLabel" style=" text-indent:15px;" >
-              <input type="checkbox" v-model="newVolunteer.interested" value="Mentoring" id="mentoring" value=""> <span class="checkmark" style="margin-right:25px;"></span>Mentoring
-          </label>
-        </div>
-        <div class="checkbox ">
-          <label  class="customcheck d-block volunteerLabel" style=" text-indent:15px;" >
-              <input type="checkbox" v-model="newVolunteer.interested" value="Giving a remote talk" id="remote" value="" ><span class="checkmark" style="margin-right:25px;"></span>Giving a remote talk
+        <div v-for="interest in potentialInterests" class="checkbox">
+          <label class="customcheck d-block volunteerLabel"  style=" text-indent:15px;"  >
+            <input type="checkbox" v-model="newVolunteer.interested" :value="interest" :id="interest"><span class="checkmark" style="margin-right:25px;"></span>{$ interest $}
           </label>
         </div>
       </div>
@@ -245,6 +245,7 @@
   <div class = "row">
     <div class="col-md-9 col-lg-7">
       <div class="form-group">
+<<<<<<< HEAD
           <label for="photo" class="volunteerLabel" >Upload a photo. Since we're all remote, let us see your face!</label>
               <div class="drop display-inline align-center" @dragover.prevent @drop="onDrop">
                 <div class="helper"></div><!--
@@ -262,6 +263,26 @@
                 </div>
               </label>
             </div>
+=======
+        <label for="photo" class="volunteerLabel" >Upload a photo. Since we're all remote, let us see your face!</label>
+        <div class="drop display-inline align-center" @dragover.prevent @drop="onDrop">
+          <div class="helper"></div>
+          <div v-if="newVolunteer.photo==null">
+            <label v-if="!newVolunteer.photo" class="btn display-inline custom-file-upload" style="border: 2px solid #4300FF; background-color: #F1EBFF; padding:10px; border-radius: 0.25rem; margin-left:10px;">
+              <i class="fa fa-paperclip" style="color: #4300FF;">
+              </i><strong style="padding:10px; color: #4300FF;">Attach File or Drag</strong>
+              <input type="file" name="image" @change="onChange">
+            </label> 
+          </div>
+          <div v-else class="hidden display-inline align-center" :class="{ 'image': true }">
+            <img :src="newVolunteer.photo" alt="" class="imgUpload" />
+            <br>
+            <br>
+            <button class="btn-btn-purple" style="border: 2px solid #4300FF; background-color:
+              #F1EBFF; padding:10px; border-radius: 0.25rem; margin-left:10px;" @click="removeFile"><strong style="padding:10px; color: #4300FF;">Remove File</strong></button>
+          </div>
+        </div>
+>>>>>>> b1f7a1400d01ff1a2dadfb00d66362710086b502
       </div>
     </div>
   </div>
@@ -269,7 +290,7 @@
     <div class="col-md-7 col-lg-5">
       <div class="form-group">
           <input type="text" v-model="newVolunteer.misc" class="form-control volunteerField" id="misc" rows="3"></input>
-          <label for="misc" v-bind:class="{'stateField': newVolunteer.misc}" class="form-control-placeholder">Anything else we should know?</label>
+          <label for="misc" :class="{'stateField': newVolunteer.misc}" class="form-control-placeholder">Anything else we should know?</label>
       </div>
     </div>
   </div>
@@ -294,30 +315,4 @@
      <button class="btn btn-primary dark-purple"  type="submit" id="submitButton">Submit</button>
    </div>
   </div>
-
-
 </form>
-
-<div class="modal fade" ref="modal"  id="myModal" role="dialog">
-  <div class="modal-dialog modal-dialog-scrollable volunteerModal"   role="document">
-    <div class="modal-content volunteerModal " id="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Choose an Option Below</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body  justify-content-center" id="modalBody">
-          <div class="btn-group-vertical justify-content-center"  id = "modalButtonGroup">
-              <button v-if="type==='PassionWork' && !newVolunteer.chosenPassionList.includes(input)" v-for="(input) in passionList" class="modalButton" type="button" id="input.id" v-on:click="addPassionToChosen(input)" >{$ input.name $}</button>
-              <button v-if="type==='Position' && !newVolunteer.chosenPositionList.includes(input)" v-for="(input) in positionList" class="modalButton" type="button" id="input.id" v-on:click="addPositionToChosen(input)" >{$ input.name $}</button>
-              <button v-if="type==='Activities' && !newVolunteer.chosenActivitiesList.includes(input)" v-for="(input) in activitiesList" class="modalButton" type="button" id="input.id" v-on:click="addActivityToChosen(input)" >{$ input.name $}</button>
-          
-            </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>

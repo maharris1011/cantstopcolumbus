@@ -44,9 +44,6 @@ var cantstopcbus = new Vue({
     projects: []
   },
   methods: {
-    projectsForCategory: function (category) {
-      return this.allProjects.filter((project) => project.category === category)
-    }
   },
   computed: {
     carouselProjects: function () {
