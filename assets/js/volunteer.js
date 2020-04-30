@@ -68,28 +68,27 @@ var app = new Vue({
     },
     onChange(e) {
       var files = e.target.files
-      this.newVolunteer.photo = e.target.files[0]
+      this.createFile(files[0])
     },
-    //
-    // I commented this out b/c I don't think we need it. 
-    // should be deleted before we commit to master
-    // if you find this in here in master, please make fun of me - mark harris
-    //
-    // createFile(file) {
-    //   if (!file.type.match("image.*")) {
-    //     alert("Select an image")
-    //     return
-    //   }
-    //   var img = new Image()
-    //   var reader = new FileReader()
-    //   var vm = this.newVolunteer
+    createFile(file) {
+      if (!file.type.match("image.*")) {
+        alert("Please select an image file")
+        return
+      }
 
-    //   reader.onload = function (e) {
-    //     vm.photo = e.target.result
-    //   }
-    //   reader.readAsDataURL(file)
-    // },
-    removeFile() {
+      var img = new Image()
+      var reader = new FileReader()
+      var vm = this.newVolunteer
+      vm.img = file
+
+      reader.onload = function (e) {
+        vm.photo = e.target.result
+      }
+      reader.readAsDataURL(file)
+    },
+    removeFile(e) {
+      e.stopPropagation()
+      e.preventDefault()
       this.newVolunteer.photo = ""
     },
     objItem: function (name, id) {
