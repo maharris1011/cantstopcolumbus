@@ -105,9 +105,7 @@ var app = new Vue({
         })
       } else {
         console.log(
-          `invalid volunteer ${this.isValid} ${JSON.stringify(
-            this.newVolunteer
-          )}`
+          `invalid volunteer ${this.isValid} ${JSON.stringify(this.newVolunteer)}`
         )
       }
     },
@@ -126,7 +124,7 @@ var app = new Vue({
         State: volunteer.state,
         LinkedIn: volunteer.linkedin,
         Twitter: volunteer.twitter,
-        "Available hours/week": volunteer.hours,
+        "Available hours/week": parseInt(volunteer.hours),
         "Talent notes": volunteer.misc,
         Skills: this.mapToIds(volunteer.chosenPositionList),
         Passions: this.mapToIds(volunteer.chosenPassionList),
@@ -136,34 +134,32 @@ var app = new Vue({
           volunteer.interested,
         "COC Affirmation": volunteer.cocaffirmation
       })
-      console.log(`posting ${vol}`)
-      return true
-      const config = {
+
+      let config = {
         headers: {
           "content-type": "multipart/form-data"
         }
       }
+
       axios
         .post(
           `https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/volunteers`,
-          {
-            body: vol
-          },
+          vol,
           config
         )
         .then((response) => {
-          if (response.status === "200") {
-            e.target.classList.add("was-validated")
+          if (response.status == "200") {
             window.location.pathname = "/volunteer-success.html"
-            return true
           }
         })
         .catch((e) => {
-          this.errors.push(e)
-          e.stopPropagation()
+          console.log(`error creating volunteer ${e}`)
         })
     },
     urlValidate: function (url) {
+      if (url == null) {
+        return url
+      }
       if (!url.match(/^https?:/) && url.length) {
         url = "http://" + url
       }
