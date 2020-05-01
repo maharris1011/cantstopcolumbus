@@ -90,7 +90,8 @@ var app = new Vue({
     removeFile(e) {
       e.stopPropagation()
       e.preventDefault()
-      this.newVolunteer.photo = ""
+      this.newVolunteer.photo = null;
+      this.newVolunteer.img = null;
     },
     objItem: function (name, id) {
       return {
