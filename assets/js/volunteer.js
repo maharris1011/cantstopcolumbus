@@ -162,7 +162,7 @@ var app = new Vue({
         return url
       }
       if (!url.match(/^https?:/) && url.length) {
-        url = "http://" + url
+        url = "https://" + url
       }
       return url
     },
