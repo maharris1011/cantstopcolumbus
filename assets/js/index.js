@@ -35,6 +35,8 @@ let transformProject = (project) => {
   return retval
 }
 
+
+
 var cantstopcbus = new Vue({
   el: "#cantstopcbus-content",
   delimiters: ["{$", "$}"],
@@ -68,6 +70,9 @@ var cantstopcbus = new Vue({
       )
   }
 })
+
+
+
 
 Vue.component("project-card", {
   props: ["project"],

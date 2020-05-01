@@ -20,7 +20,8 @@ var app = new Vue({
       chosenPositionList: [],
       interested: [],
       cocaffirmation: false,
-      photo: null
+      photo: null, //photo for preview
+      img: null //file for upload
     },
     potentialInterests: ["Contributing", "Mentoring", "Giving a remote talk"],
     passionList: [],

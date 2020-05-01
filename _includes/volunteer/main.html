@@ -1,4 +1,4 @@
-<h2>What's your superpower?</h2>
+<div class="jumbotron background-white">
 <form id="volunteer-form" name="volunteer" enctype="multipart/form-data" v-on:submit.prevent="addVolunteer"> 
   <div class = "row">
     <div class="col-md-7 col-lg-5">
@@ -273,12 +273,16 @@
       </div>
     </div>
   </div>
-  <div class="form-group">
-    <div class="checkbox ">
-      <label  class="customcheck d-block volunteerLabel"  style="text-indent:15px;" >
-          <input type="checkbox" v-model="newVolunteer.cocaffirmation" required><span class="checkmark"></span>
-          I have read the <a href="https://cantstopcolumbus.com/code-of-conduct.html" style="font-style:bold; color:#4300FF">Code of Conduct</a>
-      </label>
+  <div class = "row">
+    <div class="col-md-9 col-lg-7">
+      <div class="form-group">
+        <div class="checkbox ">
+          <label  class="customcheck d-block volunteerLabel"  style="text-indent:15px;" >
+              <input type="checkbox" v-model="newVolunteer.cocaffirmation" required><span class="checkmark"></span>
+              I have read the <a href="https://cantstopcolumbus.com/code-of-conduct.html" style="font-style:bold; color:#4300FF">Code of Conduct</a>
+          </label>
+        </div>
+      </div>
     </div>
   </div>
 
