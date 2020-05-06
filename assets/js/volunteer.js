@@ -43,12 +43,8 @@ var app = new Vue({
         lastName: !!this.newVolunteer.lastName.trim(),
         primEmail: this.validEmail(this.newVolunteer.primEmail),
         phone: !!this.newVolunteer.phone.trim(),
-        // work: !!this.newVolunteer.work.trim(),
-        // other: !!this.newVolunteer.other.trim(),
         city: !!this.newVolunteer.city.trim(),
         state: !!this.newVolunteer.state.trim(),
-        // linkedin: !!this.urlValidate(this.newVolunteer.linkedin).trim(),
-        // twitter: !!this.newVolunteer.twitter.trim(),
         hours: !!this.newVolunteer.hours.trim(),
         cocaffirmation: this.newVolunteer.cocaffirmation === true
       }
@@ -150,9 +146,7 @@ var app = new Vue({
           config
         )
         .then((response) => {
-          if (response.status == "200") {
-            window.location.pathname = "/volunteer-success.html"
-          }
+          window.location.pathname = "/volunteer-success.html"
         })
         .catch((e) => {
           console.log(`error creating volunteer ${e}`)
