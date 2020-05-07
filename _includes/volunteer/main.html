@@ -1,0 +1,297 @@
+<div class="jumbotron background-white">
+<form id="volunteer-form" name="volunteer" enctype="multipart/form-data" v-on:submit.prevent="addVolunteer"> 
+  <div class = "row">
+    <div class="col-md-7 col-lg-5">
+      <div class="form-group">
+        <input type="text" name="firstName" id="firstName" v-model="newVolunteer.firstName" required class="form-control volunteerField">
+        <label for="firstName" :class="{'stateField': newVolunteer.firstName}" class="form-control-placeholder">First Name</label>
+        <div class="invalid-feedback">
+            Please type in your first name
+        </div>
+      </div>
+      </div>
+  </div>
+  <div class = "row">
+    <div class="col-md-7 col-lg-5">
+      <div class="form-group">
+        <input type="text" id="lastName"  v-model="newVolunteer.lastName" required class="form-control volunteerField" name="lastName">
+        <label for="lastName"  :class="{'stateField': newVolunteer.lastName}"  class="form-control-placeholder">Last Name</label>
+        <div class="invalid-feedback">
+            Please type in your last name
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class = "row">
+    <div class="col-md-7 col-lg-5">
+        <div class="form-group">
+          <input type="email" id="primEmail" v-model="newVolunteer.primEmail" required class="form-control volunteerField" name="primEmail" >
+          <label for="primEmail" :class="{'stateField': newVolunteer.primEmail}" class="form-control-placeholder">Primary Email</label>
+          <div class="invalid-feedback">
+              Please type in a valid email
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class = "row">
+    <div class="col-md-7 col-lg-5">
+      <div class="form-group">
+          <input type="tel" required id="phone" v-model="newVolunteer.phone" class="form-control volunteerField" name="phone" >
+          <label for="phone"  :class="{'stateField': newVolunteer.phone}" class="form-control-placeholder">Phone Number</label>
+          <div class="invalid-feedback">
+            Please type in a valid phone number
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class = "row">
+    <div class="col-md-7 col-lg-5">
+      <div class="form-group">
+          <input type="text" id="work"  v-model="newVolunteer.work" class="form-control volunteerField" name="work" >
+          <label for="work" :class="{'stateField': newVolunteer.work}" class="form-control-placeholder">Where can people see your work?</label>
+      </div>
+    </div>
+  </div>
+  <div class = "row">
+    <div class="col-md-7 col-lg-5">
+      <div class="form-group">            
+          <input type="text" id="other" v-model="newVolunteer.other" class="form-control volunteerField" name="other" >
+          <label for="other" :class="{'stateField': newVolunteer.other}" class="form-control-placeholder">Anywhere else?</label>
+      </div>
+    </div>
+  </div>
+  <div class = "row">
+    <div class="col-md-7 col-lg-5">
+      <div class="form-group">
+          <input type="text" required id="city" v-model="newVolunteer.city" class="form-control volunteerField" name="city" >
+          <label for="city"  :class="{'stateField': newVolunteer.city}" class="form-control-placeholder">City</label>
+      </div>
+      <div class="invalid-feedback">
+        Please type in a valid city
+      </div>
+    </div>
+  </div>
+  <div class = "row">
+    <div class="col-md-7 col-lg-5">
+      <div class="form-group">
+        <select required class="form-control selectpicker volunteerField" v-model="newVolunteer.state" style="height: calc(3.25rem + 2px)!important" id="state" name="state">
+            <option value="">N/A</option>
+            <option value="Alaska">Alaska</option>
+            <option value="Alabama">Alabama</option>
+            <option value="Arkansas">Arkansas</option>
+            <option value="Arizona">Arizona</option>
+            <option value="California">California</option>
+            <option value="Colorado">Colorado</option>
+            <option value="Connecticut">Connecticut</option>
+            <option value="District of Columbia">District of Columbia</option>
+            <option value="Delaware">Delaware</option>
+            <option value="Florida">Florida</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Hawaii">Hawaii</option>
+            <option value="Iowa">Iowa</option>
+            <option value="Idaho">Idaho</option>
+            <option value="Illinois">Illinois</option>
+            <option value="Indiana">Indiana</option>
+            <option value="Kansas">Kansas</option>
+            <option value="Kentucky">Kentucky</option>
+            <option value="Louisiana">Louisiana</option>
+            <option value="Massachusetts">Massachusetts</option>
+            <option value="Maryland">Maryland</option>
+            <option value="Maine">Maine</option>
+            <option value="Michigan">Michigan</option>
+            <option value="Minnesota">Minnesota</option>
+            <option value="Missouri">Missouri</option>
+            <option value="Mississippi">Mississippi</option>
+            <option value="Montana">Montana</option>
+            <option value="North Carolina">North Carolina</option>
+            <option value="North Dakota">North Dakota</option>
+            <option value="Nebraska">Nebraska</option>
+            <option value="New Hampshire">New Hampshire</option>
+            <option value="New Jersey">New Jersey</option>
+            <option value="New Mexico">New Mexico</option>
+            <option value="Nevada">Nevada</option>
+            <option value="New York">New York</option>
+            <option value="Ohio">Ohio</option>
+            <option value="Oklahoma">Oklahoma</option>
+            <option value="Oregon">Oregon</option>
+            <option value="Pennsylvania">Pennsylvania</option>
+            <option value="Rhode Island">Rhode Island</option>
+            <option value="South Carolina">South Carolina</option>
+            <option value="South Dakota">South Dakota</option>
+            <option value="Tennessee">Tennessee</option>
+            <option value="Texas">Texas</option>
+            <option value="Utah">Utah</option>
+            <option value="Virginia">Virginia</option>
+            <option value="Vermont">Vermont</option>
+            <option value="Washington">Washington</option>
+            <option value="Wisconsin">Wisconsin</option>
+            <option value="West Virginia">West Virginia</option>
+            <option value="Wyoming">Wyoming</option>
+        </select>
+          <label for="state" class="form-control-placeholder stateField ">State</label>
+          <div class="invalid-feedback">
+            Please select a valid state
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class = "row">
+    <div class="col-md-7 col-lg-5">
+      <div class="form-group">
+        <input type="text" id="linkedin" 
+              v-model="newVolunteer.linkedin" 
+              v-on:blur="newVolunteer.linkedin = urlValidate(newVolunteer.linkedin)"
+              class="form-control volunteerField" 
+              name="linkedin" >
+        <label for="linkedin" :class="{'stateField': newVolunteer.linkedin}" class="form-control-placeholder">LinkedIn</label>
+      </div>
+    </div>
+  </div>
+  <div class = "row">
+    <div class="col-md-7 col-lg-5">
+      <div class="form-group">              
+        <input type="text" id="twitter" 
+              v-model="newVolunteer.twitter"
+              class="form-control volunteerField" name="twitter" >
+        <label for="twitter" :class="{'stateField': newVolunteer.twitter}" class="form-control-placeholder">Twitter</label>
+      </div>
+    </div>
+  </div>
+  <div class = "row">
+    <div class="col-md-7 col-lg-5">
+      <div class="form-group">
+        <label class="volunteerLabel" for="passionWork">
+          Are there any types of problems you're particularly passionate about solving?
+        </label>
+        <br/>
+        <button type="button" id="passionButton" data-toggle="modal" data-target="#passionModal" class="btn btn-outline-volunteer">+ Add</button>
+        <modal-choices id="passionModal">
+          <div slot="body" class="btn-group-vertical justify-content-center" id="modalButtonGroup">
+            <span v-for="input in passionList">
+              <button v-if="!newVolunteer.chosenPassionList.includes(input)" class="modalButton" type="button" id="input.id" @click="addToChosen(newVolunteer.chosenPassionList, input)">{$ input.name $}</button>
+            </span>
+          </div>
+        </modal-choices>        
+        <div class="btn-group-vertical" style="margin-top:10px" id="passionButtonGroup">
+          <button v-for="input in newVolunteer.chosenPassionList" class="modalButton" :id="input.id" type="button">{$ input.name $}<span aria-hidden="true" style="float:right;"  v-on:click="deletePassion(input)">&times;</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class = "row">
+    <div class="col-md-7 col-lg-5">
+      <div class="form-group">
+        <label class="volunteerLabel" for="position">What are you in a position to volunteer? Add all the skills you can muster.</label>
+        <br/>
+        <button type="button" id="positionButton" class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#positionModal">+ Add</button>
+
+        <modal-choices id="positionModal">
+          <div slot="body" class="btn-group-vertical justify-content-center" id="modalButtonGroup">
+            <span v-for="input in positionList">
+              <button v-if="!newVolunteer.chosenPositionList.includes(input)" class="modalButton" type="button" id="input.id" @click="addToChosen(newVolunteer.chosenPositionList, input)">{$ input.name $}</button>
+            </span>
+          </div>
+        </modal-choices>        
+
+        <div class="btn-group-vertical" style="margin-top:10px"  id = "positionButtonGroup">
+            <button v-for="input in newVolunteer.chosenPositionList" class="modalButton"  :id="input.id"  type="button">{$ input.name $}<span aria-hidden="true" style="float:right;"  v-on:click="deletePosition(input)">&times;</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class = "row">
+    <div class="col-md-7 col-lg-5">
+      <div class="form-group">
+        <label class="volunteerLabel" for="activities">Below are some types of regular needs that have emerged, what type of activities are you best suited to support?</label>
+        <br/>
+        <button type="button" id="activitiesButton"  class="btn btn-outline-volunteer" data-backdrop="false" data-toggle="modal" data-target="#activitiesModal">+ Add</button>
+
+        <modal-choices id="activitiesModal">
+          <div slot="body" class="btn-group-vertical justify-content-center" id="modalButtonGroup">
+            <span v-for="input in activitiesList">
+              <button v-if="!newVolunteer.chosenActivitiesList.includes(input)" class="modalButton" type="button" id="input.id" @click="addToChosen(newVolunteer.chosenActivitiesList, input)">{$ input.name $}</button>
+            </span>
+          </div>
+        </modal-choices>        
+
+        <div class="btn-group-vertical" style="margin-top:10px" id = "activitiesButtonGroup">
+            <button v-for="input in newVolunteer.chosenActivitiesList" class="modalButton"  type="button">{$ input.name $}<span aria-hidden="true" style="float:right;"  v-on:click="deleteActivity(input)">&times;</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class = "row">
+    <div class="col-md-8 col-lg-6">
+      <div class="form-group">
+        <input type="number" id="hours" v-model="newVolunteer.hours" class="form-control volunteerField" name="hours" >
+        <label for="hours" :class="{'stateField': newVolunteer.hours}" class="form-control-placeholder">Hours Per Week Available?</label>
+        <p><small>Your best guess is fine. This is just services as a guideline for us to best connect you with a project!</small></p>
+      </div>
+    </div>
+  </div>
+  <div class = "row">
+    <div class="col-md-6 col-lg-4">
+      <div class="form-group">
+        <label class="volunteerLabel"  for="contributeSkills">I am interested in contributing my skills to ...</label>
+        <div v-for="interest in potentialInterests" class="checkbox">
+          <label class="customcheck d-block volunteerLabel"  style=" text-indent:15px;"  >
+            <input type="checkbox" v-model="newVolunteer.interested" :value="interest" :id="interest"><span class="checkmark" style="margin-right:25px;"></span>{$ interest $}
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class = "row">
+    <div class="col-md-9 col-lg-7">
+      <div class="form-group">
+        <label for="photo" class="volunteerLabel" >Upload a photo. Since we're all remote, let us see your face!</label>
+        <div class="drop display-inline align-center" @dragover.prevent @drop="onDrop">
+          <div class="helper"></div>
+          <div v-if="newVolunteer.photo == null">
+            <label v-if="!newVolunteer.photo" class="btn display-inline custom-file-upload" style="border: 2px solid #4300FF; background-color: #F1EBFF; padding:10px; border-radius: 0.25rem; margin-left:10px;">
+              <i class="fa fa-paperclip" style="color: #4300FF;">
+              </i><strong style="padding:10px; color: #4300FF;">Attach File or Drag</strong>
+              <input type="file" name="image" accept="image/*" @change="onChange" tabindex="-1">
+            </label> 
+          </div>
+          <div v-else class="hidden display-inline align-center" :class="{ 'image': true }">
+            <img :src="newVolunteer.photo" alt="" class="imgUpload" />
+            <br>
+            <br>
+            <button class="btn-btn-purple" style="border: 2px solid #4300FF; background-color:
+              #F1EBFF; padding:10px; border-radius: 0.25rem; margin-left:10px;" @click="removeFile"><strong style="padding:10px; color: #4300FF;">Remove File</strong></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class = "row">
+    <div class="col-md-7 col-lg-5">
+      <div class="form-group">
+          <input type="text" v-model="newVolunteer.misc" class="form-control volunteerField" id="misc" rows="3"></input>
+          <label for="misc" :class="{'stateField': newVolunteer.misc}" class="form-control-placeholder">Anything else we should know?</label>
+      </div>
+    </div>
+  </div>
+  <div class = "row">
+    <div class="col-md-9 col-lg-7">
+      <div class="form-group">
+        <div class="checkbox ">
+          <label  class="customcheck d-block volunteerLabel"  style="text-indent:15px;" >
+              <input type="checkbox" v-model="newVolunteer.cocaffirmation" required><span class="checkmark"></span>
+              I have read the <a href="https://cantstopcolumbus.com/code-of-conduct.html" style="font-style:bold; color:#4300FF">Code of Conduct</a>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class = "row">
+    <br />
+  </div>
+  <div class = "row">
+    <div class="form-actions col-md-12 text-center">
+     <button class="btn btn-primary dark-purple"  type="submit" id="submitButton">Submit</button>
+   </div>
+  </div>
+</form>

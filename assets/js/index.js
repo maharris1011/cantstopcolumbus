@@ -35,6 +35,8 @@ let transformProject = (project) => {
   return retval
 }
 
+
+
 var cantstopcbus = new Vue({
   el: "#cantstopcbus-content",
   delimiters: ["{$", "$}"],
@@ -42,9 +44,6 @@ var cantstopcbus = new Vue({
     projects: []
   },
   methods: {
-    projectsForCategory: function (category) {
-      return this.allProjects.filter((project) => project.category === category)
-    }
   },
   computed: {
     carouselProjects: function () {
@@ -71,6 +70,9 @@ var cantstopcbus = new Vue({
       )
   }
 })
+
+
+
 
 Vue.component("project-card", {
   props: ["project"],
