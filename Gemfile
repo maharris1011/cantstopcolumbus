@@ -7,10 +7,7 @@ group :jekyll_plugins do
 end
 
 gem "jekyll"
-gem 'airtable'
 gem 'bigdecimal'
-gem 'activesupport'
-gem 'json'
 
 gem 'tzinfo'
 gem 'tzinfo-data'
