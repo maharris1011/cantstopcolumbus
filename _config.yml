@@ -18,18 +18,12 @@ defaults:
   values:
     permalink: ":categories/:title/"
 url: https://www.cantstopcolumbus.com
-baseurl: 
+baseurl:
 tagline: We're all in this together.
 plugins:
 - jekyll-autoprefixer
 - jekyll-seo-tag
 - jekyll-sitemap
-- airtable
-airtable:
-  enable_sync: true
-  base_uid: apppXeg0e2C1iuT8u
-  tables:
-  - name: People
 email: hello@cantstopcolumbus.com
 description: On Sunday, March 15, 2020, the Columbus, Ohio tech and business community
   started talking about the idea of a virtual hackathon in response to the Covid-19
