@@ -1,6 +1,10 @@
 ---
 title: Uniting Our City with Art
 date: 2020-05-08 15:53:00 -04:00
+categories:
+- stories
+author: Sara Barton
+layout: post
 ---
 
 Art gives us a way to connect, find inspiration, and experience joy – often in unexpected places. Several arts initiatives have taken root at Can’t Stop Columbus and you can find them all, and more, on the [Columbus Arts Hub](https://www.cbusartshub.com/).
