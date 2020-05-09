@@ -11,8 +11,10 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - name: Jekyll Builder for GitHub Pages
-      uses: meitar/jekyll-builder-for-github-pages-action@v1
+    - name: Build
+      uses: jerryjvl/jekyll-build-action@v1
+      env:
+        AIRTABLE_KEY: ${{ secrets.AIRTABLE_KEY }}
 
     - name: Upload ftp
       uses: sebastianpopp/ftp-action@releases/v2
