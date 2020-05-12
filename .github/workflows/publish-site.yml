@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@v1
 
     - name: Build
-      uses: jerryjvl/jekyll-build-action@v1
+      uses: meitar/jekyll-builder-for-github-pages-action@master
       with:
         pre_build_commands: gem install bundler
       env:
