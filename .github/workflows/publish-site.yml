@@ -13,7 +13,7 @@ jobs:
 
     - name: Build
       uses: jerryjvl/jekyll-build-action@v1
-      env: 
+      env:
         AIRTABLE_KEY: ${{ secrets.AIRTABLE_KEY }}
 
     - name: Upload ftp
