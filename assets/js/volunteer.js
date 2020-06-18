@@ -39,13 +39,13 @@ var app = new Vue({
   computed: {
     validation: function () {
       return {
-        firstName: !!this.newVolunteer.firstName.trim(),
-        lastName: !!this.newVolunteer.lastName.trim(),
+        firstName: !this.blankOrNull(this.newVolunteer.firstName),
+        lastName: !this.blankOrNull(this.newVolunteer.lastName),
         primEmail: this.validEmail(this.newVolunteer.primEmail),
-        phone: !!this.newVolunteer.phone.trim(),
-        city: !!this.newVolunteer.city.trim(),
-        state: !!this.newVolunteer.state.trim(),
-        hours: !!this.newVolunteer.hours.trim(),
+        phone: !this.blankOrNull(this.newVolunteer.phone),
+        city: !this.blankOrNull(this.newVolunteer.city),
+        state: !this.blankOrNull(this.newVolunteer.state),
+        hours: !this.blankOrNull(this.newVolunteer.hours),
         cocaffirmation: this.newVolunteer.cocaffirmation === true
       }
     },
@@ -57,6 +57,9 @@ var app = new Vue({
     }
   },
   methods: {
+    blankOrNull: function(str) {
+      return (str === null || str.match(/^ *$/) !== null)
+    },
     onDrop: function (e) {
       e.stopPropagation()
       e.preventDefault()
