@@ -16,3 +16,5 @@ _data/angel.json
 _data/kind.json
 _data/ally.json
 _data/feature.json
+Gemfile.lock
+package-lock.json
