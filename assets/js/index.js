@@ -23,7 +23,7 @@ let shuffle = (array) => {
 
 let transformProject = (project) => {
   var retval = {
-    website: project["Project Website"],
+    website: project["Project Website"], 
     text: project["Project Public Desc"],
     title: project.Title,
     category: project.Category[0].Category
@@ -34,8 +34,6 @@ let transformProject = (project) => {
     : defaultLogo
   return retval
 }
-
-
 
 var cantstopcbus = new Vue({
   el: "#cantstopcbus-content",
