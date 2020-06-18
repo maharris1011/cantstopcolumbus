@@ -175,7 +175,7 @@
         </modal-choices>        
         <div class="btn-group-vertical margin-top-sm" id="passionButtonGroup">
           <button v-for="input in newVolunteer.chosenPassionList" class="modalButton" :id="input.id" type="button">
-            {$ input.name $}<span aria-hidden="true"  class="float-right"  v-on:click="newVolunteer.chosenPassionList = deleteFromChosen(newVolunteer.chosenPassionList, input)">&times;</span></button>
+            {$ input.name $}<span aria-hidden="true"  class="float-right"  v-on:click="deleteFromChosen(newVolunteer.chosenPassionList, input)">&times;</span></button>
         </div>
       </div>
     </div>
@@ -198,7 +198,7 @@
 
         <div class="btn-group-vertical margin-top-sm"  id="positionButtonGroup">
           <button v-for="input in newVolunteer.chosenPositionList" class="modalButton"  :id="input.id"  type="button">
-            {$ input.name $}<span aria-hidden="true" class="float-right"  v-on:click="newVolunteer.chosenPositionList = deleteFromChosen(newVolunteer.chosenPositionList, input)">&times;</span>
+            {$ input.name $}<span aria-hidden="true" class="float-right"  @click="deleteFromChosen(newVolunteer.chosenPositionList, input)">&times;</span>
           </button>
         </div>
       </div>
@@ -222,7 +222,7 @@
 
         <div class="btn-group-vertical margin-top-sm"  id = "activitiesButtonGroup">
             <button v-for="input in newVolunteer.chosenActivitiesList" class="modalButton"  type="button">{$ input.name $}
-              <span aria-hidden="true" class="float-right"  v-on:click="newVolunteer.chosenActivitiesList = deleteFromChosen(newVolunteer.chosenActivitiesList, input)">&times;</span></button>
+              <span aria-hidden="true" class="float-right"  v-on:click="deleteFromChosen(newVolunteer.chosenActivitiesList, input)">&times;</span></button>
         </div>
       </div>
     </div>
