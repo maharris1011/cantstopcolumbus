@@ -1,3 +1,5 @@
+
+
 var app = new Vue({
   el: "#cantstopcbus-content",
   delimiters: ["{$", "$}"],
@@ -220,7 +222,10 @@ var app = new Vue({
       list.push(choice)
     },
     deleteFromChosen(list, choice) {
-      return list.filter((elem) => elem !== choice)
+      var idx = list.indexOf(choice)
+      if (idx >= 0) {
+        list.splice(idx, 1)
+      }
     }
   }
 })
