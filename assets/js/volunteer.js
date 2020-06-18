@@ -217,7 +217,7 @@ var app = new Vue({
       list.push(choice)
     },
     deleteFromChosen(list, choice) {
-      list = list.filter((elem) => elem !== choice)
+      return list.filter((elem) => elem !== choice)
     }
   }
 })
