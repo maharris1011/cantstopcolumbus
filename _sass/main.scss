@@ -1,15 +1,16 @@
-@import '_typography.scss';
+@import "_typography.scss";
 
 $backgroundColor: #ffffff;
-$bodyBackgroundColor: #ECF0F6;
+$bodyBackgroundColor: #ecf0f6;
 $bodyColor: #000;
-$bodyFont: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-$primaryBlue: #4300FF;
+$bodyFont: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+  sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$primaryBlue: #4300ff;
 
-$break-small-up: '(min-width: 376px)';
-$break-tablet-up: '(min-width: 768px)';
-$break-tablet: '(max-width: 1023px) and (min-width: 768px)';
-$break-desktop-up: '(min-width: 1023px)';
+$break-small-up: "(min-width: 376px)";
+$break-tablet-up: "(min-width: 768px)";
+$break-tablet: "(max-width: 1023px) and (min-width: 768px)";
+$break-desktop-up: "(min-width: 1023px)";
 
 body {
   background: $bodyBackgroundColor;
@@ -75,8 +76,8 @@ body {
   }
 }
 
-#project-cards .row > div[class*='col-'] {
- display: flex;
+#project-cards .row > div[class*="col-"] {
+  display: flex;
 }
 
 .primary-blue {
@@ -98,7 +99,7 @@ div.jumbotron {
   padding: 2rem 1rem;
   padding-top: 2rem;
 
-  &.header-tile{
+  &.header-tile {
     padding-top: 1rem;
   }
 }
@@ -115,7 +116,7 @@ div.jumbotron {
   a {
     margin-bottom: 1rem;
   }
-  a:last-of-type{
+  a:last-of-type {
     margin-bottom: 0;
   }
 
@@ -141,7 +142,7 @@ div.jumbotron {
 
 .home-find-help-get-i {
   width: 330px;
-  color: #FFFFFF;
+  color: #ffffff;
   font-family: Roboto;
   font-size: 2rem;
 
@@ -159,8 +160,8 @@ div.jumbotron {
   }
 }
 
-
-.btn-primary, .btn-secondary {
+.btn-primary,
+.btn-secondary {
   font-weight: 500;
   text-transform: uppercase;
   min-width: 150px;
@@ -171,7 +172,7 @@ div.jumbotron {
   border-color: #4300ff;
   background-color: #4300ff;
   &:hover {
-    background-color: #0D00A4;
+    background-color: #0d00a4;
   }
 }
 
@@ -190,7 +191,7 @@ div.jumbotron {
   min-width: unset;
 }
 
-#copyCSC{
+#copyCSC {
   font-size: 1.25rem;
   font-weight: 500;
   border: none;
@@ -212,7 +213,7 @@ div.jumbotron {
   font-weight: 600;
   span {
     background-color: #00e096;
-    padding: .5rem;
+    padding: 0.5rem;
   }
 
   @media #{$break-tablet-up} {
@@ -267,20 +268,25 @@ div.jumbotron {
   }
 }
 
-.submitText{
-  color:white;
-  text-align:center;
-  margin-bottom:-25px;
-  font-size:1.2rem;
-  margin-bottom:-25px;
+.submitText {
+  color: white;
+  text-align: center;
+  margin-bottom: -25px;
+  font-size: 1.2rem;
+  margin-bottom: -25px;
 }
 
 .promoField {
-  padding: 15px; margin-top:5px; margin-bottom:5px; 
+  padding: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .volunteerField {
-  padding: 15px; margin-top:5px; margin-bottom:5px; border: 1px solid black; 
+  padding: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 1px solid black;
 }
 
 // TODO separate the scss into page specific files.
@@ -296,267 +302,271 @@ div.jumbotron {
   }
 }
 
-
-
-
-
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-  .volunteerModal{
-    width:375px;
+  .volunteerModal {
+    width: 375px;
   }
-  .modalButton{
+  .modalButton {
     width: 345px;
     height: 40px;
-    font-size: .8rem; color: #575757;
+    font-size: 0.8rem;
+    color: #575757;
     font-weight: 600;
   }
 
-  .modalButtonImage{
+  .modalButtonImage {
     width: 275px;
     height: 40px;
-    font-size: .8rem; color: #575757;
+    font-size: 0.8rem;
+    color: #575757;
     font-weight: 600;
   }
 
-  div.title-content h1{
-    font-size:32px!important;
+  div.title-content h1 {
+    font-size: 32px !important;
   }
 
-  #uploadBox{
-    border-radius: 25px; 
-    border: 5px dashed  #575757; 
-    padding: 20px; 
-    width: 300px; 
+  #uploadBox {
+    border-radius: 25px;
+    border: 5px dashed #575757;
+    padding: 20px;
+    width: 300px;
     height: 150px;
   }
-  .volunteerLabel{
-    font-size: .95rem; 
+  .volunteerLabel {
+    font-size: 0.95rem;
     color: #575757;
   }
-  .volunteerSlack{
+  .volunteerSlack {
     font-size: 1em !important;
   }
 
-  .successHeaders{
-    font-weight:bold;
-    font-size:1em
+  .successHeaders {
+    font-weight: bold;
+    font-size: 1em;
   }
   .buttonSlack {
-    border: 1px solid #3366FF;
+    border: 1px solid #3366ff;
     height: auto;
-                width: auto;
-                padding-left: 5px;
-                padding-right: 5px;
-                padding-top: 5px;
-                padding-bottom: 5px;
-                margin-left: 15px;
-                margin-right: 5px;
+    width: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 15px;
+    margin-right: 5px;
   }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-  .volunteerModal{
-    width:375px;
+  .volunteerModal {
+    width: 375px;
   }
-  div.title-content h1{
-    font-size:32px!important;
+  div.title-content h1 {
+    font-size: 32px !important;
   }
-  .modalButton{
+  .modalButton {
     width: 375px;
     height: 40px;
-    font-size: .8rem; color: #575757;
+    font-size: 0.8rem;
+    color: #575757;
     font-weight: 600;
   }
-  .modalButtonImage{
+  .modalButtonImage {
     width: 300px;
     height: 40px;
-    font-size: .8rem; color: #575757;
+    font-size: 0.8rem;
+    color: #575757;
     font-weight: 600;
   }
-  #upload_Box{
-    border-radius: 25px; 
-    border: 5px dashed  #575757; 
-    padding: 20px; 
-    width: 400px; 
+  #upload_Box {
+    border-radius: 25px;
+    border: 5px dashed #575757;
+    padding: 20px;
+    width: 400px;
     height: 150px;
   }
-  .volunteerLabel{
-    font-size: .95rem; 
+  .volunteerLabel {
+    font-size: 0.95rem;
     color: #575757;
   }
-  .volunteerSlack{
+  .volunteerSlack {
     font-size: 1.5em !important;
   }
-  .successHeaders{
-    font-weight:bold;
-    font-size:1em
+  .successHeaders {
+    font-weight: bold;
+    font-size: 1em;
   }
 
   .buttonSlack {
-    border: 1px solid #3366FF;
+    border: 1px solid #3366ff;
     height: auto;
-                width: auto;
-                padding-left: 5px;
-                padding-right: 5px;
-                padding-top: 5px;
-                padding-bottom: 5px;
-                margin-left: 15px;
-                margin-right: 5px;
+    width: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 15px;
+    margin-right: 5px;
   }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-  .volunteerModal{
-    width:450px;
+  .volunteerModal {
+    width: 450px;
   }
-  .modalButton{
+  .modalButton {
     width: 375px;
     height: 40px;
-    font-size: .9rem; color: #575757;
+    font-size: 0.9rem;
+    color: #575757;
     font-weight: 600;
   }
-  .modalButtonImage{
+  .modalButtonImage {
     width: 300px;
     height: 40px;
-    font-size: .8rem; color: #575757;
+    font-size: 0.8rem;
+    color: #575757;
     font-weight: 600;
   }
-  #uploadBox{
-    border-radius: 25px; 
-    border: 5px dashed  #575757; 
-    padding: 20px; 
-    width: 400px; 
+  #uploadBox {
+    border-radius: 25px;
+    border: 5px dashed #575757;
+    padding: 20px;
+    width: 400px;
     height: 150px;
   }
-  .volunteerLabel{
-    font-size: 1.15rem; 
+  .volunteerLabel {
+    font-size: 1.15rem;
     color: #575757;
   }
 
-  .volunteerSlack{
+  .volunteerSlack {
     font-size: 2em !important;
   }
-  .successHeaders{
-    font-weight:bold;
-    font-size:1.25em
+  .successHeaders {
+    font-weight: bold;
+    font-size: 1.25em;
   }
   .buttonSlack {
-    border: 1px solid #3366FF;
+    border: 1px solid #3366ff;
     height: auto;
-                width: auto;
-                padding-left: 15px;
-                padding-right: 15px;
-                padding-top: 10px;
-                padding-bottom: 10px;
-                margin-left: 15px;
-                margin-right: 15px;
+    width: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
   }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  .volunteerModal{
-    width:600px;
+  .volunteerModal {
+    width: 600px;
   }
-  .modalButton{
+  .modalButton {
     width: 545px;
     height: 40px;
-    font-size: 1.1rem; color: #575757;
+    font-size: 1.1rem;
+    color: #575757;
     font-weight: 600;
   }
-  .modalButtonImage{
+  .modalButtonImage {
     width: 545px;
     height: 40px;
-    font-size: .8rem; color: #575757;
+    font-size: 0.8rem;
+    color: #575757;
     font-weight: 600;
   }
-  #uploadBox{
-    border-radius: 25px; 
-    border: 5px dashed  #575757; 
-    padding: 20px; 
-    width: 600px; 
+  #uploadBox {
+    border-radius: 25px;
+    border: 5px dashed #575757;
+    padding: 20px;
+    width: 600px;
     height: 150px;
   }
 
-  .volunteerLabel{
-    font-size: 1.25rem; 
+  .volunteerLabel {
+    font-size: 1.25rem;
     color: #575757;
   }
-  .volunteerSlack{
+  .volunteerSlack {
     font-size: 2.5em !important;
   }
-  .successHeaders{
-    font-weight:bold;
-    font-size:1.5em
+  .successHeaders {
+    font-weight: bold;
+    font-size: 1.5em;
   }
   .buttonSlack {
-    border: 1px solid #3366FF;
+    border: 1px solid #3366ff;
     height: auto;
-                width: auto;
-                padding-left: 15px;
-                padding-right: 15px;
-                padding-top: 10px;
-                padding-bottom: 10px;
-                margin-left: 15px;
-                margin-right: 15px;
+    width: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
   }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-  .volunteerModal{
-    width:600px;
+  .volunteerModal {
+    width: 600px;
   }
-  .modalButton{
+  .modalButton {
     width: 545px;
     height: 40px;
-    font-size: 1.1rem; color: #575757;
+    font-size: 1.1rem;
+    color: #575757;
     font-weight: 600;
   }
-  .modalButtonImage{
+  .modalButtonImage {
     width: 545px;
     height: 40px;
-    font-size: .8rem; color: #575757;
+    font-size: 0.8rem;
+    color: #575757;
     font-weight: 600;
   }
-  #uploadBox{
-    border-radius: 25px; 
-    border: 5px dashed  #575757; 
-    padding: 20px; 
-    width: 600px; 
+  #uploadBox {
+    border-radius: 25px;
+    border: 5px dashed #575757;
+    padding: 20px;
+    width: 600px;
     height: 150px;
   }
 
-  .volunteerLabel{
-    font-size: 1.25rem; 
+  .volunteerLabel {
+    font-size: 1.25rem;
     color: #575757;
   }
-  .volunteerSlack{
+  .volunteerSlack {
     font-size: 2em !important;
   }
-  .successHeaders{
-    font-weight:bold;
-    font-size:1.5em
+  .successHeaders {
+    font-weight: bold;
+    font-size: 1.5em;
   }
   .buttonSlack {
-    border: 1px solid #3366FF;
+    border: 1px solid #3366ff;
     height: auto;
-                width: auto;
-                padding-left: 15px;
-                padding-right: 15px;
-                padding-top: 10px;
-                padding-bottom: 10px;
-                margin-left: 15px;
-                margin-right: 15px;
+    width: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
   }
 }
 
-
-
-.modal-body{
+.modal-body {
   margin-left: auto;
   margin-right: auto;
 }
@@ -567,41 +577,38 @@ div.jumbotron {
   overflow-x: hidden;
 }
 
-.modalButton{
+.modalButton {
   position: relative;
   border-style: solid;
   border-width: 2px;
-  border-color: #4300FF;
+  border-color: #4300ff;
   background-color: white;
   border-radius: 6px;
-  text-align:left;
+  text-align: left;
   margin: 5px;
 }
 
-.modalButtonImage{
+.modalButtonImage {
   position: relative;
   border-style: solid;
   border-width: 2px;
-  border-color: #4300FF;
+  border-color: #4300ff;
   background-color: white;
   border-radius: 6px;
-  text-align:left;
+  text-align: left;
   margin: 5px;
 }
 
-
-.btn-outline-volunteer{
-  color: #4300FF;
+.btn-outline-volunteer {
+  color: #4300ff;
   background-color: transparent;
   background-image: none;
-  border-color: #4300FF;
+  border-color: #4300ff;
 }
 
 #upload_Box.highlightBox {
-border:5px dashed #4300FF!important;
+  border: 5px dashed #4300ff !important;
 }
-
-
 
 input[type="file"] {
   display: none;
@@ -612,25 +619,26 @@ input[type="file"] {
   padding: 6px 12px;
   cursor: pointer;
 }
-  .form-group {
-position: relative;
-margin-bottom: 1.5rem;
+
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
 }
 
 .form-control-placeholder {
-position: absolute;
-top: 0;
-font-size:1.1rem;
-padding: 10px 0 0 13px;
-transition: all 200ms;
-opacity: 0.5;
+  position: absolute;
+  top: 0;
+  font-size: 1.1rem;
+  padding: 10px 0 0 13px;
+  transition: all 200ms;
+  opacity: 0.5;
 }
 
 .volunteerField:focus + .form-control-placeholder,
 .stateField {
-font-size: 90%;
-transform: translate3d(0, -100%, 0);
-opacity: 1;
+  font-size: 90%;
+  transform: translate3d(0, -100%, 0);
+  opacity: 1;
 }
 
 /* The customcheck */
@@ -643,7 +651,7 @@ opacity: 1;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  margin-left:10px;
+  margin-left: 10px;
 }
 
 /* Hide the browser's default checkbox */
@@ -663,7 +671,7 @@ opacity: 1;
   background-color: #eee;
   border-radius: 5px;
   border: 2px solid #a9a9a9;
-  margin-left:10px;
+  margin-left: 10px;
 }
 
 /* On mouse-over, add a grey background color */
@@ -673,7 +681,7 @@ opacity: 1;
 
 /* When the checkbox is checked, add a blue background */
 .customcheck input:checked ~ .checkmark {
-  background-color: #4300FF;
+  background-color: #4300ff;
   border-radius: 5px;
 }
 
@@ -735,31 +743,41 @@ opacity: 1;
 }
 
 .dropdown {
-  height: calc(3.25rem + 2px)!important
+  height: calc(3.25rem + 2px) !important;
 }
 
 .photo-upload-label {
-  border: 2px solid #4300FF; background-color: #F1EBFF; padding:10px; border-radius: 0.25rem; margin-left:10px;
+  border: 2px solid #4300ff;
+  background-color: #f1ebff;
+  padding: 10px;
+  border-radius: 0.25rem;
+  margin-left: 10px;
 }
 
 .photo-strong {
-  padding:10px; 
-  color: #4300FF;
+  padding: 10px;
+  color: #4300ff;
 }
 
-.coclink{
-  font-style:bold; color:#4300FF
+.coclink {
+  font-style: bold;
+  color: #4300ff;
 }
 
-.text-indent-15{
-    text-indent: 15px;
+.text-indent-15 {
+  text-indent: 15px;
 }
 
-.success-link{
-  display:inline; 
-  color:#9933CC;
+.success-link {
+  display: inline;
+  color: #9933cc;
 }
 
-.success-pink{
-  color:#9933CC; 
+.success-pink {
+  color: #9933cc;
+}
+
+.footer a {
+  color: #9933cc;
+  font-weight: bold;
 }
