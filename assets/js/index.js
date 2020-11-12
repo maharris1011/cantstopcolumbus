@@ -76,16 +76,18 @@ Vue.component("project-card", {
   props: ["project"],
   delimiters: ["{$", "$}"],
   template: `
-    <div class="card my-2 col-sm-6 col-lg-3">
-      <div style="height: 50%; padding-top:2em;">
-        <div class="d-flex p-1 h-100">
-          <img :src="project.logo" class="p-2 card-img-top align-self-center limit-width"/>
+    <div class="col-sm-6 col-lg-3 d-flex align-items-stretch">
+      <div class="card my-1">
+        <div class="row h-100 align-items-center">
+          <div class="col-sm-12">
+            <img :src="project.logo" class="card-img-top"/>
+          </div>
         </div>
         <div class="card-body">
           <a :href="project.website" target="_blank">
             <h5 class="card-title">{$ project.title $}</h5>
           </a>
-          <p style="padding-bottom: 2em;" class="card-text">{$ project.text $}</p>
+          <p class="card-text">{$ project.text $}</p>
         </div>
       </div>
     </div>
