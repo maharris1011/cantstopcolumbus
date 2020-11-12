@@ -1,0 +1,70 @@
+<div class="container mt-3">
+  <div id="more-about-us-content" class="tab-content">
+    <div class="tab-pane show active" id="nav-stories">
+      {% include stories/stories-list.html %}
+    </div>
+
+    <div class="tab-pane show active" id="nav-press">
+      {% include press-release/pr-list.html %}
+    </div>
+
+    <div class="tab-pane show active" id="nav-team">
+      <div class="jumbotron background-white">
+        <h2>Project Leads</h2>
+        {% include teams/proj_leads.html %}
+      </div>
+    
+      <div class="jumbotron background-white">
+         <h2>Navigators</h2>
+         {% include teams/navigators.html %}
+       </div>
+    
+       <div class="jumbotron background-white">
+         <h2>Project Success</h2>
+         {% include teams/success.html %}
+       </div>
+    
+       <div class="jumbotron background-white">
+         <h2>Organizers</h2>
+         {% include teams/organizers.html %}
+       </div>
+    
+       <div class="jumbotron background-white">
+         <h2>Impact</h2>
+         {% include teams/impact.html %}
+       </div>
+    
+       <div class="jumbotron background-white">
+         <h2>Special Thanks</h2>
+         {% include teams/special.html %}
+       </div>
+    </div>
+    <div class="tab-pane show active" id="nav-partners">
+      <div class="jumbotron background-white">
+        <h2>Community Partners</h2>
+        {% include partners/community.html %}
+      </div>
+   
+      <div class="jumbotron background-white">
+        <h2>Professional Partners</h2>
+        {% include partners/professional.html %}
+      </div>
+   
+      <div class="jumbotron background-white">
+        <h2>Angels</h2>
+        {% include partners/angel.html %}
+      </div>
+   
+      <div class="jumbotron background-white">
+        <h2>In Kind Angels</h2>
+        {% include partners/kind.html %}
+      </div>
+   
+      <div class="jumbotron background-white">
+        <h2>Allies</h2>
+        {% include partners/ally.html %}
+      </div>
+    </div>
+  </div>
+</div>
+    
