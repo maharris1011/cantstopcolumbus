@@ -27,6 +27,20 @@ body {
   background-color: #ffffff;
 }
 
+.nav-link.active {
+  color: #4300FF;
+  border-bottom: 5px solid #4300FF;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.nav-link:not(.active) {
+  color: lightgray;
+  border-bottom: 5px solid lightgray;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
 .highlight {
   color: #4300FF;
   font-weight: bold;

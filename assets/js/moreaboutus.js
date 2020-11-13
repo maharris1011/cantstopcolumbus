@@ -1,8 +1,8 @@
 //
-// partners.js
+// moreaboutus.js
 //
 // Contains all of the functions needed for interactivity using Vuejs
-// on the partners page, including the main Vue instance and all Vue Components
+// on the "More about us" page, including the main Vue instance and all Vue Components
 //
 //
 
@@ -19,6 +19,11 @@ var cantstopcbus = new Vue({
       return this.allPartners.filter(
         (partner) => partner[attribute] === true && partner.Logo
       )
+    },
+    peopleFilterByType: function (type) {
+      return this.people.filter((person) => {
+        return person[type] === true
+      }).sort()
     }
   },
   computed: {
@@ -43,6 +48,25 @@ var cantstopcbus = new Vue({
     },
     inKindPartners: function () {
       return this.partnerFilter("PubInKind")
+    },
+    // Team Members
+    navigators: function () {
+      return this.peopleFilterByType("PubNavigator")
+    },
+    organizers: function () {
+      return this.peopleFilterByType("PubOrganizer")
+    },
+    projectLeads: function () {
+      return this.peopleFilterByType("PubProject")
+    },
+    special: function () {
+      return this.peopleFilterByType("PubSpecial")
+    },
+    success: function () {
+      return this.peopleFilterByType("PubSuccess")
+    },
+    impact: function () {
+      return this.peopleFilterByType("PubImpact")
     }
   },
   created() {
@@ -58,6 +82,18 @@ var cantstopcbus = new Vue({
           console.error(`unable to retrieve partners ${error}`)
         }
       )
+    axios
+      .get(
+        "https://wduc7ys73l.execute-api.us-east-1.amazonaws.com/dev/volunteers"
+      )
+      .then(
+        (response) => {
+          this.people = response.data
+        },
+        (error) => {
+          console.error(`unable to retrieve volunteers ${error}`)
+        }
+      )  
   }
 })
 
@@ -77,3 +113,25 @@ Vue.component("partner-card", {
     </a>
   `
 })
+
+Vue.component("person-card", {
+  props: ["item"],
+  delimiters: ["{$", "$}"],
+  template: `
+    <div class="card h-100">
+      <div class="embed-responsive embed-responsive-1by1">
+        <img :alt="item['Full Name']" 
+             class="card-img2-top embed-responsive-item" 
+             :src="item['Photo Upload'][0].url" />
+      </div>
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title">{$ item['Full Name'] $}</h5>
+        <p>{$ item['Team Page Byline'] $}</p>
+        <a class="card-link text-info text-left mt-auto" :href="item.LinkedIn" target="_blank">
+          <i class="fab fa-linkedin" style="font-size:36px"></i>
+        </a>
+      </div>
+    </div>
+  `
+})
+
