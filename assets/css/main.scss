@@ -254,11 +254,21 @@ h1 {
 
 @media only screen and (max-width: 768px) {
   .small-phone {
-    font-size: 14px;
+    font-size: 18px;
     vertical-align: middle;
   }
   .small-phone-div {
     margin-top: .1em;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .small-phone {
+    font-size: 20px;
+    vertical-align: middle;
+  }
+  .small-phone-div {
+    margin-top: .2em;
   }
 }
 
