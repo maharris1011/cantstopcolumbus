@@ -4,7 +4,7 @@
     <div class="col-md-7 col-lg-5">
       <div class="form-group">
         <input type="text" name="firstName" id="firstName" v-model="newVolunteer.firstName" required class="form-control volunteerField">
-        <label for="firstName" :class="{'stateField': newVolunteer.firstName}" class="form-control-placeholder">First Name</label>
+        <label for="firstName" :class="{'stateField': newVolunteer.firstName}" class="form-control-placeholder required">First Name</label>
         <div class="invalid-feedback">
             Please type in your first name
         </div>
@@ -15,7 +15,7 @@
     <div class="col-md-7 col-lg-5">
       <div class="form-group">
         <input type="text" id="lastName"  v-model="newVolunteer.lastName" required class="form-control volunteerField" name="lastName">
-        <label for="lastName"  :class="{'stateField': newVolunteer.lastName}"  class="form-control-placeholder">Last Name</label>
+        <label for="lastName"  :class="{'stateField': newVolunteer.lastName}"  class="form-control-placeholder required">Last Name</label>
         <div class="invalid-feedback">
             Please type in your last name
         </div>
@@ -26,7 +26,7 @@
     <div class="col-md-7 col-lg-5">
         <div class="form-group">
           <input type="email" id="primEmail" v-model="newVolunteer.primEmail" required class="form-control volunteerField" name="primEmail" >
-          <label for="primEmail" :class="{'stateField': newVolunteer.primEmail}" class="form-control-placeholder">Primary Email</label>
+          <label for="primEmail" :class="{'stateField': newVolunteer.primEmail}" class="form-control-placeholder required">Primary Email</label>
           <div class="invalid-feedback">
               Please type in a valid email
           </div>
@@ -37,7 +37,7 @@
     <div class="col-md-7 col-lg-5">
       <div class="form-group">
           <input type="tel" required id="phone" v-model="newVolunteer.phone" class="form-control volunteerField" name="phone" >
-          <label for="phone"  :class="{'stateField': newVolunteer.phone}" class="form-control-placeholder">Phone Number</label>
+          <label for="phone"  :class="{'stateField': newVolunteer.phone}" class="form-control-placeholder required">Phone Number</label>
           <div class="invalid-feedback">
             Please type in a valid phone number
           </div>
@@ -64,7 +64,7 @@
     <div class="col-md-7 col-lg-5">
       <div class="form-group">
           <input type="text" required id="city" v-model="newVolunteer.city" class="form-control volunteerField" name="city" >
-          <label for="city"  :class="{'stateField': newVolunteer.city}" class="form-control-placeholder">City</label>
+          <label for="city"  :class="{'stateField': newVolunteer.city}" class="form-control-placeholder required">City</label>
       </div>
       <div class="invalid-feedback">
         Please type in a valid city
@@ -128,7 +128,7 @@
             <option value="West Virginia">West Virginia</option>
             <option value="Wyoming">Wyoming</option>
         </select>
-          <label for="state" class="form-control-placeholder stateField ">State</label>
+          <label for="state" class="form-control-placeholder stateField required">State</label>
           <div class="invalid-feedback">
             Please select a valid state
           </div>
@@ -283,7 +283,7 @@
     <div class="col-md-9 col-lg-7">
       <div class="form-group">
         <div class="checkbox ">
-          <label  class="customcheck d-block volunteerLabel text-indent-15">
+          <label  class="customcheck d-block volunteerLabel text-indent-15 required">
               <input type="checkbox" v-model="newVolunteer.cocaffirmation" required><span class="checkmark"></span>
               I have read the <a href="https://cantstopcolumbus.com/code-of-conduct.html" class="coclink">Code of Conduct</a>
           </label>
