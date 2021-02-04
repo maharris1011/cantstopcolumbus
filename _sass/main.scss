@@ -781,3 +781,9 @@ input[type="file"] {
   color: #9933cc;
   font-weight: bold;
 }
+
+form label.required:after
+{
+    color: red;
+    content: " *";
+}
