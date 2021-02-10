@@ -47,7 +47,6 @@ var app = new Vue({
         phone: !this.blankOrNull(this.newVolunteer.phone),
         city: !this.blankOrNull(this.newVolunteer.city),
         state: !this.blankOrNull(this.newVolunteer.state),
-        hours: !this.blankOrNull(this.newVolunteer.hours),
         cocaffirmation: this.newVolunteer.cocaffirmation === true
       }
     },
