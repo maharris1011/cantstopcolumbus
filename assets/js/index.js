@@ -51,6 +51,11 @@ var cantstopcbus = new Vue({
       return this.projects.map((project) => {
         return transformProject(project)
       })
+    },
+    afterBirthdate: function () {
+      var birthdate = new Date('2021-03-15')
+      var today = new Date()
+      return today >= birthdate
     }
   },
   created() {
@@ -68,9 +73,6 @@ var cantstopcbus = new Vue({
       )
   }
 })
-
-
-
 
 Vue.component("project-card", {
   props: ["project"],
